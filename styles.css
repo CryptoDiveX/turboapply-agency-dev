@@ -134,6 +134,9 @@ button { font: inherit; }
   font-weight: 400;
   color: rgba(245, 241, 232, .86);
 }
+.chat-link {
+  mix-blend-mode: difference;
+}
 .topbar-actions {
   display: flex;
   align-items: flex-start;
@@ -2001,33 +2004,15 @@ button { font: inherit; }
   width: 100%;
   min-height: 100svh;
   scroll-margin-top: 24px;
-  padding: clamp(46px, 5.4vw, 72px) 0 clamp(54px, 7vw, 90px);
+  padding: clamp(58px, 6.2vw, 86px) 0 clamp(54px, 6.8vw, 86px);
   overflow: hidden;
-  background: #050505;
+  background: #f7f5ef;
+  color: #13241f;
   isolation: isolate;
 }
 .services-hub::before,
 .services-hub::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: 999px;
-  filter: blur(54px);
-}
-.services-hub::before {
-  width: min(760px, 64vw);
-  height: min(430px, 36vw);
-  right: -14%;
-  top: 11%;
-  background: radial-gradient(ellipse at center, rgba(74, 89, 98, .28), transparent 68%);
-}
-.services-hub::after {
-  width: min(620px, 52vw);
-  height: min(320px, 28vw);
-  left: -15%;
-  bottom: 4%;
-  background: radial-gradient(ellipse at center, rgba(255, 241, 216, .08), transparent 70%);
+  display: none;
 }
 .services-hub-inner {
   width: min(1360px, calc(100vw - 88px));
@@ -2038,17 +2023,17 @@ button { font: inherit; }
 }
 .services-heading-row {
   display: block;
-  margin: 0 0 clamp(80px, 8.5vw, 108px);
+  margin: 0 0 clamp(88px, 8vw, 118px);
 }
 .services-heading-row h2 {
   margin: 0;
-  max-width: 900px;
-  color: #edf8ff;
+  max-width: 980px;
+  color: #13241f;
   font-family: var(--font-ui);
-  font-size: clamp(32px, 3.45vw, 48px);
+  font-size: clamp(36px, 3.75vw, 54px);
   font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -.05em;
+  line-height: 1.05;
+  letter-spacing: -.055em;
   text-transform: none;
 }
 .services-heading-row p {
@@ -2057,20 +2042,21 @@ button { font: inherit; }
 .service-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(22px, 2.45vw, 36px);
+  gap: clamp(24px, 2.65vw, 38px);
   align-items: end;
+  background: transparent;
 }
 .service-card {
   position: relative;
-  min-height: clamp(380px, 31vw, 420px);
+  min-height: clamp(388px, 31vw, 424px);
   display: block;
   padding: clamp(34px, 3vw, 46px) clamp(26px, 2.2vw, 34px) 110px;
   overflow: visible;
   border: 0;
-  border-radius: 13px;
+  border-radius: 10px;
   background: #cceee3;
   color: #10231e;
-  box-shadow: 0 24px 90px rgba(0,0,0,.30);
+  box-shadow: none;
   transition: transform .32s ease, filter .32s ease;
   isolation: isolate;
 }
@@ -2221,53 +2207,54 @@ button { font: inherit; }
 .service-card:nth-child(1) .service-card-status,
 .service-card:nth-child(4) .service-card-status { color: rgba(24, 51, 42, .56); }
 .integration-marquee {
-  margin-top: clamp(54px, 6vw, 78px);
-  min-height: 72px;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 34px;
+  margin-top: clamp(46px, 5.2vw, 66px);
+  min-height: 56px;
+  display: block;
   overflow: hidden;
   border: 0;
-}
-.integration-marquee p {
-  margin: 0;
-  color: rgba(245, 241, 232, .42);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  background: transparent;
 }
 .integration-track-wrap {
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 .integration-track {
   display: flex;
+  align-items: center;
   width: max-content;
-  gap: clamp(28px, 4vw, 58px);
-  padding: 18px 0;
-  animation: integrationMarquee 36s linear infinite;
+  gap: clamp(32px, 4.2vw, 64px);
+  padding: 10px 0 8px;
+  animation: integrationMarquee 38s linear infinite;
 }
-.integration-track span {
+.integration-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
+  gap: 8px;
+  min-height: 34px;
   padding: 0;
   border: 0;
   border-radius: 0;
-  color: rgba(245, 241, 232, .68);
+  color: rgba(18, 24, 22, .72);
   background: transparent;
-  font-size: clamp(20px, 1.9vw, 28px);
+  font-size: clamp(15px, 1.25vw, 18px);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -.07em;
+  letter-spacing: -.06em;
   white-space: nowrap;
   filter: grayscale(1);
-  opacity: .72;
+  opacity: .86;
+}
+.integration-logo img {
+  width: clamp(22px, 2vw, 30px);
+  height: clamp(22px, 2vw, 30px);
+  display: block;
+  color: currentColor;
+  opacity: .94;
+}
+.integration-logo span {
+  display: inline-block;
 }
 
 @keyframes integrationMarquee {
@@ -2440,22 +2427,22 @@ button { font: inherit; }
     font-size: 16px;
   }
   .integration-marquee {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: block;
+    gap: 0;
     margin-top: 42px;
   }
-  .integration-marquee p {
-    padding: 0;
-  }
   .integration-track {
-    gap: 30px;
-    padding: 16px 0 18px;
-    animation-duration: 32s;
+    gap: 34px;
+    padding: 12px 0 14px;
+    animation-duration: 34s;
   }
-  .integration-track span {
-    min-height: 0;
-    padding: 0;
-    font-size: 21px;
+  .integration-logo {
+    min-height: 32px;
+    font-size: 16px;
+  }
+  .integration-logo img {
+    width: 24px;
+    height: 24px;
   }
 }
 
