@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Book a TurboApply audit through Calendly." />
+    <title>TurboApply — Book an Audit</title>
+    <link rel="canonical" href="https://turboapply.agency/book-meeting/" />
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body,
+      .booking-shell {
+        margin: 0;
+        min-height: 100%;
+        background: #fff;
+      }
+
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      #calendly-inline-widget {
+        min-width: 320px;
+        height: 100vh;
+        min-height: 700px;
+      }
+
+      .fallback {
+        display: none;
+        padding: 24px;
+      }
+
+      .fallback-link {
+        color: #071018;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="booking-shell">
+      <section class="booking-card" aria-label="Calendly booking">
+        <div id="calendly-inline-widget" aria-label="Calendly scheduling widget"></div>
+        <p class="fallback" id="calendly-fallback">
+          If the scheduler does not load,
+          <a class="fallback-link" id="calendly-fallback-link" href="https://calendly.com/turboapply/30min">open Calendly directly</a>.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      const CALENDLY_URL = "https://calendly.com/turboapply/30min";
+      const query = new URLSearchParams(window.location.search);
+      const prefill = {};
+      const name = (query.get("name") || "").trim();
+      const email = (query.get("email") || "").trim();
+
+      if (name) prefill.name = name;
+      if (email) prefill.email = email;
+
+      const directUrl = new URL(CALENDLY_URL);
+      if (name) directUrl.searchParams.set("name", name);
+      if (email) directUrl.searchParams.set("email", email);
+      document.getElementById("calendly-fallback-link").href = directUrl.toString();
+
+      const showFallback = () => {
+        document.getElementById("calendly-fallback").style.display = "block";
+      };
+
+      const initCalendly = () => {
+        const parentElement = document.getElementById("calendly-inline-widget");
+
+        if (!window.Calendly || !parentElement) {
+          showFallback();
+          return;
+        }
+
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL,
+          parentElement,
+          prefill
+        });
+      };
+
+      window.addEventListener("error", showFallback, { once: true });
+      setTimeout(() => {
+        if (!document.querySelector("#calendly-inline-widget iframe")) showFallback();
+      }, 5000);
+    </script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async onload="initCalendly()"></script>
+  </body>
+</html>

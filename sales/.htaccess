@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Rescue stale mobile pages that still submit the old no-action form as GET /sales/?name=...
+  RewriteCond %{REQUEST_METHOD} =GET
+  RewriteCond %{QUERY_STRING} (^|&)name=[^&]+ [NC]
+  RewriteCond %{QUERY_STRING} (^|&)contact=[^&]+ [NC]
+  RewriteCond %{QUERY_STRING} (^|&)challenge=[^&]+ [NC]
+  RewriteRule ^$ /sales/book-meeting/ [R=303,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html|script\.js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>

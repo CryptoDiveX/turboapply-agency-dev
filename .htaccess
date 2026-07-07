@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteRule ^api/contact/?$ /api/contact/index.php [L]
+  RewriteRule ^api/health/?$ /api/health.php [L]
+
+  # Rescue stale mobile pages that still submit the old no-action form as GET /?name=...
+  # Keep the query string so TurboBook can still see the submitted values.
+  RewriteCond %{REQUEST_METHOD} =GET
+  RewriteCond %{QUERY_STRING} (^|&)name=[^&]+ [NC]
+  RewriteCond %{QUERY_STRING} (^|&)contact=[^&]+ [NC]
+  RewriteCond %{QUERY_STRING} (^|&)challenge=[^&]+ [NC]
+  RewriteRule ^$ /book-meeting/ [R=303,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html|script\.js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
