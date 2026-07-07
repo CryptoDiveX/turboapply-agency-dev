@@ -1859,7 +1859,11 @@ button { font: inherit; }
 .turbo-hero-title span {
   display: block;
 }
-.turbo-hero-title span:first-child {
+.turbo-hero-title .turbo-title-main-line {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 1.6vw, 30px);
+  width: max-content;
   color: #edf8ff;
   font-weight: 800;
 }
@@ -1908,15 +1912,17 @@ button { font: inherit; }
   display: none;
 }
 .turbo-hero-arrow {
-  position: absolute;
+  position: relative;
   z-index: 13;
-  left: clamp(880px, 72vw, 1220px);
-  top: clamp(146px, 20vh, 210px);
-  width: clamp(76px, 7vw, 108px);
-  height: clamp(76px, 7vw, 108px);
-  color: rgba(245, 241, 232, .88);
-  opacity: .92;
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: clamp(74px, 6.4vw, 104px);
+  height: clamp(74px, 6.4vw, 104px);
+  color: rgba(245, 241, 232, .92);
+  opacity: .96;
   filter: drop-shadow(0 18px 44px rgba(0,0,0,.46));
+  transform: translateY(.02em);
 }
 .turbo-hero-arrow svg {
   display: block;
@@ -1924,7 +1930,7 @@ button { font: inherit; }
   height: 100%;
   fill: none;
   stroke: currentColor;
-  stroke-width: 3.2;
+  stroke-width: 5.4;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -2265,8 +2271,8 @@ button { font: inherit; }
   .turbo-hero { min-height: 130svh; }
   .turbo-hero-stage { height: 100svh; min-height: 760px; }
   .turbo-hero-copy { left: 52px; right: 32px; top: 122px; width: auto; }
-  .turbo-hero-title { font-size: clamp(68px, 12.2vw, 118px); }
-  .turbo-hero-arrow { left: auto; right: 42px; top: 126px; width: 76px; height: 76px; }
+  .turbo-hero-title { font-size: clamp(68px, 11.7vw, 118px); }
+  .turbo-hero-arrow { width: clamp(60px, 7vw, 76px); height: clamp(60px, 7vw, 76px); }
   .turbo-hero-pills { left: 34px; right: 34px; bottom: 92px; width: auto; }
   .services-hub { min-height: auto; padding: 64px 0 82px; }
   .services-hub-inner { width: min(980px, calc(100vw - 56px)); }
@@ -2298,9 +2304,12 @@ button { font: inherit; }
     letter-spacing: .16em;
   }
   .turbo-hero-title {
-    font-size: clamp(44px, 13.2vw, 58px);
+    font-size: clamp(42px, 12.2vw, 56px);
     line-height: .9;
     letter-spacing: -.068em;
+  }
+  .turbo-hero-title .turbo-title-main-line {
+    gap: 10px;
   }
   .turbo-hero-title span:last-child {
     font-size: .70em;
@@ -2322,40 +2331,25 @@ button { font: inherit; }
     font-size: 14px;
   }
   .turbo-mobile-arrow {
-    display: grid;
-    place-items: center;
-    width: 64px;
-    height: 64px;
-    margin-top: 28px;
-    border-radius: 50%;
-    border: 1px solid rgba(245, 241, 232, .66);
-    color: rgba(245, 241, 232, .96);
-    background: rgba(245, 241, 232, .045);
-    font-size: 35px;
-    line-height: 1;
+    display: none !important;
   }
   .turbo-hero-arrow {
-    right: 28px;
-    top: 500px;
-    width: 64px;
-    height: 64px;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: clamp(38px, 11vw, 48px);
+    height: clamp(38px, 11vw, 48px);
     z-index: 16;
     color: rgba(245, 241, 232, .96);
-    background: rgba(245, 241, 232, .045);
+    background: transparent;
     border-radius: 50%;
+    transform: translateY(.02em);
   }
   .turbo-hero-arrow::after {
-    content: "↗";
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 35px;
-    line-height: 1;
-    color: rgba(245, 241, 232, .96);
+    content: none;
   }
   .turbo-hero-arrow svg {
-    opacity: .52;
+    opacity: 1;
   }
   .turbo-hero-pills {
     left: 24px;
