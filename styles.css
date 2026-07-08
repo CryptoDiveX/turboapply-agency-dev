@@ -2012,8 +2012,8 @@ button { font: inherit; }
   scroll-margin-top: 24px;
   padding: clamp(58px, 6.2vw, 86px) 0 clamp(54px, 6.8vw, 86px);
   overflow: hidden;
-  background: #f7f5ef;
-  color: #13241f;
+  background: #050505;
+  color: #f5f1e8;
   isolation: isolate;
 }
 .services-hub::before,
@@ -2034,7 +2034,7 @@ button { font: inherit; }
 .services-heading-row h2 {
   margin: 0;
   max-width: 980px;
-  color: #13241f;
+  color: #edf8ff;
   font-family: var(--font-ui);
   font-size: clamp(36px, 3.75vw, 54px);
   font-weight: 400;
@@ -2242,7 +2242,7 @@ button { font: inherit; }
   padding: 0;
   border: 0;
   border-radius: 0;
-  color: rgba(18, 24, 22, .72);
+  color: rgba(245, 241, 232, .74);
   background: transparent;
   font-size: clamp(15px, 1.25vw, 18px);
   font-weight: 800;
@@ -2257,7 +2257,8 @@ button { font: inherit; }
   height: clamp(22px, 2vw, 30px);
   display: block;
   color: currentColor;
-  opacity: .94;
+  filter: invert(1) brightness(1.18) sepia(.08);
+  opacity: .88;
 }
 .integration-logo span {
   display: inline-block;
