@@ -2074,23 +2074,39 @@ button { font: inherit; }
   isolation: isolate;
 }
 .service-card:nth-child(1) {
-  background-color: #e8f6f0;
-  background-image: url("public/assets/services/cards/website-design.webp");
+  --service-vector: url("public/assets/services/vectors/website-design.svg");
+  background-color: #cdeee4;
+  background-image:
+    linear-gradient(148deg, transparent 0 45%, rgba(247,242,231,.78) 45% 67%, transparent 67% 100%),
+    linear-gradient(28deg, rgba(24,59,50,.98) 0 31%, transparent 31% 100%),
+    linear-gradient(153deg, transparent 0 62%, rgba(216,239,232,.82) 62% 100%);
   color: #153f35;
 }
 .service-card:nth-child(2) {
-  background-color: #eee9fb;
-  background-image: url("public/assets/services/cards/health-business.webp");
-  color: #4a2855;
+  --service-vector: url("public/assets/services/vectors/health-business.svg");
+  background-color: #4f477c;
+  background-image:
+    linear-gradient(160deg, transparent 0 52%, rgba(213,242,231,.9) 52% 70%, transparent 70% 100%),
+    linear-gradient(28deg, rgba(24,59,50,.95) 0 34%, transparent 34% 100%),
+    linear-gradient(152deg, transparent 0 68%, rgba(247,242,231,.42) 68% 100%);
+  color: #f8efe1;
 }
 .service-card:nth-child(3) {
-  background-color: #16392f;
-  background-image: url("public/assets/services/cards/cold-email-outreach.webp");
+  --service-vector: url("public/assets/services/vectors/cold-email-outreach.svg");
+  background-color: #173a31;
+  background-image:
+    linear-gradient(150deg, transparent 0 50%, rgba(238,192,148,.95) 50% 73%, transparent 73% 100%),
+    linear-gradient(30deg, rgba(247,242,231,.95) 0 32%, transparent 32% 100%),
+    linear-gradient(155deg, transparent 0 68%, rgba(10,28,24,.74) 68% 100%);
   color: #f8efe1;
 }
 .service-card:nth-child(4) {
-  background-color: #f5eadb;
-  background-image: url("public/assets/services/cards/ai-agents.webp");
+  --service-vector: url("public/assets/services/vectors/ai-agents.svg");
+  background-color: #f3dfbf;
+  background-image:
+    linear-gradient(145deg, transparent 0 46%, rgba(220,246,246,.86) 46% 70%, transparent 70% 100%),
+    linear-gradient(29deg, rgba(24,59,50,.96) 0 30%, transparent 30% 100%),
+    linear-gradient(153deg, transparent 0 72%, rgba(247,242,231,.7) 72% 100%);
   color: #15362d;
 }
 .service-card::before,
@@ -2160,6 +2176,25 @@ button { font: inherit; }
   border-radius: 50%;
   transform: rotate(0);
   box-shadow: 0 16px 0 rgba(24,51,42,.95), 0 28px 0 rgba(24,51,42,.95), 0 40px 0 rgba(24,51,42,.95);
+}
+.service-card:nth-child(1)::after,
+.service-card:nth-child(2)::after,
+.service-card:nth-child(3)::after,
+.service-card:nth-child(4)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: clamp(84px, 7vw, 98px);
+  z-index: 1;
+  display: block;
+  width: min(72%, 230px);
+  height: clamp(138px, 14vw, 178px);
+  border: 0;
+  border-radius: 0;
+  background: var(--service-vector) center bottom / contain no-repeat;
+  box-shadow: none;
+  pointer-events: none;
+  transform: translateX(-50%);
 }
 .service-card-link:hover,
 .service-card-link:focus-visible {
