@@ -2061,7 +2061,7 @@ button { font: inherit; }
   min-height: clamp(388px, 31vw, 424px);
   display: block;
   padding: clamp(34px, 3vw, 46px) clamp(26px, 2.2vw, 34px) 96px;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
   border-radius: 10px;
   background: #cceee3;
@@ -2073,7 +2073,6 @@ button { font: inherit; }
 .service-card:nth-child(1) {
   background: #cceee3;
   color: #11271f;
-  overflow: visible;
 }
 .service-card:nth-child(2) { background: #4b4276; color: #f5f1e8; }
 .service-card:nth-child(3) { background: #18332a; color: #f5f1e8; }
@@ -2086,15 +2085,16 @@ button { font: inherit; }
   z-index: -1;
 }
 .service-card::before {
-  left: -14%;
-  right: -12%;
-  bottom: -4%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 46%;
+  border-radius: 0 0 10px 10px;
   background:
     linear-gradient(150deg, transparent 0 23%, rgba(255,255,255,.76) 23% 45%, transparent 45% 100%),
     linear-gradient(28deg, rgba(24,51,42,.96) 0 38%, transparent 38% 100%),
     linear-gradient(150deg, transparent 0 52%, rgba(220,244,235,.9) 52% 66%, transparent 66% 100%);
-  transform: rotate(-2deg);
+  transform: none;
 }
 .service-card::after {
   width: clamp(78px, 7.2vw, 112px);
@@ -2106,13 +2106,6 @@ button { font: inherit; }
   border: clamp(8px, .85vw, 13px) solid #f8f4e8;
   box-shadow: -12px 10px 0 rgba(24,51,42,.96), 0 16px 26px rgba(0,0,0,.18);
   transform: rotate(16deg);
-}
-.service-card:nth-child(1)::before {
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 0 0 10px 10px;
-  transform: none;
 }
 .service-card:nth-child(2)::before {
   background:
@@ -2186,8 +2179,8 @@ button { font: inherit; }
 .service-card h3 {
   position: absolute;
   z-index: 5;
-  left: clamp(14px, 1.2vw, 18px);
-  right: clamp(14px, 1.2vw, 18px);
+  left: -16px;
+  right: -16px;
   bottom: 18px;
   min-height: 64px;
   display: flex;
@@ -2204,10 +2197,6 @@ button { font: inherit; }
   line-height: 1.1;
   letter-spacing: -.025em;
   text-transform: none;
-}
-.service-card:nth-child(1) h3 {
-  left: -16px;
-  right: -16px;
 }
 .service-card:nth-child(2) h3 { background: #d5f2e7; color: #302a55; }
 .service-card:nth-child(3) h3 { background: #f1ddbd; color: #c66411; }
@@ -2418,15 +2407,11 @@ button { font: inherit; }
   }
   .service-card h3 {
     min-height: 60px;
-    left: 14px;
-    right: 14px;
+    left: -12px;
+    right: -12px;
     bottom: 18px;
     padding: 0 20px;
     font-size: 18px;
-  }
-  .service-card:nth-child(1) h3 {
-    left: -12px;
-    right: -12px;
   }
   .service-card p {
     max-width: 250px;
