@@ -2070,7 +2070,11 @@ button { font: inherit; }
   transition: transform .32s ease, filter .32s ease;
   isolation: isolate;
 }
-.service-card:nth-child(1) { background: #cceee3; color: #11271f; }
+.service-card:nth-child(1) {
+  background: #cceee3;
+  color: #11271f;
+  overflow: visible;
+}
 .service-card:nth-child(2) { background: #4b4276; color: #f5f1e8; }
 .service-card:nth-child(3) { background: #18332a; color: #f5f1e8; }
 .service-card:nth-child(4) { background: #f0ddbe; color: #14261f; }
@@ -2102,6 +2106,13 @@ button { font: inherit; }
   border: clamp(8px, .85vw, 13px) solid #f8f4e8;
   box-shadow: -12px 10px 0 rgba(24,51,42,.96), 0 16px 26px rgba(0,0,0,.18);
   transform: rotate(16deg);
+}
+.service-card:nth-child(1)::before {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0 0 10px 10px;
+  transform: none;
 }
 .service-card:nth-child(2)::before {
   background:
@@ -2193,6 +2204,10 @@ button { font: inherit; }
   line-height: 1.1;
   letter-spacing: -.025em;
   text-transform: none;
+}
+.service-card:nth-child(1) h3 {
+  left: -16px;
+  right: -16px;
 }
 .service-card:nth-child(2) h3 { background: #d5f2e7; color: #302a55; }
 .service-card:nth-child(3) h3 { background: #f1ddbd; color: #c66411; }
@@ -2408,6 +2423,10 @@ button { font: inherit; }
     bottom: 18px;
     padding: 0 20px;
     font-size: 18px;
+  }
+  .service-card:nth-child(1) h3 {
+    left: -12px;
+    right: -12px;
   }
   .service-card p {
     max-width: 250px;
