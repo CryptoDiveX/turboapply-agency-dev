@@ -2064,25 +2064,38 @@ button { font: inherit; }
   overflow: visible;
   border: 0;
   border-radius: 10px;
-  background: #cceee3;
+  background-color: #cceee3;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
   color: #10231e;
   box-shadow: none;
   transition: transform .32s ease, filter .32s ease;
   isolation: isolate;
 }
 .service-card:nth-child(1) {
-  background: #cceee3;
-  color: #11271f;
+  background-color: #e8f6f0;
+  background-image: url("public/assets/services/cards/website-design.webp");
+  color: #153f35;
 }
-.service-card:nth-child(2) { background: #4b4276; color: #f5f1e8; }
-.service-card:nth-child(3) { background: #18332a; color: #f5f1e8; }
-.service-card:nth-child(4) { background: #f0ddbe; color: #14261f; }
+.service-card:nth-child(2) {
+  background-color: #eee9fb;
+  background-image: url("public/assets/services/cards/health-business.webp");
+  color: #4a2855;
+}
+.service-card:nth-child(3) {
+  background-color: #16392f;
+  background-image: url("public/assets/services/cards/cold-email-outreach.webp");
+  color: #f8efe1;
+}
+.service-card:nth-child(4) {
+  background-color: #f5eadb;
+  background-image: url("public/assets/services/cards/ai-agents.webp");
+  color: #15362d;
+}
 .service-card::before,
 .service-card::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: -1;
+  display: none;
 }
 .service-card::before {
   left: 0;
