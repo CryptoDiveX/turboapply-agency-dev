@@ -1917,8 +1917,8 @@ button { font: inherit; }
   flex: 0 0 auto;
   display: inline-grid;
   place-items: center;
-  width: clamp(74px, 6.4vw, 104px);
-  height: clamp(74px, 6.4vw, 104px);
+  width: clamp(92px, 8.2vw, 124px);
+  height: clamp(92px, 8.2vw, 124px);
   color: rgba(245, 241, 232, .92);
   opacity: .96;
   filter: drop-shadow(0 18px 44px rgba(0,0,0,.46));
@@ -2273,7 +2273,7 @@ button { font: inherit; }
   .turbo-hero-stage { height: 100svh; min-height: 760px; }
   .turbo-hero-copy { left: 52px; right: 32px; top: 122px; width: auto; }
   .turbo-hero-title { font-size: clamp(68px, 11.7vw, 118px); }
-  .turbo-hero-arrow { width: clamp(60px, 7vw, 76px); height: clamp(60px, 7vw, 76px); }
+  .turbo-hero-arrow { width: clamp(76px, 9.4vw, 96px); height: clamp(76px, 9.4vw, 96px); }
   .turbo-hero-pills { left: 34px; right: 34px; bottom: 92px; width: auto; }
   .services-hub { min-height: auto; padding: 64px 0 82px; }
   .services-hub-inner { width: min(980px, calc(100vw - 56px)); }
