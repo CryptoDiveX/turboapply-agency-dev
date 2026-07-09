@@ -2208,15 +2208,15 @@ button { font: inherit; }
     linear-gradient(26deg, rgba(8,26,22,.95) 0 26%, transparent 26% 100%);
 }
 .service-card:nth-child(3)::after {
-  width: 70px;
-  height: 70px;
-  right: 7%;
-  bottom: 15%;
-  border: 3px solid rgba(24,51,42,.92);
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: 18px 5px 0 -14px rgba(24,51,42,.92);
-  transform: rotate(12deg);
+  width: clamp(210px, 18vw, 252px);
+  height: clamp(138px, 12vw, 168px);
+  right: -20px;
+  bottom: clamp(62px, 5vw, 74px);
+  border: 0;
+  border-radius: 0;
+  background: url("public/assets/services/cards/cold-email-paper-plane.svg") center / contain no-repeat;
+  box-shadow: none;
+  transform: rotate(0deg);
 }
 .service-card:nth-child(4)::before {
   height: 54%;
@@ -2225,11 +2225,15 @@ button { font: inherit; }
     linear-gradient(27deg, rgba(24,51,42,.96) 0 33%, transparent 33% 100%);
 }
 .service-card:nth-child(4)::after {
-  right: 18%;
-  bottom: 28%;
-  border-radius: 50%;
-  transform: rotate(0);
-  box-shadow: 0 16px 0 rgba(24,51,42,.95), 0 28px 0 rgba(24,51,42,.95), 0 40px 0 rgba(24,51,42,.95);
+  width: clamp(190px, 16.4vw, 226px);
+  height: clamp(132px, 11.5vw, 160px);
+  right: 4px;
+  bottom: clamp(72px, 6vw, 86px);
+  border: 0;
+  border-radius: 0;
+  background: url("public/assets/services/cards/ai-agent-bot-flow.svg") center / contain no-repeat;
+  box-shadow: none;
+  transform: rotate(0deg);
 }
 .service-card-link:hover,
 .service-card-link:focus-visible {

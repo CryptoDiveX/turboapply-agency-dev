@@ -1,0 +1,43 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cold email envelope and paper plane illustration">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#031F18" flood-opacity="0.32"/>
+    </filter>
+    <linearGradient id="envelopeFace" x1="70" y1="138" x2="213" y2="261" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4DE"/>
+      <stop offset="1" stop-color="#EFD6AD"/>
+    </linearGradient>
+    <linearGradient id="planeFill" x1="270" y1="58" x2="352" y2="143" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7E8"/>
+      <stop offset="1" stop-color="#E6CEAA"/>
+    </linearGradient>
+    <linearGradient id="greenFacet" x1="92" y1="160" x2="310" y2="286" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#255C4C"/>
+      <stop offset="1" stop-color="#0B3026"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M0 222L100 162L210 300H0V222Z" fill="#D9EFE7" opacity="0.72"/>
+  <path d="M88 165L255 250L420 144V300H88V165Z" fill="url(#greenFacet)" opacity="0.7"/>
+  <path d="M236 300L420 107V300H236Z" fill="#1C4E40" opacity="0.72"/>
+  <path d="M236 300L420 107" stroke="#3D715F" stroke-width="2" opacity="0.65"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M70 168L194 112L219 236L70 236V168Z" fill="url(#envelopeFace)"/>
+    <path d="M70 168L144 209L219 236L145 152L70 168Z" fill="#F6E9D1"/>
+    <path d="M70 236L145 184L219 236H70Z" fill="#E8C996" opacity="0.96"/>
+    <path d="M70 168L145 218L219 136" stroke="#FFF6E8" stroke-width="2" opacity="0.8"/>
+    <path d="M145 184L219 236" stroke="#C9A575" stroke-width="2" opacity="0.28"/>
+  </g>
+
+  <path d="M210 212C230 203 227 178 221 162C210 132 232 119 253 124C271 128 282 113 286 95" stroke="#F8E8C7" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 9" opacity="0.86"/>
+  <circle cx="211" cy="212" r="8" fill="#F5E3BF"/>
+  <circle cx="253" cy="124" r="7" fill="#F5E3BF"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M274 82L352 49L323 145L307 105L274 82Z" fill="url(#planeFill)"/>
+    <path d="M274 82L307 105L352 49L294 117L274 82Z" fill="#F6E6C9"/>
+    <path d="M307 105L323 145L294 117L307 105Z" fill="#CDAE7E" opacity="0.72"/>
+    <path d="M294 117L352 49" stroke="#FFF9ED" stroke-width="2" opacity="0.72"/>
+  </g>
+</svg>

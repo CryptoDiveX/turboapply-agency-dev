@@ -1,0 +1,41 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI agent bot and workflow illustration">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#3B2410" flood-opacity="0.22"/>
+    </filter>
+    <linearGradient id="botShell" x1="147" y1="60" x2="280" y2="155" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8E9"/>
+      <stop offset="1" stop-color="#E8D1AA"/>
+    </linearGradient>
+    <linearGradient id="mintTile" x1="96" y1="205" x2="126" y2="238" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8F1E8"/>
+      <stop offset="1" stop-color="#3D7564"/>
+    </linearGradient>
+    <linearGradient id="creamTile" x1="281" y1="198" x2="325" y2="241" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7E4C2"/>
+      <stop offset="1" stop-color="#B7B39B"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M0 216L147 145L260 300H0V216Z" fill="#D8F0E8" opacity="0.72"/>
+  <path d="M144 144L420 44V300H144V144Z" fill="#F6E5C8" opacity="0.65"/>
+  <path d="M0 278L420 123V300H0V278Z" fill="#F2D8AC" opacity="0.7"/>
+  <path d="M278 300L420 168V300H278Z" fill="#D4BE98" opacity="0.55"/>
+
+  <g filter="url(#softShadow)">
+    <rect x="136" y="58" width="148" height="92" rx="46" fill="url(#botShell)"/>
+    <rect x="158" y="78" width="104" height="52" rx="26" fill="#083A30"/>
+    <circle cx="189" cy="104" r="8" fill="#F8F4E7"/>
+    <circle cx="231" cy="104" r="8" fill="#F8F4E7"/>
+  </g>
+
+  <path d="M210 154V190" stroke="#153B31" stroke-width="3" stroke-linecap="round"/>
+  <path d="M118 190V176C118 168.3 124.3 162 132 162H288C295.7 162 302 168.3 302 176V190" stroke="#153B31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g filter="url(#softShadow)">
+    <rect x="92" y="196" width="46" height="46" rx="2" fill="#F8F3E6"/>
+    <rect x="99" y="203" width="32" height="32" fill="url(#mintTile)"/>
+    <circle cx="210" cy="220" r="27" fill="#77A893"/>
+    <rect x="285" y="196" width="44" height="44" rx="2" transform="rotate(45 285 196)" fill="url(#creamTile)"/>
+  </g>
+</svg>
