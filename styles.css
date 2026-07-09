@@ -2154,7 +2154,7 @@ button { font: inherit; }
 .service-card:nth-child(4) {
   --service-vector: url("public/assets/services/vectors/ai-agents.svg");
   background-color: #f3dfbf;
-  background-image: url("public/assets/services/cards/service-card-ai-agents.webp");
+  background-image: url("public/assets/services/cards/service-card-ai-agents-robot-workflow.webp");
   color: #15362d;
 }
 .service-card::before,
