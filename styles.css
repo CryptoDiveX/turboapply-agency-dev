@@ -2272,7 +2272,7 @@ button { font: inherit; }
   padding: 0 clamp(20px, 1.8vw, 26px);
   border-radius: 10px;
   color: #f5f1e8;
-  background: #18332a;
+  background: #173a31;
   box-shadow: 0 12px 24px rgba(0,0,0,.22);
   font-family: var(--font-ui);
   font-size: clamp(17px, 1.2vw, 20px);
@@ -2281,9 +2281,9 @@ button { font: inherit; }
   letter-spacing: -.025em;
   text-transform: none;
 }
-.service-card:nth-child(2) h3 { background: #d5f2e7; color: #302a55; }
-.service-card:nth-child(3) h3 { background: #f1ddbd; color: #c66411; }
-.service-card:nth-child(4) h3 { background: #18332a; color: #f5f1e8; }
+.service-card:nth-child(2) h3 { background: #cdeee4; color: #302a55; }
+.service-card:nth-child(3) h3 { background: #f3dfbf; color: #c66411; }
+.service-card:nth-child(4) h3 { background: #173a31; color: #f5f1e8; }
 .service-card-status {
   display: none;
 }
