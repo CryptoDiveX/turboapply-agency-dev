@@ -15,6 +15,7 @@ const heroStage = document.querySelector('.hero-stage');
 const heroKeywords = Array.from(document.querySelectorAll('.hero-keyword'));
 const heroWandReveal = document.querySelector('.hero-wand-reveal');
 const heroWandRevealText = document.querySelector('.hero-wand-reveal p');
+const splitRevealHeadings = Array.from(document.querySelectorAll('[data-split-reveal]'));
 const projectTitle = document.querySelector('#project-title');
 const projectDescription = document.querySelector('#project-description');
 const projectImages = Array.from(document.querySelectorAll('[data-project-image]'));
@@ -141,6 +142,38 @@ function lerp(start, end, progress) {
   return start + (end - start) * clamp(progress, 0, 1);
 }
 
+function setupSplitRevealHeadings() {
+  splitRevealHeadings.forEach((heading) => {
+    const text = heading.textContent.trim().replace(/\s+/g, ' ');
+    heading.textContent = '';
+    heading.setAttribute('aria-label', text);
+
+    const words = text.split(' ');
+    let charIndex = 0;
+
+    words.forEach((word, wordIndex) => {
+      const wordWrap = document.createElement('span');
+      wordWrap.className = 'split-reveal-word';
+      wordWrap.setAttribute('aria-hidden', 'true');
+
+      Array.from(word).forEach((letter) => {
+        const char = document.createElement('span');
+        char.className = 'split-reveal-char';
+        char.style.setProperty('--char-delay', `${Math.min(charIndex * 16, 920)}ms`);
+        char.textContent = letter;
+        wordWrap.appendChild(char);
+        charIndex += 1;
+      });
+
+      heading.appendChild(wordWrap);
+
+      if (wordIndex < words.length - 1) {
+        heading.appendChild(document.createTextNode(' '));
+      }
+    });
+  });
+}
+
 function syncServicesHubScrollTransition() {
   if (!servicesSection) return;
 
@@ -191,6 +224,7 @@ function syncServicesHubScrollTransition() {
   servicesSection.style.setProperty('--services-content-blur', `${headingBlur.toFixed(1)}px`);
   servicesSection.style.setProperty('--services-heading-opacity', headingOpacity.toFixed(3));
   servicesSection.style.setProperty('--services-heading-blur', `${headingBlur.toFixed(1)}px`);
+  servicesSection.classList.toggle('is-heading-visible', headingProgress > 0.08);
   servicesSection.style.setProperty('--services-cards-opacity', cardsOpacity.toFixed(3));
   servicesSection.style.setProperty('--services-cards-blur', `${cardsBlur.toFixed(1)}px`);
 }
@@ -1164,6 +1198,7 @@ if (requestedProject && projectKeys.includes(requestedProject)) {
   });
 }
 
+setupSplitRevealHeadings();
 observeHeroWandReveal();
 observeMobileMenu();
 observeContactForm();
