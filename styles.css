@@ -2136,7 +2136,7 @@ button { font: inherit; }
 .service-card:nth-child(1) {
   --service-vector: url("public/assets/services/vectors/website-design.svg");
   background-color: #cdeee4;
-  background-image: url("public/assets/services/cards/service-card-website-design.webp");
+  background-image: url("public/assets/services/cards/service-card-website-design-browser-phone.webp");
   color: #153f35;
 }
 .service-card:nth-child(2) {
