@@ -145,6 +145,10 @@ function syncServicesHubScrollTransition() {
   if (!servicesSection) return;
 
   if (prefersReducedMotion.matches) {
+    heroSection?.style.setProperty('--hero-card-y', '0px');
+    heroSection?.style.setProperty('--hero-card-scale', '1');
+    heroSection?.style.setProperty('--hero-card-opacity', '1');
+    heroSection?.style.setProperty('--hero-card-blur', '0px');
     servicesSection.style.setProperty('--services-chapter-opacity', '1');
     servicesSection.style.setProperty('--services-chapter-width', '100%');
     servicesSection.style.setProperty('--services-chapter-height', 'auto');
@@ -158,6 +162,8 @@ function syncServicesHubScrollTransition() {
     servicesSection.style.setProperty('--services-heading-blur', '0px');
     servicesSection.style.setProperty('--services-cards-opacity', '1');
     servicesSection.style.setProperty('--services-cards-blur', '0px');
+    servicesSection.style.setProperty('--services-card-y', '0px');
+    servicesSection.style.setProperty('--services-card-scale', '1');
     return;
   }
 
@@ -171,15 +177,30 @@ function syncServicesHubScrollTransition() {
   ));
   const cardsProgress = easeOutCubic(normalizeProgress(
     enterAmount,
-    viewportHeight * 0.52,
-    viewportHeight * 0.82
+    viewportHeight * 0.62,
+    viewportHeight * 0.88
+  ));
+  const switchProgress = easeInOut(normalizeProgress(
+    enterAmount,
+    viewportHeight * 0.10,
+    viewportHeight * 0.55
   ));
 
   const headingOpacity = clamp(headingProgress * 1.18, 0, 1);
   const headingBlur = (1 - headingProgress) * 6;
   const cardsOpacity = clamp(cardsProgress * 1.35, 0, 1);
   const cardsBlur = (1 - cardsProgress) * 8;
+  const heroY = Math.round(lerp(0, -viewportHeight * 0.08, switchProgress));
+  const heroScale = 1 - switchProgress * 0.035;
+  const heroOpacity = 1 - switchProgress * 0.28;
+  const heroBlur = switchProgress * 4;
+  const servicesCardY = Math.round(lerp(viewportHeight * 0.44, 0, switchProgress));
+  const servicesCardScale = 0.93 + switchProgress * 0.07;
 
+  heroSection?.style.setProperty('--hero-card-y', `${heroY}px`);
+  heroSection?.style.setProperty('--hero-card-scale', heroScale.toFixed(3));
+  heroSection?.style.setProperty('--hero-card-opacity', heroOpacity.toFixed(3));
+  heroSection?.style.setProperty('--hero-card-blur', `${heroBlur.toFixed(1)}px`);
   servicesSection.style.setProperty('--services-chapter-opacity', '1');
   servicesSection.style.setProperty('--services-chapter-width', '100%');
   servicesSection.style.setProperty('--services-chapter-height', 'auto');
@@ -193,6 +214,8 @@ function syncServicesHubScrollTransition() {
   servicesSection.style.setProperty('--services-heading-blur', `${headingBlur.toFixed(1)}px`);
   servicesSection.style.setProperty('--services-cards-opacity', cardsOpacity.toFixed(3));
   servicesSection.style.setProperty('--services-cards-blur', `${cardsBlur.toFixed(1)}px`);
+  servicesSection.style.setProperty('--services-card-y', `${servicesCardY}px`);
+  servicesSection.style.setProperty('--services-card-scale', servicesCardScale.toFixed(3));
 }
 
 function observeServicesHubScrollTransition() {
@@ -237,7 +260,7 @@ function observeHeroToServicesSnap() {
   const snapToServices = () => {
     snapInProgress = true;
     window.clearTimeout(snapTimeout);
-    const targetTop = Math.max(0, servicesSection.offsetTop - Math.round(window.innerHeight * 0.62));
+    const targetTop = Math.max(0, servicesSection.offsetTop - Math.round(window.innerHeight * 0.46));
     window.scrollTo({ top: targetTop, behavior: 'smooth' });
     snapTimeout = window.setTimeout(() => {
       snapInProgress = false;
