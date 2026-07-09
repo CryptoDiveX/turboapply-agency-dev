@@ -1504,15 +1504,15 @@ button { font: inherit; }
     position: relative;
     z-index: 4;
     display: grid;
-    gap: 18px;
-    padding: 18px 0 28px;
+    gap: 14px;
+    padding: 14px 0 22px;
   }
   .mobile-project-card {
     position: relative;
     min-height: 0;
-    padding: 54px 18px 42px;
+    padding: 36px 18px 30px;
     overflow: hidden;
-    border-radius: 32px;
+    border-radius: 30px;
     background-color: #202827;
     background-position: center;
     background-size: cover;
@@ -1561,10 +1561,10 @@ button { font: inherit; }
   .mobile-project-card h2 {
     position: relative;
     z-index: 2;
-    margin: 0 0 34px;
+    margin: 0 0 22px;
     max-width: 100%;
     font-family: var(--font-display);
-    font-size: clamp(52px, 13.5vw, 72px);
+    font-size: clamp(42px, 11.5vw, 58px);
     line-height: .96;
     letter-spacing: -.04em;
     font-weight: 400;
@@ -1574,11 +1574,11 @@ button { font: inherit; }
     position: relative;
     z-index: 2;
     width: 100%;
-    aspect-ratio: 620 / 455;
+    aspect-ratio: 620 / 390;
     height: auto;
     margin: 0;
     overflow: hidden;
-    border-radius: 28px;
+    border-radius: 22px;
     background:
       radial-gradient(circle, rgba(245, 241, 232, .11) 1px, transparent 1px) 0 0 / 11px 11px,
       #030303;
@@ -1683,23 +1683,23 @@ button { font: inherit; }
   .mobile-project-copy {
     position: relative;
     z-index: 2;
-    margin-top: 28px;
+    margin-top: 20px;
     padding: 0 2px;
   }
   .mobile-project-copy h3 {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(34px, 10vw, 46px);
+    font-size: clamp(28px, 8.2vw, 38px);
     line-height: .98;
     letter-spacing: -.035em;
     font-weight: 500;
     color: var(--ink);
   }
   .mobile-project-copy p {
-    margin: 16px 0 0;
+    margin: 12px 0 0;
     max-width: 340px;
     font-family: var(--font-body);
-    font-size: clamp(21px, 6vw, 28px);
+    font-size: clamp(17px, 4.8vw, 22px);
     line-height: 1.18;
     letter-spacing: -.025em;
     color: rgba(245, 241, 232, .68);
@@ -1708,7 +1708,7 @@ button { font: inherit; }
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 22px;
+    margin-top: 16px;
     max-width: 100%;
   }
   .mobile-project-actions .project-link {
@@ -2430,11 +2430,11 @@ button { font: inherit; }
 
 @media (max-width: 640px) {
   .turbo-hero {
-    min-height: max(1000px, 120svh);
+    min-height: 650px;
   }
   .turbo-hero-stage {
     position: relative;
-    height: max(1000px, 100svh);
+    height: 650px;
     min-height: 0;
     overflow: hidden;
   }
@@ -2499,7 +2499,7 @@ button { font: inherit; }
   .turbo-hero-pills {
     left: 24px;
     right: auto;
-    top: 624px;
+    top: 520px;
     bottom: auto;
     width: calc(100vw - 48px) !important;
     display: grid;
@@ -2525,7 +2525,7 @@ button { font: inherit; }
   }
   .services-hub {
     scroll-margin-top: 96px;
-    padding: 92px 0 74px;
+    padding: 56px 0 56px;
   }
   .services-hub-inner {
     width: min(100%, calc(100vw - 40px));
@@ -2534,7 +2534,7 @@ button { font: inherit; }
     margin-bottom: 22px;
   }
   .services-heading-row {
-    margin-bottom: 38px;
+    margin-bottom: 30px;
   }
   .services-heading-row h2 {
     font-size: clamp(30px, 8.2vw, 38px);
@@ -2546,11 +2546,11 @@ button { font: inherit; }
   }
   .service-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 18px;
   }
   .service-card {
-    min-height: 365px;
-    padding: 30px 28px 108px;
+    min-height: 326px;
+    padding: 26px 24px 96px;
     border-radius: 14px;
   }
   .service-card h3 {
@@ -2568,7 +2568,7 @@ button { font: inherit; }
   .integration-marquee {
     display: block;
     gap: 0;
-    margin-top: 42px;
+    margin-top: 30px;
   }
   .integration-track {
     gap: 34px;
@@ -2596,7 +2596,7 @@ button { font: inherit; }
 @media (max-width: 380px) {
   .turbo-hero-title { font-size: clamp(52px, 16.5vw, 64px); }
   .turbo-hero-subtitle { max-width: 305px; font-size: 14px; }
-  .turbo-hero-pills { top: 622px; }
+  .turbo-hero-pills { top: 510px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
