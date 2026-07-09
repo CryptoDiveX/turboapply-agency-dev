@@ -205,18 +205,6 @@ button, input, textarea { font: inherit; }
   backdrop-filter: blur(16px) saturate(1.08);
 }
 
-.ai-demo-orb {
-  position: absolute;
-  z-index: 2;
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 35% 30%, #fff3d8, #ff6f4b 58%, #ce3328);
-  box-shadow: 0 14px 32px rgba(0,0,0,.2);
-}
-.ai-demo-orb-a { left: 24%; top: 25%; }
-.ai-demo-orb-b { left: 25%; top: 58%; }
-
 .ai-call-bubble {
   position: absolute;
   z-index: 3;
@@ -238,21 +226,6 @@ button, input, textarea { font: inherit; }
 .ai-call-bubble-a { left: 30%; top: 22%; }
 .ai-call-bubble-b { right: 29%; top: 42%; }
 .ai-call-bubble-c { left: 30%; top: 64%; }
-
-.ai-demo-play {
-  position: absolute;
-  z-index: 3;
-  left: 26px;
-  bottom: 24px;
-  width: 54px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  color: #fff;
-  background: rgba(0,0,0,.24);
-  backdrop-filter: blur(12px);
-}
 
 .ai-section {
   width: min(var(--ai-max), calc(100vw - 40px));
