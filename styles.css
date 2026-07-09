@@ -2061,12 +2061,16 @@ button { font: inherit; }
 }
 .split-reveal-word {
   display: inline-flex;
+  align-items: baseline;
   overflow: hidden;
+  padding-bottom: .18em;
+  margin-bottom: -.18em;
   vertical-align: baseline;
   white-space: nowrap;
 }
 .split-reveal-char {
   display: inline-block;
+  line-height: inherit;
   opacity: 0;
   transform: translateY(112%) rotate(2deg);
   transform-origin: 50% 100%;
@@ -2078,6 +2082,9 @@ button { font: inherit; }
 .services-hub.is-heading-visible .split-reveal-char {
   opacity: 1;
   transform: translateY(0) rotate(0deg);
+}
+.services-hub.is-heading-visible .split-reveal-word {
+  overflow: visible;
 }
 .service-grid,
 .integration-marquee {
