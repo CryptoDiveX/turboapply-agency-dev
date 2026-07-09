@@ -214,6 +214,48 @@ function observeServicesHubScrollTransition() {
   syncServicesHubScrollTransition();
 }
 
+function observeHeroToServicesSnap() {
+  if (!heroSection || !servicesSection) return;
+
+  const minDesktopWidth = 1101;
+  let snapInProgress = false;
+  let snapTimeout = null;
+
+  const shouldSnapToServices = (deltaY) => {
+    if (window.innerWidth < minDesktopWidth) return false;
+    if (prefersReducedMotion.matches) return false;
+    if (deltaY <= 20) return false;
+
+    const servicesTop = servicesSection.getBoundingClientRect().top;
+    const heroRect = heroSection.getBoundingClientRect();
+    const isBeforeServices = servicesTop > window.innerHeight * 0.38;
+    const isWithinHero = heroRect.top <= 8 && heroRect.bottom > window.innerHeight * 0.36;
+
+    return isBeforeServices && isWithinHero;
+  };
+
+  const snapToServices = () => {
+    snapInProgress = true;
+    window.clearTimeout(snapTimeout);
+    const targetTop = Math.max(0, servicesSection.offsetTop - Math.round(window.innerHeight * 0.13));
+    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    snapTimeout = window.setTimeout(() => {
+      snapInProgress = false;
+    }, 950);
+  };
+
+  window.addEventListener('wheel', (event) => {
+    if (snapInProgress) {
+      event.preventDefault();
+      return;
+    }
+
+    if (!shouldSnapToServices(event.deltaY)) return;
+    event.preventDefault();
+    snapToServices();
+  }, { passive: false });
+}
+
 function syncContactScrollTransition() {
   if (!contactSection) return;
 
@@ -1167,6 +1209,7 @@ if (requestedProject && projectKeys.includes(requestedProject)) {
 observeHeroWandReveal();
 observeMobileMenu();
 observeContactForm();
+observeHeroToServicesSnap();
 observeServicesHubScrollTransition();
 observeContactScrollTransition();
 observeProjectFeatureScrollTransition();
