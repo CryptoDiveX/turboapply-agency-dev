@@ -9,6 +9,7 @@ const categoryButtons = Array.from(document.querySelectorAll('.category'));
 const projectFeature = document.querySelector('.project-feature');
 const projectSteps = Array.from(document.querySelectorAll('[data-project-step]'));
 const projectsSection = document.querySelector('#projects');
+const servicesSection = document.querySelector('#services');
 const heroSection = document.querySelector('#about');
 const heroStage = document.querySelector('.hero-stage');
 const heroKeywords = Array.from(document.querySelectorAll('.hero-keyword'));
@@ -138,6 +139,73 @@ function easeInOut(value) {
 
 function lerp(start, end, progress) {
   return start + (end - start) * clamp(progress, 0, 1);
+}
+
+function syncServicesHubScrollTransition() {
+  if (!servicesSection) return;
+
+  if (prefersReducedMotion.matches) {
+    servicesSection.style.setProperty('--services-chapter-opacity', '1');
+    servicesSection.style.setProperty('--services-chapter-width', '100%');
+    servicesSection.style.setProperty('--services-chapter-height', '100vh');
+    servicesSection.style.setProperty('--services-chapter-top', '0px');
+    servicesSection.style.setProperty('--services-chapter-radius', '0px');
+    servicesSection.style.setProperty('--services-content-opacity', '1');
+    servicesSection.style.setProperty('--services-content-y', '0px');
+    servicesSection.style.setProperty('--services-content-scale', '1');
+    servicesSection.style.setProperty('--services-content-blur', '0px');
+    return;
+  }
+
+  const rect = servicesSection.getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const enterAmount = viewportHeight - rect.top;
+  const chapterProgress = easeInOut(normalizeProgress(
+    enterAmount,
+    viewportHeight * 0.04,
+    viewportHeight * 1.0
+  ));
+  const contentProgress = easeOutCubic(normalizeProgress(chapterProgress, 0.42, 1));
+
+  const chapterWidth = lerp(viewportWidth * 0.70, viewportWidth, chapterProgress);
+  const chapterHeight = lerp(viewportHeight * 0.43, viewportHeight, chapterProgress);
+  const chapterTop = lerp(viewportHeight * 0.60, 0, chapterProgress);
+  const chapterRadius = Math.round(lerp(34, 0, chapterProgress));
+  const chapterOpacity = clamp(0.72 + chapterProgress * 0.28, 0, 1);
+  const contentY = Math.round(lerp(viewportHeight * 0.16, 0, contentProgress));
+  const contentScale = 0.92 + contentProgress * 0.08;
+  const contentOpacity = clamp(contentProgress * 1.22, 0, 1);
+  const contentBlur = (1 - contentProgress) * 8;
+
+  servicesSection.style.setProperty('--services-chapter-opacity', chapterOpacity.toFixed(3));
+  servicesSection.style.setProperty('--services-chapter-width', `${Math.round(chapterWidth)}px`);
+  servicesSection.style.setProperty('--services-chapter-height', `${Math.round(chapterHeight)}px`);
+  servicesSection.style.setProperty('--services-chapter-top', `${Math.round(chapterTop)}px`);
+  servicesSection.style.setProperty('--services-chapter-radius', `${chapterRadius}px`);
+  servicesSection.style.setProperty('--services-content-opacity', contentOpacity.toFixed(3));
+  servicesSection.style.setProperty('--services-content-y', `${contentY}px`);
+  servicesSection.style.setProperty('--services-content-scale', contentScale.toFixed(3));
+  servicesSection.style.setProperty('--services-content-blur', `${contentBlur.toFixed(1)}px`);
+}
+
+function observeServicesHubScrollTransition() {
+  if (!servicesSection) return;
+
+  let ticking = false;
+  const requestSync = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      ticking = false;
+      syncServicesHubScrollTransition();
+    });
+  };
+
+  window.addEventListener('scroll', requestSync, { passive: true });
+  window.addEventListener('resize', requestSync);
+  prefersReducedMotion.addEventListener?.('change', requestSync);
+  syncServicesHubScrollTransition();
 }
 
 function syncContactScrollTransition() {
@@ -1093,6 +1161,7 @@ if (requestedProject && projectKeys.includes(requestedProject)) {
 observeHeroWandReveal();
 observeMobileMenu();
 observeContactForm();
+observeServicesHubScrollTransition();
 observeContactScrollTransition();
 observeProjectFeatureScrollTransition();
 observeSections();
