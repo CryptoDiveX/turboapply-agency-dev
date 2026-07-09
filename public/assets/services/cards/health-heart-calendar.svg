@@ -1,0 +1,43 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Health booking heart and calendar illustration">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="13" stdDeviation="11" flood-color="#17133C" flood-opacity="0.28"/>
+    </filter>
+    <linearGradient id="calendarFill" x1="178" y1="78" x2="335" y2="249" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B8ADD9"/>
+      <stop offset="1" stop-color="#E5E0EF"/>
+    </linearGradient>
+    <linearGradient id="heartFill" x1="92" y1="42" x2="224" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F1"/>
+      <stop offset="1" stop-color="#DCD6EB"/>
+    </linearGradient>
+    <linearGradient id="mountain" x1="95" y1="164" x2="398" y2="277" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B8B0D8"/>
+      <stop offset="1" stop-color="#7567B2"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="226" x2="112" y2="289" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BCE6D7"/>
+      <stop offset="1" stop-color="#83C1B1"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M0 220L88 256L0 300V220Z" fill="url(#mint)" opacity="0.95"/>
+  <path d="M54 247L236 126L332 300H54V247Z" fill="#A69ACB" opacity="0.78"/>
+  <path d="M223 300L420 108V300H223Z" fill="url(#mountain)"/>
+  <path d="M224 300L420 109" stroke="#EEE9F7" stroke-width="2" opacity="0.86"/>
+
+  <g filter="url(#softShadow)">
+    <rect x="198" y="72" width="154" height="190" rx="9" fill="url(#calendarFill)"/>
+    <rect x="198" y="72" width="154" height="52" rx="9" fill="#8D82BE"/>
+    <path d="M198 115H352" stroke="#CFC8E6" stroke-width="2" opacity="0.7"/>
+    <path d="M236 124V262M275 124V262M314 124V262" stroke="#9288BA" stroke-opacity="0.32" stroke-width="2"/>
+    <path d="M198 156H352M198 194H352M198 232H352" stroke="#9288BA" stroke-opacity="0.32" stroke-width="2"/>
+    <rect x="275" y="156" width="39" height="39" rx="2" fill="#493F82"/>
+    <path d="M285 176.5L293.8 185.4L308 168" stroke="#FFF9F1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <path d="M150.4 215.8L75.2 140.6C38.5 103.9 64.5 41.2 116.4 41.2C134.6 41.2 151.8 49.7 162.8 64.3L168 71.3L173.2 64.3C184.2 49.7 201.4 41.2 219.6 41.2C271.5 41.2 297.5 103.9 260.8 140.6L185.6 215.8C175.9 225.5 160.1 225.5 150.4 215.8Z" fill="url(#heartFill)"/>
+    <path d="M150.4 215.8L75.2 140.6C38.5 103.9 64.5 41.2 116.4 41.2C134.6 41.2 151.8 49.7 162.8 64.3L168 71.3L173.2 64.3C184.2 49.7 201.4 41.2 219.6 41.2C271.5 41.2 297.5 103.9 260.8 140.6L185.6 215.8C175.9 225.5 160.1 225.5 150.4 215.8Z" stroke="#F8F4EC" stroke-opacity="0.6" stroke-width="3"/>
+  </g>
+</svg>

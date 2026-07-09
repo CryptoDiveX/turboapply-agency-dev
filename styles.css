@@ -2174,10 +2174,10 @@ button { font: inherit; }
   transform: rotate(16deg);
 }
 .service-card:nth-child(1)::after {
-  width: clamp(200px, 18vw, 250px);
-  height: clamp(142px, 13.2vw, 184px);
-  right: -16px;
-  bottom: clamp(84px, 7vw, 96px);
+  width: clamp(184px, 16.2vw, 224px);
+  height: clamp(124px, 11.4vw, 154px);
+  right: -14px;
+  bottom: clamp(54px, 4.6vw, 66px);
   border: 0;
   border-radius: 0;
   background: url("public/assets/services/cards/web-design-browser-phone.svg") center / contain no-repeat;
@@ -2190,9 +2190,15 @@ button { font: inherit; }
     linear-gradient(28deg, rgba(24,51,42,.96) 0 36%, transparent 36% 100%);
 }
 .service-card:nth-child(2)::after {
-  right: 16%;
-  bottom: 22%;
-  transform: rotate(18deg);
+  width: clamp(206px, 17.5vw, 246px);
+  height: clamp(128px, 11.2vw, 158px);
+  right: -18px;
+  bottom: clamp(74px, 6vw, 86px);
+  border: 0;
+  border-radius: 0;
+  background: url("public/assets/services/cards/health-heart-calendar.svg") center / contain no-repeat;
+  box-shadow: none;
+  transform: rotate(0deg);
 }
 .service-card:nth-child(3)::before {
   height: 52%;
