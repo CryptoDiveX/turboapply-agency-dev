@@ -1,0 +1,46 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Responsive website design illustration">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#0B2D25" flood-opacity="0.22"/>
+    </filter>
+    <linearGradient id="mintA" x1="75" y1="95" x2="355" y2="278" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DCEFE8"/>
+      <stop offset="1" stop-color="#8EC9B7"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="110" y1="44" x2="305" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7EA"/>
+      <stop offset="1" stop-color="#F1E5CF"/>
+    </linearGradient>
+    <linearGradient id="phoneFill" x1="292" y1="97" x2="375" y2="238" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9EF"/>
+      <stop offset="1" stop-color="#C6E3D8"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M28 137L126 87L160 164L28 137Z" fill="#CDE7DE" opacity="0.88"/>
+  <path d="M95 168L315 91L315 286L95 168Z" fill="#173D34"/>
+  <path d="M186 160L371 72V286H186V160Z" fill="#F4EAD8" opacity="0.96"/>
+  <path d="M128 160L315 286H128V160Z" fill="url(#mintA)" opacity="0.83"/>
+  <path d="M186 160L371 286H186V160Z" fill="#9ECFBE" opacity="0.76"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M88 68C88 57.2 96.2 47.9 106.9 46.6L284.8 25.6C297.1 24.2 308 33.8 308 46.2V214C308 225 299 234 288 234H108C97 234 88 225 88 214V68Z" fill="url(#cream)"/>
+    <path d="M88 68C88 57.2 96.2 47.9 106.9 46.6L284.8 25.6C297.1 24.2 308 33.8 308 46.2V70L88 95V68Z" fill="#1B5A4B"/>
+    <circle cx="112" cy="71" r="6.8" fill="#FFF8EC"/>
+    <circle cx="128" cy="69.2" r="6.8" fill="#FFF8EC"/>
+    <circle cx="144" cy="67.4" r="6.8" fill="#FFF8EC"/>
+    <rect x="115" y="128" width="82" height="23" rx="4" transform="rotate(-4 115 128)" fill="#CFE7DE"/>
+    <rect x="116" y="168" width="95" height="23" rx="4" transform="rotate(-4 116 168)" fill="#CFE7DE"/>
+    <rect x="224" y="100" width="91" height="133" rx="3" transform="rotate(-4 224 100)" fill="#CFE7DE" opacity="0.88"/>
+    <path d="M254 97L254 225M285 94L285 223" stroke="#F9F6EB" stroke-width="1.2" opacity="0.72"/>
+    <path d="M224 141L313 135M225 178L313 172M226 215L313 209" stroke="#F9F6EB" stroke-width="1.2" opacity="0.72"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="280" y="90" width="84" height="154" rx="20" fill="#063F35"/>
+    <rect x="286" y="98" width="72" height="140" rx="15" fill="url(#phoneFill)"/>
+    <path d="M286 177L358 125V238H286V177Z" fill="#CDE7DE"/>
+    <path d="M286 215L358 196V238H286V215Z" fill="#1A5A4A"/>
+    <path d="M307 98H337V102C337 105.3 334.3 108 331 108H313C309.7 108 307 105.3 307 102V98Z" fill="#063F35"/>
+  </g>
+</svg>

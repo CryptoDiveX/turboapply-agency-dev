@@ -2141,6 +2141,17 @@ button { font: inherit; }
   box-shadow: -12px 10px 0 rgba(24,51,42,.96), 0 16px 26px rgba(0,0,0,.18);
   transform: rotate(16deg);
 }
+.service-card:nth-child(1)::after {
+  width: clamp(200px, 18vw, 250px);
+  height: clamp(142px, 13.2vw, 184px);
+  right: -16px;
+  bottom: clamp(84px, 7vw, 96px);
+  border: 0;
+  border-radius: 0;
+  background: url("public/assets/services/cards/web-design-browser-phone.svg") center / contain no-repeat;
+  box-shadow: none;
+  transform: rotate(-1deg);
+}
 .service-card:nth-child(2)::before {
   background:
     linear-gradient(158deg, transparent 0 33%, rgba(213,242,231,.95) 33% 48%, transparent 48% 100%),
