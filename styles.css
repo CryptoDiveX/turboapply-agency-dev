@@ -1795,24 +1795,12 @@ button { font: inherit; }
   min-height: 160svh;
   overflow: visible;
   background: #050505;
-  --hero-card-y: 0px;
-  --hero-card-scale: 1;
-  --hero-card-opacity: 1;
-  --hero-card-blur: 0px;
 }
 .turbo-hero-stage {
-  top: 20px;
-  width: calc(100% - 40px);
-  height: calc(100svh - 40px);
+  height: 100svh;
   min-height: 720px;
-  margin: 0 auto;
-  border-radius: 28px;
+  border-radius: 0;
   background: #050607;
-  opacity: calc(var(--hero-stage-opacity, 1) * var(--hero-card-opacity, 1));
-  filter: blur(calc(var(--hero-stage-blur, 0px) + var(--hero-card-blur, 0px)));
-  transform: translateY(var(--hero-card-y, 0px)) scale(var(--hero-card-scale, 1));
-  transform-origin: 50% 50%;
-  will-change: transform, opacity, filter;
 }
 .turbo-hero-stage::before {
   inset: -9%;
@@ -2019,13 +2007,13 @@ button { font: inherit; }
 
 .services-hub {
   position: relative;
-  z-index: 10;
+  z-index: 6;
   width: 100%;
-  min-height: 172svh;
-  margin-top: -68svh;
+  min-height: auto;
+  margin-top: clamp(18px, 2.2vw, 34px);
   scroll-margin-top: 24px;
   padding: 0 20px;
-  overflow: visible;
+  overflow: hidden;
   background: transparent;
   color: #f5f1e8;
   isolation: isolate;
@@ -2042,19 +2030,17 @@ button { font: inherit; }
   --services-heading-blur: 0px;
   --services-cards-opacity: 1;
   --services-cards-blur: 0px;
-  --services-card-y: 0px;
-  --services-card-scale: 1;
 }
 .services-hub::before,
 .services-hub::after {
   display: none;
 }
 .services-hub-inner {
-  position: sticky;
-  top: 20px;
+  position: relative;
+  top: auto;
   width: min(1680px, 100%);
-  height: calc(100svh - 40px);
-  min-height: 720px;
+  height: auto;
+  min-height: 100svh;
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -2066,9 +2052,7 @@ button { font: inherit; }
   background: #050505;
   border-radius: var(--services-chapter-radius, 28px);
   opacity: var(--services-chapter-opacity, 1);
-  transform: translateY(var(--services-card-y, 0px)) scale(var(--services-card-scale, 1));
-  transform-origin: 50% 50%;
-  will-change: transform, opacity;
+  will-change: opacity;
 }
 .services-heading-row {
   opacity: var(--services-heading-opacity, var(--services-content-opacity, 1));
