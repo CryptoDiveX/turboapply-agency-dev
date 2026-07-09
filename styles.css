@@ -2182,10 +2182,10 @@ button { font: inherit; }
   transform: rotate(16deg);
 }
 .service-card:nth-child(1)::after {
-  width: clamp(184px, 16.2vw, 224px);
-  height: clamp(124px, 11.4vw, 154px);
-  right: -14px;
-  bottom: clamp(54px, 4.6vw, 66px);
+  width: clamp(212px, 18.6vw, 258px);
+  height: clamp(148px, 13vw, 182px);
+  right: -12px;
+  bottom: clamp(28px, 2.8vw, 42px);
   border: 0;
   border-radius: 0;
   background: url("public/assets/services/cards/web-design-browser-phone.svg") center / contain no-repeat;
@@ -2198,10 +2198,10 @@ button { font: inherit; }
     linear-gradient(28deg, rgba(24,51,42,.96) 0 36%, transparent 36% 100%);
 }
 .service-card:nth-child(2)::after {
-  width: clamp(206px, 17.5vw, 246px);
-  height: clamp(128px, 11.2vw, 158px);
-  right: -18px;
-  bottom: clamp(74px, 6vw, 86px);
+  width: clamp(230px, 19.6vw, 276px);
+  height: clamp(148px, 12.8vw, 182px);
+  right: -20px;
+  bottom: clamp(42px, 3.9vw, 56px);
   border: 0;
   border-radius: 0;
   background: url("public/assets/services/cards/health-heart-calendar.svg") center / contain no-repeat;
@@ -2216,10 +2216,10 @@ button { font: inherit; }
     linear-gradient(26deg, rgba(8,26,22,.95) 0 26%, transparent 26% 100%);
 }
 .service-card:nth-child(3)::after {
-  width: clamp(210px, 18vw, 252px);
-  height: clamp(138px, 12vw, 168px);
-  right: -20px;
-  bottom: clamp(62px, 5vw, 74px);
+  width: clamp(236px, 20vw, 286px);
+  height: clamp(152px, 13.2vw, 190px);
+  right: -26px;
+  bottom: clamp(34px, 3.2vw, 48px);
   border: 0;
   border-radius: 0;
   background: url("public/assets/services/cards/cold-email-paper-plane.svg") center / contain no-repeat;
@@ -2233,10 +2233,10 @@ button { font: inherit; }
     linear-gradient(27deg, rgba(24,51,42,.96) 0 33%, transparent 33% 100%);
 }
 .service-card:nth-child(4)::after {
-  width: clamp(190px, 16.4vw, 226px);
-  height: clamp(132px, 11.5vw, 160px);
-  right: 4px;
-  bottom: clamp(72px, 6vw, 86px);
+  width: clamp(214px, 18.5vw, 258px);
+  height: clamp(148px, 13vw, 182px);
+  right: -4px;
+  bottom: clamp(40px, 3.8vw, 54px);
   border: 0;
   border-radius: 0;
   background: url("public/assets/services/cards/ai-agent-bot-flow.svg") center / contain no-repeat;
