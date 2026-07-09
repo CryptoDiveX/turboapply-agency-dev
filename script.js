@@ -171,8 +171,8 @@ function syncServicesHubScrollTransition() {
   ));
   const cardsProgress = easeOutCubic(normalizeProgress(
     enterAmount,
-    viewportHeight * 0.42,
-    viewportHeight * 0.78
+    viewportHeight * 0.52,
+    viewportHeight * 0.82
   ));
 
   const headingOpacity = clamp(headingProgress * 1.18, 0, 1);
@@ -228,7 +228,7 @@ function observeHeroToServicesSnap() {
 
     const servicesTop = servicesSection.getBoundingClientRect().top;
     const heroRect = heroSection.getBoundingClientRect();
-    const isBeforeServices = servicesTop > window.innerHeight * 0.38;
+    const isBeforeServices = servicesTop > window.innerHeight * 0.72;
     const isWithinHero = heroRect.top <= 8 && heroRect.bottom > window.innerHeight * 0.36;
 
     return isBeforeServices && isWithinHero;
@@ -237,7 +237,7 @@ function observeHeroToServicesSnap() {
   const snapToServices = () => {
     snapInProgress = true;
     window.clearTimeout(snapTimeout);
-    const targetTop = Math.max(0, servicesSection.offsetTop - Math.round(window.innerHeight * 0.13));
+    const targetTop = Math.max(0, servicesSection.offsetTop - Math.round(window.innerHeight * 0.62));
     window.scrollTo({ top: targetTop, behavior: 'smooth' });
     snapTimeout = window.setTimeout(() => {
       snapInProgress = false;
