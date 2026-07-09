@@ -2009,19 +2009,19 @@ button { font: inherit; }
   position: relative;
   z-index: 6;
   width: 100%;
-  min-height: 160svh;
-  margin-top: -60svh;
+  min-height: auto;
+  margin-top: clamp(18px, 2.2vw, 34px);
   scroll-margin-top: 24px;
-  padding: 0;
-  overflow: visible;
+  padding: 0 20px;
+  overflow: hidden;
   background: transparent;
   color: #f5f1e8;
   isolation: isolate;
   --services-chapter-opacity: 1;
   --services-chapter-width: 100%;
-  --services-chapter-height: 100vh;
+  --services-chapter-height: auto;
   --services-chapter-top: 0px;
-  --services-chapter-radius: 0px;
+  --services-chapter-radius: 28px;
   --services-content-opacity: 1;
   --services-content-y: 0px;
   --services-content-scale: 1;
@@ -2036,23 +2036,23 @@ button { font: inherit; }
   display: none;
 }
 .services-hub-inner {
-  position: sticky;
-  top: var(--services-chapter-top, 0px);
-  width: var(--services-chapter-width, 100%);
-  height: var(--services-chapter-height, 100vh);
-  min-height: 0;
+  position: relative;
+  top: auto;
+  width: min(1680px, 100%);
+  height: auto;
+  min-height: 100svh;
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
-  padding: clamp(58px, 6.2vw, 86px) max(44px, calc((100vw - 1320px) / 2 + 44px)) clamp(54px, 6.8vw, 86px);
+  padding: clamp(76px, 7.2vw, 116px) max(44px, calc((100vw - 1320px) / 2 + 44px)) clamp(72px, 7.2vw, 116px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: #050505;
-  border-radius: var(--services-chapter-radius, 0px) var(--services-chapter-radius, 0px) 0 0;
+  border-radius: var(--services-chapter-radius, 28px);
   opacity: var(--services-chapter-opacity, 1);
-  will-change: width, height, top, opacity, border-radius;
+  will-change: opacity;
 }
 .services-heading-row {
   opacity: var(--services-heading-opacity, var(--services-content-opacity, 1));

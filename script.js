@@ -147,9 +147,9 @@ function syncServicesHubScrollTransition() {
   if (prefersReducedMotion.matches) {
     servicesSection.style.setProperty('--services-chapter-opacity', '1');
     servicesSection.style.setProperty('--services-chapter-width', '100%');
-    servicesSection.style.setProperty('--services-chapter-height', '100vh');
+    servicesSection.style.setProperty('--services-chapter-height', 'auto');
     servicesSection.style.setProperty('--services-chapter-top', '0px');
-    servicesSection.style.setProperty('--services-chapter-radius', '0px');
+    servicesSection.style.setProperty('--services-chapter-radius', '28px');
     servicesSection.style.setProperty('--services-content-opacity', '1');
     servicesSection.style.setProperty('--services-content-y', '0px');
     servicesSection.style.setProperty('--services-content-scale', '1');
@@ -162,32 +162,29 @@ function syncServicesHubScrollTransition() {
   }
 
   const rect = servicesSection.getBoundingClientRect();
-  const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
   const enterAmount = viewportHeight - rect.top;
-  const chapterProgress = easeInOut(normalizeProgress(
+  const headingProgress = easeOutCubic(normalizeProgress(
     enterAmount,
-    viewportHeight * 0.04,
-    viewportHeight * 1.0
+    viewportHeight * 0.20,
+    viewportHeight * 0.50
   ));
-  const headingProgress = easeOutCubic(normalizeProgress(chapterProgress, 0.58, 0.86));
-  const cardsProgress = easeOutCubic(normalizeProgress(-rect.top, -12, viewportHeight * 0.10));
+  const cardsProgress = easeOutCubic(normalizeProgress(
+    enterAmount,
+    viewportHeight * 0.42,
+    viewportHeight * 0.78
+  ));
 
-  const chapterWidth = lerp(viewportWidth * 0.70, viewportWidth, chapterProgress);
-  const chapterHeight = lerp(viewportHeight * 0.43, viewportHeight, chapterProgress);
-  const chapterTop = lerp(viewportHeight * 0.60, 0, chapterProgress);
-  const chapterRadius = Math.round(lerp(34, 0, chapterProgress));
-  const chapterOpacity = clamp(0.72 + chapterProgress * 0.28, 0, 1);
   const headingOpacity = clamp(headingProgress * 1.18, 0, 1);
-  const headingBlur = (1 - headingProgress) * 7;
+  const headingBlur = (1 - headingProgress) * 6;
   const cardsOpacity = clamp(cardsProgress * 1.35, 0, 1);
-  const cardsBlur = (1 - cardsProgress) * 10;
+  const cardsBlur = (1 - cardsProgress) * 8;
 
-  servicesSection.style.setProperty('--services-chapter-opacity', chapterOpacity.toFixed(3));
-  servicesSection.style.setProperty('--services-chapter-width', `${Math.round(chapterWidth)}px`);
-  servicesSection.style.setProperty('--services-chapter-height', `${Math.round(chapterHeight)}px`);
-  servicesSection.style.setProperty('--services-chapter-top', `${Math.round(chapterTop)}px`);
-  servicesSection.style.setProperty('--services-chapter-radius', `${chapterRadius}px`);
+  servicesSection.style.setProperty('--services-chapter-opacity', '1');
+  servicesSection.style.setProperty('--services-chapter-width', '100%');
+  servicesSection.style.setProperty('--services-chapter-height', 'auto');
+  servicesSection.style.setProperty('--services-chapter-top', '0px');
+  servicesSection.style.setProperty('--services-chapter-radius', '28px');
   servicesSection.style.setProperty('--services-content-opacity', headingOpacity.toFixed(3));
   servicesSection.style.setProperty('--services-content-y', '0px');
   servicesSection.style.setProperty('--services-content-scale', '1');
