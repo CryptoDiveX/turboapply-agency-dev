@@ -538,13 +538,11 @@ button, input, textarea { font: inherit; }
 .ai-model-logo svg {
   width: 100%;
   height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.65;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  display: block;
+  fill: currentColor;
+  stroke: none;
 }
-.ai-model-logo circle {
+.ai-model-logo path {
   fill: currentColor;
   stroke: none;
 }
@@ -616,6 +614,63 @@ button, input, textarea { font: inherit; }
 .ai-price-card li::before { content: "✓"; margin-right: 10px; color: var(--ai-muted); }
 .ai-price-card a { align-self: end; color: var(--ai-ink); border: 1px solid var(--ai-line); background: #fff; }
 .ai-price-card.is-featured a { color: #fff; background: #000; }
+.ai-single-pricing {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 820px;
+}
+.ai-setup-card {
+  min-height: 0;
+  grid-template-columns: minmax(0, .95fr) minmax(260px, .68fr);
+  grid-template-rows: auto auto auto;
+  align-items: start;
+  column-gap: clamp(34px, 6vw, 74px);
+  row-gap: 24px;
+  padding: clamp(32px, 5vw, 58px);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(214,205,255,.34), transparent 32%),
+    radial-gradient(circle at 88% 20%, rgba(205,241,255,.42), transparent 34%),
+    rgba(255,255,255,.78);
+}
+.ai-setup-card .ai-plan,
+.ai-setup-card .ai-price-amount,
+.ai-setup-card h3 {
+  grid-column: 1;
+}
+.ai-setup-card ul,
+.ai-setup-card a {
+  grid-column: 2;
+}
+.ai-price-amount {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+.ai-price-amount span,
+.ai-price-amount small {
+  color: var(--ai-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.ai-price-amount strong {
+  font-size: clamp(72px, 9vw, 118px);
+  font-weight: 560;
+  letter-spacing: -.09em;
+  line-height: .82;
+}
+.ai-setup-card h3 {
+  max-width: 420px;
+  font-size: clamp(26px, 3vw, 40px);
+}
+.ai-setup-card ul {
+  margin-top: 4px;
+  align-self: start;
+}
+.ai-setup-card a {
+  min-height: 56px;
+  color: #fff;
+  background: #000;
+}
 
 .ai-calculator {
   display: grid;
@@ -753,6 +808,13 @@ button, input, textarea { font: inherit; }
   .ai-pricing-grid { grid-template-columns: 1fr; }
   .ai-use-card { min-height: auto; }
   .ai-mini-ui { min-height: 340px; }
+  .ai-setup-card {
+    grid-template-columns: 1fr;
+  }
+  .ai-setup-card ul,
+  .ai-setup-card a {
+    grid-column: 1;
+  }
   .ai-business-grid,
   .ai-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ai-price-card.is-featured { transform: none; margin-top: 42px; }
