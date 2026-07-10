@@ -134,6 +134,12 @@ select { font: inherit; }
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+.guide-phone-control {
+  display: grid;
+  grid-template-columns: minmax(108px, 0.3fr) minmax(0, 1fr);
+  gap: 10px;
+  width: 100%;
+}
 .guide-field input,
 .guide-field select {
   width: 100%;

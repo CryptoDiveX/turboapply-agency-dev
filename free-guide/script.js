@@ -24,6 +24,21 @@ function appendTrackingToSource() {
   if (tracking) source.value = `${source.value} | ${tracking}`;
 }
 
+function normalizePhoneWithCountryCode() {
+  if (!guideForm) return;
+
+  const countryCode = guideForm.querySelector('select[name="countryCode"]');
+  const phone = guideForm.querySelector('input[name="phone"]');
+  if (!(countryCode instanceof HTMLSelectElement) || !(phone instanceof HTMLInputElement)) return;
+
+  const rawPhone = phone.value.trim();
+  if (!rawPhone) return;
+
+  const normalizedCode = countryCode.value.trim();
+  const normalizedPhone = rawPhone.startsWith('+') ? rawPhone : `${normalizedCode} ${rawPhone}`;
+  phone.value = normalizedPhone.replace(/\s+/g, ' ').trim();
+}
+
 function packGuideContext() {
   if (!guideForm || !(guideChallenge instanceof HTMLInputElement)) return;
 
@@ -55,6 +70,7 @@ if (guideForm) {
     if (submittedAt instanceof HTMLInputElement) {
       submittedAt.value = new Date().toISOString();
     }
+    normalizePhoneWithCountryCode();
     packGuideContext();
     setLeadStatus('Submitting your request…');
     guideForm.querySelector('.guide-submit')?.setAttribute('disabled', 'disabled');
