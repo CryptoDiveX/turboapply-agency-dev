@@ -1,0 +1,84 @@
+{
+  "site": "TurboApply Agency",
+  "canonical": "https://turboapply.agency/",
+  "phone": "+1 (778) 819-3665",
+  "phone_tel": "+17788193665",
+  "email": "turboapply.ai@gmail.com",
+  "location": "Vancouver, BC, Canada",
+  "languages": [
+    "en"
+  ],
+  "public_pages": [
+    {
+      "url": "https://turboapply.agency/",
+      "title": "Website and AI Integrations",
+      "description": "High-converting websites, AI integrations, CRM automations, and business systems."
+    },
+    {
+      "url": "https://turboapply.agency/free-guide/",
+      "title": "Free Lead Quality Guide",
+      "description": "Lead quality and follow-up playbook funnel."
+    },
+    {
+      "url": "https://turboapply.agency/ai-receptionist/",
+      "title": "AI Receptionist",
+      "description": "AI receptionist for appointment-driven businesses."
+    },
+    {
+      "url": "https://turboapply.agency/marketing/",
+      "title": "Cold Email Outreach",
+      "description": "Cold outreach and sales workflow systems."
+    },
+    {
+      "url": "https://turboapply.agency/sales/",
+      "title": "AI Sales Systems",
+      "description": "AI-powered sales process, follow-up, CRM cleanup, and reactivation systems."
+    },
+    {
+      "url": "https://turboapply.agency/book-meeting/",
+      "title": "Book an Audit",
+      "description": "Calendly booking page for a TurboApply audit."
+    }
+  ],
+  "services": [
+    "Website design and redesign",
+    "AI integrations",
+    "CRM automation",
+    "AI receptionist",
+    "Cold email outreach",
+    "Lead follow-up systems",
+    "Client reactivation",
+    "Booking and funnel optimization"
+  ],
+  "forms": [
+    {
+      "endpoint": "/api/contact",
+      "method": "POST",
+      "fields": [
+        "name",
+        "contact",
+        "message",
+        "page_url"
+      ],
+      "submit_safety": "Public MCP tools must validate first and default to dry_run."
+    },
+    {
+      "endpoint": "/submit-lead.php",
+      "method": "POST",
+      "fields": [
+        "name",
+        "contact",
+        "challenge",
+        "service",
+        "redirect",
+        "leadSource"
+      ],
+      "submit_safety": "Live submission requires explicit confirmation."
+    }
+  ],
+  "mcp": {
+    "endpoint": "https://turboapply.agency/mcp",
+    "descriptor": "https://turboapply.agency/ai/mcp.json"
+  },
+  "updated": "2026-07-10"
+}

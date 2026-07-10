@@ -54,14 +54,14 @@ const projectData = {
     title: 'Ozero Grez',
     description: 'A website designed in the retro style for a recreational park in Novosibirsk',
     images: [
-      'public/assets/figma/ozero-card-shot.png',
-      'public/assets/figma/ozero-mobile-mock.png'
+      'public/assets/figma/ozero-card-shot.webp',
+      'public/assets/figma/ozero-mobile-mock.webp'
     ],
     alt: ['Park and Play Ozero Grez project preview', 'Ozero Grez full website page preview'],
     url: 'https://ozerogrez.ru',
     behanceUrl: 'https://www.behance.net/gallery/236717763/Retro-Design-for-Glamping-Park',
     behanceLabel: 'behance',
-    background: 'public/assets/figma/ozero-section-bg.png'
+    background: 'public/assets/figma/ozero-section-bg.webp'
   },
   martial: {
     title: 'World Top Martial Arts',
@@ -73,45 +73,45 @@ const projectData = {
     alt: ['World Top Martial Arts desktop website preview', 'World Top Martial Arts mobile website preview'],
     url: 'https://wtma.ca',
     linkLabel: 'explore this site',
-    background: 'public/assets/martial-arts/wtma-action-bg.jpg'
+    background: 'public/assets/martial-arts/wtma-action-bg.webp'
   },
   personal: {
     title: 'Psychologist Personal Site',
     description: 'A gentle therapy website with a warm editorial identity, soft illustrations and clear booking pathways.',
     images: [
-      'public/assets/personal-site/liuba-hero.png',
-      'public/assets/personal-site/liuba-mid.png',
-      'public/assets/personal-site/liuba-end.png'
+      'public/assets/personal-site/liuba-hero.webp',
+      'public/assets/personal-site/liuba-mid.webp',
+      'public/assets/personal-site/liuba-end.webp'
     ],
     alt: ['Liuba personal site hero and about sections', 'Liuba personal site topics and approach sections', 'Liuba personal site contact section'],
     url: 'https://rule-drawn-79741007.figma.site/',
     linkLabel: 'explore this site',
-    background: 'public/assets/personal-site/professionals-lounge-bg.jpg'
+    background: 'public/assets/personal-site/professionals-lounge-bg.webp'
   },
   health: {
     title: 'TurboApply Health',
     description: 'A clinic-focused website for calmer booking flows, practical automation and trustworthy patient journeys.',
     images: [
-      'public/assets/health-site/health-hero.png',
-      'public/assets/health-site/health-mobile-full.png',
-      'public/assets/health-site/health-mid.png'
+      'public/assets/health-site/health-hero.webp',
+      'public/assets/health-site/health-mobile-full.webp',
+      'public/assets/health-site/health-mid.webp'
     ],
     alt: ['TurboApply Health desktop clinic website hero section', 'TurboApply Health phone website flow', 'TurboApply Health iPad service cards and care section'],
     url: 'https://health.turboapply.agency/',
     linkLabel: 'explore this site',
-    background: 'public/assets/health-site/health-abstract-bg.jpg'
+    background: 'public/assets/health-site/health-abstract-bg.webp'
   },
   finance: {
     title: 'Nova Bank',
     description: 'A mobile banking app concept for fast transfers, clear spending insights and confident everyday money management.',
     images: [
-      'public/assets/finance/nova-bank-hero.png',
-      'public/assets/finance/nova-bank-screen-a.png',
-      'public/assets/finance/nova-bank-screen-b.png'
+      'public/assets/finance/nova-bank-hero.webp',
+      'public/assets/finance/nova-bank-screen-a.webp',
+      'public/assets/finance/nova-bank-screen-b.webp'
     ],
     alt: ['Nova Bank mobile app overview from Behance', 'Nova Bank transfer and payment app screens', 'Nova Bank user flows and persona screens'],
     url: 'https://www.behance.net/gallery/231461891/Nova-Bank-Mobile-App',
-    background: 'public/assets/finance/nova-bank-city-motion-bg.jpg'
+    background: 'public/assets/finance/nova-bank-city-motion-bg.webp'
   }
 };
 

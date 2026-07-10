@@ -1,0 +1,18 @@
+{
+  "name": "turboapply-agency",
+  "title": "TurboApply Agency MCP",
+  "description": "Public MCP endpoint for TurboApply website context, services, booking/contact requirements, and dry-run inquiry validation.",
+  "transport": "streamable-http",
+  "endpoint": "https://turboapply.agency/mcp",
+  "context": "https://turboapply.agency/ai/turboapply-agency-context.json",
+  "llms": "https://turboapply.agency/llms.txt",
+  "tools": [
+    "get_site_overview",
+    "list_services",
+    "get_booking_options",
+    "get_form_requirements",
+    "validate_contact_inquiry",
+    "submit_contact_inquiry"
+  ],
+  "updated": "2026-07-10"
+}

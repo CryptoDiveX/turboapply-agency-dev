@@ -13,6 +13,9 @@
     <link rel="icon" href="/favicon.ico?v=t-logo-20260708-1" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/public/assets/brand/turboapply-agency-logo.svg?v=t-logo-20260708-1" />
     <link rel="apple-touch-icon" href="/public/assets/brand/apple-touch-icon.png?v=t-logo-20260708-1" />
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="TurboApply AI summary" />
+    <link rel="alternate" type="application/json" href="/ai/turboapply-agency-context.json" title="TurboApply AI context" />
+    <link rel="mcp" href="/mcp" title="TurboApply MCP endpoint" />
     <link rel="canonical" href="https://turboapply.agency/book-meeting/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -182,6 +185,18 @@
           line-height: 1.35;
         }
       }
+
+      .booking-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 22px;
+        padding: 28px 0 0;
+        color: rgba(245, 241, 232, 0.68);
+        font: 600 13px/1.35 Inter, ui-sans-serif, system-ui, sans-serif;
+        text-align: center;
+      }
+      .booking-footer a { text-decoration: underline; text-underline-offset: 4px; }
     </style>
   </head>
   <body>
@@ -210,6 +225,10 @@
           <a class="fallback-link" id="calendly-fallback-link" href="https://calendly.com/turboapply/30min">open Calendly directly</a>.
         </p>
       </section>
+      <footer class="booking-footer" aria-label="TurboApply booking footer">
+        <a href="tel:+17788193665">+1 (778) 819-3665</a>
+        <span>© 2026 TurboApply. All rights reserved.</span>
+      </footer>
     </main>
 
     <script>

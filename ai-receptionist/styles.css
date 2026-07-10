@@ -798,6 +798,8 @@ button, input, textarea { font: inherit; }
   border-top: 1px solid var(--ai-line);
 }
 .ai-footer nav { display: flex; gap: 24px; color: var(--ai-muted); font-size: 14px; }
+.ai-footer-meta { display: grid; justify-items: end; gap: 8px; color: var(--ai-muted); font-size: 13px; text-align: right; }
+.ai-footer-meta a { color: var(--ai-ink); text-decoration: underline; text-underline-offset: 4px; }
 
 @media (max-width: 900px) {
   .ai-nav { grid-template-columns: 1fr; }
@@ -900,4 +902,5 @@ button, input, textarea { font: inherit; }
   .ai-demo-form label:nth-of-type(3), .ai-demo-form button { grid-column: auto; }
   .ai-footer { flex-direction: column; align-items: flex-start; justify-content: center; padding: 34px 0; }
   .ai-footer nav { flex-wrap: wrap; }
+  .ai-footer-meta { justify-items: start; text-align: left; }
 }

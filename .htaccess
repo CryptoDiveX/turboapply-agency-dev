@@ -3,6 +3,7 @@
 
   RewriteRule ^api/contact/?$ /api/contact/index.php [L]
   RewriteRule ^api/health/?$ /api/health.php [L]
+  RewriteRule ^mcp/?$ /mcp.php [L]
 
   # Rescue stale mobile pages that still submit the old no-action form as GET /?name=...
   # Keep the query string so TurboBook can still see the submitted values.

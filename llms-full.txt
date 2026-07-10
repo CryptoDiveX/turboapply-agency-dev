@@ -1,0 +1,39 @@
+# TurboApply Agency — full public AI context
+
+## Identity
+TurboApply Agency builds websites and AI-powered business systems for teams that want faster lead response, cleaner booking flows, better follow-up, CRM automation, and practical AI adoption.
+
+## Contact
+- Email: turboapply.ai@gmail.com
+- Phone: +1 (778) 819-3665
+- Location: Vancouver, BC, Canada
+- Booking: https://turboapply.agency/book-meeting/
+
+## Public services
+1. High-converting website design and redesign.
+2. AI integrations for sales, booking, operations, and admin workflows.
+3. CRM cleanup and automation.
+4. AI receptionist and lead intake systems.
+5. Cold email outreach and sales workflow systems.
+6. Lead follow-up and client reactivation.
+7. Booking/funnel optimization.
+8. Business automation audits.
+
+## Important public pages
+- https://turboapply.agency/
+- https://turboapply.agency/free-guide/
+- https://turboapply.agency/ai-receptionist/
+- https://turboapply.agency/marketing/
+- https://turboapply.agency/sales/
+- https://turboapply.agency/book-meeting/
+
+## Public form rules
+Contact and lead forms ask for a name, contact method, and business/challenge details. Agents should validate data before preparing a submission. Live submissions must not be made unless the user explicitly confirms.
+
+## Agent discovery
+- Structured context: https://turboapply.agency/ai/turboapply-agency-context.json
+- MCP descriptor: https://turboapply.agency/ai/mcp.json
+- MCP endpoint: https://turboapply.agency/mcp
+
+## Guardrails
+Do not expose or ask for secrets. Do not infer private lead data, credentials, backend tokens, client-only facts, or guarantees. Use the public website and these discovery files as the source of truth.

@@ -612,7 +612,7 @@ button { font: inherit; }
   pointer-events: none;
 }
 .project-bg {
-  background: url("public/assets/figma/ozero-section-bg.png") center / cover no-repeat;
+  background: url("public/assets/figma/ozero-section-bg.webp") center / cover no-repeat;
   transform: scale(1.001);
 }
 .project-overlay {
@@ -1306,6 +1306,23 @@ button { font: inherit; }
   line-height: 1;
   font-weight: 400;
 }
+.site-footer {
+  width: min(1180px, calc(100vw - 48px));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  color: rgba(245, 241, 232, .54);
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1.25;
+}
+.site-footer-phone {
+  color: rgba(245, 241, 232, .88);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
 
 @keyframes pulseField {
   from { transform: scale(.98); opacity: .72; }
@@ -1539,23 +1556,31 @@ button { font: inherit; }
       linear-gradient(90deg, rgba(0, 0, 0, .36), rgba(0, 0, 0, .10));
   }
   .mobile-project-card-recreational {
-    background-image: url("public/assets/figma/ozero-section-bg.png");
+    background-image: url("public/assets/figma/ozero-section-bg.webp");
     background-position: 47% center;
   }
   .mobile-project-card-martial {
-    background-image: url("public/assets/martial-arts/wtma-action-bg.jpg");
+    --mobile-martial-bg: url("public/assets/martial-arts/wtma-action-bg.webp");
+    background-image: none;
     background-position: center top;
   }
+  .mobile-project-card-martial::before {
+    background-image: var(--mobile-martial-bg);
+    background-position: center top;
+    background-size: cover;
+    filter: blur(14px) saturate(.86) contrast(1.04);
+    transform: scale(1.12);
+  }
   .mobile-project-card-personal {
-    background-image: url("public/assets/personal-site/professionals-lounge-bg.jpg");
+    background-image: url("public/assets/personal-site/professionals-lounge-bg.webp");
     background-position: center top;
   }
   .mobile-project-card-health {
-    background-image: url("public/assets/health-site/health-abstract-bg.jpg");
+    background-image: url("public/assets/health-site/health-abstract-bg.webp");
     background-position: center top;
   }
   .mobile-project-card-finance {
-    background-image: url("public/assets/finance/nova-bank-cover.jpg");
+    background-image: url("public/assets/finance/nova-bank-cover.webp");
     background-position: 68% top;
   }
   .mobile-project-card h2 {

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /leads-export.php
+
+Sitemap: https://turboapply.agency/sitemap.xml
+LLMs: https://turboapply.agency/llms.txt
+MCP: https://turboapply.agency/mcp

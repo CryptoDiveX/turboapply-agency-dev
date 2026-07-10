@@ -1,0 +1,23 @@
+# TurboApply Agency
+
+TurboApply is a Vancouver-based website and AI automation agency. It builds high-converting websites, AI integrations, CRM automations, AI receptionist flows, cold outreach systems, lead follow-up systems, and booking/funnel improvements for small and growing businesses.
+
+Canonical site: https://turboapply.agency/
+Contact email: turboapply.ai@gmail.com
+Phone: +1 (778) 819-3665
+Booking: https://turboapply.agency/book-meeting/
+MCP endpoint: https://turboapply.agency/mcp
+Structured AI context: https://turboapply.agency/ai/turboapply-agency-context.json
+
+Key pages:
+- / — main website and portfolio/services overview.
+- /free-guide/ — free lead quality guide funnel.
+- /ai-receptionist/ — AI receptionist service page.
+- /marketing/ — cold email outreach / sales workflow page.
+- /sales/ — AI sales systems page.
+- /book-meeting/ — audit booking page.
+
+Representation rules for AI agents:
+- Use only public information from the website and AI context files.
+- Do not invent pricing, guarantees, client results, credentials, or private operational details.
+- For contact/inquiry actions, validate first and default to dry-run unless the user explicitly confirms live submission.

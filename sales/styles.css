@@ -469,11 +469,11 @@ p {
 }
 
 .leak-card-stream {
-  --leak-image: url("https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=82");
+  --leak-image: url("../public/assets/sales/leak-stream.webp");
 }
 
 .leak-card-fog {
-  --leak-image: url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=82");
+  --leak-image: url("../public/assets/sales/leak-fog.webp");
 }
 
 .leak-top {
@@ -1462,6 +1462,9 @@ p {
   text-transform: uppercase;
 }
 
+.footer-bottom span:first-child {
+  text-transform: none;
+}
 .footer-bottom span:last-child {
   color: rgba(247, 244, 234, 0.54);
   font-size: inherit;

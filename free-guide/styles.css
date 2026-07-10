@@ -266,6 +266,15 @@ select { font: inherit; }
   font-family: var(--font-form);
   font-size: 13px;
 }
+.guide-footer-phone {
+  display: inline-flex;
+  margin: 0 auto 14px;
+  color: #f4f4f4;
+  font-family: var(--font-form);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .guide-copyright {
   color: #d0d0d0 !important;
 }
