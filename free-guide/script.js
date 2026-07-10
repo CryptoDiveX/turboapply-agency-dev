@@ -64,9 +64,24 @@ function packGuideContext() {
   guideChallenge.value = lines.join('\n');
 }
 
+function getRedirectUrl() {
+  if (!guideForm) return '/book-meeting/?source=free-guide&thankyou=1';
+
+  const redirect = guideForm.querySelector('input[name="redirect"]');
+  if (redirect instanceof HTMLInputElement && redirect.value.trim()) {
+    return redirect.value.trim();
+  }
+
+  return '/book-meeting/?source=free-guide&thankyou=1';
+}
+
+function shouldUseDevPreviewRedirect() {
+  return window.location.hostname === 'dev.turboapply.agency';
+}
+
 if (guideForm) {
   appendTrackingToSource();
-  guideForm.addEventListener('submit', () => {
+  guideForm.addEventListener('submit', (event) => {
     if (submittedAt instanceof HTMLInputElement) {
       submittedAt.value = new Date().toISOString();
     }
@@ -74,5 +89,11 @@ if (guideForm) {
     packGuideContext();
     setLeadStatus('Submitting your request…');
     guideForm.querySelector('.guide-submit')?.setAttribute('disabled', 'disabled');
+
+    if (shouldUseDevPreviewRedirect()) {
+      event.preventDefault();
+      setLeadStatus('Opening the booking calendar…');
+      window.location.assign(getRedirectUrl());
+    }
   });
 }
