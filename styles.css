@@ -1590,8 +1590,8 @@ button { font: inherit; }
     background-image: var(--mobile-martial-bg);
     background-position: center top;
     background-size: cover;
-    filter: blur(6px) saturate(.92) contrast(1.04);
-    transform: scale(1.055);
+    filter: blur(3px) saturate(.96) contrast(1.04);
+    transform: scale(1.03);
   }
   .mobile-project-card-personal {
     background-image: url("public/assets/personal-site/professionals-lounge-bg.webp");
@@ -1891,7 +1891,7 @@ button { font: inherit; }
     letter-spacing: -.025em;
   }
   .contact-title-line {
-    white-space: normal;
+    white-space: nowrap;
   }
   .contact-description {
     max-width: 320px;
@@ -1932,19 +1932,22 @@ button { font: inherit; }
     font-size: 15px;
   }
   .contact-socials {
-    width: min(100%, calc(100vw - 24px));
+    width: max-content;
+    max-width: calc(100vw - 24px);
     display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    margin: 16px auto 0;
+    justify-content: flex-start;
+    gap: clamp(24px, 5.5vw, 48px);
+    margin: 16px 0 0 0;
     padding: 0 6px;
   }
   .contact-socials a {
     font-size: 13px;
   }
   .site-footer {
-    width: min(100%, calc(100vw - 24px));
-    margin: 16px auto 0;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    margin: 16px 0 0 0;
+    justify-content: flex-start;
     gap: 8px 16px;
     font-size: 11px;
   }
