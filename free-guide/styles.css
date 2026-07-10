@@ -136,7 +136,7 @@ select { font: inherit; }
 }
 .guide-phone-control {
   display: grid;
-  grid-template-columns: minmax(108px, 0.3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
   width: 100%;
 }
@@ -157,6 +157,15 @@ select { font: inherit; }
 }
 .guide-field input {
   padding: 0 16px;
+}
+.guide-country-input {
+  padding-right: 38px !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #9a9a9a 50%),
+    linear-gradient(135deg, #9a9a9a 50%, transparent 50%);
+  background-position: calc(100% - 22px) 16px, calc(100% - 16px) 16px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
 }
 .guide-field select {
   appearance: none;
@@ -327,6 +336,9 @@ select { font: inherit; }
   .guide-field input,
   .guide-field select {
     height: 40px;
+  }
+  .guide-country-input {
+    background-position: calc(100% - 22px) 17px, calc(100% - 16px) 17px;
   }
   .guide-submit {
     height: 46px;

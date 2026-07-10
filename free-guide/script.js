@@ -24,17 +24,30 @@ function appendTrackingToSource() {
   if (tracking) source.value = `${source.value} | ${tracking}`;
 }
 
+function syncCountryCode() {
+  if (!guideForm) return '+1';
+
+  const countryCode = guideForm.querySelector('input[name="countryCode"]');
+  const countryLabel = guideForm.querySelector('input[name="countryLabel"]');
+  if (!(countryCode instanceof HTMLInputElement)) return '+1';
+
+  const labelValue = countryLabel instanceof HTMLInputElement ? countryLabel.value.trim() : '';
+  const codeMatch = labelValue.match(/\((\+\d+)\)/);
+  const normalizedCode = codeMatch?.[1] || countryCode.value.trim() || '+1';
+  countryCode.value = normalizedCode;
+  return normalizedCode;
+}
+
 function normalizePhoneWithCountryCode() {
   if (!guideForm) return;
 
-  const countryCode = guideForm.querySelector('select[name="countryCode"]');
   const phone = guideForm.querySelector('input[name="phone"]');
-  if (!(countryCode instanceof HTMLSelectElement) || !(phone instanceof HTMLInputElement)) return;
+  if (!(phone instanceof HTMLInputElement)) return;
 
   const rawPhone = phone.value.trim();
   if (!rawPhone) return;
 
-  const normalizedCode = countryCode.value.trim();
+  const normalizedCode = syncCountryCode();
   const normalizedPhone = rawPhone.startsWith('+') ? rawPhone : `${normalizedCode} ${rawPhone}`;
   phone.value = normalizedPhone.replace(/\s+/g, ' ').trim();
 }
@@ -81,6 +94,11 @@ function shouldUseDevPreviewRedirect() {
 
 if (guideForm) {
   appendTrackingToSource();
+  const countryLabel = guideForm.querySelector('input[name="countryLabel"]');
+  if (countryLabel instanceof HTMLInputElement) {
+    countryLabel.addEventListener('input', syncCountryCode);
+    countryLabel.addEventListener('change', syncCountryCode);
+  }
   guideForm.addEventListener('submit', (event) => {
     if (submittedAt instanceof HTMLInputElement) {
       submittedAt.value = new Date().toISOString();
