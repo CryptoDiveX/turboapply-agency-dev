@@ -48,18 +48,15 @@
       body.free-guide-booking {
         min-height: 100vh;
         overflow-x: hidden;
-        background:
-          radial-gradient(circle at 82% 0%, rgba(255, 90, 31, 0.18), transparent 36vw),
-          radial-gradient(circle at 12% 10%, rgba(42, 168, 242, 0.12), transparent 30vw),
-          var(--booking-black);
-        color: var(--booking-cream);
+        background: #fff;
+        color: #fff;
       }
 
       body.free-guide-booking .booking-shell {
-        width: min(1180px, calc(100vw - 44px));
-        margin: 0 auto;
-        padding: 26px 0 54px;
-        background: transparent;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #fff;
       }
 
       .booking-thank-you,
@@ -68,95 +65,73 @@
       }
 
       body.free-guide-booking .booking-thank-you {
-        display: grid;
-        justify-items: center;
-        gap: 18px;
-        padding: clamp(30px, 6vw, 78px) clamp(18px, 5vw, 58px) clamp(26px, 4vw, 46px);
+        display: block;
+        width: 100%;
+        min-height: 268px;
+        padding: 16px 20px 22px;
+        background: #000;
+        color: #fff;
         text-align: center;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.85);
       }
 
       .booking-thank-you-logo {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 9px;
+        min-height: 35px;
         color: #fff;
-        font: 900 15px/0.86 var(--booking-display);
-        letter-spacing: -0.05em;
+        font: 900 12px/0.9 var(--booking-display);
+        letter-spacing: -0.04em;
         text-transform: uppercase;
       }
 
       .booking-thank-you-logo img {
         display: block;
-        width: 38px;
-        height: 38px;
+        width: 30px;
+        height: 30px;
       }
 
       .booking-thank-you-logo span {
-        width: 66px;
+        width: 54px;
         text-align: left;
       }
 
+      .booking-header-line {
+        width: min(644px, calc(100vw - 40px));
+        height: 1px;
+        margin: 12px auto 22px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
       .booking-eyebrow {
-        margin: 18px 0 0;
+        margin: 0 0 18px;
         color: #2aa8f2;
-        font: 800 clamp(12px, 1.2vw, 15px)/1 var(--booking-display);
-        letter-spacing: 0.14em;
+        font: 800 13px/1 var(--booking-display);
+        letter-spacing: 0.055em;
         text-transform: uppercase;
       }
 
       .booking-thank-you h1 {
-        max-width: 920px;
-        margin: 0;
-        font: 800 clamp(34px, 6vw, 82px)/0.96 var(--booking-display);
-        letter-spacing: -0.055em;
+        max-width: 900px;
+        margin: 0 auto;
+        font: 800 clamp(28px, 2.85vw, 36px)/1.05 var(--booking-display);
+        letter-spacing: -0.035em;
         text-wrap: balance;
       }
 
       .booking-thank-you p:not(.booking-eyebrow) {
-        max-width: 700px;
-        margin: 0;
-        color: var(--booking-muted);
-        font: 500 clamp(17px, 2vw, 24px)/1.3 var(--booking-display);
-        letter-spacing: -0.02em;
+        max-width: 460px;
+        margin: 16px auto 0;
+        color: rgba(255, 255, 255, 0.86);
+        font: 400 16px/1.35 var(--booking-display);
+        letter-spacing: -0.01em;
       }
 
       body.free-guide-booking .booking-card {
-        padding: clamp(24px, 3vw, 42px);
-        border-radius: clamp(26px, 3vw, 42px);
-        background: var(--booking-cream);
-        color: #050607;
-      }
-
-      body.free-guide-booking .booking-card-heading {
-        display: grid;
-        justify-items: center;
-        max-width: 760px;
-        margin: 0 auto clamp(20px, 3vw, 32px);
-        text-align: center;
-      }
-
-      .booking-card-heading p {
-        margin: 0 0 12px;
-        color: var(--booking-orange);
-        font: 800 clamp(12px, 1.2vw, 15px)/1 var(--booking-display);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-      }
-
-      .booking-card-heading h2 {
-        margin: 0;
-        font: 800 clamp(32px, 5vw, 68px)/0.98 var(--booking-display);
-        letter-spacing: -0.055em;
-        text-wrap: balance;
-      }
-
-      .booking-card-heading span {
-        display: block;
-        max-width: 620px;
-        margin-top: 14px;
-        color: rgba(5, 6, 7, .72);
-        font: 500 clamp(16px, 1.8vw, 22px)/1.32 var(--booking-display);
+        background: #fff;
+        color: #071018;
       }
 
       #calendly-inline-widget {
@@ -166,12 +141,9 @@
       }
 
       body.free-guide-booking #calendly-inline-widget {
-        height: min(86vh, 900px);
-        min-height: 720px;
-        overflow: hidden;
-        border-radius: 24px;
+        height: 100vh;
+        min-height: 700px;
         background: #fff;
-        box-shadow: 0 24px 80px rgba(5, 6, 7, 0.14);
       }
 
       .fallback {
@@ -186,31 +158,38 @@
 
       @media (max-width: 640px) {
         body.free-guide-booking .booking-shell {
-          width: min(100% - 24px, 390px);
-          margin-left: 12px;
-          margin-right: auto;
-          padding-top: 18px;
+          width: 100%;
+          margin: 0;
+          padding: 0;
         }
 
         body.free-guide-booking .booking-thank-you {
-          padding: 24px 10px 24px;
+          min-height: 292px;
+          padding: 14px 18px 24px;
+        }
+
+        .booking-header-line {
+          width: min(100%, 330px);
+          margin: 11px auto 20px;
+        }
+
+        .booking-eyebrow {
+          margin-bottom: 16px;
+          font-size: 11px;
         }
 
         .booking-thank-you h1 {
-          font-size: clamp(30px, 9vw, 40px);
-          line-height: 1.03;
-          overflow-wrap: anywhere;
+          max-width: 350px;
+          font-size: clamp(25px, 7.7vw, 32px);
+          line-height: 1.08;
+          letter-spacing: -0.035em;
         }
 
-        body.free-guide-booking .booking-card {
-          padding: 30px 12px 12px;
-          border-radius: 28px;
-        }
-
-        .booking-card-heading h2 {
-          font-size: clamp(30px, 9vw, 42px);
-          line-height: 1.02;
-          overflow-wrap: anywhere;
+        .booking-thank-you p:not(.booking-eyebrow) {
+          max-width: 330px;
+          margin-top: 15px;
+          font-size: 15px;
+          line-height: 1.35;
         }
       }
     </style>
@@ -229,17 +208,13 @@
           <img src="/public/assets/brand/turboapply-agency-logo.svg?v=t-logo-20260708-1" alt="" aria-hidden="true" />
           <span>TurboApply</span>
         </a>
-        <p class="booking-eyebrow">Your request is in</p>
-        <h1 id="booking-thank-you-title">Your free guide is on the way.</h1>
-        <p>Book a quick call below so we can turn the guide into a practical lead-quality plan for your business.</p>
+        <div class="booking-header-line" aria-hidden="true"></div>
+        <p class="booking-eyebrow">Your guide is on the way</p>
+        <h1 id="booking-thank-you-title">Book A Free 15 Minute Call And We'll Show You How To Improve Your Lead Quality</h1>
+        <p>Your guide is on the way. The call is the fastest way to put it to work.</p>
       </header>
 
       <section class="booking-card" aria-label="Calendly booking">
-        <div class="booking-card-heading">
-          <p>Book your free call</p>
-          <h2>Pick a time that works for you</h2>
-          <span>We’ll use the answers you submitted to prepare before the call.</span>
-        </div>
         <div id="calendly-inline-widget" aria-label="Calendly scheduling widget"></div>
         <p class="fallback" id="calendly-fallback">
           If the scheduler does not load,
