@@ -6,7 +6,7 @@
   RewriteRule ^mcp/?$ /mcp.php [L]
 
   # Rescue stale mobile pages that still submit the old no-action form as GET /?name=...
-  # Keep the query string so TurboBook can still see the submitted values.
+  # Keep the query string so the Calendly booking route can still receive submitted values.
   RewriteCond %{REQUEST_METHOD} =GET
   RewriteCond %{QUERY_STRING} (^|&)name=[^&]+ [NC]
   RewriteCond %{QUERY_STRING} (^|&)contact=[^&]+ [NC]

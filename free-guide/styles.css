@@ -277,12 +277,31 @@ select { font: inherit; }
 }
 .guide-footer-phone {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
   margin: 0 auto 14px;
+  padding: 8px 13px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
   color: #f4f4f4;
   font-family: var(--font-form);
-  font-size: 13px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.guide-footer-phone::before {
+  content: "call";
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(244, 244, 244, 0.48);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 .guide-copyright {
   color: #d0d0d0 !important;
