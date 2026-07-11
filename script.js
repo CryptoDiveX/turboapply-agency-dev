@@ -1118,6 +1118,16 @@ function observeContactForm() {
   });
 }
 
+function observeMobileScrollCta() {
+  const update = () => {
+    document.body.classList.toggle('has-mobile-scroll-cta', window.scrollY > 16);
+  };
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+}
+
 function observeHeroWandReveal() {
   if (!heroSection || !heroStage || !heroWandReveal || !heroWandRevealText || !heroKeywords.length) return;
   heroSection.classList.add('has-wand-reveal');
@@ -1202,6 +1212,7 @@ setupSplitRevealHeadings();
 observeHeroWandReveal();
 observeMobileMenu();
 observeContactForm();
+observeMobileScrollCta();
 observeServicesHubScrollTransition();
 observeContactScrollTransition();
 observeProjectFeatureScrollTransition();
