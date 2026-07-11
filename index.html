@@ -30,7 +30,7 @@
     <link rel="preload" href="public/assets/health-site/health-hero.webp" as="image" />
     <link rel="preload" href="public/assets/health-site/health-mobile-full.webp" as="image" />
     <link rel="preload" href="public/assets/health-site/health-abstract-bg.webp" as="image" />
-    <link rel="stylesheet" href="styles.css?v=apple-glass-contact-hide-20260711-1" />
+    <link rel="stylesheet" href="styles.css?v=apple-glass-centered-arrow-20260711-1" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -42,7 +42,14 @@
           <span aria-hidden="true"></span>
         </button>
         <div class="topbar-actions">
-          <a class="chat-link" href="#contact">let's start</a>
+          <a class="chat-link" href="#contact">
+            <span class="chat-link-label">let's start</span>
+            <span class="chat-link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            </span>
+          </a>
         </div>
         <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile portfolio navigation" hidden>
           <a href="#about" data-mobile-menu-link>about</a>
