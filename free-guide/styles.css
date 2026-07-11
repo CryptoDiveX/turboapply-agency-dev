@@ -136,13 +136,18 @@ select { font: inherit; }
 }
 .guide-phone-control {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(180px, 278px) minmax(0, 1fr);
   gap: 10px;
   width: 100%;
+  align-items: start;
+}
+.guide-phone-control > input {
+  min-width: 0;
 }
 .guide-country-combobox {
   position: relative;
-  width: min(278px, 100%);
+  width: 100%;
+  min-width: 0;
   z-index: 5;
 }
 .guide-country-results {
@@ -403,6 +408,13 @@ select { font: inherit; }
   .guide-field input,
   .guide-field select {
     height: 40px;
+  }
+  .guide-phone-control {
+    grid-template-columns: minmax(112px, 0.42fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+  .guide-country-results {
+    width: min(278px, calc(100vw - 40px));
   }
   .guide-country-input {
     background-position: calc(100% - 22px) 17px, calc(100% - 16px) 17px;
