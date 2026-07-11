@@ -1120,7 +1120,15 @@ function observeContactForm() {
 
 function observeMobileScrollCta() {
   const update = () => {
-    document.body.classList.toggle('has-mobile-scroll-cta', window.scrollY > 16);
+    const hasScrolled = window.scrollY > 16;
+    const contactRect = contactSection?.getBoundingClientRect();
+    const isContactActive = !!contactRect && contactRect.top < window.innerHeight * 0.72 && contactRect.bottom > window.innerHeight * 0.14;
+    const glassLightX = 50 + Math.sin(window.scrollY / 160) * 28;
+
+    document.documentElement.style.setProperty('--glass-light-x', `${glassLightX.toFixed(1)}%`);
+    document.body.classList.toggle('has-mobile-scrolled', hasScrolled);
+    document.body.classList.toggle('is-contact-section-active', isContactActive);
+    document.body.classList.toggle('has-mobile-scroll-cta', hasScrolled && !isContactActive);
   };
 
   update();
