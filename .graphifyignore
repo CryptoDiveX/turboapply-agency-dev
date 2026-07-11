@@ -1,0 +1,20 @@
+# Generated/local state
+graphify-out/
+.git/
+
+# Dependencies, packages, and generated deploy artifacts
+node_modules/
+vendor/
+*.zip
+
+# Secrets, private runtime data, and key material
+.env
+.env.*
+*.pem
+*.key
+*.p12
+private/
+**/leads*.csv
+
+# Binary media does not contribute to the local AST graph
+public/assets/
