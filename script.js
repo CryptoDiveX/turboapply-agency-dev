@@ -30,6 +30,14 @@ const contactStatus = document.querySelector('[data-contact-status]');
 const contactPageUrl = document.querySelector('[data-contact-page-url]');
 const contactBookingRedirectUrl = 'https://turboapply.agency/book-meeting/?name=11';
 const productionContactApiUrl = 'https://turboapply.agency/api/contact';
+const isDevelopmentWebsiteHost = ['dev.turboapply.agency', 'localhost', '127.0.0.1'].includes(window.location.hostname);
+const healthWebsiteUrl = isDevelopmentWebsiteHost
+  ? 'https://dev.health.turboapply.agency/'
+  : 'https://health.turboapply.agency/';
+
+document.querySelectorAll('[data-environment-health-link]').forEach((link) => {
+  link.href = healthWebsiteUrl;
+});
 
 if (contactForm && window.location.hostname === 'dev.turboapply.agency') {
   contactForm.action = productionContactApiUrl;
@@ -97,7 +105,7 @@ const projectData = {
       'public/assets/health-site/health-mid.webp'
     ],
     alt: ['TurboApply Health desktop clinic website hero section', 'TurboApply Health phone website flow', 'TurboApply Health iPad service cards and care section'],
-    url: 'https://health.turboapply.agency/',
+    url: healthWebsiteUrl,
     linkLabel: 'explore this site',
     background: 'public/assets/health-site/health-abstract-bg.webp'
   },
