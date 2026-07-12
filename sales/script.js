@@ -384,6 +384,23 @@ const initGsap = () => {
   });
 };
 
+const alignHashTarget = () => {
+  if (!window.location.hash) return;
+
+  const targetId = decodeURIComponent(window.location.hash.slice(1));
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  window.ScrollTrigger?.refresh();
+  target.scrollIntoView({ block: "start" });
+};
+
+const queueHashAlignment = () => {
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(alignHashTarget);
+  });
+};
+
 splitWords();
 initMagneticCards();
 initAuditForm();
@@ -397,3 +414,15 @@ if (hasGsap) {
 } else {
   initFallbackReveals();
 }
+
+if (window.location.hash) {
+  if (document.readyState === "complete") {
+    queueHashAlignment();
+  } else {
+    window.addEventListener("load", queueHashAlignment, { once: true });
+  }
+  document.fonts?.ready.then(queueHashAlignment);
+  window.setTimeout(queueHashAlignment, 800);
+}
+
+window.addEventListener("hashchange", queueHashAlignment);
