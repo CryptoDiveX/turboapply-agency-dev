@@ -117,13 +117,17 @@ button { font: inherit; }
 
 .topbar {
   position: fixed;
-  top: 34px;
-  left: 48px;
-  right: 49px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
+  min-height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 48px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  background: #000;
   pointer-events: none;
 }
 .brand-link,
@@ -137,12 +141,21 @@ button { font: inherit; }
 .brand-link {
   position: relative;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
   font-family: var(--font-display);
-  font-size: clamp(23px, 1.8vw, 30px);
+  font-size: 27px;
   line-height: 1;
   font-weight: 700;
   letter-spacing: -.045em;
   color: rgba(245, 241, 232, .98);
+  white-space: nowrap;
+}
+.brand-link img {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
 }
 .primary-nav {
   position: absolute;
@@ -150,7 +163,7 @@ button { font: inherit; }
   top: 50%;
   display: flex;
   align-items: center;
-  gap: clamp(28px, 3.2vw, 58px);
+  gap: clamp(24px, 2.5vw, 44px);
   transform: translate(-50%, -50%);
   pointer-events: auto;
 }
@@ -158,7 +171,7 @@ button { font: inherit; }
   position: relative;
   padding: 8px 0;
   color: rgba(245, 241, 232, .78);
-  font-size: clamp(15px, 1.25vw, 20px);
+  font-size: 15px;
   line-height: 1;
   font-weight: 400;
   letter-spacing: -.025em;
@@ -224,25 +237,26 @@ button { font: inherit; }
   pointer-events: auto;
 }
 .topbar-actions .chat-link {
-  padding: 11px 16px 12px;
-  border: 1px solid rgba(255, 255, 255, .32);
-  border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.30), rgba(255,255,255,.08)),
-    rgba(255,255,255,.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.48),
-    inset 0 -1px 0 rgba(255,255,255,.12),
-    0 18px 60px rgba(0,0,0,.18);
-  backdrop-filter: blur(24px) saturate(1.8) contrast(1.05);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8) contrast(1.05);
-  color: rgba(7,16,19,.88);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  min-width: 132px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid #fff;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 600;
-  text-shadow: 0 1px 0 rgba(255,255,255,.30);
+  text-shadow: none;
 }
-.topbar-actions .chat-link::before {
-  opacity: 1;
+.topbar-actions .chat-link:hover { background: #fff1d4; }
+.topbar-actions .chat-link::before,
+.topbar-actions .chat-link::after {
+  display: none;
 }
 .chat-link-label {
   display: block;
@@ -1500,13 +1514,16 @@ button { font: inherit; }
 
 
 @media (max-width: 1100px) {
-  .topbar { left: 24px; right: 24px; top: 24px; }
+  .topbar { left: 0; right: 0; top: 0; min-height: 76px; padding: 0 20px; }
   .primary-nav { display: none; }
   .brand-link {
     position: absolute;
     left: 50%;
+    gap: 11px;
+    font-size: 20px;
     transform: translateX(-50%);
   }
+  .brand-link img { width: 34px; height: 34px; flex-basis: 34px; }
   .mobile-menu-toggle { display: block; }
   .section-panel { width: 100%; }
   .hero { min-height: 224svh; padding: 0; }
@@ -1679,21 +1696,23 @@ button { font: inherit; }
   }
   .topbar-actions .chat-link {
     width: auto;
-    min-height: 0;
-    display: inline-block;
-    padding: 0 0 8px;
-    border: 0;
-    border-bottom: 1px solid rgba(245, 241, 232, .8);
+    min-width: 132px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 22px;
+    border: 1px solid #fff;
     border-radius: 0;
-    background: transparent;
+    background: #fff;
     box-shadow: none;
-    color: rgba(245, 241, 232, .9);
-    font-family: var(--font-ui);
+    color: #000;
+    font-family: var(--font-display);
     font-size: 15px;
-    font-weight: 400;
-    line-height: 15px;
-    letter-spacing: normal;
-    mix-blend-mode: difference;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+    mix-blend-mode: normal;
     text-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -1720,12 +1739,14 @@ button { font: inherit; }
   .hero-wand-reveal p { font-size: 17px; line-height: 1.34; }
   .hero-wand-reveal.is-visible { clip-path: circle(235px at var(--light-origin-x, 50%) var(--light-origin-y, 50%)); }
   .topbar {
-    top: 32px;
-    left: 28px;
-    right: 28px;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 76px;
+    padding: 0 20px;
     align-items: center;
   }
-  .brand-link { font-size: 21px; }
+  .brand-link { font-size: 20px; }
   .chat-link {
     font-size: 15px;
     line-height: 15px;
