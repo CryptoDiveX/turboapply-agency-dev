@@ -11,6 +11,7 @@ Structured AI context: https://turboapply.agency/ai/turboapply-agency-context.js
 
 Key pages:
 - / — main website and portfolio/services overview.
+- /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /free-guide/ — free lead quality guide funnel.
 - /ai-receptionist/ — AI receptionist service page.
 - /marketing/ — cold email outreach / sales workflow page.

@@ -15,6 +15,11 @@
       "description": "High-converting websites, AI integrations, CRM automations, and business systems."
     },
     {
+      "url": "https://turboapply.agency/integrations/",
+      "title": "Business and AI Integrations",
+      "description": "CRM, lead capture, booking, payments, communication, reporting, and AI workflow integrations."
+    },
+    {
       "url": "https://turboapply.agency/free-guide/",
       "title": "Free Lead Quality Guide",
       "description": "Lead quality and follow-up playbook funnel."
@@ -48,7 +53,8 @@
     "Cold email outreach",
     "Lead follow-up systems",
     "Client reactivation",
-    "Booking and funnel optimization"
+    "Booking and funnel optimization",
+    "Business systems integration"
   ],
   "forms": [
     {
@@ -80,5 +86,5 @@
     "endpoint": "https://turboapply.agency/mcp",
     "descriptor": "https://turboapply.agency/ai/mcp.json"
   },
-  "updated": "2026-07-10"
+  "updated": "2026-07-12"
 }

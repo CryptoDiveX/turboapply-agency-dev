@@ -643,16 +643,27 @@ function observeSections() {
   const sections = Array.from(document.querySelectorAll('[data-observe]'));
   if (!sections.length) return;
 
+  const setActiveNav = (targetId) => {
+    navLinks.forEach((link) => {
+      const isActive = link.dataset.section === targetId;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    mobileMenuLinks.forEach((link) => {
+      const isCurrent = link.getAttribute('href') === `#${targetId}`;
+      if (isCurrent) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
   const syncActiveSection = () => {
     const anchorY = window.innerHeight * 0.18;
     const matchingSections = sections
       .map((section) => ({ section, rect: section.getBoundingClientRect() }))
       .filter(({ rect }) => rect.top <= anchorY && rect.bottom >= anchorY);
     const current = matchingSections.at(-1)?.section.dataset.observe || sections[0].dataset.observe;
-
-    navLinks.forEach((link) => {
-      link.classList.toggle('is-active', link.dataset.section === current);
-    });
+    setActiveNav(current);
   };
 
   window.addEventListener('scroll', syncActiveSection, { passive: true });
@@ -1053,6 +1064,7 @@ function setMobileMenuOpen(isOpen) {
   mobileMenu.classList.toggle('is-open', isOpen);
   mobileMenu.toggleAttribute('hidden', !isOpen);
   mobileMenuToggle.closest('.topbar')?.classList.toggle('is-menu-open', isOpen);
+  if (isOpen) requestAnimationFrame(() => mobileMenuLinks[0]?.focus());
 }
 
 function observeMobileMenu() {

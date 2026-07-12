@@ -21,6 +21,7 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 
 ## Important public pages
 - https://turboapply.agency/
+- https://turboapply.agency/integrations/
 - https://turboapply.agency/free-guide/
 - https://turboapply.agency/ai-receptionist/
 - https://turboapply.agency/marketing/

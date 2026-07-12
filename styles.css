@@ -1655,6 +1655,13 @@ button { font: inherit; }
   }
 }
 
+@media (min-width: 641px) and (max-width: 1100px) {
+  .mobile-menu {
+    right: auto;
+    width: min(520px, calc(100vw - 48px));
+  }
+}
+
 @media (min-width: 1101px), (min-width: 941px) and (hover: hover) and (pointer: fine) {
   .topbar-actions,
   body.has-mobile-scroll-cta .topbar-actions {
