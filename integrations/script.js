@@ -30,8 +30,24 @@ document.addEventListener('click', () => {
 });
 
 window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && siteNav?.classList.contains('is-open')) {
+  if (!siteNav?.classList.contains('is-open')) return;
+
+  if (event.key === 'Escape') {
     setNavigationOpen(false, { restoreFocus: true });
+    return;
+  }
+
+  if (event.key === 'Tab') {
+    const focusable = [navToggle, ...navLinks].filter((element) => element?.offsetParent !== null);
+    const first = focusable[0];
+    const last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
   }
 });
 
