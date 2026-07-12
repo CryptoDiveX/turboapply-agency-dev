@@ -1,7 +1,7 @@
 const splash = document.querySelector('#splash');
 const site = document.querySelector('#site');
 const scrambleWords = Array.from(document.querySelectorAll('[data-scramble-word]'));
-const navLinks = Array.from(document.querySelectorAll('.side-nav a'));
+const navLinks = Array.from(document.querySelectorAll('.primary-nav a[data-section]'));
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mobileMenu = document.querySelector('#mobile-menu');
 const mobileMenuLinks = Array.from(document.querySelectorAll('[data-mobile-menu-link]'));
@@ -1081,7 +1081,7 @@ function observeMobileMenu() {
     mobileMenuToggle.focus();
   });
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 640) setMobileMenuOpen(false);
+    if (window.innerWidth > 1100) setMobileMenuOpen(false);
   });
 }
 
