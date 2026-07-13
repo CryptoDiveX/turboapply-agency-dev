@@ -1,7 +1,7 @@
 const splash = document.querySelector('#splash');
 const site = document.querySelector('#site');
 const scrambleWords = Array.from(document.querySelectorAll('[data-scramble-word]'));
-const navLinks = Array.from(document.querySelectorAll('.primary-nav a[data-section]'));
+const navLinks = Array.from(document.querySelectorAll('.primary-nav a[data-section], .side-nav a[data-section]'));
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mobileMenu = document.querySelector('#mobile-menu');
 const mobileMenuLinks = Array.from(document.querySelectorAll('[data-mobile-menu-link]'));
@@ -659,10 +659,13 @@ function observeSections() {
 
   const syncActiveSection = () => {
     const anchorY = window.innerHeight * 0.18;
+    const atPageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
     const matchingSections = sections
       .map((section) => ({ section, rect: section.getBoundingClientRect() }))
       .filter(({ rect }) => rect.top <= anchorY && rect.bottom >= anchorY);
-    const current = matchingSections.at(-1)?.section.dataset.observe || sections[0].dataset.observe;
+    const current = atPageEnd
+      ? sections.at(-1).dataset.observe
+      : matchingSections.at(-1)?.section.dataset.observe || sections[0].dataset.observe;
     setActiveNav(current);
   };
 
