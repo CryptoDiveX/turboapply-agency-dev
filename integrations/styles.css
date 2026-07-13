@@ -156,7 +156,7 @@ h1 {
   margin-bottom: 32px;
   font-size: clamp(62px, 6.6vw, 112px);
   line-height: .9;
-  letter-spacing: -.06em;
+  letter-spacing: 0;
 }
 .hero-lede {
   max-width: 650px;
@@ -425,6 +425,10 @@ h1 {
   .final-cta-body p { font-size: 17px; }
 }
 
+@media (min-width: 761px) {
+  .hero-copy h1 { font-size: clamp(63px, 5.3vw, 74px); }
+}
+
 @media (min-width: 1181px) {
   .hero {
     width: 100%;
@@ -437,7 +441,6 @@ h1 {
     padding-left: 0;
     padding-right: 48px;
   }
-  .hero-copy h1 { font-size: clamp(72px, 5.8vw, 84px); }
   .final-cta .button-light {
     min-height: 0;
     display: inline-block;
@@ -521,7 +524,7 @@ h1 {
   .header-cta { display: none; }
   .hero { min-height: auto; }
   .hero-copy { min-height: 680px; padding: 86px 22px 70px; }
-  h1 { font-size: clamp(58px, 17vw, 76px); }
+  h1 { font-size: clamp(58px, 17vw, 63px); }
   .hero-actions { align-items: flex-start; flex-direction: column; }
   .integration-canvas { min-height: 520px; }
   .integration-canvas::before { width: 350px; height: 350px; }
