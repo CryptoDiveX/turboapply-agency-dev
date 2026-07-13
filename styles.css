@@ -121,7 +121,7 @@ button { font: inherit; }
   left: 0;
   right: 0;
   z-index: 50;
-  min-height: 88px;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -143,9 +143,9 @@ button { font: inherit; }
   z-index: 2;
   display: inline-flex;
   align-items: center;
-  gap: 17px;
+  gap: 12px;
   font-family: var(--font-display);
-  font-size: 27px;
+  font-size: 24px;
   line-height: 1;
   font-weight: 700;
   letter-spacing: -.045em;
@@ -153,9 +153,9 @@ button { font: inherit; }
   white-space: nowrap;
 }
 .brand-link img {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
 }
 .primary-nav {
   position: absolute;
@@ -163,7 +163,7 @@ button { font: inherit; }
   top: 50%;
   display: flex;
   align-items: center;
-  gap: clamp(24px, 2.5vw, 44px);
+  gap: clamp(18px, 2vw, 30px);
   transform: translate(-50%, -50%);
   pointer-events: auto;
 }
@@ -237,8 +237,8 @@ button { font: inherit; }
   pointer-events: auto;
 }
 .topbar-actions .chat-link {
-  min-width: 132px;
-  min-height: 48px;
+  min-width: 120px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1514,16 +1514,16 @@ button { font: inherit; }
 
 
 @media (max-width: 1100px) {
-  .topbar { left: 0; right: 0; top: 0; min-height: 76px; padding: 0 20px; }
+  .topbar { left: 0; right: 0; top: 0; min-height: 70px; padding: 0 20px; }
   .primary-nav { display: none; }
   .brand-link {
     position: absolute;
     left: 50%;
-    gap: 11px;
-    font-size: 20px;
+    gap: 10px;
+    font-size: 19px;
     transform: translateX(-50%);
   }
-  .brand-link img { width: 34px; height: 34px; flex-basis: 34px; }
+  .brand-link img { width: 30px; height: 30px; flex-basis: 30px; }
   .mobile-menu-toggle { display: block; }
   .section-panel { width: 100%; }
   .hero { min-height: 224svh; padding: 0; }
@@ -1696,8 +1696,8 @@ button { font: inherit; }
   }
   .topbar-actions .chat-link {
     width: auto;
-    min-width: 132px;
-    min-height: 48px;
+    min-width: 120px;
+    min-height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1742,11 +1742,11 @@ button { font: inherit; }
     top: 0;
     left: 0;
     right: 0;
-    min-height: 76px;
+    min-height: 70px;
     padding: 0 20px;
     align-items: center;
   }
-  .brand-link { font-size: 20px; }
+  .brand-link { font-size: 19px; }
   .chat-link {
     font-size: 15px;
     line-height: 15px;

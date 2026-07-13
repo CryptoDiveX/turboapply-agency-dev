@@ -44,12 +44,12 @@ img { display: block; max-width: 100%; }
   position: sticky;
   top: 0;
   z-index: 100;
-  min-height: 88px;
+  min-height: 80px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 42px;
-  padding: 0 clamp(22px, 4vw, 64px);
+  gap: 32px;
+  padding: 0 clamp(22px, 3.7vw, 64px);
   border-bottom: 1px solid rgba(255,255,255,.18);
   background: #000;
   color: #fff;
@@ -63,20 +63,20 @@ img { display: block; max-width: 100%; }
 .header-brand {
   display: inline-flex;
   align-items: center;
-  gap: 17px;
-  font-size: 27px;
+  gap: 12px;
+  font-size: 24px;
   white-space: nowrap;
 }
 .header-brand img {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
 }
 .site-nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: clamp(22px, 2.8vw, 46px);
+  gap: clamp(18px, 2vw, 30px);
 }
 .site-nav a {
   font-family: var(--font-display);
@@ -100,8 +100,9 @@ img { display: block; max-width: 100%; }
   line-height: 1;
 }
 .header-cta {
-  min-width: 132px;
-  padding: 0 22px;
+  min-width: 120px;
+  min-height: 44px;
+  padding: 0 20px;
   border: 1px solid #fff;
   border-radius: 0;
   background: #fff;
@@ -112,7 +113,7 @@ img { display: block; max-width: 100%; }
 .nav-toggle { display: none; }
 
 .hero {
-  min-height: calc(100svh - 88px);
+  min-height: calc(100svh - 80px);
   display: grid;
   grid-template-columns: minmax(0, .92fr) minmax(520px, 1.08fr);
   align-items: stretch;
@@ -401,8 +402,8 @@ h1 {
   .site-header { grid-template-columns: auto auto 1fr; }
   .site-nav {
     position: fixed;
-    inset: 88px 0 auto;
-    max-height: calc(100svh - 88px);
+    inset: 80px 0 auto;
+    max-height: calc(100svh - 80px);
     display: none;
     padding: 30px 24px 38px;
     background: #000;
@@ -445,8 +446,8 @@ h1 {
 
 @media (max-width: 760px) {
   .site-header { min-height: 70px; grid-template-columns: 1fr auto; padding: 0 20px; }
-  .header-brand { gap: 12px; font-size: 22px; }
-  .header-brand img { width: 36px; height: 36px; flex-basis: 36px; }
+  .header-brand { gap: 10px; font-size: 19px; }
+  .header-brand img { width: 30px; height: 30px; flex-basis: 30px; }
   .nav-toggle { grid-column: 2; grid-row: 1; }
   .site-nav { inset: 70px 0 auto; min-height: calc(100svh - 70px); align-content: start; }
   .site-nav .mobile-nav-cta {
