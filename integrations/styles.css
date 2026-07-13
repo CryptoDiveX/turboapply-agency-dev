@@ -9,6 +9,8 @@
   --mint: #d8ead6;
   --yellow: #f0de91;
   --blue: #d9e7ef;
+  --max-width-container-desktop: 90rem;
+  --container-inline-padding-desktop: 32px;
   --font-display: "Urbanist", "Inter", system-ui, sans-serif;
   --font-body: "Karla", "Inter", system-ui, sans-serif;
 }
@@ -357,7 +359,11 @@ h1 {
   .platforms-section,
   .process-section,
   .principles-section {
-    padding: 80px max(64px, calc((100vw - 1008px) / 2));
+    width: 100%;
+    max-width: var(--max-width-container-desktop);
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding: 80px var(--container-inline-padding-desktop);
   }
   .editorial-heading { max-width: 650px; margin-bottom: 48px; }
   .editorial-heading h2,
@@ -392,9 +398,13 @@ h1 {
   .principles-section strong { font-size: 17px; }
   .principles-section span { font-size: 16px; }
   .final-cta {
+    width: 100%;
+    max-width: var(--max-width-container-desktop);
+    margin-inline: auto;
+    box-sizing: border-box;
     grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
     gap: 80px;
-    padding: 88px max(64px, calc((100vw - 1008px) / 2));
+    padding: 88px var(--container-inline-padding-desktop);
   }
   .final-cta h2 { font-size: clamp(48px, 4.7vw, 64px); line-height: 1; letter-spacing: 0; }
   .final-cta-body p { font-size: 17px; }
@@ -402,11 +412,14 @@ h1 {
 
 @media (min-width: 1181px) {
   .hero {
-    width: min(1008px, calc(100% - 128px));
+    width: 100%;
+    max-width: var(--max-width-container-desktop);
     margin: 0 auto;
+    padding-inline: var(--container-inline-padding-desktop);
+    box-sizing: border-box;
   }
   .hero-copy {
-    padding-left: 32px;
+    padding-left: 0;
     padding-right: 48px;
   }
   .hero-copy h1 { font-size: clamp(72px, 5.8vw, 84px); }
