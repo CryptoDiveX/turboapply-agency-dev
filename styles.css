@@ -353,29 +353,23 @@ button { font: inherit; }
 .side-nav {
   position: fixed;
   z-index: 48;
-  left: 22px;
+  left: max(22px, calc((100vw - 1680px) / 2 + 22px));
   top: 50%;
-  display: grid;
-  gap: 28px;
   transform: translateY(-50%);
-  pointer-events: auto;
+  display: grid;
+  gap: 16px;
 }
 .side-nav a {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -.025em;
-  color: rgba(245,241,232,.62);
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--muted);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  transition: color 180ms ease, transform 180ms ease;
+  transition: color .35s ease, transform .35s ease;
 }
-.side-nav a:hover,
-.side-nav a:focus-visible { color: rgba(245,241,232,.95); transform: rotate(180deg) translateY(-2px); }
+.side-nav a:hover { color: var(--ink); transform: rotate(180deg) translateY(-3px); }
 .side-nav a.is-active,
-.side-nav a.is-active:hover,
-.side-nav a[aria-current="location"] { color: #ff3434; }
+.side-nav a.is-active:hover { color: #ff2f2f; transform: rotate(180deg) translateY(-3px); }
 
 .section-panel {
   position: relative;
