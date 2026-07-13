@@ -166,7 +166,8 @@ button { font: inherit; }
   transform: none;
   pointer-events: auto;
 }
-.primary-nav a {
+.primary-nav a,
+.primary-nav .nav-placeholder {
   position: relative;
   padding: 8px 16px;
   color: rgba(245, 241, 232, .78);
@@ -176,6 +177,11 @@ button { font: inherit; }
   font-weight: 500;
   letter-spacing: 0;
   transition: color 180ms ease;
+}
+.primary-nav .nav-placeholder {
+  color: rgba(245, 241, 232, .48);
+  cursor: default;
+  user-select: none;
 }
 .primary-nav a::after {
   content: "";
@@ -336,7 +342,8 @@ button { font: inherit; }
   display: grid;
   gap: 6px;
 }
-.mobile-menu a {
+.mobile-menu a,
+.mobile-menu .nav-placeholder {
   display: flex;
   align-items: center;
   min-height: 48px;
@@ -346,6 +353,11 @@ button { font: inherit; }
   font-size: 34px;
   line-height: .96;
   letter-spacing: -.035em;
+}
+.mobile-menu .nav-placeholder {
+  color: rgba(245, 241, 232, .42);
+  cursor: default;
+  user-select: none;
 }
 
 .side-nav {
