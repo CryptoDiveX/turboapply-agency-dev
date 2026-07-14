@@ -661,9 +661,18 @@ h1 {
   .process-grid article {
     min-height: 240px;
     padding: 28px;
-    border: 0;
   }
 }
+
+/* Keep the Process and Principles modules white while retaining card structure. */
+.process-section,
+.principles-section { background: #fff; }
+.process-grid article,
+.principles-section li {
+  border: 1px solid #e5e5e2;
+  background: #fff;
+}
+.process-grid article:last-child { border: 1px solid #e5e5e2; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
