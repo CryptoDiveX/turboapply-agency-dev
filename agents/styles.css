@@ -88,21 +88,26 @@
   background: #fff;
 }
 .agent-card-top {
+  min-height: 48px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  color: #6a6862;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  align-items: flex-start;
 }
-.agent-number {
+.agent-icon {
+  width: 48px;
+  height: 48px;
+  display: block;
   color: var(--ink);
-  font-variant-numeric: tabular-nums;
+}
+.agent-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
 .agent-card h3 {
   max-width: 520px;
