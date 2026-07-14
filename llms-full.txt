@@ -12,16 +12,18 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 ## Public services
 1. High-converting website design and redesign.
 2. AI integrations for sales, booking, operations, and admin workflows.
-3. CRM cleanup and automation.
-4. AI receptionist and lead intake systems.
-5. Cold email outreach and sales workflow systems.
-6. Lead follow-up and client reactivation.
-7. Booking/funnel optimization.
-8. Business automation audits.
+3. Practical AI sales agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and performance coaching.
+4. CRM cleanup and automation.
+5. AI receptionist and lead intake systems.
+6. Cold email outreach and sales workflow systems.
+7. Lead follow-up and client reactivation.
+8. Booking/funnel optimization.
+9. Business automation audits.
 
 ## Important public pages
 - https://turboapply.agency/
 - https://turboapply.agency/integrations/
+- https://turboapply.agency/agents/
 - https://turboapply.agency/free-guide/
 - https://turboapply.agency/ai-receptionist/
 - https://turboapply.agency/marketing/

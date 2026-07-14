@@ -1,3 +1,0 @@
-#!/bin/sh
-ROOT="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
-"$ROOT/scripts/graphify-update.sh" "$(basename "$0")"

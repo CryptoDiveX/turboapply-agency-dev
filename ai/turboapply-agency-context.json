@@ -20,6 +20,11 @@
       "description": "CRM, lead capture, booking, payments, communication, reporting, and AI workflow integrations."
     },
     {
+      "url": "https://turboapply.agency/agents/",
+      "title": "AI Sales Agents",
+      "description": "Practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching."
+    },
+    {
       "url": "https://turboapply.agency/free-guide/",
       "title": "Free Lead Quality Guide",
       "description": "Lead quality and follow-up playbook funnel."
@@ -48,6 +53,7 @@
   "services": [
     "Website design and redesign",
     "AI integrations",
+    "AI sales agents",
     "CRM automation",
     "AI receptionist",
     "Cold email outreach",
@@ -86,5 +92,5 @@
     "endpoint": "https://turboapply.agency/mcp",
     "descriptor": "https://turboapply.agency/ai/mcp.json"
   },
-  "updated": "2026-07-12"
+  "updated": "2026-07-14"
 }
