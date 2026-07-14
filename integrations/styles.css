@@ -568,6 +568,103 @@ h1 {
   .platform-columns { grid-template-columns: 1fr; gap: 18px; }
 }
 
+/* Reference-led organization for the lower content blocks.
+   The approved Systems block above remains unchanged. */
+.platforms-section,
+.process-section,
+.principles-section {
+  width: calc(100% - 64px);
+  max-width: calc(var(--max-width-container-desktop) - 64px);
+  margin-inline: auto;
+  padding: clamp(52px, 5vw, 72px);
+  border: 0;
+  border-radius: 24px;
+  background: #f3f3f0;
+}
+.platforms-section { margin-top: 24px; }
+.platforms-section + .process-section,
+.process-section + .principles-section { margin-top: 16px; }
+.principles-section { margin-bottom: 24px; }
+
+.platforms-intro .button-outline {
+  min-height: 48px;
+  padding-inline: 22px;
+  border-color: #121212;
+  border-radius: 999px;
+  background: #121212;
+  color: #fff;
+}
+.platforms-intro .button-outline:hover,
+.platforms-intro .button-outline:focus-visible {
+  border-color: #303030;
+  background: #303030;
+}
+.platform-columns {
+  padding: clamp(24px, 3vw, 34px);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.process-grid {
+  gap: 12px;
+  border: 0;
+}
+.process-grid article {
+  min-height: 280px;
+  padding: 32px;
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+}
+.process-grid article:last-child { border: 0; }
+.process-grid .process-icon { margin-bottom: auto; }
+
+.principles-section ul {
+  display: grid;
+  gap: 10px;
+  border: 0;
+}
+.principles-section li {
+  padding: 22px;
+  border: 0;
+  border-radius: 14px;
+  background: #fff;
+}
+
+@media (max-width: 980px) {
+  .platforms-section,
+  .principles-section {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .platform-columns { max-width: none; }
+  .process-heading {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-grid article { min-height: 220px; }
+}
+
+@media (max-width: 900px) {
+  .platforms-section,
+  .process-section,
+  .principles-section {
+    width: calc(100% - 32px);
+    padding: clamp(42px, 8vw, 60px) clamp(20px, 6vw, 40px);
+    border-radius: 20px;
+  }
+  .platforms-section { margin-top: 16px; }
+  .platforms-section + .process-section,
+  .process-section + .principles-section { margin-top: 12px; }
+  .principles-section { margin-bottom: 16px; }
+  .process-grid article {
+    min-height: 240px;
+    padding: 28px;
+    border: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
