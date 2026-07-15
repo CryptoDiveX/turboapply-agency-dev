@@ -22,7 +22,7 @@
     {
       "url": "https://turboapply.agency/agents/",
       "title": "AI Sales Agents",
-      "description": "Practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching."
+      "description": "Practical AI sales-agent directory with detailed roles for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching."
     },
     {
       "url": "https://turboapply.agency/free-guide/",
@@ -48,6 +48,32 @@
       "url": "https://turboapply.agency/book-meeting/",
       "title": "Book an Audit",
       "description": "Calendly booking page for a TurboApply audit."
+    }
+  ],
+  "agent_roles": [
+    {
+      "name": "Director's Personal Assistant Agent",
+      "description": "Customized agent with scheduling, reminders, follow-ups, and admin support so directors stay focused on decisions."
+    },
+    {
+      "name": "Lead Generator Agent",
+      "description": "Finds and qualifies new opportunities so your team has a clearer path to fresh pipeline."
+    },
+    {
+      "name": "Follow-Up Upsell Agent",
+      "description": "Turns past conversations, open deals, and recent purchases into timely follow-up and upsell prompts."
+    },
+    {
+      "name": "Data Enrichment Agent",
+      "description": "Cleans, fills, and improves customer records so every next step starts with better context."
+    },
+    {
+      "name": "Cold Outreach Agent",
+      "description": "Builds repeatable prospecting motions with research, message drafts, sequences, and reply tracking."
+    },
+    {
+      "name": "Performance Coach Agent",
+      "description": "Reviews sales activity, spots weak points, and suggests practical next actions to improve team performance."
     }
   ],
   "services": [

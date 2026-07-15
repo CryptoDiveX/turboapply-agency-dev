@@ -20,6 +20,14 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 8. Booking/funnel optimization.
 9. Business automation audits.
 
+## AI sales agent roles
+- Director's Personal Assistant Agent — scheduling, reminders, follow-ups, and admin support.
+- Lead Generator Agent — finds and qualifies new opportunities.
+- Follow-Up Upsell Agent — prompts follow-up for conversations, deals, and purchases.
+- Data Enrichment Agent — cleans, fills, and improves customer records.
+- Cold Outreach Agent — supports research, drafts, sequences, and reply tracking.
+- Performance Coach Agent — reviews activity, spots weak points, and suggests next actions.
+
 ## Important public pages
 - https://turboapply.agency/
 - https://turboapply.agency/integrations/
