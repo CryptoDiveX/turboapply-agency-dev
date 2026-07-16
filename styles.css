@@ -1599,7 +1599,7 @@ button { font: inherit; }
       0 18px 60px rgba(0,0,0,.18);
     backdrop-filter: blur(24px) saturate(1.8) contrast(1.05);
     -webkit-backdrop-filter: blur(24px) saturate(1.8) contrast(1.05);
-    transform: translateY(10px) scale(1.02);
+    transform: none;
   }
   body.has-mobile-scrolled .mobile-menu-toggle::before {
     opacity: 1;
