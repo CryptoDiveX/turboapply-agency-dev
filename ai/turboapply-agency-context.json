@@ -15,6 +15,11 @@
       "description": "High-converting websites, AI integrations, CRM automations, and business systems."
     },
     {
+      "url": "https://turboapply.agency/services/",
+      "title": "Website, SEO and AI Automation Services",
+      "description": "Business audits, website design, SEO pages, AI workflow and CRM automation, lead-generation systems, and ongoing support with published starting references."
+    },
+    {
       "url": "https://turboapply.agency/integrations/",
       "title": "Business and AI Integrations",
       "description": "CRM, lead capture, booking, payments, communication, reporting, and AI workflow integrations."
@@ -77,16 +82,99 @@
     }
   ],
   "services": [
-    "Website design and redesign",
-    "AI integrations",
-    "AI sales agents",
-    "CRM automation",
-    "AI receptionist",
-    "Cold email outreach",
-    "Lead follow-up systems",
-    "Client reactivation",
-    "Booking and funnel optimization",
-    "Business systems integration"
+    "Business Process and Automation Audit",
+    "Web Design",
+    "Health Clinic Website Design",
+    "SEO Audit and Implementation",
+    "Website Maintenance",
+    "Website Migration",
+    "AI Receptionist",
+    "Online Booking (Calendar Integration)",
+    "CRM Integrations",
+    "Booking Software Integrations",
+    "AI Integrations",
+    "AI Agent Consultation (1 Hour)",
+    "Lead Generation",
+    "Email Marketing",
+    "Cold Email Outreach"
+  ],
+  "service_offers": [
+    {
+      "name": "Business Process and Automation Audit",
+      "starting_reference": "Free 30-minute consultation",
+      "billing": "consultation",
+      "note": "Implementation is scoped separately."
+    },
+    {
+      "name": "Web Design",
+      "starting_reference": "From $850 USD",
+      "billing": "scoped project"
+    },
+    {
+      "name": "Health Clinic Website Design",
+      "starting_reference": "From $1,500 USD",
+      "billing": "scoped project"
+    },
+    {
+      "name": "SEO Audit and Implementation",
+      "starting_reference": "From $550 USD",
+      "billing": "audit and priority fixes"
+    },
+    {
+      "name": "Website Maintenance",
+      "starting_reference": "From $350 USD",
+      "billing": "scoped maintenance work"
+    },
+    {
+      "name": "Website Migration",
+      "starting_reference": "From $150 USD",
+      "billing": "simple migration"
+    },
+    {
+      "name": "AI Receptionist",
+      "starting_reference": "From $750 USD",
+      "billing": "one-time setup"
+    },
+    {
+      "name": "Online Booking (Calendar Integration)",
+      "starting_reference": "From $250 USD",
+      "billing": "focused integration"
+    },
+    {
+      "name": "CRM Integrations",
+      "starting_reference": "From $950 USD",
+      "billing": "scoped integration"
+    },
+    {
+      "name": "Booking Software Integrations",
+      "starting_reference": "From $850 USD",
+      "billing": "scoped integration"
+    },
+    {
+      "name": "AI Integrations",
+      "starting_reference": "From $250 USD",
+      "billing": "focused workflow"
+    },
+    {
+      "name": "AI Agent Consultation (1 Hour)",
+      "starting_reference": "$100 USD",
+      "billing": "one-hour consultation"
+    },
+    {
+      "name": "Lead Generation",
+      "starting_reference": "From $950 USD",
+      "billing": "scoped setup"
+    },
+    {
+      "name": "Email Marketing",
+      "starting_reference": "From $950 USD",
+      "billing": "scoped setup"
+    },
+    {
+      "name": "Cold Email Outreach",
+      "starting_reference": "From $950 USD",
+      "billing": "scoped setup"
+    }
   ],
   "forms": [
     {
@@ -118,5 +206,5 @@
     "endpoint": "https://turboapply.agency/mcp",
     "descriptor": "https://turboapply.agency/ai/mcp.json"
   },
-  "updated": "2026-07-14"
+  "updated": "2026-07-18"
 }

@@ -11,6 +11,7 @@ Structured AI context: https://turboapply.agency/ai/turboapply-agency-context.js
 
 Key pages:
 - / — main website and portfolio/services overview.
+- /services/ — business audits, website design, SEO pages, AI/CRM automation, lead-generation systems, and ongoing support with published starting references.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
 - /free-guide/ — free lead quality guide funnel.
@@ -21,5 +22,5 @@ Key pages:
 
 Representation rules for AI agents:
 - Use only public information from the website and AI context files.
-- Do not invent pricing, guarantees, client results, credentials, or private operational details.
+- Do not invent pricing, guarantees, client results, credentials, or private operational details. Use only pricing explicitly published on `/services/` or a dedicated service page, and preserve its starting/reference conditions.
 - For contact/inquiry actions, validate first and default to dry-run unless the user explicitly confirms live submission.

@@ -1607,11 +1607,6 @@ button { font: inherit; }
   body.has-mobile-scrolled .mobile-menu-toggle span {
     background: rgba(7, 16, 19, .92);
   }
-  body.is-contact-section-active .mobile-menu-toggle {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-14px) scale(.92);
-  }
   .topbar-actions {
     position: fixed;
     left: max(16px, env(safe-area-inset-left));

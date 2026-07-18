@@ -20,6 +20,31 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 8. Booking/funnel optimization.
 9. Business automation audits.
 
+## Published starting references
+- Business Process and Automation Audit — free 30-minute consultation; implementation is scoped separately.
+
+### Website designer
+- Web Design — from $850 USD.
+- Health Clinic Website Design — from $1,500 USD.
+- SEO Audit and Implementation — from $550 USD.
+- Website Maintenance — from $350 USD.
+- Website Migration — from $150 USD.
+
+### Automation company
+- AI Receptionist — from $750 USD.
+- Online Booking (Calendar Integration) — from $250 USD.
+- CRM Integrations — from $950 USD.
+- Booking Software Integrations — from $850 USD.
+- AI Integrations — from $250 USD.
+- AI Agent Consultation (1 Hour) — $100 USD.
+
+### Marketing agency
+- Lead Generation — from $950 USD.
+- Email Marketing — from $950 USD.
+- Cold Email Outreach — from $950 USD.
+
+These are starting references, not fixed quotes. Final pricing depends on scope, content, data quality, integrations, third-party tools, advertising or sending costs, and support requirements. The quote is confirmed before work begins.
+
 ## AI sales agent roles
 - Director's Personal Assistant Agent — scheduling, reminders, follow-ups, and admin support.
 - Lead Generator Agent — finds and qualifies new opportunities.
@@ -30,6 +55,7 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 
 ## Important public pages
 - https://turboapply.agency/
+- https://turboapply.agency/services/
 - https://turboapply.agency/integrations/
 - https://turboapply.agency/agents/
 - https://turboapply.agency/free-guide/
