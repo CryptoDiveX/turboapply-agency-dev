@@ -59,14 +59,8 @@ const initAgentAccordion = () => {
   });
 };
 
-const extractEmailAddress = (value) => {
-  const match = String(value || '').match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  return match ? match[0] : '';
-};
-
-const buildBookingUrl = (bookingUrl, { name, contact }) => {
+const buildBookingUrl = (bookingUrl, { name, email }) => {
   const target = new URL(bookingUrl || '/book-meeting', window.location.origin);
-  const email = extractEmailAddress(contact);
 
   if (name) target.searchParams.set('name', name);
   if (email) target.searchParams.set('email', email);
@@ -99,8 +93,8 @@ const initAuditForm = () => {
 
     const payload = new FormData(form);
     const name = String(payload.get("name") || "").trim();
-    const contact = String(payload.get("contact") || "").trim();
-    const targetUrl = buildBookingUrl(bookingUrl, { name, contact });
+    const email = String(payload.get("email") || "").trim();
+    const targetUrl = buildBookingUrl(bookingUrl, { name, email });
 
     ensureRedirectInput().value = targetUrl;
 

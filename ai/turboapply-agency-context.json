@@ -184,7 +184,7 @@
       "service_interest": "Website and automation consultation",
       "required_fields": [
         "name",
-        "contact",
+        "email",
         "message",
         "source",
         "formId",
@@ -194,9 +194,13 @@
       ],
       "limits": {
         "name": 120,
+        "email": 254,
         "contact": 254,
         "message": 1800
       },
+      "optional_fields": [
+        "contact"
+      ],
       "submit_safety": "Public MCP tools validate only. Live submission requires explicit confirmation and must not be attempted as a dry-run side effect."
     },
     {
@@ -212,6 +216,7 @@
       ],
       "common_required_fields": [
         "name",
+        "email",
         "source",
         "formId",
         "serviceInterest",
@@ -222,7 +227,6 @@
       "message_maxlength": 1800,
       "free_guide_requires": [
         "email",
-        "phone",
         "businessName",
         "monthlyRevenue"
       ],
@@ -236,7 +240,7 @@
   "form_validation": {
     "authoritative_layer": "server",
     "browser_layer": "advisory and user-facing",
-    "contact_policy": "Valid email, metadata-validated phone, or supported messenger handle. Free Guide requires both email and phone.",
+    "contact_policy": "Every form has a dedicated required email field and a separate optional phone-or-messenger field. The optional field accepts a metadata-validated phone or supported messenger handle, not another email address.",
     "source_policy": "Exact allow-listed TurboApply host. DevNet and localhost browser previews stamp dev.turboapply.agency and route as Internal Testing.",
     "idempotency_policy": "Suppress only the same recent submission key and same normalized content fingerprint.",
     "classification_categories": [

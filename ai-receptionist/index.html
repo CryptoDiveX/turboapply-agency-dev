@@ -311,6 +311,7 @@
           action="/submit-lead.php"
           method="post"
           data-turboapply-secure-form
+          data-preview-submit-disabled
           data-fallback-email="turboapply.ai@gmail.com"
         >
           <input type="hidden" name="redirect" value="/book-meeting/" />
@@ -324,8 +325,12 @@
             <input name="name" type="text" autocomplete="name" maxlength="120" required />
           </label>
           <label>
-            <span>Email, phone, or messenger</span>
-            <input name="contact" type="text" autocomplete="email" maxlength="254" required />
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+          </label>
+          <label>
+            <span>Phone or messenger <small>(optional)</small></span>
+            <input name="contact" type="text" autocomplete="tel" maxlength="254" />
           </label>
           <label>
             <span>Where do new leads arrive today?</span>
@@ -351,7 +356,7 @@
     </main>
 
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=contact-fields-preview-fence-20260719-2"></script>
     <script>
       (() => {
         const bookingInput = document.getElementById('booking-value');

@@ -321,6 +321,7 @@
           action="/submit-lead.php"
           method="post"
           data-turboapply-secure-form
+          data-preview-submit-disabled
           data-fallback-email="turboapply.ai@gmail.com"
           data-booking-url="/sales/book-meeting/"
         >
@@ -336,8 +337,12 @@
             <input name="name" type="text" autocomplete="name" maxlength="120" required />
           </label>
           <label>
-            <span>Email, phone, or messenger</span>
-            <input name="contact" type="text" autocomplete="email" maxlength="254" required />
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+          </label>
+          <label>
+            <span>Phone or messenger <small>(optional)</small></span>
+            <input name="contact" type="text" autocomplete="tel" maxlength="254" />
           </label>
           <label>
             <span>What’s your biggest challenge?</span>
@@ -455,7 +460,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
-    <script src="script.js?v=lead-antispam-20260713-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=contact-fields-preview-fence-20260719-2"></script>
+    <script src="script.js?v=split-fields-20260719-2"></script>
   </body>
 </html>

@@ -26,7 +26,8 @@ body {
 a { color: inherit; text-decoration: none; }
 button,
 input,
-select { font: inherit; }
+select,
+textarea { font: inherit; }
 
 .guide-page {
   width: 100%;
@@ -194,7 +195,8 @@ select { font: inherit; }
   border-bottom: 0;
 }
 .guide-field input,
-.guide-field select {
+.guide-field select,
+.guide-field textarea {
   width: 100%;
   height: 38px;
   border: 1px solid var(--blue);
@@ -210,6 +212,12 @@ select { font: inherit; }
 }
 .guide-field input {
   padding: 0 16px;
+}
+.guide-field textarea {
+  min-height: 84px;
+  padding: 11px 16px;
+  line-height: 1.35;
+  resize: vertical;
 }
 .guide-country-input {
   padding-right: 38px !important;
@@ -232,9 +240,11 @@ select { font: inherit; }
   background-repeat: no-repeat;
 }
 .guide-field select:valid { color: #202020; }
-.guide-field input::placeholder { color: #858585; opacity: 1; }
+.guide-field input::placeholder,
+.guide-field textarea::placeholder { color: #858585; opacity: 1; }
 .guide-field input:focus,
-.guide-field select:focus {
+.guide-field select:focus,
+.guide-field textarea:focus {
   border-color: #4bbcff;
   box-shadow: 0 0 0 2px rgba(42, 168, 242, 0.22);
 }

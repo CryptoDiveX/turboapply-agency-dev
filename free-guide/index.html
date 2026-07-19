@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=country-phone-one-line-20260711-1" />
+    <link rel="stylesheet" href="styles.css?v=free-guide-challenge-20260719-3" />
   </head>
   <body>
     <main class="guide-page">
@@ -47,27 +47,25 @@
         <div class="guide-form-card" aria-label="Get the free TurboApply playbook">
           <h2>GET THE FREE PLAYBOOK NOW</h2>
 
-          <form class="guide-form" action="/submit-lead.php" method="post" data-free-guide-form data-turboapply-secure-form>
+          <form class="guide-form" action="/submit-lead.php" method="post" data-free-guide-form data-preview-submit-disabled data-turboapply-secure-form>
             <label class="guide-field">
               <span>Full Name</span>
               <input type="text" name="name" autocomplete="name" placeholder="Full Name" maxlength="120" required />
             </label>
 
-            <label class="guide-field guide-phone-field">
-              <span>Mobile Number</span>
-              <div class="guide-phone-control">
-                <div class="guide-country-combobox" data-country-combobox>
-                  <input class="guide-country-input" type="text" name="countryLabel" autocomplete="off" placeholder="Country" aria-label="Country" role="combobox" aria-expanded="false" aria-controls="guide-country-results" />
-                  <input type="hidden" name="countryCode" value="+1" data-country-code />
-                  <div class="guide-country-results" id="guide-country-results" role="listbox" data-country-results hidden></div>
-                </div>
-                <input type="tel" name="phone" autocomplete="tel-national" placeholder="Phone number" inputmode="tel" maxlength="40" required />
-              </div>
-            </label>
-
             <label class="guide-field">
               <span>Email</span>
               <input type="email" name="email" autocomplete="email" placeholder="Email" maxlength="254" required />
+            </label>
+
+            <label class="guide-field">
+              <span>Phone or messenger <small>(optional)</small></span>
+              <input type="text" name="contact" autocomplete="tel" placeholder="Phone or messenger (optional)" maxlength="254" />
+            </label>
+
+            <label class="guide-field">
+              <span>What business outcome do you want help with?</span>
+              <textarea name="challenge" rows="3" placeholder="What business outcome do you want help with?" maxlength="1800" required data-guide-challenge></textarea>
             </label>
 
             <label class="guide-field">
@@ -87,7 +85,6 @@
               </select>
             </label>
 
-            <input type="hidden" name="challenge" value="Free guide request" maxlength="1800" required data-guide-challenge />
             <input type="hidden" name="formId" value="free-guide" />
             <input type="hidden" name="source" value="turboapply.agency" />
             <input type="hidden" name="serviceInterest" value="Free Guide" />
@@ -121,7 +118,7 @@
     </main>
 
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
-    <script src="script.js?v=lead-antispam-20260713-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=contact-fields-preview-fence-20260719-2"></script>
+    <script src="script.js?v=free-guide-challenge-20260719-3"></script>
   </body>
 </html>

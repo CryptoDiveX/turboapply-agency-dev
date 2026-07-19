@@ -26,6 +26,11 @@
     return host;
   };
 
+  const isPreviewHost = () => {
+    const host = window.location.hostname.toLowerCase();
+    return host === 'localhost' || host === '127.0.0.1' || host.startsWith('dev.');
+  };
+
   const newSubmissionKey = () => {
     if (window.crypto?.randomUUID) return window.crypto.randomUUID();
     const bytes = new Uint8Array(16);
@@ -100,13 +105,15 @@
     control.value = parsed.countryCallingCode === '1' ? parsed.formatNational() : parsed.formatInternational();
   };
 
-  const validateContact = (value) => {
+  const validatePhoneOrMessenger = (value) => {
     const contact = String(value || '').trim();
     if (!contact || /[\r\n]/.test(contact) || contact.length > 254) return false;
-    if (EMAIL_PATTERN.test(contact)) return true;
+    if (EMAIL_PATTERN.test(contact)) return false;
     if (/^[+\d(]/.test(contact) && PHONE_CHARS.test(contact)) return validatePhone(contact);
     return MESSENGER_PATTERN.test(contact);
   };
+
+  const validateContact = (value) => EMAIL_PATTERN.test(String(value || '').trim()) || validatePhoneOrMessenger(value);
 
   const randomToken = (value) => {
     const text = String(value || '').trim();
@@ -152,10 +159,10 @@
       else if (randomToken(name) && randomToken(message)) setError(messageControl, 'Enter a meaningful goal or question.');
     }
 
-    if (contactControl && 'value' in contactControl && !validateContact(contactControl.value)) {
-      setError(contactControl, 'Enter a valid email, phone number, or messenger handle.');
+    if (contactControl && 'value' in contactControl && String(contactControl.value || '').trim() && !validatePhoneOrMessenger(contactControl.value)) {
+      setError(contactControl, 'Enter a valid phone number or supported messenger handle.');
     }
-    if (emailControl && 'value' in emailControl && !EMAIL_PATTERN.test(String(emailControl.value || '').trim())) {
+    if (emailControl && 'value' in emailControl && String(emailControl.value || '').trim() && !EMAIL_PATTERN.test(String(emailControl.value || '').trim())) {
       setError(emailControl, 'Enter a valid email address.');
     }
     if (phoneControl && 'value' in phoneControl && !validatePhone(phoneControl.value, fieldValue(form, 'countryCode'))) {
@@ -178,12 +185,35 @@
     ensureHiddenField(form, 'submissionIdempotencyKey').value = newSubmissionKey();
   };
 
+  const previewStatus = (form) => {
+    let status = form.querySelector('[data-preview-delivery-status]');
+    if (status) return status;
+    status = document.createElement('p');
+    status.hidden = true;
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.setAttribute('data-preview-delivery-status', '');
+    form.append(status);
+    return status;
+  };
+
   const bindForm = (form) => {
     if (!(form instanceof HTMLFormElement) || form.dataset.turboapplySecurityBound === 'true') return;
     form.dataset.turboapplySecurityBound = 'true';
     stampMetadata(form);
     form.addEventListener('submit', (event) => {
-      if (!prepare(form)) event.preventDefault();
+      if (!prepare(form)) {
+        event.preventDefault();
+        return;
+      }
+      if (form.hasAttribute('data-preview-submit-disabled') && isPreviewHost()) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        form.dataset.previewSubmitIntercepted = 'true';
+        const status = previewStatus(form);
+        status.textContent = 'Preview validated. Lead delivery is disabled on DevNet and local previews.';
+        status.hidden = false;
+      }
     }, { capture: true });
     form.addEventListener('input', (event) => {
       if (event.target && typeof event.target.setCustomValidity === 'function') event.target.setCustomValidity('');
@@ -204,6 +234,7 @@
     validateForm,
     validatePhone,
     validateContact,
+    validatePhoneOrMessenger,
     rotateIdempotencyKey,
     newSubmissionKey,
   };

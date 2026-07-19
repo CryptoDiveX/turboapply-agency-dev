@@ -39,7 +39,7 @@ document.querySelectorAll('[data-environment-health-link]').forEach((link) => {
   link.href = healthWebsiteUrl;
 });
 
-if (contactForm && isDevelopmentWebsiteHost) {
+if (contactForm && isDevelopmentWebsiteHost && !contactForm.hasAttribute('data-preview-submit-disabled')) {
   contactForm.action = productionContactApiUrl;
 }
 
@@ -1109,6 +1109,13 @@ function observeContactForm() {
     event.preventDefault();
     if (!window.TurboApplyFormSecurity?.prepare(contactForm)) return;
     if (contactPageUrl) contactPageUrl.value = window.location.href;
+
+    if (contactForm.hasAttribute('data-preview-submit-disabled') && isDevelopmentWebsiteHost) {
+      event.stopImmediatePropagation();
+      contactForm.dataset.previewSubmitIntercepted = 'true';
+      setContactStatus('Preview validated. Lead delivery is disabled on DevNet and local previews.', 'success');
+      return;
+    }
 
     const submitButton = contactForm.querySelector('.contact-submit');
     const formData = new FormData(contactForm);

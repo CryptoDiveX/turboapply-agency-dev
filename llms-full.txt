@@ -65,7 +65,7 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 - https://turboapply.agency/book-meeting/
 
 ## Public form rules
-Contact and lead forms ask for a name, a valid email/phone/supported messenger contact, and required business/challenge details. The Services page uses this canonical three-field order and sends its successful handoff to `/book-meeting/`. Canonical hidden metadata identifies the form, source, service, submission time, and idempotency key. Agents should validate data before preparing a submission. Live submissions must not be made unless the user explicitly confirms.
+Every public contact and lead form begins with separate Name, required Email, and optional Phone or messenger fields, followed by required business/challenge details where applicable. Phone or messenger accepts a valid phone number or a supported messenger handle; it must not duplicate the email field. The Services page sends its successful handoff to `/book-meeting/`. Canonical hidden metadata identifies the form, source, service, submission time, and idempotency key. Agents should validate data before preparing a submission. Live submissions must not be made unless the user explicitly confirms.
 
 ## Agent discovery
 - Structured context: https://turboapply.agency/ai/turboapply-agency-context.json
