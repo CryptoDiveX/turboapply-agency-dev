@@ -1,8 +1,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteRule ^api/contact/?$ /api/contact/index.php [L]
-  RewriteRule ^api/health/?$ /api/health.php [L]
+  # Lead/API traffic is handled by the approved Cloudflare Worker and the
+  # TurboApply-owned backend. Direct-origin legacy runtime paths fail closed.
+  RewriteRule ^(?:submit-lead\.php|leads-export\.php|api/health(?:\.php)?|api/contact(?:/index\.php)?|private/turboapply-(?:form-security|phone-metadata)\.php)(?:/.*)?$ - [R=404,L,NC]
   RewriteRule ^mcp/?$ /mcp.php [L]
 
   # Rescue stale mobile pages that still submit the old no-action form as GET /?name=...
@@ -13,6 +14,10 @@
   RewriteCond %{QUERY_STRING} (^|&)challenge=[^&]+ [NC]
   RewriteRule ^$ /book-meeting/ [R=303,L]
 </IfModule>
+
+<FilesMatch "^(?:\.lead.*|leads\.(?:csv|jsonl))$">
+  Require all denied
+</FilesMatch>
 
 <IfModule mod_headers.c>
   <FilesMatch "^(index\.html|script\.js)$">
