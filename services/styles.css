@@ -10,90 +10,22 @@
   max-width: 700px;
 }
 
-.services-canvas {
+.services-hero-media {
+  position: relative;
   min-height: 560px;
-  padding: clamp(28px, 4vw, 48px);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 28px;
-  overflow: hidden;
-  background: var(--services-surface);
-}
-
-.services-canvas::before,
-.services-canvas::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(18, 18, 18, 0.12);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.services-canvas::before {
-  width: 360px;
-  height: 360px;
-  right: -130px;
-  top: -140px;
-}
-
-.services-canvas::after {
-  width: 220px;
-  height: 220px;
-  left: -100px;
-  bottom: -120px;
-}
-
-.services-canvas-label {
-  position: relative;
-  z-index: 1;
   margin: 0;
-  font: 500 13px/1.2 Inter, sans-serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--services-muted);
+  overflow: hidden;
+  background: #ddd6cc;
 }
 
-.services-canvas-list {
-  position: relative;
-  z-index: 1;
-  align-self: center;
-  display: grid;
-}
-
-.services-canvas-list span {
-  min-height: 68px;
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  align-items: center;
-  border-top: 1px solid rgba(18, 18, 18, 0.18);
-  font: 500 clamp(20px, 2vw, 28px)/1.1 Urbanist, sans-serif;
-}
-
-.services-canvas-list span:last-child {
-  border-bottom: 1px solid rgba(18, 18, 18, 0.18);
-}
-
-.services-canvas-list b {
-  font: 500 12px/1 Inter, sans-serif;
-  color: var(--services-muted);
-}
-
-.services-canvas-outcome {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 18px;
-  font-family: Karla, sans-serif;
-  color: var(--services-muted);
-}
-
-.services-canvas-outcome strong {
-  max-width: 260px;
-  text-align: right;
-  font: 600 clamp(24px, 2.5vw, 36px)/1 Urbanist, sans-serif;
-  color: var(--services-ink);
+.services-hero-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 54% center;
 }
 
 .service-directory {
@@ -473,7 +405,7 @@
 }
 
 @media (max-width: 1180px) {
-  .services-canvas {
+  .services-hero-media {
     min-height: 500px;
   }
 
@@ -532,25 +464,8 @@
 }
 
 @media (max-width: 760px) {
-  .services-canvas {
-    min-height: 450px;
-    padding: 26px 22px;
-  }
-
-  .services-canvas-list span {
-    min-height: 62px;
-    font-size: 20px;
-  }
-
-  .services-canvas-outcome {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .services-canvas-outcome strong {
-    max-width: 230px;
-    text-align: left;
-  }
+  .services-hero-media { min-height: 360px; }
+  .services-hero-media img { object-position: 58% center; }
 
   .service-directory {
     width: calc(100% - 40px);
