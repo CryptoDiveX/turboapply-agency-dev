@@ -338,23 +338,28 @@
               <p class="contact-description">After the session, you’ll also receive a free audit of your business and see which AI integrations could support your growth.</p>
             </div>
 
-            <form class="contact-form" action="/api/contact" method="post" data-contact-form>
+            <form class="contact-form" action="/api/contact" method="post" data-contact-form data-turboapply-secure-form>
               <label class="contact-field">
                 <span>Name</span>
-                <input type="text" name="name" autocomplete="name" required />
+                <input type="text" name="name" autocomplete="name" maxlength="120" required />
               </label>
 
               <label class="contact-field">
                 <span>Email, phone, or messenger</span>
-                <input type="text" name="contact" autocomplete="email" required />
+                <input type="text" name="contact" autocomplete="email" maxlength="254" required />
               </label>
 
               <label class="contact-field">
                 <span>Let us know more about your business</span>
-                <textarea name="message" rows="5"></textarea>
+                <textarea name="message" rows="5" maxlength="1800" required></textarea>
               </label>
 
               <input type="hidden" name="page_url" value="" data-contact-page-url />
+              <input type="hidden" name="formId" value="agency-contact" />
+              <input type="hidden" name="source" value="turboapply.agency" />
+              <input type="hidden" name="serviceInterest" value="Website and automation consultation" />
+              <input type="hidden" name="submittedAt" value="" />
+              <input type="hidden" name="submissionIdempotencyKey" value="" />
               <p class="contact-status" aria-live="polite" data-contact-status></p>
               <button class="contact-submit" type="submit">send request</button>
             </form>
@@ -375,6 +380,8 @@
       </section>
     </main>
 
+    <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
+    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
     <script src="script.js?v=side-nav-active-state-20260713-3"></script>
   </body>
 </html>

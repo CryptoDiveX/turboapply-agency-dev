@@ -47,10 +47,10 @@
         <div class="guide-form-card" aria-label="Get the free TurboApply playbook">
           <h2>GET THE FREE PLAYBOOK NOW</h2>
 
-          <form class="guide-form" action="/submit-lead.php" method="post" data-free-guide-form>
+          <form class="guide-form" action="/submit-lead.php" method="post" data-free-guide-form data-turboapply-secure-form>
             <label class="guide-field">
               <span>Full Name</span>
-              <input type="text" name="name" autocomplete="name" placeholder="Full Name" required />
+              <input type="text" name="name" autocomplete="name" placeholder="Full Name" maxlength="120" required />
             </label>
 
             <label class="guide-field guide-phone-field">
@@ -61,18 +61,18 @@
                   <input type="hidden" name="countryCode" value="+1" data-country-code />
                   <div class="guide-country-results" id="guide-country-results" role="listbox" data-country-results hidden></div>
                 </div>
-                <input type="tel" name="phone" autocomplete="tel-national" placeholder="Phone number" inputmode="tel" required />
+                <input type="tel" name="phone" autocomplete="tel-national" placeholder="Phone number" inputmode="tel" maxlength="40" required />
               </div>
             </label>
 
             <label class="guide-field">
               <span>Email</span>
-              <input type="email" name="email" autocomplete="email" placeholder="Email" required />
+              <input type="email" name="email" autocomplete="email" placeholder="Email" maxlength="254" required />
             </label>
 
             <label class="guide-field">
               <span>Business Name</span>
-              <input type="text" name="businessName" autocomplete="organization" placeholder="Business Name" required />
+              <input type="text" name="businessName" autocomplete="organization" placeholder="Business Name" maxlength="160" required />
             </label>
 
             <label class="guide-field guide-select-field">
@@ -87,12 +87,13 @@
               </select>
             </label>
 
-            <input type="hidden" name="challenge" value="Free guide request" data-guide-challenge />
-            <input type="hidden" name="source" value="turboapply.agency/free-guide" />
-            <input type="hidden" name="leadSource" value="turboapply.agency" />
-            <input type="hidden" name="site" value="turboapply.agency" />
+            <input type="hidden" name="challenge" value="Free guide request" maxlength="1800" required data-guide-challenge />
+            <input type="hidden" name="formId" value="free-guide" />
+            <input type="hidden" name="source" value="turboapply.agency" />
+            <input type="hidden" name="serviceInterest" value="Free Guide" />
             <input type="hidden" name="redirect" value="/book-meeting/?name=11&amp;source=free-guide&amp;thankyou=1" />
             <input type="hidden" name="submittedAt" value="" data-submitted-at />
+            <input type="hidden" name="submissionIdempotencyKey" value="" />
             <p class="guide-status" aria-live="polite" data-lead-status></p>
             <button class="guide-submit" type="submit">SEND ME THE PLAYBOOK</button>
           </form>
@@ -119,6 +120,8 @@
       </section>
     </main>
 
-    <script src="script.js?v=country-search-dev-20260710-2"></script>
+    <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
+    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
+    <script src="script.js?v=lead-antispam-20260713-1"></script>
   </body>
 </html>

@@ -10,22 +10,6 @@ function setLeadStatus(message) {
   leadStatus.textContent = message;
 }
 
-function appendTrackingToSource() {
-  if (!guideForm) return;
-  const source = guideForm.querySelector('input[name="source"]');
-  if (!(source instanceof HTMLInputElement)) return;
-
-  const params = new URLSearchParams(window.location.search);
-  const trackingKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id'];
-  const tracking = trackingKeys
-    .map((key) => [key, params.get(key)])
-    .filter(([, value]) => Boolean(value))
-    .map(([key, value]) => `${key}=${value}`)
-    .join('; ');
-
-  if (tracking) source.value = `${source.value} | ${tracking}`;
-}
-
 function countryLabel(country) {
   return `${country.name} (${country.code})`;
 }
@@ -187,25 +171,10 @@ function packGuideContext() {
   guideChallenge.value = lines.join('\n');
 }
 
-function getRedirectUrl() {
-  if (!guideForm) return '/book-meeting/?source=free-guide&thankyou=1';
-
-  const redirect = guideForm.querySelector('input[name="redirect"]');
-  if (redirect instanceof HTMLInputElement && redirect.value.trim()) {
-    return redirect.value.trim();
-  }
-
-  return '/book-meeting/?source=free-guide&thankyou=1';
-}
-
-function shouldUseDevPreviewRedirect() {
-  return window.location.hostname === 'dev.turboapply.agency';
-}
-
 if (guideForm) {
-  appendTrackingToSource();
   setupCountrySearch();
   guideForm.addEventListener('submit', (event) => {
+    if (event.defaultPrevented || !window.TurboApplyFormSecurity?.prepare(guideForm)) return;
     if (submittedAt instanceof HTMLInputElement) {
       submittedAt.value = new Date().toISOString();
     }
@@ -213,11 +182,5 @@ if (guideForm) {
     packGuideContext();
     setLeadStatus('Submitting your request…');
     guideForm.querySelector('.guide-submit')?.setAttribute('disabled', 'disabled');
-
-    if (shouldUseDevPreviewRedirect()) {
-      event.preventDefault();
-      setLeadStatus('Opening the booking calendar…');
-      window.location.assign(getRedirectUrl());
-    }
   });
 }

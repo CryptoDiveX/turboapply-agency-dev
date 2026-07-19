@@ -2,7 +2,7 @@
   "site": "TurboApply Agency",
   "canonical": "https://turboapply.agency/",
   "phone": "+1 (778) 819-3665",
-  "phone_tel": "+17788193665",
+  "phone_tel": "+177****3665",
   "email": "turboapply.ai@gmail.com",
   "location": "Vancouver, BC, Canada",
   "languages": [
@@ -180,31 +180,76 @@
     {
       "endpoint": "/api/contact",
       "method": "POST",
-      "fields": [
+      "form_id": "agency-contact",
+      "service_interest": "Website and automation consultation",
+      "required_fields": [
         "name",
         "contact",
         "message",
-        "page_url"
+        "source",
+        "formId",
+        "serviceInterest",
+        "submittedAt",
+        "submissionIdempotencyKey"
       ],
-      "submit_safety": "Public MCP tools must validate first and default to dry_run."
+      "limits": {
+        "name": 120,
+        "contact": 254,
+        "message": 1800
+      },
+      "submit_safety": "Public MCP tools validate only. Live submission requires explicit confirmation and must not be attempted as a dry-run side effect."
     },
     {
       "endpoint": "/submit-lead.php",
       "method": "POST",
-      "fields": [
-        "name",
-        "contact",
-        "challenge",
-        "service",
-        "redirect",
-        "leadSource"
+      "form_ids": [
+        "services-consultation",
+        "marketing-audit",
+        "sales-audit",
+        "ai-receptionist-demo",
+        "free-guide",
+        "health-audit"
       ],
-      "submit_safety": "Live submission requires explicit confirmation."
+      "common_required_fields": [
+        "name",
+        "source",
+        "formId",
+        "serviceInterest",
+        "submittedAt",
+        "submissionIdempotencyKey"
+      ],
+      "message_alias": "challenge",
+      "message_maxlength": 1800,
+      "free_guide_requires": [
+        "email",
+        "phone",
+        "businessName",
+        "monthlyRevenue"
+      ],
+      "legacy_aliases": {
+        "service": "serviceInterest",
+        "leadIdempotencyKey": "submissionIdempotencyKey"
+      },
+      "submit_safety": "Live submission requires explicit confirmation. Do not send production test leads."
     }
   ],
+  "form_validation": {
+    "authoritative_layer": "server",
+    "browser_layer": "advisory and user-facing",
+    "contact_policy": "Valid email, metadata-validated phone, or supported messenger handle. Free Guide requires both email and phone.",
+    "source_policy": "Exact allow-listed TurboApply host. DevNet and localhost browser previews stamp dev.turboapply.agency and route as Internal Testing.",
+    "idempotency_policy": "Suppress only the same recent submission key and same normalized content fingerprint.",
+    "classification_categories": [
+      "Real",
+      "Spam",
+      "Internal Testing"
+    ],
+    "ai_fallback": "Optional. Deterministic classification remains authoritative when the provider is unavailable or malformed. Identity and tracking fields are excluded, and contact patterns in the message are redacted."
+  },
   "mcp": {
     "endpoint": "https://turboapply.agency/mcp",
-    "descriptor": "https://turboapply.agency/ai/mcp.json"
+    "descriptor": "https://turboapply.agency/ai/mcp.json",
+    "live_submission": "disabled"
   },
-  "updated": "2026-07-18"
+  "updated": "2026-07-19"
 }

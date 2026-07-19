@@ -310,21 +310,26 @@
           class="ai-demo-form"
           action="/submit-lead.php"
           method="post"
+          data-turboapply-secure-form
           data-fallback-email="turboapply.ai@gmail.com"
         >
           <input type="hidden" name="redirect" value="/book-meeting/" />
-          <input type="hidden" name="service" value="AI Receptionist" />
+          <input type="hidden" name="formId" value="ai-receptionist-demo" />
+          <input type="hidden" name="source" value="turboapply.agency" />
+          <input type="hidden" name="serviceInterest" value="AI Receptionist" />
+          <input type="hidden" name="submittedAt" value="" />
+          <input type="hidden" name="submissionIdempotencyKey" value="" />
           <label>
             <span>Your name</span>
-            <input name="name" type="text" autocomplete="name" required />
+            <input name="name" type="text" autocomplete="name" maxlength="120" required />
           </label>
           <label>
             <span>Email, phone, or messenger</span>
-            <input name="contact" type="text" autocomplete="email" required />
+            <input name="contact" type="text" autocomplete="email" maxlength="254" required />
           </label>
           <label>
             <span>Where do new leads arrive today?</span>
-            <textarea name="challenge" rows="3" required></textarea>
+            <textarea name="challenge" rows="3" maxlength="1800" required></textarea>
           </label>
           <button type="submit">Get started</button>
         </form>
@@ -345,6 +350,8 @@
       </footer>
     </main>
 
+    <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
+    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
     <script>
       (() => {
         const bookingInput = document.getElementById('booking-value');

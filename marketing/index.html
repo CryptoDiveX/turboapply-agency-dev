@@ -320,22 +320,28 @@
           class="audit-form"
           action="/submit-lead.php"
           method="post"
+          data-turboapply-secure-form
           data-fallback-email="info@turboapply.agency"
           data-booking-url="/sales/book-meeting/"
         >
           <input type="hidden" name="redirect" value="/sales/book-meeting/" />
+          <input type="hidden" name="formId" value="marketing-audit" />
+          <input type="hidden" name="source" value="turboapply.agency" />
+          <input type="hidden" name="serviceInterest" value="Marketing systems audit" />
+          <input type="hidden" name="submittedAt" value="" />
+          <input type="hidden" name="submissionIdempotencyKey" value="" />
           <p>Let’s talk. We’ll discuss your business, your goals, and the work process.</p>
           <label>
             <span>Your name</span>
-            <input name="name" type="text" autocomplete="name" required />
+            <input name="name" type="text" autocomplete="name" maxlength="120" required />
           </label>
           <label>
             <span>Email, phone, or messenger</span>
-            <input name="contact" type="text" autocomplete="email" required />
+            <input name="contact" type="text" autocomplete="email" maxlength="254" required />
           </label>
           <label>
             <span>What’s your biggest challenge?</span>
-            <textarea name="challenge" rows="3" required></textarea>
+            <textarea name="challenge" rows="3" maxlength="1800" required></textarea>
           </label>
           <label class="audit-checkbox">
             <input name="webSummitAttendee" type="checkbox" value="Yes" />
@@ -448,6 +454,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="../sales/script.js?v=hash-target-alignment-20260712-1"></script>
+    <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
+    <script src="/public/js/turboapply-form-security.js?v=antispam-20260713-1"></script>
+    <script src="../sales/script.js?v=lead-antispam-20260713-1"></script>
   </body>
 </html>

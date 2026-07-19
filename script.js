@@ -39,7 +39,7 @@ document.querySelectorAll('[data-environment-health-link]').forEach((link) => {
   link.href = healthWebsiteUrl;
 });
 
-if (contactForm && window.location.hostname === 'dev.turboapply.agency') {
+if (contactForm && isDevelopmentWebsiteHost) {
   contactForm.action = productionContactApiUrl;
 }
 
@@ -1107,6 +1107,7 @@ function observeContactForm() {
 
   contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!window.TurboApplyFormSecurity?.prepare(contactForm)) return;
     if (contactPageUrl) contactPageUrl.value = window.location.href;
 
     const submitButton = contactForm.querySelector('.contact-submit');
@@ -1130,6 +1131,7 @@ function observeContactForm() {
       }
 
       contactForm.reset();
+      window.TurboApplyFormSecurity?.rotateIdempotencyKey(contactForm);
       if (contactPageUrl) contactPageUrl.value = window.location.href;
       setContactStatus('Thank you — your request was sent. Redirecting to booking…', 'success');
       window.location.assign(contactBookingRedirectUrl);

@@ -93,7 +93,8 @@ const initAuditForm = () => {
     return redirectInput;
   };
 
-  form.addEventListener("submit", () => {
+  form.addEventListener("submit", (event) => {
+    if (event.defaultPrevented || !window.TurboApplyFormSecurity?.prepare(form)) return;
     error?.classList.remove("is-visible");
 
     const payload = new FormData(form);
