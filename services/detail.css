@@ -20,6 +20,7 @@
 }
 
 .service-page-hero,
+.service-page-media,
 .service-editorial-section,
 .service-page-cta-inner,
 .service-detail-page .site-footer-inner {
@@ -113,6 +114,21 @@
   min-height: 50px;
   margin-top: 10px;
   padding-inline: 24px;
+}
+
+.service-page-media {
+  margin-block: 0 clamp(28px, 4vw, 64px);
+  overflow: hidden;
+  background: var(--service-detail-soft);
+}
+
+.service-page-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.15 / 1;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .service-companion-link {
@@ -341,6 +357,10 @@
     max-width: 720px;
   }
 
+  .service-page-image {
+    aspect-ratio: 16 / 9;
+  }
+
   .service-editorial-section,
   .service-page-cta-inner {
     gap: 48px;
@@ -360,6 +380,7 @@
 
 @media (max-width: 760px) {
   .service-page-hero,
+  .service-page-media,
   .service-editorial-section,
   .service-page-cta-inner,
   .service-detail-page .site-footer-inner {
@@ -394,6 +415,14 @@
 
   .service-page-offer strong {
     font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .service-page-media {
+    margin-bottom: 18px;
+  }
+
+  .service-page-image {
+    aspect-ratio: 4 / 3;
   }
 
   .service-editorial-section {

@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/integrations/styles.css?v=integrations-color-only-nav-20260714-19" />
-    <link rel="stylesheet" href="/services/detail.css?v=service-detail-pages-20260720-1" />
+    <link rel="stylesheet" href="/services/detail.css?v=service-detail-pages-20260720-2" />
     <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -50,6 +50,9 @@
                   },
                   "mainEntity": {
                         "@id": "https://turboapply.agency/services/online-booking-calendar-integration/#service"
+                  },
+                  "primaryImageOfPage": {
+                        "@id": "https://turboapply.agency/services/online-booking-calendar-integration/#primaryimage"
                   }
             },
             {
@@ -59,6 +62,9 @@
                   "url": "https://turboapply.agency/services/online-booking-calendar-integration/",
                   "description": "Connect a website or lead flow to a calendar so customers can see availability, book the right appointment, and receive the information your team needs before the meeting.",
                   "serviceType": "Online Booking (Calendar Integration)",
+                  "image": {
+                        "@id": "https://turboapply.agency/services/online-booking-calendar-integration/#primaryimage"
+                  },
                   "provider": {
                         "@id": "https://turboapply.agency/#business"
                   },
@@ -89,6 +95,15 @@
                   "itemOffered": {
                         "@id": "https://turboapply.agency/services/online-booking-calendar-integration/#service"
                   }
+            },
+            {
+                  "@type": "ImageObject",
+                  "@id": "https://turboapply.agency/services/online-booking-calendar-integration/#primaryimage",
+                  "url": "https://turboapply.agency/public/assets/agents/editorial/follow-up.webp",
+                  "contentUrl": "https://turboapply.agency/public/assets/agents/editorial/follow-up.webp",
+                  "width": 1200,
+                  "height": 900,
+                  "caption": "Two colleagues planning a customer booking workflow"
             },
             {
                   "@type": "BreadcrumbList",
@@ -123,7 +138,7 @@
 
     <header class="site-header">
       <a class="brand header-brand" href="/" aria-label="TurboApply home">
-        <img src="../../public/assets/brand/turboapply-t-mark.svg" alt="" />
+        <img src="/public/assets/brand/turboapply-t-mark.svg" alt="" />
         <span>TURBOAPPLY</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
@@ -162,6 +177,18 @@
           </aside>
         </div>
       </section>
+
+      <figure class="service-page-media">
+        <img
+          class="service-page-image"
+          src="/public/assets/agents/editorial/follow-up.webp"
+          alt="Two colleagues planning a customer booking workflow"
+          width="1200"
+          height="900"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
 
       <section class="service-editorial-section service-fit-section" aria-labelledby="when-title">
         <div class="service-section-heading">
