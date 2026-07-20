@@ -159,7 +159,7 @@
       else if (randomToken(name) && randomToken(message)) setError(messageControl, 'Enter a meaningful goal or question.');
     }
 
-    if (contactControl && 'value' in contactControl && String(contactControl.value || '').trim() && !validatePhoneOrMessenger(contactControl.value)) {
+    if (contactControl && 'value' in contactControl && !validatePhoneOrMessenger(contactControl.value)) {
       setError(contactControl, 'Enter a valid phone number or supported messenger handle.');
     }
     if (emailControl && 'value' in emailControl && String(emailControl.value || '').trim() && !EMAIL_PATTERN.test(String(emailControl.value || '').trim())) {

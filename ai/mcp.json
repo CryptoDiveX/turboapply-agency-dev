@@ -6,6 +6,7 @@
   "endpoint": "https://turboapply.agency/mcp",
   "context": "https://turboapply.agency/ai/turboapply-agency-context.json",
   "llms": "https://turboapply.agency/llms.txt",
+  "llms_full": "https://turboapply.agency/llms-full.txt",
   "tools": [
     "get_site_overview",
     "list_services",
@@ -14,5 +15,5 @@
     "validate_contact_inquiry",
     "submit_contact_inquiry"
   ],
-  "updated": "2026-07-19"
+  "updated": "2026-07-20"
 }

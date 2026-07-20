@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="TurboApply builds cold email outreach systems, lead follow-up, CRM handoff, and AI-assisted sales workflows for service businesses."
+      content="TurboApply builds practical marketing systems across lead generation, email journeys, cold outreach, CRM handoff, follow-up, and AI-assisted sales workflows."
     />
-    <title>Cold Email Outreach Systems for Service Businesses | TurboApply</title>
+    <title>Marketing Systems for Service Businesses | TurboApply</title>
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="TurboApply" />
-    <meta property="og:title" content="Cold Email Outreach Systems for Service Businesses | TurboApply" />
-    <meta property="og:description" content="Cold email outreach, lead follow-up, CRM handoff, and AI-assisted sales workflows for service businesses." />
+    <meta property="og:title" content="Marketing Systems for Service Businesses | TurboApply" />
+    <meta property="og:description" content="Lead generation, email journeys, cold outreach, CRM handoff, follow-up, and AI-assisted sales workflows for service businesses." />
     <meta property="og:url" content="https://turboapply.agency/marketing/" />
     <meta property="og:image" content="https://turboapply.agency/public/assets/brand/turboapply-agency-og.jpg?v=seo-media-20260711-1" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -22,8 +22,8 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="TurboApply web design and AI automation agency" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cold Email Outreach Systems for Service Businesses | TurboApply" />
-    <meta name="twitter:description" content="Cold email outreach, lead follow-up, CRM handoff, and AI-assisted sales workflows for service businesses." />
+    <meta name="twitter:title" content="Marketing Systems for Service Businesses | TurboApply" />
+    <meta name="twitter:description" content="Lead generation, email journeys, cold outreach, CRM handoff, follow-up, and AI-assisted sales workflows for service businesses." />
     <meta name="twitter:image" content="https://turboapply.agency/public/assets/brand/turboapply-agency-og.jpg?v=seo-media-20260711-1" />
     <meta name="theme-color" content="#050607" />
     <link rel="icon" type="image/svg+xml" href="/public/assets/brand/turboapply-agency-logo.svg?v=t-logo-20260708-1" />
@@ -32,6 +32,23 @@
     <link rel="alternate" type="application/json" href="/ai/turboapply-agency-context.json" title="TurboApply AI context" />
     <link rel="mcp" href="/ai/mcp.json" title="TurboApply MCP endpoint" />
     <link rel="canonical" href="https://turboapply.agency/marketing/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Marketing Systems for Service Businesses",
+        "url": "https://turboapply.agency/marketing/",
+        "description": "Lead generation, email marketing, cold outreach, CRM handoff, follow-up, and AI-assisted sales workflow capabilities.",
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Lead Generation", "url": "https://turboapply.agency/services/lead-generation/" },
+            { "@type": "ListItem", "position": 2, "name": "Email Marketing", "url": "https://turboapply.agency/services/email-marketing/" },
+            { "@type": "ListItem", "position": 3, "name": "Cold Email Outreach", "url": "https://turboapply.agency/services/cold-email-outreach/" }
+          ]
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
@@ -341,8 +358,8 @@
             <input name="email" type="email" autocomplete="email" maxlength="254" required />
           </label>
           <label>
-            <span>Phone or messenger <small>(optional)</small></span>
-            <input name="contact" type="text" autocomplete="tel" maxlength="254" />
+            <span>Phone (or Messenger)</span>
+            <input name="contact" type="text" autocomplete="tel" maxlength="254" required />
           </label>
           <label>
             <span>What’s your biggest challenge?</span>
@@ -460,7 +477,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=contact-fields-preview-fence-20260719-2"></script>
+    <script src="/public/js/turboapply-form-security.js?v=required-contact-20260720-1"></script>
     <script src="../sales/script.js?v=split-fields-20260719-2"></script>
   </body>
 </html>

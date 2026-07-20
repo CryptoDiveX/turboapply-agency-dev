@@ -45,6 +45,23 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 
 These are starting references, not fixed quotes. Final pricing depends on scope, content, data quality, integrations, third-party tools, advertising or sending costs, and support requirements. The quote is confirmed before work begins.
 
+## Dedicated service pages
+- Business Process & Automation Audit: https://turboapply.agency/services/business-process-automation-audit/
+- Web Design: https://turboapply.agency/services/web-design/
+- Health Clinic Website Design: https://turboapply.agency/services/health-clinic-website-design/
+- SEO Audit & Implementation: https://turboapply.agency/services/seo-audit-implementation/
+- Website Maintenance: https://turboapply.agency/services/website-maintenance/
+- Website Migration: https://turboapply.agency/services/website-migration/
+- AI Receptionist: https://turboapply.agency/ai-receptionist/
+- Online Booking (Calendar Integration): https://turboapply.agency/services/online-booking-calendar-integration/
+- CRM Integrations: https://turboapply.agency/services/crm-integrations/
+- Booking Software Integrations: https://turboapply.agency/services/booking-software-integrations/
+- AI Integrations: https://turboapply.agency/services/ai-integrations/
+- AI Agent Consultation (1 Hour): https://turboapply.agency/services/ai-agent-consultation/
+- Lead Generation: https://turboapply.agency/services/lead-generation/
+- Email Marketing: https://turboapply.agency/services/email-marketing/
+- Cold Email Outreach: https://turboapply.agency/services/cold-email-outreach/
+
 ## AI sales agent roles
 - Director's Personal Assistant Agent — scheduling, reminders, follow-ups, and admin support.
 - Lead Generator Agent — finds and qualifies new opportunities.
@@ -65,7 +82,7 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 - https://turboapply.agency/book-meeting/
 
 ## Public form rules
-Every public contact and lead form begins with separate Name, required Email, and optional Phone or messenger fields, followed by required business/challenge details where applicable. Phone or messenger accepts a valid phone number or a supported messenger handle; it must not duplicate the email field. The Services page sends its successful handoff to `/book-meeting/`. Canonical hidden metadata identifies the form, source, service, submission time, and idempotency key. Agents should validate data before preparing a submission. Live submissions must not be made unless the user explicitly confirms.
+Every public contact and lead form begins with Name, required Email, and one required `Phone (or Messenger)` field, followed by required business/challenge details where applicable. The combined contact field accepts a valid phone number or a supported messenger handle; it must not duplicate the email field, and a separate Messenger field is forbidden. The Services page sends its successful handoff to `/book-meeting/`. Canonical hidden metadata identifies the form, source, service, submission time, and idempotency key. Agents should validate data before preparing a submission. Live submissions must not be made unless the user explicitly confirms.
 
 ## Agent discovery
 - Structured context: https://turboapply.agency/ai/turboapply-agency-context.json

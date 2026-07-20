@@ -31,17 +31,19 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Service",
+        "@type": "CollectionPage",
         "name": "Business and AI Integrations",
-        "provider": {
-          "@type": "Organization",
-          "name": "TurboApply",
-          "url": "https://turboapply.agency/"
-        },
         "url": "https://turboapply.agency/integrations/",
-        "description": "CRM, booking, lead capture, payments, communications, reporting, and AI workflow integrations for growing businesses.",
-        "areaServed": ["Canada", "United States"],
-        "serviceType": ["CRM integration", "Booking integration", "Lead automation", "AI workflow integration", "Business systems integration"]
+        "description": "A capability hub for CRM, booking, lead capture, payments, communications, reporting, and AI workflow integrations.",
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Online Booking and Calendar Integration", "url": "https://turboapply.agency/services/online-booking-calendar-integration/" },
+            { "@type": "ListItem", "position": 2, "name": "CRM Integrations", "url": "https://turboapply.agency/services/crm-integrations/" },
+            { "@type": "ListItem", "position": 3, "name": "Booking Software Integrations", "url": "https://turboapply.agency/services/booking-software-integrations/" },
+            { "@type": "ListItem", "position": 4, "name": "AI Integrations", "url": "https://turboapply.agency/services/ai-integrations/" }
+          ]
+        }
       }
     </script>
   </head>

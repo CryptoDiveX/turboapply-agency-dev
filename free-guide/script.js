@@ -131,20 +131,6 @@ function syncCountryCode() {
   return normalizedCode;
 }
 
-function normalizePhoneWithCountryCode() {
-  if (!guideForm) return;
-
-  const phone = guideForm.querySelector('input[name="phone"]');
-  if (!(phone instanceof HTMLInputElement)) return;
-
-  const rawPhone = phone.value.trim();
-  if (!rawPhone) return;
-
-  const normalizedCode = syncCountryCode();
-  const normalizedPhone = rawPhone.startsWith('+') ? rawPhone : `${normalizedCode} ${rawPhone}`;
-  phone.value = normalizedPhone.replace(/\s+/g, ' ').trim();
-}
-
 if (guideForm) {
   setupCountrySearch();
   guideForm.addEventListener('submit', (event) => {

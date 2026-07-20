@@ -11,7 +11,7 @@ Structured AI context: https://turboapply.agency/ai/turboapply-agency-context.js
 
 Key pages:
 - / — main website and portfolio/services overview.
-- /services/ — business audits, website design, SEO pages, AI/CRM automation, lead-generation systems, and ongoing support with published starting references.
+- /services/ — complete 15-service directory for audits, websites, SEO, AI/CRM automation, lead generation, marketing, and support. All 15 canonical detail pages share one generated editorial contract: 14 use `/services/<service-slug>/`, while AI Receptionist keeps `/ai-receptionist/`.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
 - /free-guide/ — free lead quality guide funnel.
