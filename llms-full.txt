@@ -70,11 +70,18 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 - Cold Outreach Agent — supports research, drafts, sequences, and reply tracking.
 - Performance Coach Agent — reviews activity, spots weak points, and suggests next actions.
 
+## About the team
+- Katerina Antonenko leads design and marketing. Her experience launching multiple businesses shaped TurboApply's focus on clear funnels and thoughtful automation.
+- Vasiliy Antonenko leads software development and technical delivery and brings six years of project management experience.
+- TurboApply's shared goal is to help businesses thrive through exceptional service, mapped requirements, quality delivery, and practical solutions.
+- Team page: https://turboapply.agency/about/
+
 ## Important public pages
 - https://turboapply.agency/
 - https://turboapply.agency/services/
 - https://turboapply.agency/integrations/
 - https://turboapply.agency/agents/
+- https://turboapply.agency/about/
 - https://turboapply.agency/free-guide/
 - https://turboapply.agency/ai-receptionist/
 - https://turboapply.agency/marketing/

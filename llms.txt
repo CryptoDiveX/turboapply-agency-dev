@@ -14,6 +14,7 @@ Key pages:
 - /services/ — complete 15-service directory for audits, websites, SEO, AI/CRM automation, lead generation, marketing, and support. All 15 canonical detail pages share one generated editorial contract: 14 use `/services/<service-slug>/`, while AI Receptionist keeps `/ai-receptionist/`.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
+- /about/ — Katerina and Vasiliy, their design, marketing, software development, technical leadership, project management, local-business focus, and working principles.
 - /free-guide/ — free lead quality guide funnel.
 - /ai-receptionist/ — AI receptionist service page.
 - /marketing/ — cold email outreach / sales workflow page.

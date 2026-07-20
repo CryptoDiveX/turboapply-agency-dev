@@ -3213,3 +3213,59 @@ button { font: inherit; }
     transform: none !important;
   }
 }
+
+/* Desktop contact form: one outer contact surface, no nested card frame. */
+.contact-form {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.contact-field textarea {
+  min-height: 112px;
+}
+
+.contact-submit {
+  margin-top: 14px;
+}
+
+@media (min-width: 941px) {
+  .contact-card {
+    padding-block: 48px;
+  }
+
+  .contact-form {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 940px) {
+  .contact-field textarea {
+    min-height: 132px;
+  }
+
+  .contact-submit {
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 941px) and (max-height: 820px) and (hover: hover) and (pointer: fine),
+       (max-width: 1100px) and (max-height: 640px) and (orientation: landscape) {
+  .contact-card {
+    padding-block: 30px;
+  }
+
+  .contact-form {
+    gap: 10px;
+  }
+
+  .contact-field textarea {
+    min-height: 72px;
+  }
+
+  .contact-submit {
+    margin-top: 8px;
+  }
+}
