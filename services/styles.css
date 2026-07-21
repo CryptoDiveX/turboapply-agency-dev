@@ -331,3 +331,273 @@
     transition: none;
   }
 }
+
+/* Reference-led services catalog: large category chapters with image-led black cards. */
+.service-directory {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(88px, 9vw, 144px) max(32px, calc((100vw - 1440px) / 2 + 32px));
+  display: block;
+  background: #fff;
+  border-radius: 0;
+}
+
+.service-directory-heading {
+  position: static;
+  max-width: 920px;
+  margin: 0 auto clamp(100px, 10vw, 156px);
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.service-directory-heading h2 {
+  max-width: 860px;
+  font: 400 clamp(52px, 6vw, 96px)/0.94 "Urbanist", "Inter", system-ui, sans-serif;
+}
+
+.service-directory-heading > p:not(.eyebrow) {
+  max-width: 680px;
+  font: 400 19px/1.5 "Karla", "Inter", system-ui, sans-serif;
+}
+
+.service-directory-heading .button {
+  display: none;
+}
+
+.service-directory-groups {
+  display: grid;
+  gap: clamp(116px, 12vw, 190px);
+}
+
+.service-directory-group,
+.service-directory-group:last-child {
+  padding: 0;
+  border: 0;
+}
+
+.service-directory-index {
+  width: max-content;
+  margin: 0 auto 24px;
+  padding: 7px 11px;
+  border-radius: 4px;
+  background: #242424;
+  color: #fff;
+  font: 500 12px/1 "Inter", system-ui, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.service-directory-group h3 {
+  max-width: 1120px;
+  margin: 0 auto clamp(48px, 5vw, 76px);
+  font: 400 clamp(46px, 5.2vw, 82px)/0.95 "Urbanist", "Inter", system-ui, sans-serif;
+  letter-spacing: 0;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.service-directory-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  border: 0;
+}
+
+.service-directory-group:first-child .service-directory-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.service-directory-group:nth-child(3) .service-directory-list,
+.service-directory-group:nth-child(4) .service-directory-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-directory-group:nth-child(2) .service-directory-list a:last-child {
+  grid-column: 1 / -1;
+  min-height: 430px;
+}
+
+.service-directory-list a {
+  --service-art: none;
+  position: relative;
+  isolation: isolate;
+  min-height: 500px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  background: #050505;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.service-directory-list a::before {
+  content: "SERVICE";
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #4a32ff;
+  color: #fff;
+  font: 600 10px/1 "Inter", system-ui, sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.service-directory-list a::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -3%;
+  bottom: -4%;
+  width: 66%;
+  height: 58%;
+  background: var(--service-art) right bottom / contain no-repeat;
+  opacity: 0.96;
+  transition: transform 240ms ease;
+}
+
+.service-directory-list a:hover {
+  color: #fff;
+  background: #111;
+  transform: translateY(-3px);
+}
+
+.service-directory-list a:hover::after {
+  transform: scale(1.025);
+}
+
+.service-directory-list a:focus-visible {
+  outline: 3px solid var(--services-blue);
+  outline-offset: 5px;
+}
+
+.service-directory-list a > span {
+  position: relative;
+  z-index: 2;
+  max-width: 82%;
+  margin-top: 18px;
+  font: 400 clamp(28px, 2.5vw, 42px)/0.98 "Urbanist", "Inter", system-ui, sans-serif;
+}
+
+.service-directory-list a > small {
+  position: relative;
+  z-index: 2;
+  max-width: 62%;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.72);
+  font: 400 16px/1.42 "Karla", "Inter", system-ui, sans-serif;
+}
+
+.service-directory-list a > strong {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font: 500 11px/1 "Inter", system-ui, sans-serif;
+  white-space: nowrap;
+}
+
+.service-directory-group:first-child .service-directory-list a {
+  min-height: 430px;
+}
+
+.service-directory-list a[href="/services/business-process-automation-audit/"] { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
+.service-directory-list a[href="/services/web-design/"] { --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp"); }
+.service-directory-list a[href="/services/health-clinic-website-design/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
+.service-directory-list a[href="/services/seo-audit-implementation/"] { --service-art: url("/public/assets/services/motion-cards/website-design.webp"); }
+.service-directory-list a[href="/services/website-maintenance/"] { --service-art: url("/public/assets/services/cards/service-card-website-design.webp"); }
+.service-directory-list a[href="/services/website-migration/"] { --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp"); }
+.service-directory-list a[href="/ai-receptionist/"] { --service-art: url("/public/assets/services/motion-cards/ai-receptionist.webp"); }
+.service-directory-list a[href="/services/online-booking-calendar-integration/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
+.service-directory-list a[href="/services/crm-integrations/"] { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
+.service-directory-list a[href="/services/booking-software-integrations/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
+.service-directory-list a[href="/services/ai-integrations/"] { --service-art: url("/public/assets/services/cards/service-card-ai-agents-robot-workflow.webp"); }
+.service-directory-list a[href="/services/ai-agent-consultation/"] { --service-art: url("/public/assets/services/cards/service-card-ai-agents.webp"); }
+.service-directory-list a[href="/services/lead-generation/"] { --service-art: url("/public/assets/services/cards/service-card-cold-email.webp"); }
+.service-directory-list a[href="/services/email-marketing/"] { --service-art: url("/public/assets/services/motion-cards/cold-email-outreach.webp"); }
+.service-directory-list a[href="/services/cold-email-outreach/"] { --service-art: url("/public/assets/services/cards/service-card-cold-email.webp"); }
+
+@media (max-width: 1180px) {
+  .service-directory-group:nth-child(3) .service-directory-list,
+  .service-directory-group:nth-child(4) .service-directory-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-directory-group:nth-child(4) .service-directory-list a:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .service-directory {
+    width: 100%;
+    margin: 0;
+    padding: 72px 20px;
+    border-radius: 0;
+  }
+
+  .service-directory-heading {
+    margin-bottom: 88px;
+    gap: 20px;
+  }
+
+  .service-directory-heading h2 {
+    font-size: clamp(44px, 13vw, 58px);
+  }
+
+  .service-directory-groups {
+    gap: 96px;
+  }
+
+  .service-directory-group h3 {
+    margin-bottom: 38px;
+    font-size: clamp(40px, 11vw, 52px);
+  }
+
+  .service-directory-list,
+  .service-directory-group:nth-child(3) .service-directory-list,
+  .service-directory-group:nth-child(4) .service-directory-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .service-directory-group:nth-child(2) .service-directory-list a:last-child,
+  .service-directory-group:nth-child(4) .service-directory-list a:last-child {
+    grid-column: auto;
+  }
+
+  .service-directory-list a,
+  .service-directory-group:first-child .service-directory-list a,
+  .service-directory-group:nth-child(2) .service-directory-list a:last-child {
+    min-height: 430px;
+    padding: 24px;
+  }
+
+  .service-directory-list a > span {
+    max-width: 92%;
+    font-size: 31px;
+  }
+
+  .service-directory-list a > small {
+    max-width: 82%;
+    font-size: 15px;
+  }
+
+  .service-directory-list a::after {
+    width: 74%;
+    height: 50%;
+  }
+}
