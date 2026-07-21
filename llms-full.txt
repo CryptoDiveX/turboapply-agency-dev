@@ -72,7 +72,7 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 
 ## About the team
 - Katerina Antonenko leads design and marketing. Her experience launching multiple businesses shaped TurboApply's focus on clear funnels and thoughtful automation.
-- Vasiliy Antonenko leads software development and technical delivery and brings six years of project management experience.
+- Vasiliy Baryshnikov leads software development and technical delivery and brings six years of project management experience.
 - TurboApply's shared goal is to help businesses thrive through exceptional service, mapped requirements, quality delivery, and practical solutions.
 - Team page: https://turboapply.agency/about/
 
