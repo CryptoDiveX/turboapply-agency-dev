@@ -307,10 +307,11 @@
 
 /* Reference-led services catalog: large category chapters with image-led black cards. */
 .service-directory {
+  --service-directory-gutter: max(32px, calc((100vw - 1440px) / 2 + 32px));
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: clamp(88px, 9vw, 144px) max(32px, calc((100vw - 1440px) / 2 + 32px));
+  padding: clamp(88px, 9vw, 144px) var(--service-directory-gutter);
   display: block;
   background: #fff;
   border-radius: 0;
@@ -350,6 +351,51 @@
 .service-directory-group:last-child {
   padding: 0;
   border: 0;
+}
+
+.service-directory-group-featured {
+  position: relative;
+  isolation: isolate;
+  margin-inline: calc(0px - var(--service-directory-gutter));
+  padding: clamp(72px, 7vw, 112px) var(--service-directory-gutter);
+  background: #050505;
+  color: #fff;
+}
+
+.service-directory-group-link {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+}
+
+.service-directory-group-link:focus-visible {
+  outline: 3px solid var(--services-blue);
+  outline-offset: -8px;
+}
+
+.service-directory-link-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.service-directory-group-featured .service-directory-index {
+  background: #fff;
+  color: #050505;
+}
+
+.service-directory-group-featured .service-directory-card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #151515;
+}
+
+.service-directory-group-featured:hover .service-directory-card {
+  background: #202020;
 }
 
 .service-directory-index {
@@ -394,7 +440,8 @@
   min-height: 430px;
 }
 
-.service-directory-list a {
+.service-directory-list a,
+.service-directory-card {
   --service-art: none;
   position: relative;
   isolation: isolate;
@@ -414,7 +461,8 @@
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.service-directory-list a::before {
+.service-directory-list a::before,
+.service-directory-card::before {
   content: "SERVICE";
   position: relative;
   z-index: 2;
@@ -427,7 +475,8 @@
   letter-spacing: 0.04em;
 }
 
-.service-directory-list a::after {
+.service-directory-list a::after,
+.service-directory-card::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -446,7 +495,8 @@
   transform: translateY(-3px);
 }
 
-.service-directory-list a:hover::after {
+.service-directory-list a:hover::after,
+.service-directory-group-featured:hover .service-directory-card::after {
   transform: scale(1.025);
 }
 
@@ -455,7 +505,8 @@
   outline-offset: 5px;
 }
 
-.service-directory-list a > span {
+.service-directory-list a > span,
+.service-directory-card > span {
   position: relative;
   z-index: 2;
   max-width: 82%;
@@ -463,7 +514,8 @@
   font: 400 clamp(28px, 2.5vw, 42px)/0.98 "Urbanist", "Inter", system-ui, sans-serif;
 }
 
-.service-directory-list a > small {
+.service-directory-list a > small,
+.service-directory-card > small {
   position: relative;
   z-index: 2;
   max-width: 62%;
@@ -472,7 +524,8 @@
   font: 400 16px/1.42 "Karla", "Inter", system-ui, sans-serif;
 }
 
-.service-directory-list a > strong {
+.service-directory-list a > strong,
+.service-directory-card > strong {
   position: relative;
   z-index: 2;
   margin-top: 20px;
@@ -484,11 +537,13 @@
   white-space: nowrap;
 }
 
-.service-directory-group:first-child .service-directory-list a {
+.service-directory-group:first-child .service-directory-list a,
+.service-directory-group:first-child .service-directory-card {
   min-height: 430px;
 }
 
 .service-directory-list a[href="/services/business-process-automation-audit/"] { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
+.service-directory-group-featured .service-directory-card { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
 .service-directory-list a[href="/services/web-design/"] { --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp"); }
 .service-directory-list a[href="/services/health-clinic-website-design/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
 .service-directory-list a[href="/services/seo-audit-implementation/"] { --service-art: url("/public/assets/services/motion-cards/website-design.webp"); }
@@ -517,6 +572,7 @@
 
 @media (max-width: 760px) {
   .service-directory {
+    --service-directory-gutter: 20px;
     width: 100%;
     margin: 0;
     padding: 72px 20px;
@@ -555,6 +611,7 @@
   }
 
   .service-directory-list a,
+  .service-directory-card,
   .service-directory-group:first-child .service-directory-list a,
   .service-directory-group:nth-child(2) .service-directory-list a:last-child {
     min-height: 430px;

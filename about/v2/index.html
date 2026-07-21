@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About TurboApply | Founders, Story &amp; Process</title>
+  <title>About TurboApply V2 | Final Founder Story</title>
   <meta name="description" content="Meet Katerina and Vasiliy, learn why they created TurboApply, see the agency process, and follow upcoming reviews and practical Shorts." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://turboapply.agency/about/" />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://turboapply.agency/about/v2/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="TurboApply" />
-  <meta property="og:title" content="About TurboApply | Founders, Story &amp; Process" />
+  <meta property="og:title" content="About TurboApply V2 | Final Founder Story" />
   <meta property="og:description" content="Meet the founders, learn why they created TurboApply, and see how design, marketing, software, and project leadership come together." />
-  <meta property="og:url" content="https://turboapply.agency/about/" />
+  <meta property="og:url" content="https://turboapply.agency/about/v2/" />
   <meta property="og:image" content="https://turboapply.agency/public/assets/brand/turboapply-agency-og.jpg?v=seo-media-20260711-1" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="TurboApply abstract brand artwork" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About TurboApply | Founders, Story &amp; Process" />
+  <meta name="twitter:title" content="About TurboApply V2 | Final Founder Story" />
   <meta name="twitter:description" content="Meet the founders and learn how TurboApply works." />
   <meta name="twitter:image" content="https://turboapply.agency/public/assets/brand/turboapply-agency-og.jpg?v=seo-media-20260711-1" />
   <meta name="twitter:image:alt" content="TurboApply abstract brand artwork" />
@@ -36,14 +36,14 @@
     "@graph": [
       {
         "@type": "AboutPage",
-        "@id": "https://turboapply.agency/about/#webpage",
-        "url": "https://turboapply.agency/about/",
+        "@id": "https://turboapply.agency/about/v2/#webpage",
+        "url": "https://turboapply.agency/about/v2/",
         "name": "About TurboApply",
         "description": "Meet the founders, learn why they created TurboApply, and see the agency process.",
         "isPartOf": { "@id": "https://turboapply.agency/#website" },
         "about": [
-          { "@id": "https://turboapply.agency/about/#katerina-antonenko" },
-          { "@id": "https://turboapply.agency/about/#vasiliy-baryshnikov" }
+          { "@id": "https://turboapply.agency/about/v2/#katerina-antonenko" },
+          { "@id": "https://turboapply.agency/about/v2/#vasiliy-baryshnikov" }
         ]
       },
       {
@@ -54,7 +54,7 @@
       },
       {
         "@type": "Person",
-        "@id": "https://turboapply.agency/about/#katerina-antonenko",
+        "@id": "https://turboapply.agency/about/v2/#katerina-antonenko",
         "name": "Katerina Antonenko",
         "jobTitle": "Design and Marketing Lead",
         "image": "https://turboapply.agency/public/assets/about/katerina-antonenko.webp",
@@ -62,7 +62,7 @@
       },
       {
         "@type": "Person",
-        "@id": "https://turboapply.agency/about/#vasiliy-baryshnikov",
+        "@id": "https://turboapply.agency/about/v2/#vasiliy-baryshnikov",
         "name": "Vasiliy Baryshnikov",
         "jobTitle": "Software Development Tech Lead and Project Manager",
         "image": "https://turboapply.agency/public/assets/about/vasiliy-baryshnikov.webp",
@@ -78,7 +78,7 @@
   }
   </script>
 </head>
-<body class="about-page">
+<body class="about-page" data-about-version="v2">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
@@ -253,7 +253,7 @@
             <p>Tell us about your business and what is getting in the way. We will share where design, marketing, software, or automation could help.</p>
           </div>
 
-          <form class="about-contact-form" action="/api/contact" method="post" data-about-contact-form data-turboapply-secure-form>
+          <form class="about-contact-form" action="/about/v2/" method="post" data-about-contact-form data-preview-submit-disabled data-turboapply-secure-form>
             <label>
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" maxlength="120" required />
@@ -296,8 +296,8 @@
   </main>
 
   <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-  <script src="/public/js/turboapply-form-security.js?v=devnet-handler-20260721-1"></script>
+  <script src="/public/js/turboapply-form-security.js?v=about-version-snapshot-20260721-2"></script>
   <script src="/integrations/script.js?v=integrations-menu-focus-20260714-7" defer></script>
-  <script src="/about/script.js?v=about-story-20260721-1" defer></script>
+  <script src="/about/script.js?v=about-version-snapshot-20260721-2" defer></script>
 </body>
 </html>

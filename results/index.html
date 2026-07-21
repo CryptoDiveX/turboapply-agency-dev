@@ -26,9 +26,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Karla:wght@400;500&amp;family=Urbanist:wght@400;500;600&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/integrations/styles.css?v=integrations-color-only-nav-20260714-19" />
+  <link rel="stylesheet" href="/integrations/styles.css?v=integrations-skip-link-20260721-20" />
   <link rel="stylesheet" href="/resources/styles.css?v=resources-editorial-20260721-1" />
-  <link rel="stylesheet" href="/results/styles.css?v=results-stories-20260721-1" />
+  <link rel="stylesheet" href="/results/styles.css?v=results-review-layout-20260721-2" />
   <script src="/google-tag.js?v=ga-20260714-1" defer></script>
   <script type="application/ld+json">
   {
@@ -66,26 +66,70 @@
 
   <main id="main-content">
     <section class="results-hero" aria-labelledby="results-title">
-      <div class="results-hero-copy">
-        <nav class="resource-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Results</span>
-        </nav>
-        <div>
-          <p class="results-kicker">Customer results</p>
-          <h1 id="results-title">Customer stories, with the work shown.</h1>
-          <p>Approved context, practical delivery details, and outcomes that can be verified.</p>
-        </div>
-      </div>
-      <figure class="results-hero-media">
-        <img src="/public/assets/services/cards/service-card-website-design.webp" alt="Abstract browser and mobile interface composition in pale green" width="720" height="960" loading="eager" decoding="async" />
-      </figure>
+      <p class="results-kicker">Review layout</p>
+      <h1 id="results-title">Company.<br />Review. Result.</h1>
+      <p>Three client records are ready to populate once each company name, customer quote, and outcome is approved.</p>
+      <a href="#client-reviews">Review the three positions</a>
     </section>
 
-    <section class="results-status" aria-labelledby="results-status-title">
-      <p>Stories in preparation</p>
-      <div>
-        <h2 id="results-status-title">Detailed success stories are being prepared.</h2>
-        <p>We will publish customer stories only when the context is approved and the outcomes can be described accurately. Until then, this page will not use placeholder logos, invented quotes, or unsupported performance claims.</p>
+    <section class="results-reviews" id="client-reviews" aria-labelledby="reviews-title">
+      <header class="results-reviews-heading">
+        <p>Approval-gated records</p>
+        <h2 id="reviews-title">Three positions, ready for approved content.</h2>
+        <span aria-hidden="true"></span>
+      </header>
+      <div class="results-review-list" aria-label="Three client-review positions awaiting approval">
+        <article class="result-review-card" data-review-status="pending">
+          <div class="review-company">
+            <span>Company name</span>
+            <strong>Awaiting approval</strong>
+            <p>Review position 01</p>
+          </div>
+          <div class="review-quote">
+            <span>Client review</span>
+            <blockquote>Exact approved customer words will appear here.</blockquote>
+            <p>Name and role will be added only with permission.</p>
+          </div>
+          <div class="review-result">
+            <span>Verified result</span>
+            <strong>Awaiting evidence</strong>
+            <p>Outcome and measurement context will be published together.</p>
+          </div>
+        </article>
+        <article class="result-review-card" data-review-status="pending">
+          <div class="review-company">
+            <span>Company name</span>
+            <strong>Awaiting approval</strong>
+            <p>Review position 02</p>
+          </div>
+          <div class="review-quote">
+            <span>Client review</span>
+            <blockquote>Exact approved customer words will appear here.</blockquote>
+            <p>Name and role will be added only with permission.</p>
+          </div>
+          <div class="review-result">
+            <span>Verified result</span>
+            <strong>Awaiting evidence</strong>
+            <p>Outcome and measurement context will be published together.</p>
+          </div>
+        </article>
+        <article class="result-review-card" data-review-status="pending">
+          <div class="review-company">
+            <span>Company name</span>
+            <strong>Awaiting approval</strong>
+            <p>Review position 03</p>
+          </div>
+          <div class="review-quote">
+            <span>Client review</span>
+            <blockquote>Exact approved customer words will appear here.</blockquote>
+            <p>Name and role will be added only with permission.</p>
+          </div>
+          <div class="review-result">
+            <span>Verified result</span>
+            <strong>Awaiting evidence</strong>
+            <p>Outcome and measurement context will be published together.</p>
+          </div>
+        </article>
       </div>
     </section>
 

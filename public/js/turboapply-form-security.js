@@ -206,12 +206,15 @@
         event.preventDefault();
         return;
       }
-      if (form.hasAttribute('data-preview-submit-disabled') && isPreviewHost()) {
+      const isVersionSnapshot = document.body.hasAttribute('data-about-version');
+      if (isVersionSnapshot || (form.hasAttribute('data-preview-submit-disabled') && isPreviewHost())) {
         event.preventDefault();
         event.stopImmediatePropagation();
         form.dataset.previewSubmitIntercepted = 'true';
         const status = previewStatus(form);
-        status.textContent = 'Preview validated. Lead delivery is disabled in source and local previews.';
+        status.textContent = isVersionSnapshot
+          ? 'Version preview validated. Lead delivery is disabled on About comparison routes.'
+          : 'Preview validated. Lead delivery is disabled in source and local previews.';
         status.hidden = false;
       }
     }, { capture: true });

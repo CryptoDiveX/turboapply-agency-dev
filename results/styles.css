@@ -10,90 +10,205 @@
 }
 
 .results-hero {
-  width: min(calc(100% - 64px), calc(90rem - 64px));
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.72fr);
-  min-height: calc(100svh - 64px);
-}
-
-.results-hero-copy {
-  padding: 48px clamp(48px, 6vw, 96px) 72px 0;
+  min-height: max(620px, calc(100svh - 64px));
+  padding: clamp(96px, 12vw, 170px) 32px clamp(86px, 10vw, 140px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 72px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #090909;
+  color: #fff;
 }
 
-.results-kicker {
-  margin: 0 0 24px;
-  font: 500 13px/1.2 Inter, sans-serif;
+.results-kicker,
+.results-reviews-heading > p {
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.58);
+  font: 600 12px/1.2 Inter, sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.results-kicker::before,
+.results-reviews-heading > p::before {
+  content: "+";
+  margin-right: 12px;
+  color: #fff;
 }
 
 .results-hero h1 {
-  max-width: 820px;
+  max-width: 900px;
   margin: 0;
-  font: 500 clamp(60px, 6.1vw, 88px)/0.94 Urbanist, sans-serif;
+  font: 600 clamp(58px, 6.2vw, 88px)/0.94 Urbanist, sans-serif;
   letter-spacing: -0.04em;
 }
 
-.results-hero-copy > div > p:last-child {
-  max-width: 580px;
+.results-hero > p:not(.results-kicker) {
+  max-width: 670px;
   margin: 30px 0 0;
-  color: #5d5b55;
-  font-size: 21px;
-  line-height: 1.46;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 19px;
+  line-height: 1.55;
 }
 
-.results-hero-media {
-  min-height: 610px;
+.results-hero > a {
+  min-width: 190px;
+  margin-top: 42px;
+  padding: 16px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font: 600 12px/1 Inter, sans-serif;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.results-hero > a:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #090909;
+}
+
+.results-hero > a:focus-visible,
+.result-review-card:focus-within {
+  outline: 3px solid #1677ff;
+  outline-offset: 5px;
+}
+
+.results-reviews {
+  padding: clamp(92px, 10vw, 150px) max(32px, calc((100vw - 1440px) / 2 + 32px));
+  background: #090909;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.results-reviews-heading {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.results-reviews-heading h2 {
   margin: 0;
+  font: 600 clamp(44px, 4.8vw, 68px)/0.98 Urbanist, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.results-reviews-heading > span {
+  width: 58px;
+  height: 1px;
+  margin: 34px auto 0;
+  display: block;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.results-review-list {
+  margin-top: clamp(64px, 7vw, 96px);
+  display: grid;
+  gap: 16px;
+}
+
+.result-review-card {
+  min-height: 260px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(320px, 1.35fr) minmax(230px, 0.78fr);
   overflow: hidden;
-  background: #e7e4df;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: #f2f1ed;
+  color: #141414;
 }
 
-.results-hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
+.review-company,
+.review-quote,
+.review-result {
+  min-width: 0;
+  padding: 30px;
 }
 
-.results-status,
+.review-company {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: linear-gradient(145deg, #d9d7d0, #efeee9 54%, #c8cac5);
+}
+
+.review-company > span,
+.review-quote > span,
+.review-result > span {
+  color: #64615a;
+  font: 600 11px/1.2 Inter, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.review-company strong {
+  margin-top: auto;
+  font: 600 27px/1 Urbanist, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.review-company p,
+.review-quote p,
+.review-result p {
+  margin: 10px 0 0;
+  color: #64615a;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.review-quote {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #d7d5cf;
+}
+
+.review-quote blockquote {
+  max-width: 540px;
+  margin: 26px 0 30px;
+  font: 500 clamp(20px, 1.8vw, 25px)/1.24 Urbanist, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.review-quote p {
+  margin-top: auto;
+}
+
+.review-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-left: 1px solid #d7d5cf;
+}
+
+.review-result strong {
+  margin-top: auto;
+  font: 500 clamp(42px, 4.2vw, 62px)/0.92 Urbanist, sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.result-review-card[data-review-status="pending"] .review-result strong {
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
 .results-story-standard,
 .results-definition {
   width: min(calc(100% - 64px), calc(90rem - 64px));
-  margin: 24px auto 0;
-}
-
-.results-status {
-  padding: clamp(44px, 5vw, 72px);
-  display: grid;
-  grid-template-columns: minmax(180px, 0.36fr) minmax(0, 1fr);
-  gap: clamp(48px, 8vw, 120px);
-  border-radius: 24px;
-  background: #f3f3f0;
-}
-
-.results-status > p {
-  margin: 6px 0 0;
-  font: 500 13px/1.3 Inter, sans-serif;
+  margin: 0 auto;
 }
 
 .results-status h2,
 .results-story-standard h2,
 .results-definition h2 {
   margin: 0;
-  font: 500 clamp(43px, 4.8vw, 68px)/0.98 Urbanist, sans-serif;
+  font: 500 clamp(38px, 4vw, 56px)/1 Urbanist, sans-serif;
   letter-spacing: -0.03em;
-}
-
-.results-status div > p {
-  max-width: 760px;
-  margin: 24px 0 0;
-  color: #5d5b55;
-  font-size: 19px;
-  line-height: 1.54;
 }
 
 .results-story-standard {
@@ -109,8 +224,8 @@
   max-width: 630px;
   margin: 22px 0 0;
   color: #5d5b55;
-  font-size: 19px;
-  line-height: 1.52;
+  font-size: 18px;
+  line-height: 1.58;
 }
 
 .results-standard-grid {
@@ -155,7 +270,6 @@
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: clamp(56px, 9vw, 130px);
-  border-radius: 24px;
   background: #f3f3f0;
 }
 
@@ -163,8 +277,8 @@
   max-width: 550px;
   margin: 24px 0 0;
   color: #5d5b55;
-  font-size: 19px;
-  line-height: 1.52;
+  font-size: 18px;
+  line-height: 1.58;
 }
 
 .results-definition ul {
@@ -195,24 +309,20 @@
   margin-top: 24px;
 }
 
-@media (max-width: 1180px) {
-  .results-hero {
-    grid-template-columns: 1fr;
+@media (max-width: 1000px) {
+  .result-review-card {
+    grid-template-columns: minmax(180px, 0.7fr) minmax(280px, 1.3fr);
   }
 
-  .results-hero-copy {
-    min-height: 620px;
-    padding-right: 0;
-  }
-
-  .results-hero-media {
-    min-height: 0;
-    aspect-ratio: 16 / 9;
+  .review-result {
+    grid-column: 1 / -1;
+    min-height: 190px;
+    border-top: 1px solid #d7d5cf;
+    border-left: 0;
   }
 }
 
 @media (max-width: 900px) {
-  .results-status,
   .results-definition {
     grid-template-columns: 1fr;
   }
@@ -234,48 +344,52 @@
 }
 
 @media (max-width: 760px) {
-  .results-hero,
-  .results-status,
+  .results-hero {
+    min-height: 620px;
+    padding: 96px 20px 82px;
+  }
+
+  .results-hero h1 {
+    font-size: clamp(48px, 14vw, 62px);
+  }
+
+  .results-hero > p:not(.results-kicker) {
+    font-size: 17px;
+  }
+
+  .results-reviews {
+    padding: 78px 20px 92px;
+  }
+
+  .results-reviews-heading h2 {
+    font-size: clamp(40px, 12vw, 52px);
+  }
+
+  .result-review-card {
+    grid-template-columns: 1fr;
+  }
+
+  .review-company {
+    min-height: 210px;
+  }
+
+  .review-quote,
+  .review-result {
+    min-height: 210px;
+    border-left: 0;
+    border-top: 1px solid #d7d5cf;
+  }
+
   .results-story-standard,
   .results-definition {
     width: calc(100% - 40px);
   }
 
-  .results-hero {
-    min-height: 0;
-  }
-
-  .results-hero-copy {
-    min-height: 550px;
-    padding: 34px 0 56px;
-    gap: 62px;
-  }
-
-  .results-hero h1 {
-    font-size: clamp(50px, 14vw, 64px);
-  }
-
-  .results-hero-copy > div > p:last-child {
-    font-size: 18px;
-  }
-
-  .results-hero-media {
-    aspect-ratio: 4 / 3;
-  }
-
-  .results-status {
-    padding: 32px 24px;
-    gap: 34px;
-    border-radius: 20px;
-  }
-
-  .results-status h2,
   .results-story-standard h2,
   .results-definition h2 {
-    font-size: clamp(40px, 12vw, 54px);
+    font-size: clamp(36px, 10vw, 46px);
   }
 
-  .results-status div > p,
   .results-section-heading > p,
   .results-definition > div > p {
     font-size: 17px;
@@ -288,6 +402,11 @@
   .results-definition {
     padding: 52px 24px;
     gap: 44px;
-    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results-hero > a {
+    transition: none;
   }
 }

@@ -41,11 +41,18 @@
     }
 
     const isPreview = ['localhost', '127.0.0.1', 'dev.turboapply.agency'].includes(window.location.hostname);
-    if (isPreview && form.hasAttribute('data-preview-submit-disabled')) {
+    const isVersionSnapshot = document.body.hasAttribute('data-about-version');
+    if (isVersionSnapshot || (isPreview && form.hasAttribute('data-preview-submit-disabled'))) {
       event.preventDefault();
       event.stopImmediatePropagation();
       form.dataset.previewSubmitIntercepted = 'true';
-      if (status) status.textContent = 'Preview validated. Lead delivery is disabled in source and local previews.';
+      if (status) {
+        const message = isVersionSnapshot
+          ? 'Version preview validated. Lead delivery is disabled on About comparison routes.'
+          : 'Preview validated. Lead delivery is disabled in source and local previews.';
+        status.textContent = message;
+        if (isVersionSnapshot) queueMicrotask(() => { status.textContent = message; });
+      }
       return;
     }
 
