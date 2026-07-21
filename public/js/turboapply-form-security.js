@@ -65,7 +65,7 @@
     if (
       host.startsWith('dev.') &&
       !form.hasAttribute('data-preview-submit-disabled') &&
-      new URL(form.action, window.location.href).pathname === '/submit-lead.php'
+      ['/submit-lead.php', '/api/contact'].includes(new URL(form.action, window.location.href).pathname)
     ) {
       form.action = 'https://turboapply.agency/submit-lead.php';
     }

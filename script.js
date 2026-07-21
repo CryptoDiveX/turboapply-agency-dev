@@ -1140,8 +1140,12 @@ function observeContactForm() {
       contactForm.reset();
       window.TurboApplyFormSecurity?.rotateIdempotencyKey(contactForm);
       if (contactPageUrl) contactPageUrl.value = window.location.href;
-      setContactStatus('Thank you — your request was sent. Redirecting to booking…', 'success');
-      window.location.assign(contactBookingRedirectUrl);
+      if (isDevelopmentWebsiteHost) {
+        setContactStatus('🧪 Test lead sent. The Telegram notification is marked Internal Test.', 'success');
+      } else {
+        setContactStatus('Thank you — your request was sent. Redirecting to booking…', 'success');
+        window.location.assign(contactBookingRedirectUrl);
+      }
     } catch (error) {
       setContactStatus(error.message || 'Something went wrong. Please try again.', 'error');
     } finally {
@@ -1154,12 +1158,18 @@ function observeMobileScrollCta() {
   const update = () => {
     const hasScrolled = window.scrollY > 16;
     const contactRect = contactSection?.getBoundingClientRect();
+    const servicesRect = servicesSection?.getBoundingClientRect();
+    const projectsRect = projectsSection?.getBoundingClientRect();
     const isContactActive = !!contactRect && contactRect.top < window.innerHeight * 0.72 && contactRect.bottom > window.innerHeight * 0.14;
+    const isServicesActive = !!servicesRect && servicesRect.top < window.innerHeight * 0.84 && servicesRect.bottom > window.innerHeight * 0.14;
+    const isProjectsActive = !!projectsRect && projectsRect.top < window.innerHeight * 0.84 && projectsRect.bottom > window.innerHeight * 0.14;
     const glassLightX = 50 + Math.sin(window.scrollY / 160) * 28;
 
     document.documentElement.style.setProperty('--glass-light-x', `${glassLightX.toFixed(1)}%`);
     document.body.classList.toggle('has-mobile-scrolled', hasScrolled);
     document.body.classList.toggle('is-contact-section-active', isContactActive);
+    document.body.classList.toggle('is-services-section-active', isServicesActive);
+    document.body.classList.toggle('is-projects-section-active', isProjectsActive);
     document.body.classList.toggle('has-mobile-scroll-cta', hasScrolled && !isContactActive);
   };
 

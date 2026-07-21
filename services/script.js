@@ -14,7 +14,7 @@
       return;
     }
 
-    if (isPreview) {
+    if (isPreview && form.hasAttribute('data-preview-submit-disabled')) {
       event.preventDefault();
       event.stopImmediatePropagation();
       form.dataset.previewSubmitIntercepted = 'true';

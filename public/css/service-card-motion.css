@@ -1,0 +1,454 @@
+:root {
+  --ta-card-radius: 10px;
+  --ta-card-shadow: none;
+  --ta-card-ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+.ta-motion-card {
+  --ta-rx: 0deg;
+  --ta-ry: 0deg;
+  --ta-shift-x: 0px;
+  --ta-shift-y: 0px;
+  --ta-glow-x: 50%;
+  --ta-glow-y: 50%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--ta-card-radius);
+  background: #0b1612;
+  color: #fff9eb;
+  box-shadow: var(--ta-card-shadow);
+  transform-style: preserve-3d;
+  transform: perspective(1100px) rotateX(var(--ta-rx)) rotateY(var(--ta-ry)) translateY(0);
+  transition:
+    transform 520ms var(--ta-card-ease),
+    box-shadow 520ms var(--ta-card-ease),
+    filter 520ms var(--ta-card-ease);
+  will-change: transform;
+}
+
+.ta-motion-card:hover,
+.ta-motion-card:focus-visible,
+.ta-motion-card.is-active {
+  transform: perspective(1100px) rotateX(var(--ta-rx)) rotateY(var(--ta-ry)) translateY(-7px);
+  box-shadow: 0 40px 92px rgba(0, 0, 0, 0.46);
+}
+
+.ta-motion-card:focus-visible {
+  outline: 2px solid rgba(255, 245, 219, 0.92);
+  outline-offset: 5px;
+}
+
+.ta-motion-card__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #0b1612;
+}
+
+.ta-motion-card__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: translate3d(calc(var(--ta-shift-x) * -0.35), calc(var(--ta-shift-y) * -0.35), 0) scale(1.012);
+  filter: saturate(.98) contrast(1.01);
+  transition: transform 700ms var(--ta-card-ease), filter 500ms ease;
+  will-change: transform;
+}
+
+.ta-motion-card:hover .ta-motion-card__image,
+.ta-motion-card:focus-visible .ta-motion-card__image,
+.ta-motion-card.is-active .ta-motion-card__image {
+  transform: translate3d(calc(var(--ta-shift-x) * -0.35), calc(var(--ta-shift-y) * -0.35), 0) scale(1.045);
+  filter: saturate(1.06) contrast(1.025);
+}
+
+.ta-motion-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  transform: translateZ(22px);
+}
+
+.ta-motion-card__sheen {
+  position: absolute;
+  inset: -20%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at var(--ta-glow-x) var(--ta-glow-y), rgba(255, 247, 225, .20), transparent 24%),
+    linear-gradient(115deg, transparent 25%, rgba(255,255,255,.10) 43%, transparent 61%);
+  transform: translate3d(calc(var(--ta-shift-x) * .25), calc(var(--ta-shift-y) * .25), 0);
+  mix-blend-mode: screen;
+  transition: opacity 420ms ease;
+}
+
+.ta-motion-card:hover .ta-motion-card__sheen,
+.ta-motion-card:focus-visible .ta-motion-card__sheen,
+.ta-motion-card.is-active .ta-motion-card__sheen {
+  opacity: .72;
+}
+
+.ta-motion-card__content {
+  position: relative;
+  z-index: 4;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  transform: translateZ(42px);
+}
+
+.ta-motion-card__copy {
+  max-width: 88%;
+  margin: 0;
+  padding: 30px 30px 0;
+  font: 500 clamp(1.15rem, 2vw, 1.6rem)/1.24 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.ta-motion-card__label {
+  min-height: 98px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding: 0 30px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  background: rgba(10, 50, 39, .88);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  backdrop-filter: blur(16px) saturate(1.15);
+  font: 600 clamp(1.35rem, 2.5vw, 2rem)/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: -.035em;
+  transition: background 420ms ease, color 420ms ease;
+}
+
+.ta-motion-card[data-card-type="health"] .ta-motion-card__label {
+  color: #382b68;
+  background: rgba(213, 248, 238, .92);
+}
+
+.ta-motion-card[data-card-type="email"] .ta-motion-card__label {
+  color: #8d3f00;
+  background: rgba(255, 228, 185, .94);
+}
+
+.ta-motion-card[data-card-type="ai"] .ta-motion-card__label,
+.ta-motion-card[data-card-type="website"] .ta-motion-card__label {
+  color: #fff9eb;
+  background: rgba(10, 58, 44, .90);
+}
+
+.ta-motion-card .ta-layer {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 750ms var(--ta-card-ease), opacity 500ms ease, filter 500ms ease;
+  will-change: transform, opacity;
+}
+
+.ta-motion-card .ta-layer--back {
+  transform: translate3d(calc(var(--ta-shift-x) * -.20), calc(var(--ta-shift-y) * -.20), 0);
+}
+
+.ta-motion-card .ta-layer--mid {
+  transform: translate3d(calc(var(--ta-shift-x) * .38), calc(var(--ta-shift-y) * .38), 0);
+}
+
+.ta-motion-card .ta-layer--front {
+  transform: translate3d(calc(var(--ta-shift-x) * .78), calc(var(--ta-shift-y) * .78), 0);
+}
+
+.ta-motion-card .ta-glass {
+  fill: rgba(239, 250, 238, .06);
+  stroke: rgba(246, 239, 215, .42);
+  stroke-width: 2.2;
+  filter: url(#ta-soft-glow);
+}
+
+.ta-motion-card .ta-soft-fill {
+  fill: rgba(213, 238, 226, .075);
+  stroke: rgba(205, 234, 221, .22);
+  stroke-width: 1.8;
+}
+
+.ta-motion-card .ta-accent-line {
+  fill: none;
+  stroke: rgba(253, 224, 173, .9);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ta-motion-card .ta-route {
+  fill: none;
+  stroke: rgba(253, 224, 173, .84);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-dasharray: 16 14;
+  stroke-dashoffset: 120;
+  opacity: .76;
+  transition: opacity 300ms ease;
+}
+
+.ta-motion-card .ta-node {
+  fill: #ffe4b7;
+  stroke: rgba(255, 250, 230, .7);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ta-motion-card .ta-small-dot {
+  fill: rgba(220, 245, 232, .72);
+}
+
+.ta-motion-card:hover .ta-route,
+.ta-motion-card:focus-visible .ta-route,
+.ta-motion-card.is-active .ta-route {
+  animation: ta-route-flow 1.25s linear forwards, ta-route-loop 4.2s linear 1.25s infinite;
+  opacity: 1;
+}
+
+.ta-motion-card:hover .ta-node,
+.ta-motion-card:focus-visible .ta-node,
+.ta-motion-card.is-active .ta-node {
+  animation: ta-node-pulse 1.55s ease-in-out infinite;
+}
+
+.ta-motion-card:hover .ta-float-a,
+.ta-motion-card:focus-visible .ta-float-a,
+.ta-motion-card.is-active .ta-float-a {
+  animation: ta-float-a 3.4s ease-in-out infinite alternate;
+}
+
+.ta-motion-card:hover .ta-float-b,
+.ta-motion-card:focus-visible .ta-float-b,
+.ta-motion-card.is-active .ta-float-b {
+  animation: ta-float-b 4s ease-in-out infinite alternate;
+}
+
+.ta-motion-card:hover .ta-float-c,
+.ta-motion-card:focus-visible .ta-float-c,
+.ta-motion-card.is-active .ta-float-c {
+  animation: ta-float-c 3.1s ease-in-out infinite alternate;
+}
+
+.ta-motion-card:hover .ta-plane,
+.ta-motion-card:focus-visible .ta-plane,
+.ta-motion-card.is-active .ta-plane {
+  animation: ta-plane-lift 1.35s cubic-bezier(.2,.9,.2,1) forwards, ta-plane-hover 3.2s ease-in-out 1.35s infinite alternate;
+  filter: drop-shadow(0 10px 18px rgba(255, 220, 159, .22));
+}
+
+.ta-motion-card:hover .ta-envelope-a,
+.ta-motion-card:focus-visible .ta-envelope-a,
+.ta-motion-card.is-active .ta-envelope-a {
+  animation: ta-envelope-a 3.8s ease-in-out infinite alternate;
+}
+
+.ta-motion-card:hover .ta-envelope-b,
+.ta-motion-card:focus-visible .ta-envelope-b,
+.ta-motion-card.is-active .ta-envelope-b {
+  animation: ta-envelope-b 4.4s ease-in-out .2s infinite alternate;
+}
+
+.ta-motion-card .ta-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ta-motion-card:hover .ta-eye,
+.ta-motion-card:focus-visible .ta-eye,
+.ta-motion-card.is-active .ta-eye {
+  animation: ta-eye-blink 3.6s ease-in-out infinite;
+}
+
+.ta-motion-card:hover .ta-bot-rim,
+.ta-motion-card:focus-visible .ta-bot-rim,
+.ta-motion-card.is-active .ta-bot-rim {
+  animation: ta-bot-glow 2.7s ease-in-out infinite alternate;
+}
+
+.ta-motion-card:hover .ta-wave,
+.ta-motion-card:focus-visible .ta-wave,
+.ta-motion-card.is-active .ta-wave {
+  animation: ta-wave-shift 4.8s ease-in-out infinite alternate;
+}
+
+.ta-motion-card.ta-in-view {
+  animation: ta-card-enter 760ms var(--ta-card-ease);
+}
+
+@keyframes ta-card-enter {
+  from { opacity: 0; transform: perspective(1100px) translateY(24px) scale(.985); }
+  to { opacity: 1; transform: perspective(1100px) translateY(0) scale(1); }
+}
+
+@keyframes ta-route-flow {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes ta-route-loop {
+  to { stroke-dashoffset: -120; }
+}
+
+@keyframes ta-node-pulse {
+  0%, 100% { transform: scale(1); opacity: .72; }
+  50% { transform: scale(1.45); opacity: 1; }
+}
+
+@keyframes ta-float-a {
+  from { transform: translate3d(-3px, 4px, 0) rotate(-.25deg); }
+  to { transform: translate3d(8px, -8px, 0) rotate(.4deg); }
+}
+
+@keyframes ta-float-b {
+  from { transform: translate3d(3px, 2px, 0) rotate(.15deg); }
+  to { transform: translate3d(-8px, -5px, 0) rotate(-.35deg); }
+}
+
+@keyframes ta-float-c {
+  from { transform: translate3d(-2px, 2px, 0) scale(1); }
+  to { transform: translate3d(5px, -7px, 0) scale(1.018); }
+}
+
+@keyframes ta-plane-lift {
+  from { transform: translate3d(-10px, 10px, 0) rotate(-1.5deg) scale(.98); }
+  to { transform: translate3d(9px, -10px, 0) rotate(1deg) scale(1.025); }
+}
+
+@keyframes ta-plane-hover {
+  from { transform: translate3d(9px, -10px, 0) rotate(1deg) scale(1.025); }
+  to { transform: translate3d(13px, -15px, 0) rotate(2deg) scale(1.03); }
+}
+
+@keyframes ta-envelope-a {
+  from { transform: translate3d(-4px, 5px, 0) rotate(-.3deg); }
+  to { transform: translate3d(8px, -8px, 0) rotate(.8deg); }
+}
+
+@keyframes ta-envelope-b {
+  from { transform: translate3d(3px, 4px, 0) rotate(.2deg); }
+  to { transform: translate3d(-7px, -5px, 0) rotate(-.6deg); }
+}
+
+@keyframes ta-eye-blink {
+  0%, 43%, 48%, 100% { transform: scaleY(1); }
+  45.5% { transform: scaleY(.08); }
+}
+
+@keyframes ta-bot-glow {
+  from { opacity: .65; filter: drop-shadow(0 0 4px rgba(255,239,194,.05)); }
+  to { opacity: 1; filter: drop-shadow(0 0 18px rgba(255,239,194,.34)); }
+}
+
+@keyframes ta-wave-shift {
+  from { transform: translate3d(-5px, 5px, 0) scaleX(.995); }
+  to { transform: translate3d(8px, -2px, 0) scaleX(1.012); }
+}
+
+@media (max-width: 720px), (hover: none) {
+  .ta-motion-card {
+    transform: none !important;
+  }
+
+  .ta-motion-card:hover {
+    transform: none !important;
+  }
+
+  .ta-motion-card__image {
+    transform: scale(1.018);
+  }
+
+  .ta-motion-card.is-active .ta-motion-card__image {
+    transform: scale(1.035);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ta-motion-card,
+  .ta-motion-card *,
+  .ta-motion-card *::before,
+  .ta-motion-card *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .ta-motion-card,
+  .ta-motion-card:hover,
+  .ta-motion-card:focus-visible,
+  .ta-motion-card.is-active,
+  .ta-motion-card__image,
+  .ta-motion-card:hover .ta-motion-card__image {
+    transform: none !important;
+  }
+}
+
+/* TurboApply homepage integration: preserve the existing card anatomy and label bars. */
+.service-card.ta-motion-card {
+  aspect-ratio: 1122 / 1402;
+  min-height: 0;
+  background-image: none !important;
+  background-color: #0b1612;
+  transform: perspective(1100px) rotateX(var(--ta-rx)) rotateY(var(--ta-ry));
+}
+
+.service-card.ta-motion-card:hover,
+.service-card.ta-motion-card:focus-visible,
+.service-card.ta-motion-card.is-active {
+  transform: perspective(1100px) rotateX(var(--ta-rx)) rotateY(var(--ta-ry)) translateY(-7px);
+  filter: none;
+}
+
+.service-card.ta-motion-card:focus-visible {
+  outline: 3px solid #f5f1e8;
+  outline-offset: 5px;
+}
+
+.service-card-media.ta-motion-card__media {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.service-card.ta-motion-card p {
+  z-index: 4;
+  max-width: 88%;
+  color: #f8f3e8;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, .52);
+}
+
+.service-card.ta-motion-card h3 {
+  z-index: 6;
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  backdrop-filter: blur(16px) saturate(1.15);
+}
+
+@media (max-width: 1100px) {
+  .service-card.ta-motion-card {
+    --ta-card-radius: 14px;
+  }
+}
+
+@media (max-width: 1100px) and (max-height: 640px) and (orientation: landscape) {
+  .service-card.ta-motion-card {
+    --ta-card-radius: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-card.ta-motion-card {
+    --ta-card-radius: 14px;
+    min-height: 0;
+  }
+}
