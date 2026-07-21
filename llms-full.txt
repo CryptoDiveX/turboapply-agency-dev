@@ -45,22 +45,10 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 
 These are starting references, not fixed quotes. Final pricing depends on scope, content, data quality, integrations, third-party tools, advertising or sending costs, and support requirements. The quote is confirmed before work begins.
 
-## Dedicated service pages
-- Business Process & Automation Audit: https://turboapply.agency/services/business-process-automation-audit/
+## Dedicated service pages currently available
 - Web Design: https://turboapply.agency/services/web-design/
-- Health Clinic Website Design: https://turboapply.agency/services/health-clinic-website-design/
-- SEO Audit & Implementation: https://turboapply.agency/services/seo-audit-implementation/
-- Website Maintenance: https://turboapply.agency/services/website-maintenance/
-- Website Migration: https://turboapply.agency/services/website-migration/
-- AI Receptionist: https://turboapply.agency/ai-receptionist/
-- Online Booking (Calendar Integration): https://turboapply.agency/services/online-booking-calendar-integration/
-- CRM Integrations: https://turboapply.agency/services/crm-integrations/
-- Booking Software Integrations: https://turboapply.agency/services/booking-software-integrations/
-- AI Integrations: https://turboapply.agency/services/ai-integrations/
-- AI Agent Consultation (1 Hour): https://turboapply.agency/services/ai-agent-consultation/
-- Lead Generation: https://turboapply.agency/services/lead-generation/
-- Email Marketing: https://turboapply.agency/services/email-marketing/
-- Cold Email Outreach: https://turboapply.agency/services/cold-email-outreach/
+
+All other approved service names, descriptions, and starting references remain available in the Services directory without separate detail-page routes: https://turboapply.agency/services/
 
 ## AI sales agent roles
 - Director's Personal Assistant Agent — scheduling, reminders, follow-ups, and admin support.
@@ -98,7 +86,6 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 - https://turboapply.agency/resources/ai-receptionist-launch-checklist/
 - https://turboapply.agency/results/
 - https://turboapply.agency/free-guide/
-- https://turboapply.agency/ai-receptionist/
 - https://turboapply.agency/marketing/
 - https://turboapply.agency/sales/
 - https://turboapply.agency/book-meeting/

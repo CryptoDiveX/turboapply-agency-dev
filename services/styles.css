@@ -83,7 +83,7 @@
   border-top: 1px solid var(--services-line);
 }
 
-.service-directory-list a {
+.service-directory-list .service-directory-route {
   min-height: 64px;
   padding: 14px 0;
   display: grid;
@@ -96,17 +96,17 @@
   transition: color 0.2s ease;
 }
 
-.service-directory-list a::after {
+.service-directory-list .service-directory-route::after {
   content: "↗";
   font: 500 17px/1 Inter, sans-serif;
   text-align: right;
 }
 
-.service-directory-list a:hover {
+.service-directory-list .service-directory-route:hover {
   color: var(--services-blue);
 }
 
-.service-directory-list a:focus-visible {
+.service-directory-list .service-directory-route:focus-visible {
   outline: 3px solid var(--services-blue);
   outline-offset: 5px;
 }
@@ -258,14 +258,14 @@
     font-size: 29px;
   }
 
-  .service-directory-list a {
+  .service-directory-list .service-directory-route {
     min-height: 72px;
     grid-template-columns: minmax(0, 1fr) 20px;
     align-content: center;
     gap: 6px 12px;
   }
 
-  .service-directory-list a::after {
+  .service-directory-list .service-directory-route::after {
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
@@ -300,7 +300,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-directory-list a {
+  .service-directory-list .service-directory-route {
     transition: none;
   }
 }
@@ -311,7 +311,7 @@
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: clamp(88px, 9vw, 144px) var(--service-directory-gutter);
+  padding: 0 var(--service-directory-gutter) clamp(88px, 9vw, 144px);
   display: block;
   background: #fff;
   border-radius: 0;
@@ -319,22 +319,31 @@
 
 .service-directory-heading {
   position: static;
-  max-width: 920px;
-  margin: 0 auto clamp(100px, 10vw, 156px);
+  max-width: none;
+  margin: 0 calc(0px - var(--service-directory-gutter)) clamp(72px, 7vw, 104px);
+  padding: clamp(48px, 4vw, 64px) var(--service-directory-gutter) clamp(64px, 6vw, 88px);
   display: grid;
   justify-items: center;
-  gap: 24px;
+  gap: 22px;
+  background: #050505;
+  color: #fff;
   text-align: center;
+}
+
+.service-directory-heading .eyebrow {
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .service-directory-heading h1,
 .service-directory-heading h2 {
-  max-width: 860px;
-  font: 400 clamp(52px, 6vw, 96px)/0.94 "Urbanist", "Inter", system-ui, sans-serif;
+  max-width: 900px;
+  color: #fff;
+  font: 400 clamp(48px, 4.5vw, 64px)/0.98 "Urbanist", "Inter", system-ui, sans-serif;
 }
 
 .service-directory-heading > p:not(.eyebrow) {
   max-width: 680px;
+  color: rgba(255, 255, 255, 0.66);
   font: 400 19px/1.5 "Karla", "Inter", system-ui, sans-serif;
 }
 
@@ -435,12 +444,12 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.service-directory-group:nth-child(2) .service-directory-list a:last-child {
+.service-directory-group:nth-child(2) .service-directory-list .service-directory-route:last-child {
   grid-column: 1 / -1;
   min-height: 430px;
 }
 
-.service-directory-list a,
+.service-directory-list .service-directory-route,
 .service-directory-card {
   --service-art: none;
   position: relative;
@@ -461,7 +470,7 @@
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.service-directory-list a::before,
+.service-directory-list .service-directory-route::before,
 .service-directory-card::before {
   content: "SERVICE";
   position: relative;
@@ -475,7 +484,7 @@
   letter-spacing: 0.04em;
 }
 
-.service-directory-list a::after,
+.service-directory-list .service-directory-route::after,
 .service-directory-card::after {
   content: "";
   position: absolute;
@@ -489,23 +498,23 @@
   transition: transform 240ms ease;
 }
 
-.service-directory-list a:hover {
+.service-directory-list .service-directory-route:hover {
   color: #fff;
   background: #111;
   transform: translateY(-3px);
 }
 
-.service-directory-list a:hover::after,
+.service-directory-list .service-directory-route:hover::after,
 .service-directory-group-featured:hover .service-directory-card::after {
   transform: scale(1.025);
 }
 
-.service-directory-list a:focus-visible {
+.service-directory-list .service-directory-route:focus-visible {
   outline: 3px solid var(--services-blue);
   outline-offset: 5px;
 }
 
-.service-directory-list a > span,
+.service-directory-list .service-directory-route > span,
 .service-directory-card > span {
   position: relative;
   z-index: 2;
@@ -514,7 +523,7 @@
   font: 400 clamp(28px, 2.5vw, 42px)/0.98 "Urbanist", "Inter", system-ui, sans-serif;
 }
 
-.service-directory-list a > small,
+.service-directory-list .service-directory-route > small,
 .service-directory-card > small {
   position: relative;
   z-index: 2;
@@ -524,7 +533,7 @@
   font: 400 16px/1.42 "Karla", "Inter", system-ui, sans-serif;
 }
 
-.service-directory-list a > strong,
+.service-directory-list .service-directory-route > strong,
 .service-directory-card > strong {
   position: relative;
   z-index: 2;
@@ -537,27 +546,46 @@
   white-space: nowrap;
 }
 
-.service-directory-group:first-child .service-directory-list a,
+.service-directory-group:first-child .service-directory-list .service-directory-route,
 .service-directory-group:first-child .service-directory-card {
   min-height: 430px;
 }
 
-.service-directory-list a[href="/services/business-process-automation-audit/"] { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
 .service-directory-group-featured .service-directory-card { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
-.service-directory-list a[href="/services/web-design/"] { --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp"); }
-.service-directory-list a[href="/services/health-clinic-website-design/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
-.service-directory-list a[href="/services/seo-audit-implementation/"] { --service-art: url("/public/assets/services/motion-cards/website-design.webp"); }
-.service-directory-list a[href="/services/website-maintenance/"] { --service-art: url("/public/assets/services/cards/service-card-website-design.webp"); }
-.service-directory-list a[href="/services/website-migration/"] { --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp"); }
-.service-directory-list a[href="/ai-receptionist/"] { --service-art: url("/public/assets/services/motion-cards/ai-receptionist.webp"); }
-.service-directory-list a[href="/services/online-booking-calendar-integration/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
-.service-directory-list a[href="/services/crm-integrations/"] { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
-.service-directory-list a[href="/services/booking-software-integrations/"] { --service-art: url("/public/assets/services/cards/service-card-health-business.webp"); }
-.service-directory-list a[href="/services/ai-integrations/"] { --service-art: url("/public/assets/services/cards/service-card-ai-agents-robot-workflow.webp"); }
-.service-directory-list a[href="/services/ai-agent-consultation/"] { --service-art: url("/public/assets/services/cards/service-card-ai-agents.webp"); }
-.service-directory-list a[href="/services/lead-generation/"] { --service-art: url("/public/assets/services/cards/service-card-cold-email.webp"); }
-.service-directory-list a[href="/services/email-marketing/"] { --service-art: url("/public/assets/services/motion-cards/cold-email-outreach.webp"); }
-.service-directory-list a[href="/services/cold-email-outreach/"] { --service-art: url("/public/assets/services/cards/service-card-cold-email.webp"); }
+.service-directory-list .service-directory-route[href="/services/web-design/"] { --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp"); }
+
+.service-directory-list .service-directory-route-static {
+  cursor: default;
+}
+
+.service-directory-list .service-directory-route-static::before {
+  content: "AVAILABLE BY REQUEST";
+  background: #343434;
+}
+
+.service-directory-list .service-directory-route-static::after {
+  background:
+    radial-gradient(circle at 72% 72%, rgba(74, 50, 255, 0.9) 0 13%, transparent 14%),
+    linear-gradient(135deg, transparent 0 44%, rgba(255, 255, 255, 0.12) 45% 58%, transparent 59%);
+  opacity: 0.72;
+}
+
+.service-directory-list .service-directory-route-static:hover {
+  background: #050505;
+  transform: none;
+}
+
+.service-directory-list .service-directory-route-static:hover::after {
+  transform: none;
+}
+
+.service-directory-list a.service-directory-route::before {
+  content: "VIEW PAGE ↗";
+}
+
+.service-directory-group-featured .service-directory-card::before {
+  content: "FREE CONSULTATION";
+}
 
 @media (max-width: 1180px) {
   .service-directory-group:nth-child(3) .service-directory-list,
@@ -565,7 +593,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .service-directory-group:nth-child(4) .service-directory-list a:last-child {
+  .service-directory-group:nth-child(4) .service-directory-list .service-directory-route:last-child {
     grid-column: 1 / -1;
   }
 }
@@ -575,12 +603,13 @@
     --service-directory-gutter: 20px;
     width: 100%;
     margin: 0;
-    padding: 72px 20px;
+    padding: 0 20px 72px;
     border-radius: 0;
   }
 
   .service-directory-heading {
-    margin-bottom: 88px;
+    margin-bottom: 72px;
+    padding: 48px 20px 64px;
     gap: 20px;
   }
 
@@ -605,30 +634,30 @@
     gap: 14px;
   }
 
-  .service-directory-group:nth-child(2) .service-directory-list a:last-child,
-  .service-directory-group:nth-child(4) .service-directory-list a:last-child {
+  .service-directory-group:nth-child(2) .service-directory-list .service-directory-route:last-child,
+  .service-directory-group:nth-child(4) .service-directory-list .service-directory-route:last-child {
     grid-column: auto;
   }
 
-  .service-directory-list a,
+  .service-directory-list .service-directory-route,
   .service-directory-card,
-  .service-directory-group:first-child .service-directory-list a,
-  .service-directory-group:nth-child(2) .service-directory-list a:last-child {
+  .service-directory-group:first-child .service-directory-list .service-directory-route,
+  .service-directory-group:nth-child(2) .service-directory-list .service-directory-route:last-child {
     min-height: 430px;
     padding: 24px;
   }
 
-  .service-directory-list a > span {
+  .service-directory-list .service-directory-route > span {
     max-width: 92%;
     font-size: 31px;
   }
 
-  .service-directory-list a > small {
+  .service-directory-list .service-directory-route > small {
     max-width: 82%;
     font-size: 15px;
   }
 
-  .service-directory-list a::after {
+  .service-directory-list .service-directory-route::after {
     width: 74%;
     height: 50%;
   }

@@ -20,74 +20,9 @@
       "description": "Business audits, web and clinic design, SEO, maintenance, migrations, AI, CRM and booking integrations, and marketing services with published starting references."
     },
     {
-      "url": "https://turboapply.agency/services/business-process-automation-audit/",
-      "title": "Business Process & Automation Audit | TurboApply",
-      "description": "Map lead, sales, admin, follow-up, and reporting workflows, then prioritize practical automation improvements. Start with a free 30-minute consultation."
-    },
-    {
       "url": "https://turboapply.agency/services/web-design/",
-      "title": "Web Design for Service Businesses | TurboApply",
+      "title": "Website Design for Service Businesses | TurboApply",
       "description": "TurboApply designs responsive, conversion-focused websites for service businesses, with clear offers, lead paths, analytics, and launch QA."
-    },
-    {
-      "url": "https://turboapply.agency/services/health-clinic-website-design/",
-      "title": "Health Clinic Website Design | TurboApply",
-      "description": "Patient-friendly clinic websites with clear service and practitioner pages, local SEO foundations, mobile booking paths, analytics, and launch QA."
-    },
-    {
-      "url": "https://turboapply.agency/services/seo-audit-implementation/",
-      "title": "SEO Audit & Implementation Services | TurboApply",
-      "description": "Find and fix priority technical and on-page SEO issues across indexing, metadata, internal links, schema, sitemaps, performance, and mobile."
-    },
-    {
-      "url": "https://turboapply.agency/services/website-maintenance/",
-      "title": "Website Maintenance Services | TurboApply",
-      "description": "One-off or ongoing website support for content, links, forms, analytics, performance, integrations, responsive QA, and documented changes."
-    },
-    {
-      "url": "https://turboapply.agency/services/website-migration/",
-      "title": "Website Migration Services | TurboApply",
-      "description": "Move a small website, landing page, host, or domain while protecting content, links, forms, analytics, DNS, SSL, and search-critical redirects."
-    },
-    {
-      "url": "https://turboapply.agency/services/online-booking-calendar-integration/",
-      "title": "Online Booking & Calendar Integration | TurboApply",
-      "description": "Connect your website and lead flow to online booking, calendars, intake fields, notifications, confirmations, and mobile-friendly scheduling."
-    },
-    {
-      "url": "https://turboapply.agency/services/crm-integrations/",
-      "title": "CRM Integration Services | TurboApply",
-      "description": "Connect forms, lead sources, communication tools, owners, and sales stages to a cleaner CRM workflow with tested routing and deduplication."
-    },
-    {
-      "url": "https://turboapply.agency/services/booking-software-integrations/",
-      "title": "Booking Software Integration Services | TurboApply",
-      "description": "Connect booking software with your website, CRM, reminders, payments, and internal notifications, with failure handling and end-to-end testing."
-    },
-    {
-      "url": "https://turboapply.agency/services/ai-integrations/",
-      "title": "AI Integration Services for Business | TurboApply",
-      "description": "Add a controlled AI step for drafting, classification, extraction, summarization, or routing, with human review, fallbacks, and test cases."
-    },
-    {
-      "url": "https://turboapply.agency/services/ai-agent-consultation/",
-      "title": "AI Agent Consultation (1 Hour) | TurboApply",
-      "description": "Review an AI agent idea, workflow, tools, data, and risks in one focused working session, then leave with a practical next-step recommendation."
-    },
-    {
-      "url": "https://turboapply.agency/services/lead-generation/",
-      "title": "B2B Lead Generation Services | TurboApply",
-      "description": "Build a practical B2B lead-generation process around audience, offer, territory, qualification, prospect research, enrichment, and CRM handoff."
-    },
-    {
-      "url": "https://turboapply.agency/services/email-marketing/",
-      "title": "Email Marketing Automation Services | TurboApply",
-      "description": "Create segmented email journeys with clear goals, useful messages, triggers, suppression rules, tracking, testing, and measurable conversion steps."
-    },
-    {
-      "url": "https://turboapply.agency/services/cold-email-outreach/",
-      "title": "Cold Email Outreach Services | TurboApply",
-      "description": "Build targeted cold email outreach with researched prospects, relevant messaging, follow-up logic, reply handling, safeguards, and CRM visibility."
     },
     {
       "url": "https://turboapply.agency/integrations/",
@@ -133,11 +68,6 @@
       "url": "https://turboapply.agency/free-guide/",
       "title": "Free Lead Quality Guide",
       "description": "Lead quality and follow-up playbook funnel."
-    },
-    {
-      "url": "https://turboapply.agency/ai-receptionist/",
-      "title": "AI Receptionist for Small Businesses | TurboApply",
-      "description": "TurboApply AI Receptionist answers calls and messages, qualifies leads, books appointments, updates CRM, and alerts your team around the clock."
     },
     {
       "url": "https://turboapply.agency/marketing/",
@@ -204,7 +134,7 @@
       "starting_reference": "Free 30-minute consultation",
       "billing": "consultation",
       "note": "Implementation is scoped separately.",
-      "url": "https://turboapply.agency/services/business-process-automation-audit/"
+      "url": "https://turboapply.agency/services/"
     },
     {
       "name": "Web Design",
@@ -216,79 +146,79 @@
       "name": "Health Clinic Website Design",
       "starting_reference": "From $1,500 USD",
       "billing": "scoped project",
-      "url": "https://turboapply.agency/services/health-clinic-website-design/"
+      "url": "https://turboapply.agency/services/"
     },
     {
       "name": "SEO Audit and Implementation",
       "starting_reference": "From $550 USD",
       "billing": "audit and priority fixes",
-      "url": "https://turboapply.agency/services/seo-audit-implementation/"
+      "url": "https://turboapply.agency/services/"
     },
     {
       "name": "Website Maintenance",
       "starting_reference": "From $350 USD",
       "billing": "scoped maintenance work",
-      "url": "https://turboapply.agency/services/website-maintenance/"
+      "url": "https://turboapply.agency/services/"
     },
     {
       "name": "Website Migration",
       "starting_reference": "From $150 USD",
       "billing": "simple migration",
-      "url": "https://turboapply.agency/services/website-migration/"
+      "url": "https://turboapply.agency/services/"
     },
     {
       "name": "AI Receptionist",
       "starting_reference": "From $750 USD",
       "billing": "one-time setup",
-      "url": "https://turboapply.agency/ai-receptionist/"
+      "url": "https://turboapply.agency/services/"
     },
     {
       "name": "Online Booking (Calendar Integration)",
       "starting_reference": "From $250 USD",
       "billing": "focused integration",
-      "url": "https://turboapply.agency/services/online-booking-calendar-integration/"
+      "url": "https://turboapply.agency/integrations/"
     },
     {
       "name": "CRM Integrations",
       "starting_reference": "From $950 USD",
       "billing": "scoped integration",
-      "url": "https://turboapply.agency/services/crm-integrations/"
+      "url": "https://turboapply.agency/integrations/"
     },
     {
       "name": "Booking Software Integrations",
       "starting_reference": "From $850 USD",
       "billing": "scoped integration",
-      "url": "https://turboapply.agency/services/booking-software-integrations/"
+      "url": "https://turboapply.agency/integrations/"
     },
     {
       "name": "AI Integrations",
       "starting_reference": "From $250 USD",
       "billing": "focused workflow",
-      "url": "https://turboapply.agency/services/ai-integrations/"
+      "url": "https://turboapply.agency/integrations/"
     },
     {
       "name": "AI Agent Consultation (1 Hour)",
       "starting_reference": "$100 USD",
       "billing": "one-hour consultation",
-      "url": "https://turboapply.agency/services/ai-agent-consultation/"
+      "url": "https://turboapply.agency/integrations/"
     },
     {
       "name": "Lead Generation",
       "starting_reference": "From $950 USD",
       "billing": "scoped setup",
-      "url": "https://turboapply.agency/services/lead-generation/"
+      "url": "https://turboapply.agency/marketing/"
     },
     {
       "name": "Email Marketing",
       "starting_reference": "From $950 USD",
       "billing": "scoped setup",
-      "url": "https://turboapply.agency/services/email-marketing/"
+      "url": "https://turboapply.agency/marketing/"
     },
     {
       "name": "Cold Email Outreach",
       "starting_reference": "From $950 USD",
       "billing": "scoped setup",
-      "url": "https://turboapply.agency/services/cold-email-outreach/"
+      "url": "https://turboapply.agency/marketing/"
     }
   ],
   "forms": [
@@ -355,7 +285,7 @@
     "authoritative_layer": "server",
     "browser_layer": "advisory and user-facing",
     "contact_policy": "Every form has a dedicated required email field and one required field labelled Phone (or Messenger). The combined contact field accepts a metadata-validated phone or supported messenger handle, not another email address. A separate Messenger field is forbidden.",
-    "source_policy": "Exact allow-listed TurboApply host. Source and local previews remain same-origin and fail closed. Only the controlled six-form DevNet artifact stamps dev.turboapply.agency and uses the readiness-safe Internal Testing route; release browser QA mocks requests and sends no real notification.",
+    "source_policy": "Exact allow-listed TurboApply host. Source and local previews remain same-origin and fail closed. Only the controlled seven-form DevNet artifact stamps dev.turboapply.agency and uses the readiness-safe Internal Testing route; release browser QA mocks requests and sends no real notification.",
     "idempotency_policy": "Suppress only the same recent submission key and same normalized content fingerprint.",
     "classification_categories": [
       "Real",
@@ -369,5 +299,5 @@
     "descriptor": "https://turboapply.agency/ai/mcp.json",
     "live_submission": "disabled"
   },
-  "updated": "2026-07-21"
+  "updated": "2026-07-22"
 }
