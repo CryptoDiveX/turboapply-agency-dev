@@ -74,7 +74,17 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 - Katerina Antonenko leads design and marketing. Her experience launching multiple businesses shaped TurboApply's focus on clear funnels and thoughtful automation.
 - Vasiliy Baryshnikov leads software development and technical delivery and brings six years of project management experience.
 - TurboApply's shared goal is to help businesses thrive through exceptional service, mapped requirements, quality delivery, and practical solutions.
+- The About page presents a black Meet the Founders opening, the origin story, a four-step process, evidence-safe reviews, upcoming Shorts, and the canonical secure contact form.
+- Reviews remain unpublished until attribution and context are approved; Shorts remain visibly marked Coming soon until real video destinations exist.
 - Team page: https://turboapply.agency/about/
+
+## Resources and results
+- Resources hub: https://turboapply.agency/resources/
+- Website launch checklist: https://turboapply.agency/resources/website-launch-checklist/
+- Lead-workflow mapping playbook: https://turboapply.agency/resources/map-a-lead-workflow/
+- AI receptionist launch guide: https://turboapply.agency/resources/ai-receptionist-launch-checklist/
+- Results destination: https://turboapply.agency/results/
+- Resources provide original practical guidance. Results publishes customer success stories only when context is approved and outcomes can be verified; do not invent customer names, quotes, logos, metrics, or results.
 
 ## Important public pages
 - https://turboapply.agency/
@@ -82,6 +92,11 @@ These are starting references, not fixed quotes. Final pricing depends on scope,
 - https://turboapply.agency/integrations/
 - https://turboapply.agency/agents/
 - https://turboapply.agency/about/
+- https://turboapply.agency/resources/
+- https://turboapply.agency/resources/website-launch-checklist/
+- https://turboapply.agency/resources/map-a-lead-workflow/
+- https://turboapply.agency/resources/ai-receptionist-launch-checklist/
+- https://turboapply.agency/results/
 - https://turboapply.agency/free-guide/
 - https://turboapply.agency/ai-receptionist/
 - https://turboapply.agency/marketing/

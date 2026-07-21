@@ -1113,7 +1113,7 @@ function observeContactForm() {
     if (contactForm.hasAttribute('data-preview-submit-disabled') && isDevelopmentWebsiteHost) {
       event.stopImmediatePropagation();
       contactForm.dataset.previewSubmitIntercepted = 'true';
-      setContactStatus('Preview validated. Lead delivery is disabled on DevNet and local previews.', 'success');
+      setContactStatus('Preview validated. Lead delivery is disabled in source and local previews.', 'success');
       return;
     }
 

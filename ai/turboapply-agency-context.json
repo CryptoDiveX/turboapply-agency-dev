@@ -102,7 +102,32 @@
     {
       "url": "https://turboapply.agency/about/",
       "title": "About TurboApply",
-      "description": "Meet Katerina and Vasiliy, who combine design, marketing, software development, technical leadership, and project management to help businesses thrive."
+      "description": "Meet Katerina and Vasiliy, learn why they created TurboApply, follow the agency's four-step process, and find permission-gated client reviews and upcoming practical Shorts."
+    },
+    {
+      "url": "https://turboapply.agency/resources/",
+      "title": "Resources for Websites, Automation and AI",
+      "description": "Practical guides for service-business websites, lead workflows, automation planning, AI receptionists, testing, and operational handoff."
+    },
+    {
+      "url": "https://turboapply.agency/resources/website-launch-checklist/",
+      "title": "A Practical Website Launch Checklist for Service Businesses",
+      "description": "Review the content, forms, analytics, search signals, and handoff details that matter before a service-business website goes live."
+    },
+    {
+      "url": "https://turboapply.agency/resources/map-a-lead-workflow/",
+      "title": "Map a Lead Workflow Before You Automate It",
+      "description": "Document the lead journey, owners, exceptions, and failure paths before connecting forms, CRM records, notifications, or AI steps."
+    },
+    {
+      "url": "https://turboapply.agency/resources/ai-receptionist-launch-checklist/",
+      "title": "What to Test Before Launching an AI Receptionist",
+      "description": "Prepare questions, booking rules, escalation paths, lead fields, and review scenarios before an AI receptionist handles customer conversations."
+    },
+    {
+      "url": "https://turboapply.agency/results/",
+      "title": "Customer Results and Success Stories",
+      "description": "Customer stories will document the starting point, work completed, operating handoff, and verified outcomes without inflated claims."
     },
     {
       "url": "https://turboapply.agency/free-guide/",
@@ -330,7 +355,7 @@
     "authoritative_layer": "server",
     "browser_layer": "advisory and user-facing",
     "contact_policy": "Every form has a dedicated required email field and one required field labelled Phone (or Messenger). The combined contact field accepts a metadata-validated phone or supported messenger handle, not another email address. A separate Messenger field is forbidden.",
-    "source_policy": "Exact allow-listed TurboApply host. DevNet and localhost browser previews stamp dev.turboapply.agency and route as Internal Testing.",
+    "source_policy": "Exact allow-listed TurboApply host. Source and local previews remain same-origin and fail closed. Only the controlled six-form DevNet artifact stamps dev.turboapply.agency and uses the readiness-safe Internal Testing route; release browser QA mocks requests and sends no real notification.",
     "idempotency_policy": "Suppress only the same recent submission key and same normalized content fingerprint.",
     "classification_categories": [
       "Real",
@@ -344,5 +369,5 @@
     "descriptor": "https://turboapply.agency/ai/mcp.json",
     "live_submission": "disabled"
   },
-  "updated": "2026-07-20"
+  "updated": "2026-07-21"
 }

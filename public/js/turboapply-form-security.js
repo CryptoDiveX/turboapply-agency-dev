@@ -211,7 +211,7 @@
         event.stopImmediatePropagation();
         form.dataset.previewSubmitIntercepted = 'true';
         const status = previewStatus(form);
-        status.textContent = 'Preview validated. Lead delivery is disabled on DevNet and local previews.';
+        status.textContent = 'Preview validated. Lead delivery is disabled in source and local previews.';
         status.hidden = false;
       }
     }, { capture: true });

@@ -14,7 +14,12 @@ Key pages:
 - /services/ — complete 15-service directory for audits, websites, SEO, AI/CRM automation, lead generation, marketing, and support. All 15 canonical detail pages share one generated editorial contract: 14 use `/services/<service-slug>/`, while AI Receptionist keeps `/ai-receptionist/`.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
-- /about/ — Katerina and Vasiliy, their design, marketing, software development, technical leadership, project management, local-business focus, and working principles.
+- /about/ — Katerina and Vasiliy, the story behind TurboApply, the four-step agency process, permission-gated client reviews, upcoming practical Shorts, and a secure contact form.
+- /resources/ — original guides for website launches, lead-workflow mapping, automation, AI receptionists, testing, and operational handoff.
+- /resources/website-launch-checklist/ — service-business website launch checklist.
+- /resources/map-a-lead-workflow/ — lead-workflow mapping playbook.
+- /resources/ai-receptionist-launch-checklist/ — AI receptionist launch and review guide.
+- /results/ — customer success-story destination; stories are published only with approved context and verified outcomes.
 - /free-guide/ — free lead quality guide funnel.
 - /ai-receptionist/ — AI receptionist service page.
 - /marketing/ — cold email outreach / sales workflow page.
