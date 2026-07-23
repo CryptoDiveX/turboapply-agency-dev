@@ -168,7 +168,7 @@ h3 { font-family: var(--font-display); font-weight: 400; }
 h1 {
   max-width: 720px;
   margin-bottom: 32px;
-  font-size: clamp(62px, 6.6vw, 112px);
+  font-size: clamp(48px, 5.3vw, 64px);
   line-height: .9;
   letter-spacing: 0;
 }
@@ -266,7 +266,7 @@ h1 {
 .process-heading h2,
 .principles-copy h2 {
   margin-bottom: 0;
-  font-size: clamp(46px, 5vw, 78px);
+  font-size: clamp(40px, 4vw, 52px);
   line-height: 1;
   letter-spacing: 0;
 }
@@ -360,7 +360,7 @@ h1 {
   align-items: end;
   padding: clamp(100px, 11vw, 170px) clamp(24px, 6vw, 96px);
 }
-.final-cta h2 { max-width: 960px; margin: 0; font-size: clamp(52px, 6vw, 96px); line-height: .94; letter-spacing: 0; }
+.final-cta h2 { max-width: 960px; margin: 0; font-size: clamp(40px, 4vw, 52px); line-height: 1; letter-spacing: 0; }
 .final-cta-body p { max-width: 600px; margin: 0 0 34px; color: rgba(255,255,255,.68); font-size: 19px; line-height: 1.5; }
 .button-light { min-height: 54px; padding: 0 24px; background: #fff; color: var(--ink); }
 
@@ -437,12 +437,12 @@ h1 {
     gap: 80px;
     padding: 88px var(--container-inline-padding-desktop);
   }
-  .final-cta h2 { font-size: clamp(48px, 4.7vw, 64px); line-height: 1; letter-spacing: 0; }
+  .final-cta h2 { font-size: clamp(40px, 4vw, 52px); line-height: 1; letter-spacing: 0; }
   .final-cta-body p { font-size: 17px; }
 }
 
 @media (min-width: 761px) {
-  .hero-copy h1 { font-size: clamp(63px, 5.3vw, 74px); }
+  .hero-copy h1 { font-size: clamp(52px, 4.6vw, 64px); }
 }
 
 @media (min-width: 1181px) {
@@ -552,7 +552,7 @@ h1 {
   .editorial-heading h2,
   .platforms-intro h2,
   .process-heading h2,
-  .principles-copy h2 { font-size: clamp(43px, 12vw, 58px); }
+  .principles-copy h2 { font-size: clamp(36px, 10vw, 44px); }
   .system-card { min-height: 410px; padding: 28px 0 34px; }
   .system-visual { height: 170px; }
   .system-card h3,
@@ -567,7 +567,7 @@ h1 {
   .principles-section { gap: 54px; }
   .principles-section li { grid-template-columns: 1fr; gap: 7px; }
   .final-cta-inner { gap: 46px; padding-left: 20px; padding-right: 20px; }
-  .final-cta h2 { font-size: clamp(50px, 14vw, 68px); }
+  .final-cta h2 { font-size: clamp(40px, 11vw, 50px); }
   .site-footer-inner { grid-template-columns: 1fr; align-items: start; padding-left: 20px; padding-right: 20px; }
   .site-footer-links { align-items: flex-start; }
 }

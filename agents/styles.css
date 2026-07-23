@@ -141,7 +141,7 @@
 .agent-details-intro h2 {
   max-width: 600px;
   margin: 0;
-  font-size: clamp(44px, 4.7vw, 68px);
+  font-size: clamp(40px, 4vw, 52px);
   line-height: .98;
   letter-spacing: -.045em;
 }
@@ -282,7 +282,7 @@
     padding: clamp(42px, 8vw, 60px) clamp(20px, 6vw, 40px);
     border-radius: 20px;
   }
-  .agents-heading h2 { font-size: clamp(43px, 12vw, 58px); line-height: .98; }
+  .agents-heading h2 { font-size: clamp(36px, 10vw, 44px); line-height: 1; }
   .agents-heading p { font-size: 18px; }
   .agents-heading .button { margin-top: 30px; }
   .agent-directory-panel {
@@ -299,7 +299,7 @@
     padding: 44px 20px 16px;
   }
   .agent-details-intro { padding: 12px 0 44px; }
-  .agent-details-intro h2 { font-size: clamp(43px, 12vw, 58px); }
+  .agent-details-intro h2 { font-size: clamp(36px, 10vw, 44px); }
   .agent-details-intro p { font-size: 17px; }
   .agent-detail {
     gap: 32px;

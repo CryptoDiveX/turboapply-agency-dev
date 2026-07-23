@@ -71,7 +71,7 @@
 }
 
 .results-reviews {
-  padding: clamp(72px, 7vw, 112px) max(32px, calc((100vw - 1440px) / 2 + 32px));
+  padding: clamp(48px, 5vw, 72px) max(32px, calc((100vw - 1440px) / 2 + 32px));
   background: #090909;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -98,7 +98,7 @@
 }
 
 .results-review-list {
-  margin-top: clamp(44px, 5vw, 68px);
+  margin-top: 0;
   display: grid;
   gap: 16px;
 }
@@ -350,7 +350,7 @@
   }
 
   .results-reviews {
-    padding: 64px 20px 78px;
+    padding: 56px 20px 64px;
   }
 
   .results-reviews-heading h2 {

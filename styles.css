@@ -3199,3 +3199,14 @@ button { font: inherit; }
     margin-top: 8px;
   }
 }
+
+@media (min-width: 1181px) {
+  .hero-title {
+    font-size: 64px !important;
+  }
+
+  .services-heading-row h2,
+  .contact-card h2 {
+    font-size: 52px !important;
+  }
+}
