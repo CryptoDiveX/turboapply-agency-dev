@@ -114,7 +114,7 @@
 }
 
 .founder-card-media {
-  height: clamp(340px, 30vw, 460px);
+  height: clamp(220px, 18vw, 300px);
   margin: 0;
   overflow: hidden;
   background: #e6e6e2;
@@ -133,11 +133,11 @@
 }
 
 .founder-card-details {
-  min-height: 250px;
-  padding: clamp(28px, 3vw, 44px);
+  min-height: 220px;
+  padding: clamp(24px, 2.4vw, 34px);
   display: grid;
-  grid-template-columns: minmax(170px, 0.62fr) minmax(0, 1.38fr);
-  gap: clamp(32px, 4vw, 64px);
+  grid-template-columns: minmax(150px, 0.62fr) minmax(0, 1.38fr);
+  gap: clamp(24px, 3vw, 44px);
   background: #fff;
 }
 
@@ -153,25 +153,40 @@
   font: 500 13px/1.4 "Inter", system-ui, sans-serif;
 }
 
-.founder-bio {
+.founder-experience-list {
   margin: 0;
+  padding: 0;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  list-style: none;
   color: #52504b;
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.founder-experience-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.founder-experience-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--about-ink);
 }
 
 .about-origin {
-  padding-block: clamp(88px, 9vw, 144px);
+  padding-block: clamp(72px, 7vw, 112px);
   display: grid;
-  grid-template-columns: minmax(260px, 0.55fr) minmax(0, 1.45fr);
-  gap: clamp(60px, 10vw, 170px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
 }
 
 .origin-mark {
-  position: sticky;
-  top: 104px;
-  min-height: 470px;
+  min-height: 340px;
   margin: 0;
   display: grid;
   place-items: center;
@@ -183,7 +198,7 @@
 }
 
 .origin-mark img {
-  width: min(68%, 340px);
+  width: min(54%, 220px);
   height: auto;
   display: block;
 }
@@ -195,37 +210,37 @@
 .origin-story h2 {
   max-width: 860px;
   margin: 28px 0 0;
-  font-size: clamp(46px, 5vw, 78px);
+  font-size: clamp(34px, 3.6vw, 52px);
   line-height: 1;
   text-wrap: balance;
 }
 
-.origin-columns {
-  margin-top: clamp(54px, 6vw, 88px);
+.origin-copy {
+  max-width: 780px;
+  margin-top: clamp(36px, 4vw, 56px);
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px clamp(34px, 5vw, 70px);
+  gap: 22px;
 }
 
-.origin-columns p {
+.origin-copy p {
   margin: 0;
   color: #514f49;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 .origin-statement {
-  margin: clamp(54px, 6vw, 84px) 0 0;
-  padding: 28px 0 0;
+  margin: clamp(38px, 4vw, 58px) 0 0;
+  padding: 24px 0 0;
   border-top: 1px solid var(--about-ink);
-  font: 400 clamp(28px, 2.8vw, 40px)/1.18 var(--about-font-display);
+  font: 400 clamp(24px, 2.2vw, 32px)/1.2 var(--about-font-display);
 }
 
 .about-process {
-  padding-block: clamp(88px, 9vw, 144px);
+  padding-block: clamp(72px, 7vw, 112px);
   display: grid;
   grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(60px, 10vw, 170px);
+  gap: clamp(48px, 8vw, 120px);
   border-top: 1px solid var(--about-line);
 }
 
@@ -237,17 +252,9 @@
 
 .process-heading h2 {
   margin: 28px 0 0;
-  font-size: clamp(46px, 5vw, 78px);
+  font-size: clamp(34px, 3.6vw, 52px);
   line-height: 1;
   text-wrap: balance;
-}
-
-.process-heading > p:last-child {
-  max-width: 440px;
-  margin: 26px 0 0;
-  color: var(--about-muted);
-  font-size: 19px;
-  line-height: 1.5;
 }
 
 .process-list {
@@ -258,34 +265,30 @@
 }
 
 .process-list li {
-  min-height: 150px;
-  padding: 32px 0;
+  min-height: 132px;
+  padding: 28px 0;
   display: grid;
-  grid-template-columns: 78px minmax(0, 1fr);
-  gap: 32px;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 0.65fr);
+  gap: 28px;
   border-bottom: 1px solid var(--about-line);
-}
-
-.process-number {
-  font: 400 clamp(28px, 2.5vw, 38px)/1 var(--about-font-display);
 }
 
 .process-list h3 {
   margin: 0;
-  font-size: clamp(26px, 2vw, 34px);
+  font-size: clamp(24px, 1.8vw, 30px);
   line-height: 1.05;
 }
 
 .process-list p {
   max-width: 620px;
-  margin: 15px 0 0;
+  margin: 0;
   color: var(--about-muted);
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.5;
 }
 
 .about-reviews {
-  padding-block: clamp(88px, 9vw, 144px);
+  padding-block: clamp(72px, 7vw, 112px);
   background: var(--about-warm);
 }
 
@@ -297,7 +300,7 @@
 
 .reviews-heading h2 {
   margin: 28px 0 0;
-  font-size: clamp(46px, 5vw, 78px);
+  font-size: clamp(34px, 3.6vw, 52px);
   line-height: 1;
   text-wrap: balance;
 }
@@ -305,7 +308,7 @@
 .reviews-heading > p:last-of-type {
   margin: 27px 0 0;
   color: var(--about-muted);
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.55;
 }
 
@@ -448,7 +451,7 @@
 }
 
 .about-shorts {
-  padding-block: clamp(88px, 9vw, 144px);
+  padding-block: clamp(72px, 7vw, 112px);
   overflow: hidden;
   background: #fff;
 }
@@ -466,7 +469,7 @@
 
 .shorts-heading h2 {
   margin: 28px 0 0;
-  font-size: clamp(46px, 5vw, 78px);
+  font-size: clamp(34px, 3.6vw, 52px);
   line-height: 1;
   text-wrap: balance;
 }
@@ -475,7 +478,7 @@
   max-width: 660px;
   margin: 28px 0 0;
   color: var(--about-muted);
-  font-size: 19px;
+  font-size: 17px;
   line-height: 1.5;
 }
 
@@ -490,8 +493,8 @@
 }
 
 .short-card {
-  flex: 0 0 min(420px, 36%);
-  min-width: 300px;
+  flex: 0 0 min(360px, 31%);
+  min-width: 280px;
   overflow: hidden;
   scroll-snap-align: start;
   border: 1px solid var(--about-line);
@@ -500,7 +503,7 @@
 }
 
 .short-card figure {
-  aspect-ratio: 0.86;
+  aspect-ratio: 1.08;
   margin: 0;
   overflow: hidden;
   background: var(--about-soft);
@@ -514,8 +517,8 @@
 }
 
 .short-card > div {
-  min-height: 170px;
-  padding: 25px;
+  min-height: 146px;
+  padding: 22px;
 }
 
 .short-card p {
@@ -539,7 +542,7 @@
 }
 
 .about-contact-panel {
-  padding: clamp(100px, 11vw, 170px) 0;
+  padding: clamp(80px, 8vw, 124px) 0;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
   gap: clamp(58px, 8vw, 120px);
@@ -556,8 +559,8 @@
 .about-contact-copy h2 {
   max-width: 760px;
   margin: 28px 0 0;
-  font-size: clamp(52px, 6vw, 96px);
-  line-height: 0.94;
+  font-size: clamp(34px, 3.6vw, 52px);
+  line-height: 1;
   text-wrap: balance;
 }
 
@@ -565,7 +568,7 @@
   max-width: 650px;
   margin: 30px 0 0;
   color: rgba(255, 255, 255, 0.62);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -668,13 +671,12 @@
     grid-template-columns: 1fr;
   }
 
-  .origin-mark,
   .process-heading {
     position: static;
   }
 
   .origin-mark {
-    min-height: 390px;
+    min-height: 300px;
   }
 
   .about-process,
@@ -697,9 +699,6 @@
     gap: 26px;
   }
 
-  .origin-columns {
-    grid-template-columns: 1fr;
-  }
 
   .about-footer {
     grid-template-columns: 1fr;
@@ -745,8 +744,7 @@
   }
 
   .founder-card-media {
-    height: auto;
-    aspect-ratio: 1.12;
+    height: 220px;
   }
 
   .founder-card-details {
@@ -758,7 +756,7 @@
     font-size: 32px;
   }
 
-  .founder-bio {
+  .founder-experience-list {
     font-size: 16px;
   }
 
@@ -783,16 +781,15 @@
   .process-heading h2,
   .reviews-heading h2,
   .shorts-heading h2 {
-    font-size: clamp(40px, 11vw, 52px);
+    font-size: clamp(34px, 9.5vw, 46px);
   }
 
-  .origin-columns {
-    margin-top: 44px;
-    gap: 24px;
+  .origin-copy {
+    margin-top: 36px;
+    gap: 20px;
   }
 
-  .origin-columns p,
-  .process-heading > p:last-child,
+  .origin-copy p,
   .shorts-heading > div:first-child > p:last-child {
     font-size: 17px;
   }
@@ -803,12 +800,8 @@
 
   .process-list li {
     min-height: 0;
-    grid-template-columns: 54px minmax(0, 1fr);
-    gap: 18px;
-  }
-
-  .process-number {
-    font-size: 27px;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .process-list h3 {
@@ -871,7 +864,7 @@
   }
 
   .about-contact-copy h2 {
-    font-size: clamp(48px, 13.4vw, 62px);
+    font-size: clamp(34px, 9.5vw, 46px);
   }
 
   .about-contact-copy > p:last-child {

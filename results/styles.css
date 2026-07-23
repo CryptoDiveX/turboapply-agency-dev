@@ -10,8 +10,8 @@
 }
 
 .results-hero {
-  min-height: max(620px, calc(100svh - 64px));
-  padding: clamp(96px, 12vw, 170px) 32px clamp(86px, 10vw, 140px);
+  min-height: 0;
+  padding: clamp(48px, 4vw, 64px) 32px clamp(64px, 6vw, 88px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,38 +23,31 @@
 
 .results-kicker,
 .results-reviews-heading > p {
-  margin: 0 0 28px;
+  margin: 0 0 22px;
   color: rgba(255, 255, 255, 0.58);
-  font: 600 12px/1.2 Inter, sans-serif;
-  letter-spacing: 0.22em;
+  font: 600 13px/1.2 Inter, sans-serif;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.results-kicker::before,
-.results-reviews-heading > p::before {
-  content: "+";
-  margin-right: 12px;
-  color: #fff;
-}
-
 .results-hero h1 {
-  max-width: 900px;
+  max-width: 760px;
   margin: 0;
-  font: 600 clamp(58px, 6.2vw, 88px)/0.94 Urbanist, sans-serif;
-  letter-spacing: -0.04em;
+  font: 400 clamp(48px, 4.5vw, 64px)/0.98 Urbanist, sans-serif;
+  letter-spacing: 0;
 }
 
 .results-hero > p:not(.results-kicker) {
   max-width: 670px;
   margin: 30px 0 0;
   color: rgba(255, 255, 255, 0.66);
-  font-size: 19px;
-  line-height: 1.55;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .results-hero > a {
   min-width: 190px;
-  margin-top: 42px;
+  margin-top: 34px;
   padding: 16px 24px;
   border: 1px solid rgba(255, 255, 255, 0.28);
   color: #fff;
@@ -78,7 +71,7 @@
 }
 
 .results-reviews {
-  padding: clamp(92px, 10vw, 150px) max(32px, calc((100vw - 1440px) / 2 + 32px));
+  padding: clamp(72px, 7vw, 112px) max(32px, calc((100vw - 1440px) / 2 + 32px));
   background: #090909;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -92,8 +85,8 @@
 
 .results-reviews-heading h2 {
   margin: 0;
-  font: 600 clamp(44px, 4.8vw, 68px)/0.98 Urbanist, sans-serif;
-  letter-spacing: -0.035em;
+  font: 400 clamp(34px, 3.6vw, 52px)/1 Urbanist, sans-serif;
+  letter-spacing: 0;
 }
 
 .results-reviews-heading > span {
@@ -105,18 +98,18 @@
 }
 
 .results-review-list {
-  margin-top: clamp(64px, 7vw, 96px);
+  margin-top: clamp(44px, 5vw, 68px);
   display: grid;
   gap: 16px;
 }
 
 .result-review-card {
-  min-height: 260px;
+  min-height: 210px;
   display: grid;
   grid-template-columns: minmax(220px, 0.72fr) minmax(320px, 1.35fr) minmax(230px, 0.78fr);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 14px;
+  border-radius: 10px;
   background: #f2f1ed;
   color: #141414;
 }
@@ -125,7 +118,7 @@
 .review-quote,
 .review-result {
   min-width: 0;
-  padding: 30px;
+  padding: 24px;
 }
 
 .review-company {
@@ -133,8 +126,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow: hidden;
-  background: linear-gradient(145deg, #d9d7d0, #efeee9 54%, #c8cac5);
+  background: #e7e6e1;
 }
 
 .review-company > span,
@@ -148,7 +140,7 @@
 
 .review-company strong {
   margin-top: auto;
-  font: 600 27px/1 Urbanist, sans-serif;
+  font: 500 24px/1 Urbanist, sans-serif;
   letter-spacing: -0.025em;
 }
 
@@ -169,8 +161,8 @@
 
 .review-quote blockquote {
   max-width: 540px;
-  margin: 26px 0 30px;
-  font: 500 clamp(20px, 1.8vw, 25px)/1.24 Urbanist, sans-serif;
+  margin: 22px 0 26px;
+  font: 500 clamp(19px, 1.6vw, 23px)/1.28 Urbanist, sans-serif;
   letter-spacing: -0.015em;
 }
 
@@ -192,7 +184,7 @@
 }
 
 .result-review-card[data-review-status="pending"] .review-result strong {
-  font-size: clamp(30px, 3vw, 44px);
+  font-size: clamp(26px, 2.4vw, 36px);
   line-height: 1;
   letter-spacing: -0.03em;
 }
@@ -316,7 +308,7 @@
 
   .review-result {
     grid-column: 1 / -1;
-    min-height: 190px;
+    min-height: 160px;
     border-top: 1px solid #d7d5cf;
     border-left: 0;
   }
@@ -345,12 +337,12 @@
 
 @media (max-width: 760px) {
   .results-hero {
-    min-height: 620px;
-    padding: 96px 20px 82px;
+    min-height: 0;
+    padding: 48px 20px 64px;
   }
 
   .results-hero h1 {
-    font-size: clamp(48px, 14vw, 62px);
+    font-size: clamp(44px, 13vw, 58px);
   }
 
   .results-hero > p:not(.results-kicker) {
@@ -358,11 +350,11 @@
   }
 
   .results-reviews {
-    padding: 78px 20px 92px;
+    padding: 64px 20px 78px;
   }
 
   .results-reviews-heading h2 {
-    font-size: clamp(40px, 12vw, 52px);
+    font-size: clamp(34px, 9.5vw, 46px);
   }
 
   .result-review-card {
@@ -370,12 +362,12 @@
   }
 
   .review-company {
-    min-height: 210px;
+    min-height: 150px;
   }
 
   .review-quote,
   .review-result {
-    min-height: 210px;
+    min-height: 160px;
     border-left: 0;
     border-top: 1px solid #d7d5cf;
   }
