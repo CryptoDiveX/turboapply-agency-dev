@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Karla:wght@400;500&amp;family=Urbanist:wght@400;500;600&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260723-21" />
-  <link rel="stylesheet" href="/resources/styles.css?v=resources-hierarchy-cleanup-20260723-7" />
+  <link rel="stylesheet" href="/resources/styles.css?v=resources-centered-articles-20260723-9" />
   <script src="/google-tag.js?v=ga-20260714-1" defer></script>
   <script type="application/ld+json">
 {
@@ -165,10 +165,19 @@
     </article>
 
     <section class="related-resources" aria-labelledby="related-title">
-      <h2 id="related-title">Continue reading</h2>
-      <div>
-        <a href="/resources/website-launch-checklist/"><span>Websites</span><strong>A practical website launch checklist</strong><em aria-hidden="true">↗</em></a>
-        <a href="/resources/ai-receptionist-launch-checklist/"><span>AI systems</span><strong>What to test before launching an AI receptionist</strong><em aria-hidden="true">↗</em></a>
+      <div class="related-resources-heading">
+        <div><p>More resources</p><h2 id="related-title">Continue reading.</h2></div>
+        <nav aria-label="Related article cards"><a href="#related-1" aria-label="Show first related article">←</a><a href="#related-2" aria-label="Show second related article">→</a></nav>
+      </div>
+      <div class="related-resources-rail">
+        <a id="related-1" class="related-resource-card" href="/resources/website-launch-checklist/">
+          <figure><img src="/public/assets/health-site/health-hero.webp" alt="A responsive service-business website displayed across desktop and mobile layouts" width="1280" height="810" loading="lazy" decoding="async" /></figure>
+          <div><p><span>Websites</span><span>3 min read</span></p><h3>Website launch checklist for service businesses</h3></div>
+        </a>
+        <a id="related-2" class="related-resource-card" href="/resources/ai-receptionist-launch-checklist/">
+          <figure><img src="/public/assets/services/cards/service-card-ai-agents-robot-workflow.webp" alt="A friendly illustrated AI assistant connected to a business workflow" width="720" height="960" loading="lazy" decoding="async" /></figure>
+          <div><p><span>AI systems</span><span>3 min read</span></p><h3>AI receptionist launch checklist for businesses</h3></div>
+        </a>
       </div>
     </section>
 

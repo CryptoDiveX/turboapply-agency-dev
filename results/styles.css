@@ -71,7 +71,7 @@
 }
 
 .results-reviews {
-  padding: clamp(48px, 5vw, 72px) max(32px, calc((100vw - 1440px) / 2 + 32px));
+  padding: 0 max(32px, calc((100vw - 1440px) / 2 + 32px)) clamp(64px, 6vw, 88px);
   background: #090909;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -100,94 +100,60 @@
 .results-review-list {
   margin-top: 0;
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1220px;
+  margin-inline: auto;
 }
 
 .result-review-card {
-  min-height: 210px;
-  display: grid;
-  grid-template-columns: minmax(220px, 0.72fr) minmax(320px, 1.35fr) minmax(230px, 0.78fr);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 10px;
-  background: #f2f1ed;
-  color: #141414;
-}
-
-.review-company,
-.review-quote,
-.review-result {
-  min-width: 0;
-  padding: 24px;
-}
-
-.review-company {
-  position: relative;
+  min-height: 460px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  background: #e7e6e1;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)), rgba(18,18,18,.78);
+  color: #fff;
+  box-shadow: 0 24px 70px rgba(0,0,0,.22);
+  backdrop-filter: blur(18px);
 }
 
-.review-company > span,
-.review-quote > span,
-.review-result > span {
-  color: #64615a;
+.result-brand {
+  min-height: 158px;
+  padding: 28px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.025);
+}
+
+.result-brand img { width: auto; height: 106px; max-width: 150px; object-fit: contain; }
+.result-wordmark { color: #fff; font: 600 36px/.9 Urbanist, sans-serif; letter-spacing: -.04em; text-align: center; }
+.result-wordmark-penibys { font-family: Georgia, serif; font-size: 32px; font-style: italic; font-weight: 400; line-height: .92; }
+.result-wordmark-ozero { font-size: 39px; }
+
+.result-card-copy {
+  min-height: 0;
+  padding: 28px 30px 30px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.result-sector {
+  margin: 0;
+  color: rgba(255,255,255,.56);
   font: 600 11px/1.2 Inter, sans-serif;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.review-company strong {
-  margin-top: auto;
-  font: 500 24px/1 Urbanist, sans-serif;
-  letter-spacing: -0.025em;
-}
-
-.review-company p,
-.review-quote p,
-.review-result p {
-  margin: 10px 0 0;
-  color: #64615a;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.review-quote {
-  display: flex;
-  flex-direction: column;
-  border-left: 1px solid #d7d5cf;
-}
-
-.review-quote blockquote {
-  max-width: 540px;
-  margin: 22px 0 26px;
-  font: 500 clamp(19px, 1.6vw, 23px)/1.28 Urbanist, sans-serif;
-  letter-spacing: -0.015em;
-}
-
-.review-quote p {
-  margin-top: auto;
-}
-
-.review-result {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border-left: 1px solid #d7d5cf;
-}
-
-.review-result strong {
-  margin-top: auto;
-  font: 500 clamp(42px, 4.2vw, 62px)/0.92 Urbanist, sans-serif;
-  letter-spacing: -0.045em;
-}
-
-.result-review-card[data-review-status="pending"] .review-result strong {
-  font-size: clamp(26px, 2.4vw, 36px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
+.result-card-copy h2 { margin: 18px 0 0; font: 500 clamp(30px, 2.6vw, 38px)/.98 Urbanist, sans-serif; letter-spacing: -.035em; }
+.result-work { margin: 22px 0 0; color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.5; }
+.result-evidence { margin: auto 0 0; padding-top: 28px; color: rgba(255,255,255,.52); font-size: 13px; line-height: 1.4; border-top: 1px solid rgba(255,255,255,.12); }
+.result-card-copy a { width: max-content; margin-top: 18px; color: #fff; font: 600 13px/1 Inter, sans-serif; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.45); }
 
 .results-story-standard,
 .results-definition {
@@ -302,16 +268,7 @@
 }
 
 @media (max-width: 1000px) {
-  .result-review-card {
-    grid-template-columns: minmax(180px, 0.7fr) minmax(280px, 1.3fr);
-  }
-
-  .review-result {
-    grid-column: 1 / -1;
-    min-height: 160px;
-    border-top: 1px solid #d7d5cf;
-    border-left: 0;
-  }
+  .results-review-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -350,27 +307,15 @@
   }
 
   .results-reviews {
-    padding: 56px 20px 64px;
+    padding: 0 20px 64px;
   }
 
   .results-reviews-heading h2 {
     font-size: clamp(34px, 9.5vw, 46px);
   }
 
-  .result-review-card {
-    grid-template-columns: 1fr;
-  }
-
-  .review-company {
-    min-height: 150px;
-  }
-
-  .review-quote,
-  .review-result {
-    min-height: 160px;
-    border-left: 0;
-    border-top: 1px solid #d7d5cf;
-  }
+  .results-review-list { grid-template-columns: 1fr; }
+  .result-review-card { min-height: 430px; }
 
   .results-story-standard,
   .results-definition {
