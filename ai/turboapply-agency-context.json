@@ -114,9 +114,7 @@
   "services": [
     "Business Process and Automation Audit",
     "Web Design",
-    "Health Clinic Website Design",
     "SEO Audit and Implementation",
-    "Website Maintenance",
     "Website Migration",
     "AI Receptionist",
     "Online Booking (Calendar Integration)",
@@ -143,21 +141,9 @@
       "url": "https://turboapply.agency/services/web-design/"
     },
     {
-      "name": "Health Clinic Website Design",
-      "starting_reference": "From $1,500 USD",
-      "billing": "scoped project",
-      "url": "https://turboapply.agency/services/"
-    },
-    {
       "name": "SEO Audit and Implementation",
       "starting_reference": "From $550 USD",
       "billing": "audit and priority fixes",
-      "url": "https://turboapply.agency/services/"
-    },
-    {
-      "name": "Website Maintenance",
-      "starting_reference": "From $350 USD",
-      "billing": "scoped maintenance work",
       "url": "https://turboapply.agency/services/"
     },
     {
