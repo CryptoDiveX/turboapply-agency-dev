@@ -302,6 +302,7 @@
             <p>We’ll identify the smallest useful first project and confirm the scope before work begins.</p>
           </div>
           <form class="web-contact-form" action="/submit-lead.php" method="post" data-services-lead-form data-turboapply-secure-form>
+            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
             <label><span>Name</span><input type="text" name="name" autocomplete="name" maxlength="120" required /></label>
             <label><span>Email</span><input type="email" name="email" autocomplete="email" maxlength="254" required /></label>
             <label><span>Phone (or Messenger)</span><input type="text" name="contact" autocomplete="tel" maxlength="254" required /></label>
@@ -331,7 +332,7 @@
     </footer>
 
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=devnet-handler-20260721-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260724-1"></script>
     <script src="/integrations/script.js?v=services-page-20260716-1"></script>
     <script src="/services/script.js?v=web-design-form-20260722-1"></script>
   </body>

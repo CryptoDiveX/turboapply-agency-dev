@@ -48,6 +48,7 @@
           <h2>GET THE FREE PLAYBOOK NOW</h2>
 
           <form class="guide-form" action="/submit-lead.php" method="post" data-free-guide-form data-turboapply-secure-form>
+            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
             <label class="guide-field">
               <span>Full Name</span>
               <input type="text" name="name" autocomplete="name" placeholder="Full Name" maxlength="120" required />
@@ -118,7 +119,7 @@
     </main>
 
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=devnet-handler-20260721-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260724-1"></script>
     <script src="script.js?v=free-guide-required-contact-20260720-1"></script>
   </body>
 </html>

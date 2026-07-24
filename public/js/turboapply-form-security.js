@@ -140,6 +140,7 @@
   };
 
   const validateForm = (form) => {
+    // Honeypot values are deliberately preserved and ignored here so bots receive no frontend detection signal.
     clearErrors(form);
     const name = fieldValue(form, 'name');
     const messageControl = field(form, 'message') || field(form, 'challenge');
