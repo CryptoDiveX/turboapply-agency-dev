@@ -1,13 +1,12 @@
 .results-page {
   margin: 0;
-  background: #090909;
+  background: #fff;
   color: #121212;
   font-family: Karla, Inter, sans-serif;
 }
 
 .results-page main {
   overflow: clip;
-  background: #090909;
 }
 
 .results-hero {
@@ -47,13 +46,11 @@
 }
 
 .results-hero > a {
-  min-width: 230px;
+  min-width: 190px;
   margin-top: 34px;
   padding: 16px 24px;
-  border: 1px solid #fff;
-  border-radius: 999px;
-  background: #fff;
-  color: #090909;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
   font: 600 12px/1 Inter, sans-serif;
   letter-spacing: 0.14em;
   text-decoration: none;
@@ -62,8 +59,8 @@
 }
 
 .results-hero > a:hover {
-  background: #e9e7e1;
-  border-color: #e9e7e1;
+  background: #fff;
+  border-color: #fff;
   color: #090909;
 }
 
@@ -76,7 +73,7 @@
 .results-reviews {
   padding: 0 max(32px, calc((100vw - 1440px) / 2 + 32px)) clamp(64px, 6vw, 88px);
   background: #090909;
-  border-top: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .results-reviews-heading {

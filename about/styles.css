@@ -640,7 +640,7 @@
 @media (min-width: 1000px) {
   .founder-card {
     display: grid;
-    grid-template-rows: clamp(250px, calc(50vw - 250px), 60%) minmax(0, 1fr);
+    grid-template-rows: clamp(250px, calc(58vw - 330px), 72%) minmax(0, 1fr);
     aspect-ratio: 1 / 1;
   }
 

@@ -321,7 +321,7 @@
   position: static;
   max-width: none;
   margin: 0 calc(0px - var(--service-directory-gutter));
-  padding: clamp(48px, 4vw, 64px) var(--service-directory-gutter) clamp(36px, 3vw, 48px);
+  padding: clamp(48px, 4vw, 64px) var(--service-directory-gutter) clamp(20px, 2vw, 28px);
   display: grid;
   justify-items: center;
   gap: 22px;
@@ -354,33 +354,37 @@
 .service-directory-groups {
   display: grid;
   gap: 0;
-  width: 100%;
-  margin: 24px auto 0;
-  padding: clamp(45px, 4vw, 64px) clamp(20px, 2vw, 32px);
-  box-sizing: border-box;
-  border-radius: 35px;
-  background: #212121;
+  background: #fff;
 }
 
 .service-directory-group,
 .service-directory-group:last-child {
-  margin: 0;
-  padding: clamp(64px, 6vw, 88px) 0;
+  margin-inline: calc(0px - var(--service-directory-gutter));
+  padding: clamp(72px, 7vw, 112px) var(--service-directory-gutter);
   border: 0;
-  background: transparent;
-  color: #fff;
-}
-
-.service-directory-group + .service-directory-group {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: #fff;
+  color: #050505;
 }
 
 .service-directory-group-featured {
   position: relative;
   isolation: isolate;
-  margin: 0;
-  padding: 0 0 clamp(64px, 6vw, 88px);
-  background: transparent;
+  margin-inline: calc(0px - var(--service-directory-gutter));
+  padding: clamp(28px, 3vw, 40px) var(--service-directory-gutter) clamp(64px, 6vw, 88px);
+  background: #fff;
+  color: #050505;
+}
+
+.service-directory-group:nth-child(2) {
+  background: #fff;
+  color: #050505;
+}
+
+.service-directory-group:nth-child(3) {
+  margin-inline: 0;
+  padding-inline: clamp(20px, 4vw, 56px);
+  border-radius: clamp(28px, 3vw, 44px);
+  background: #222;
   color: #fff;
 }
 
@@ -389,14 +393,20 @@
   outline-offset: 5px;
 }
 
-.service-directory-group .service-directory-index {
+.service-directory-group-featured .service-directory-index,
+.service-directory-group:nth-child(3) .service-directory-index {
   background: #fff;
   color: #050505;
 }
 
-.service-directory-group .service-directory-route,
 .service-directory-group-featured .service-directory-card {
   border: 0;
+  background: #050505;
+}
+
+.service-directory-group:nth-child(3) .service-directory-route {
+  border: 0;
+  border-radius: 24px;
   background: #050505;
 }
 
@@ -615,7 +625,7 @@
 
   .service-directory-heading {
     margin-bottom: 0;
-    padding: 48px 20px 64px;
+    padding: 48px 20px 28px;
     gap: 20px;
   }
 
@@ -625,20 +635,22 @@
   }
 
   .service-directory-groups {
-    margin-top: 16px;
-    padding: 30px 10px;
-    border-radius: 30px;
     gap: 0;
   }
 
   .service-directory-group,
   .service-directory-group:last-child {
-    padding: 44px 0;
+    padding: 56px 20px;
   }
 
   .service-directory-group-featured {
-    padding-top: 0;
-    padding-bottom: 44px;
+    padding: 28px 20px 64px;
+  }
+
+  .service-directory-group:nth-child(3) {
+    margin-inline: 0;
+    padding: 56px 16px;
+    border-radius: 28px;
   }
 
   .service-directory-group h2 {
