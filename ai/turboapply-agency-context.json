@@ -41,8 +41,8 @@
     },
     {
       "url": "https://turboapply.agency/resources/",
-      "title": "Resources for Websites, Automation and AI",
-      "description": "Practical guides for service-business websites, lead workflows, automation planning, AI receptionists, testing, and operational handoff."
+      "title": "Website SEO, Automation and AI Resources",
+      "description": "Practical guides for website SEO, local visibility, service pages, technical audits, lead workflows, automation, and responsible AI."
     },
     {
       "url": "https://turboapply.agency/resources/website-launch-checklist/",
@@ -58,6 +58,26 @@
       "url": "https://turboapply.agency/resources/ai-receptionist-launch-checklist/",
       "title": "What to Test Before Launching an AI Receptionist",
       "description": "Prepare questions, booking rules, escalation paths, lead fields, and review scenarios before an AI receptionist handles customer conversations."
+    },
+    {
+      "url": "https://turboapply.agency/resources/local-seo-checklist-service-businesses/",
+      "title": "A Local SEO Checklist for Service Businesses",
+      "description": "Build consistent location signals across your website, Google Business Profile, service pages, reviews, and local business listings."
+    },
+    {
+      "url": "https://turboapply.agency/resources/seo-friendly-service-page/",
+      "title": "How to Build an SEO-Friendly Service Page",
+      "description": "Structure a service page around search intent, useful scope, clear headings, internal links, evidence, and a practical conversion path."
+    },
+    {
+      "url": "https://turboapply.agency/resources/technical-seo-audit-checklist/",
+      "title": "A Technical SEO Audit Checklist for Small-Business Websites",
+      "description": "Check crawlability, canonical URLs, metadata, structured data, performance, accessibility, and indexable-page quality before prioritizing SEO fixes."
+    },
+    {
+      "url": "https://turboapply.agency/resources/google-business-profile-guide/",
+      "title": "How to Optimize a Google Business Profile for a Service Business",
+      "description": "Maintain accurate categories, services, hours, photos, reviews, links, and measurement without making unsupported local ranking promises."
     },
     {
       "url": "https://turboapply.agency/results/",

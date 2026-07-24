@@ -16,10 +16,14 @@ Key pages:
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
 - /about/ — Katerina and Vasiliy, the story behind TurboApply, the four-step agency process, permission-gated client reviews, upcoming practical Shorts, and a secure contact form.
-- /resources/ — original guides for website launches, lead-workflow mapping, automation, AI receptionists, testing, and operational handoff.
+- /resources/ — original guides for website SEO, local visibility, service pages, technical audits, lead workflows, automation, AI receptionists, testing, and operational handoff.
 - /resources/website-launch-checklist/ — service-business website launch checklist.
 - /resources/map-a-lead-workflow/ — lead-workflow mapping playbook.
 - /resources/ai-receptionist-launch-checklist/ — AI receptionist launch and review guide.
+- /resources/local-seo-checklist-service-businesses/ — local SEO checklist for service businesses.
+- /resources/seo-friendly-service-page/ — guide to planning an SEO-friendly service page.
+- /resources/technical-seo-audit-checklist/ — technical SEO audit checklist for small-business websites.
+- /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
 - /results/ — customer success-story destination; stories are published only with approved context and verified outcomes.
 - /free-guide/ — free lead quality guide funnel.
 - /marketing/ — cold email outreach / sales workflow page.

@@ -443,6 +443,21 @@
   line-height: 1.55;
 }
 
+.article-internal-links a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.article-internal-links a:hover {
+  color: #000;
+}
+
+.article-internal-links a:focus-visible {
+  outline: 3px solid var(--resource-blue);
+  outline-offset: 4px;
+}
+
 .article-closing {
   padding: 42px 0;
   border-top: 1px solid var(--resource-line);
