@@ -384,7 +384,7 @@
   margin-inline: 0;
   padding-inline: clamp(20px, 4vw, 56px);
   border-radius: clamp(28px, 3vw, 44px);
-  background: #222;
+  background: #000;
   color: #fff;
 }
 

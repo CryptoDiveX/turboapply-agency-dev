@@ -15,7 +15,7 @@ Key pages:
 - /services/web-design/ — the current dedicated Web Design page with owned portfolio work, process, pricing, FAQs, related services, approval-pending review positions, and a secure inquiry form.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
-- /about/ — Katerina and Vasiliy, the story behind TurboApply, the four-step agency process, permission-gated client reviews, upcoming practical Shorts, and a secure contact form.
+- /about/ — Katerina and Vasiliy, the story behind TurboApply, the four-step agency process, approved Ozero Grez and SignoGroup client reviews, practical social videos, and a secure contact form.
 - /resources/ — original guides for website SEO, local visibility, service pages, technical audits, lead workflows, automation, AI receptionists, testing, and operational handoff.
 - /resources/website-launch-checklist/ — service-business website launch checklist.
 - /resources/map-a-lead-workflow/ — lead-workflow mapping playbook.

@@ -60,8 +60,8 @@ All other approved service names, descriptions, and starting references remain a
 - Katerina Antonenko leads design and marketing. Her experience launching multiple businesses shaped TurboApply's focus on clear funnels and thoughtful automation.
 - Vasiliy Baryshnikov leads software development and technical delivery and brings six years of project management experience.
 - TurboApply's shared goal is to help businesses thrive through exceptional service, mapped requirements, quality delivery, and practical solutions.
-- The About page presents a black Meet the Founders opening, the origin story, a four-step process, evidence-safe reviews, upcoming Shorts, and the canonical secure contact form.
-- Reviews remain unpublished until attribution and context are approved; Shorts remain visibly marked Coming soon until real video destinations exist.
+- The About page presents a black Meet the Founders opening, the origin story, a four-step process, approved Ozero Grez and SignoGroup client testimonials, three supplied social videos, and the canonical secure contact form.
+- The two testimonial cards publish only the exact approved wording and attribution supplied for Daria, COO · Ozero Grez, and Alex, CEO · SignoGroup. No rating or Review schema is added.
 - Team page: https://turboapply.agency/about/
 
 ## Resources and results
