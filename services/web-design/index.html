@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260723-21" />
-    <link rel="stylesheet" href="/services/web-design.css?v=web-design-turboapply-editorial-20260725-3" />
+    <link rel="stylesheet" href="/services/web-design.css?v=web-design-turboapply-editorial-20260725-6" />
     <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
     <link rel="stylesheet" href="/public/css/footer-dot-cursor.css?v=footer-dot-20260725-1" />
     <script type="application/ld+json">
@@ -198,12 +198,9 @@
       </section>
 
       <section class="web-types" aria-labelledby="website-types-title">
-        <div class="web-section-intro web-section-intro-row">
-          <div>
-            <p class="web-kicker">Common website scopes</p>
-            <h2 id="website-types-title">Choose the smallest website that can do the job well.</h2>
-          </div>
-          <p>Timelines are working estimates after scope approval and assume content, access, and feedback arrive on schedule. Your exact plan and quote are confirmed before work begins.</p>
+        <div class="web-types-head">
+          <p class="web-kicker">Common website scopes</p>
+          <h2 id="website-types-title">Website formats for different business goals.</h2>
         </div>
         <div class="web-type-list">
           <article class="web-type-row">
@@ -227,7 +224,7 @@
             <dl class="web-type-meta"><div><dt>Typical timeline</dt><dd>3–6 weeks</dd></div><div><dt>Pricing</dt><dd>Custom quote</dd></div></dl>
           </article>
         </div>
-        <div class="web-type-note"><p>Complex content, copywriting, migrations, custom integrations, or delayed approvals can extend the schedule.</p><a class="web-button web-button-secondary" href="#website-contact">Discuss your scope</a></div>
+        <p class="web-type-note">Timelines are working estimates after scope approval. Complex content, copywriting, migrations, integrations, access, or delayed feedback can extend the schedule.</p>
       </section>
 
       <section class="web-process" aria-labelledby="process-title">
@@ -262,19 +259,57 @@
         <div class="web-testimonials-inner">
           <div class="web-section-intro web-section-intro-centered">
             <p class="web-kicker">Client perspective</p>
-            <h2 id="testimonials-title">A website project grounded in collaboration.</h2>
+            <h2 id="testimonials-title">Recommended for the way the project was delivered.</h2>
           </div>
           <article class="web-testimonial-feature" data-review-client="ozero-grez">
-            <figure>
-              <img src="/public/assets/ozero-grez-behance-preview.webp" alt="Ozero Grez website from the TurboApply portfolio" width="800" height="631" loading="eager" decoding="async" />
-              <figcaption><span>Ozero Grez</span><a href="/results/">View selected work</a></figcaption>
+            <figure class="web-testimonial-project">
+              <div class="web-testimonial-media">
+                <img src="/public/assets/ozero-grez-behance-preview.webp" alt="Ozero Grez website from the TurboApply portfolio" width="800" height="631" loading="eager" decoding="async" />
+              </div>
+              <figcaption>
+                <span><strong>Ozero Grez</strong><small>Website design and development</small></span>
+                <a href="/results/">View selected work</a>
+              </figcaption>
             </figure>
             <div class="web-testimonial-quote">
-              <p>Website design and development</p>
               <blockquote>“TurboApply Agency designed and developed the Ozero Grez website. We were very happy with the final result and with the overall experience—the team was professional, responsive, and attentive to our needs.”</blockquote>
               <footer><span aria-hidden="true">D</span><div><strong>Daria</strong><small>COO · Ozero Grez</small></div></footer>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section id="website-contact" class="web-contact" aria-labelledby="website-contact-title">
+        <div class="web-contact-inner">
+          <div class="web-contact-copy">
+            <p class="web-kicker">Web design starting reference</p>
+            <h2 id="website-contact-title">From $850</h2>
+            <p>A focused landing-page scope with one clear conversion path. Your exact quote is confirmed after pages, content, integrations, and support requirements are reviewed.</p>
+            <dl class="web-contact-price-notes">
+              <div><dt>Typical timeline</dt><dd>1–2 weeks</dd></div>
+              <div><dt>Other website scopes</dt><dd>Custom quote</dd></div>
+            </dl>
+            <small>Timelines are working estimates after scope approval, not guarantees.</small>
+          </div>
+          <div class="web-contact-form-wrap">
+            <h3>Tell us about your website.</h3>
+            <p>Share the offer, pages, or business outcome you need the website to support.</p>
+            <form class="web-contact-form ta-main-form" action="/submit-lead.php" method="post" data-services-lead-form data-turboapply-secure-form>
+              <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
+              <label><span>Name</span><input type="text" name="name" autocomplete="name" maxlength="120" required /></label>
+              <label><span>Email</span><input type="email" name="email" autocomplete="email" maxlength="254" required /></label>
+              <label><span>Phone (or Messenger)</span><input type="text" name="contact" autocomplete="tel" maxlength="254" required /></label>
+              <label class="web-contact-message"><span>What service or business outcome do you need help with?</span><textarea name="challenge" rows="5" maxlength="1800" required></textarea></label>
+              <input type="hidden" name="redirect" value="/book-meeting/" />
+              <input type="hidden" name="formId" value="services-consultation" />
+              <input type="hidden" name="source" value="turboapply.agency" />
+              <input type="hidden" name="serviceInterest" value="Web Design" />
+              <input type="hidden" name="submittedAt" value="" />
+              <input type="hidden" name="submissionIdempotencyKey" value="" />
+              <p class="web-contact-status" aria-live="polite" data-services-lead-status></p>
+              <button class="web-button web-button-light" type="submit">Send request</button>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -308,30 +343,7 @@
         </div>
       </section>
 
-      <section id="website-contact" class="web-contact" aria-labelledby="website-contact-title">
-        <div class="web-contact-inner">
-          <div class="web-contact-copy">
-            <p class="web-kicker">Start a conversation</p>
-            <h2 id="website-contact-title">Tell us what your website needs to make clear.</h2>
-            <p>We’ll identify the smallest useful first project and confirm the scope before work begins.</p>
-          </div>
-          <form class="web-contact-form ta-main-form" action="/submit-lead.php" method="post" data-services-lead-form data-turboapply-secure-form>
-            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
-            <label><span>Name</span><input type="text" name="name" autocomplete="name" maxlength="120" required /></label>
-            <label><span>Email</span><input type="email" name="email" autocomplete="email" maxlength="254" required /></label>
-            <label><span>Phone (or Messenger)</span><input type="text" name="contact" autocomplete="tel" maxlength="254" required /></label>
-            <label class="web-contact-message"><span>What service or business outcome do you need help with?</span><textarea name="challenge" rows="5" maxlength="1800" required></textarea></label>
-            <input type="hidden" name="redirect" value="/book-meeting/" />
-            <input type="hidden" name="formId" value="services-consultation" />
-            <input type="hidden" name="source" value="turboapply.agency" />
-            <input type="hidden" name="serviceInterest" value="Web Design" />
-            <input type="hidden" name="submittedAt" value="" />
-            <input type="hidden" name="submissionIdempotencyKey" value="" />
-            <p class="web-contact-status" aria-live="polite" data-services-lead-status></p>
-            <button class="web-button web-button-light" type="submit">Send request</button>
-          </form>
-        </div>
-      </section>
+
     </main>
 
     <footer class="site-footer web-footer" data-footer-dot-cursor>
