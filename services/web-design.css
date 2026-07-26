@@ -92,10 +92,17 @@ body.web-design-page {
   color: #fff;
 }
 
+.web-website-type-body a:focus-visible,
+.web-testimonial-project a:focus-visible,
+.web-faq summary:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
 .web-button:focus-visible,
 .web-portfolio-link:focus-visible,
 .web-related-card:focus-visible,
-.web-faq summary:focus-visible,
+.web-proof-more:focus-visible,
 .web-contact-form :is(input, textarea, button):focus-visible {
   outline: 3px solid #8ab4ff;
   outline-offset: 3px;
@@ -105,10 +112,9 @@ body.web-design-page {
 .web-portfolio,
 .web-audiences,
 .web-about,
-.web-types,
+.web-why,
 .web-process,
 .web-pricing,
-.web-advantages,
 .web-testimonials,
 .web-faq,
 .web-related,
@@ -202,7 +208,6 @@ body.web-design-page {
 
 .web-section-intro h2,
 .web-portfolio-head h2,
-.web-advantages h2,
 .web-faq h2,
 .web-contact h2 {
   font-size: clamp(40px, 3.6vw, 52px);
@@ -873,10 +878,134 @@ body.web-design-page {
 }
 
 .web-about-inner,
-.web-advantages-inner,
 .web-testimonials-inner {
   margin-inline: auto;
   max-width: 1376px;
+}
+
+.web-website-types {
+  margin-top: clamp(64px, 8vw, 112px);
+}
+
+.web-website-types-head {
+  margin-inline: auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.web-website-types-head h3 {
+  font-size: clamp(38px, 4vw, 52px);
+  line-height: 1;
+  margin-top: 18px;
+}
+
+.web-website-types-head > p:last-child {
+  color: var(--web-muted);
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.52;
+  margin: 24px auto 0;
+  max-width: 800px;
+}
+
+.web-website-type-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(44px, 6vw, 72px);
+}
+
+.web-website-type-card {
+  background: #f1f1ee;
+  border: 1px solid #e2e2de;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.web-website-type-media {
+  aspect-ratio: 1.55 / 1;
+  background: #e9e9e5;
+  margin: 8px 8px 0;
+  overflow: hidden;
+}
+
+.web-website-type-media img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 260ms ease;
+  width: 100%;
+}
+
+.web-website-type-card:hover .web-website-type-media img {
+  transform: scale(1.015);
+}
+
+.web-website-type-card[data-website-type="yoga-wellness"] .web-website-type-media img,
+.web-website-type-card[data-website-type="local-services"] .web-website-type-media img {
+  object-fit: contain;
+}
+
+.web-website-type-card[data-website-type="local-services"] .web-website-type-media {
+  background: #f4eee0;
+}
+
+.web-website-type-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 16px 16px;
+}
+
+.web-website-type-body h4 {
+  font-size: clamp(24px, 2vw, 30px);
+  line-height: 1.04;
+}
+
+.web-website-type-body > p {
+  color: #454541;
+  font-size: 16px;
+  line-height: 1.48;
+  margin-top: 12px;
+}
+
+.web-website-type-body ul {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 28px;
+  padding-left: 20px;
+}
+
+.web-website-type-body li {
+  color: #20201e;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.web-website-type-body a {
+  align-items: center;
+  background: #050505;
+  border: 1px solid #050505;
+  border-radius: 999px;
+  color: #fff;
+  display: flex;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  justify-content: center;
+  margin-top: auto;
+  min-height: 46px;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+  width: 100%;
+}
+
+.web-website-type-body a:hover {
+  background: #fff;
+  color: #050505;
 }
 
 .web-about-layout {
@@ -970,18 +1099,18 @@ body.web-design-page {
   line-height: 1.48;
 }
 
-.web-types {
+.web-why {
   background: var(--web-soft);
   border-block: 1px solid var(--web-line);
   padding-bottom: clamp(96px, 10vw, 144px);
   padding-top: clamp(88px, 9vw, 132px);
 }
 
-.web-types-head {
+.web-why-head {
   max-width: 880px;
 }
 
-.web-types-head h2 {
+.web-why-head h2 {
   font-size: clamp(42px, 4vw, 52px);
   line-height: 0.98;
   margin-top: 18px;
@@ -1007,7 +1136,7 @@ body.web-design-page {
   justify-self: end;
 }
 
-.web-type-list {
+.web-why-grid {
   border-left: 1px solid #c9c9c4;
   border-top: 1px solid #c9c9c4;
   display: grid;
@@ -1015,70 +1144,39 @@ body.web-design-page {
   margin-top: clamp(48px, 6vw, 72px);
 }
 
-.web-type-row {
+.web-why-card {
   border-bottom: 1px solid #c9c9c4;
   border-right: 1px solid #c9c9c4;
   display: flex;
   flex-direction: column;
-  min-height: 330px;
+  min-height: 250px;
   padding: clamp(28px, 4vw, 48px);
 }
 
-.web-type-index {
-  color: var(--web-muted);
+.web-why-index {
+  color: #7a3425;
   font-family: "Inter", Arial, sans-serif;
   font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.1em;
 }
 
-.web-type-copy h3 {
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.04;
-  margin-top: clamp(34px, 5vw, 64px);
+.web-why-copy {
+  margin-top: auto;
+  padding-top: clamp(44px, 6vw, 72px);
 }
 
-.web-type-copy p {
+.web-why-copy h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.04;
+}
+
+.web-why-copy p {
   color: var(--web-muted);
   font-size: 17px;
   line-height: 1.48;
-  margin-top: 9px;
-  max-width: 610px;
-}
-
-.web-type-meta {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: auto;
-  padding-top: 34px;
-}
-
-.web-type-meta > div {
-  border-left: 1px solid #c9c9c4;
-  padding-left: 18px;
-}
-
-.web-type-meta dt {
-  color: var(--web-muted);
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.web-type-meta dd {
-  font-family: "Urbanist", Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 8px;
-}
-
-.web-type-note {
-  color: var(--web-muted);
-  font-size: 14px;
-  line-height: 1.45;
-  margin-top: 30px;
-  max-width: 690px;
+  margin-top: 12px;
+  max-width: 560px;
 }
 
 .web-process {
@@ -1132,68 +1230,6 @@ body.web-design-page {
   justify-self: end;
 }
 
-.web-advantages {
-  background: #050505;
-  color: #f5f1e8;
-  padding-bottom: clamp(96px, 10vw, 144px);
-  padding-top: clamp(88px, 9vw, 132px);
-}
-
-.web-advantages .web-kicker {
-  color: #9c9c97;
-}
-
-.web-advantages-head {
-  align-items: end;
-  display: grid;
-  gap: clamp(40px, 8vw, 128px);
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
-}
-
-.web-advantages-head h2 {
-  margin-top: 18px;
-  max-width: 850px;
-}
-
-.web-advantages-head > p {
-  color: #aaa9a4;
-  font-size: clamp(17px, 1.35vw, 20px);
-  line-height: 1.52;
-}
-
-.web-advantage-list {
-  border-top: 1px solid #363634;
-  margin-top: clamp(48px, 6vw, 72px);
-}
-
-.web-advantage-list article {
-  align-items: start;
-  border-bottom: 1px solid #363634;
-  display: grid;
-  gap: clamp(24px, 4vw, 60px);
-  grid-template-columns: 52px minmax(220px, 0.5fr) minmax(0, 1fr);
-  padding-block: clamp(26px, 3vw, 36px);
-}
-
-.web-advantage-list article > span {
-  color: #7e7e7a;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-}
-
-.web-advantage-list h3 {
-  font-size: clamp(25px, 2.2vw, 32px);
-  line-height: 1.04;
-}
-
-.web-advantage-list article > p {
-  color: #aaa9a4;
-  font-size: 17px;
-  line-height: 1.52;
-  max-width: 640px;
-}
-
 .web-testimonials {
   background: #212121;
   color: #fff;
@@ -1210,13 +1246,46 @@ body.web-design-page {
   color: #b9b8b3;
 }
 
-.web-testimonial-feature {
-  display: flex;
-  flex-direction: column;
+.web-proof-rail {
+  display: grid;
   gap: 12px;
+  grid-auto-columns: clamp(330px, 27vw, 380px);
+  grid-auto-flow: column;
   margin-top: clamp(48px, 6vw, 72px);
-  margin-inline: auto;
-  max-width: 760px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding-bottom: 4px;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+}
+
+.web-proof-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.web-proof-more {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+  color: #fff;
+  display: block;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  margin: 28px auto 0;
+  padding-bottom: 5px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.web-proof-rail:focus-visible {
+  outline: 3px solid #8ab4ff;
+  outline-offset: 8px;
+}
+
+.web-proof-card {
+  display: grid;
+  gap: 12px;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  scroll-snap-align: start;
 }
 
 .web-testimonial-project,
@@ -1250,41 +1319,52 @@ body.web-design-page {
 
 .web-testimonial-project figcaption > span {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 3px;
+  min-width: 0;
 }
 
 .web-testimonial-project figcaption strong {
   font-size: 15px;
+  line-height: 1.15;
 }
 
 .web-testimonial-project figcaption small {
   color: var(--web-muted);
   font-size: 12px;
+  line-height: 1.25;
 }
 
 .web-testimonial-project figcaption a {
   background: #232323;
   border-radius: 999px;
   color: #fff;
+  flex: 0 0 auto;
   font-size: 12px;
   padding: 12px 18px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .web-testimonial-quote {
   display: flex;
   flex-direction: column;
-  min-height: 250px;
-  padding: clamp(26px, 4vw, 38px);
+  min-height: 340px;
+  padding: 26px;
 }
 
-.web-testimonial-quote blockquote {
+.web-testimonial-quote blockquote,
+.web-project-evidence > p {
   font-family: "Inter", Arial, sans-serif;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: 17px;
   font-weight: 400;
-  line-height: 1.42;
-  margin: 0 0 42px;
+  line-height: 1.46;
+  margin: 0 0 34px;
+}
+
+.web-project-evidence > p {
+  color: #222;
 }
 
 .web-testimonial-quote footer {
@@ -1322,8 +1402,11 @@ body.web-design-page {
 }
 
 @media (max-width: 980px) {
-  .web-about-layout,
-  .web-advantages-head {
+  .web-website-type-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .web-about-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1343,8 +1426,7 @@ body.web-design-page {
 
 @media (max-width: 760px) {
   .web-about,
-  .web-types,
-  .web-advantages,
+  .web-why,
   .web-testimonials {
     padding-bottom: 76px;
     padding-top: 76px;
@@ -1365,6 +1447,19 @@ body.web-design-page {
     margin-top: 42px;
   }
 
+  .web-website-types {
+    margin-top: 60px;
+  }
+
+  .web-website-type-grid {
+    grid-template-columns: 1fr;
+    margin-top: 42px;
+  }
+
+  .web-website-type-body {
+    padding: 22px 18px 18px;
+  }
+
   .web-about-media {
     min-height: 390px;
   }
@@ -1381,41 +1476,28 @@ body.web-design-page {
     padding: 28px 24px;
   }
 
-  .web-type-list {
+  .web-why-grid {
     grid-template-columns: 1fr;
   }
 
-  .web-type-row {
+  .web-why-card {
     min-height: 0;
     padding: 30px 24px;
   }
 
-  .web-type-copy h3 {
-    margin-top: 28px;
+  .web-why-copy {
+    padding-top: 36px;
   }
 
-  .web-process-list li,
-  .web-advantage-list article {
+  .web-process-list li {
     align-items: start;
     gap: 14px;
     grid-template-columns: 32px minmax(0, 1fr);
     padding-block: 24px;
   }
 
-  .web-process-list li > strong,
-  .web-advantage-list article > p {
+  .web-process-list li > strong {
     grid-column: 2;
-  }
-
-  .web-type-meta {
-    grid-template-columns: 1fr;
-  }
-
-  .web-type-meta > div {
-    border-left: 0;
-    border-top: 1px solid #c9c9c4;
-    padding-left: 0;
-    padding-top: 13px;
   }
 
   .web-contact-inner {
@@ -1423,11 +1505,8 @@ body.web-design-page {
     padding: 28px 22px;
   }
 
-  .web-advantages-head {
-    gap: 28px;
-  }
-
-  .web-testimonial-feature {
+  .web-proof-rail {
+    grid-auto-columns: min(86vw, 360px);
     margin-top: 42px;
   }
 
@@ -1439,21 +1518,10 @@ body.web-design-page {
     gap: 16px;
   }
 
-  .web-testimonial-quote blockquote {
-    font-size: 20px;
+  .web-testimonial-quote blockquote,
+  .web-project-evidence > p {
+    font-size: 17px;
     margin-bottom: 34px;
-  }
-}
-
-@media (max-width: 520px) {
-  .web-testimonial-project figcaption {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .web-testimonial-project figcaption a {
-    text-align: center;
-    width: 100%;
   }
 }
 
