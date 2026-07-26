@@ -1,0 +1,223 @@
+/* Shared visual contract for every public TurboApply lead form.
+   Field names, validation, anti-spam, destinations, and page-specific copy remain page-owned. */
+.ta-main-form > [data-turboapply-honeypot] {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  display: block !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+.ta-main-form > [data-turboapply-honeypot][aria-hidden="true"] > input[name="companyWebsite"][aria-hidden="true"] {
+  position: static !important;
+  display: block !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.ta-main-form {
+  box-sizing: border-box;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-content: start;
+  gap: 18px !important;
+  width: 100%;
+  max-width: none;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #f5f1e8;
+  font-family: "Urbanist", "Inter", "Outfit", Arial, sans-serif;
+}
+
+.ta-main-form > label:not(.audit-checkbox) {
+  box-sizing: border-box;
+  display: grid !important;
+  grid-column: 1 / -1 !important;
+  gap: 9px !important;
+  width: 100%;
+  margin: 0 !important;
+  color: rgba(245, 241, 232, 0.86) !important;
+  font-family: inherit;
+  text-align: left !important;
+}
+
+.ta-main-form > label:not(.audit-checkbox) > span {
+  display: block;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  white-space: normal !important;
+  color: inherit !important;
+  font: 500 15px/1 "Urbanist", "Inter", "Outfit", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.ta-main-form :is(input:not([type="hidden"]):not([type="checkbox"]), textarea, select) {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border: 1px solid rgba(245, 241, 232, 0.16) !important;
+  border-radius: 18px !important;
+  background-color: rgba(5, 5, 5, 0.52) !important;
+  color: #f5f1e8 !important;
+  font: 400 17px/1.25 "Urbanist", "Inter", "Outfit", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  outline: 0;
+  box-shadow: none !important;
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.ta-main-form :is(input:not([type="hidden"]):not([type="checkbox"]), select) {
+  min-height: 54px !important;
+  height: 54px !important;
+  padding: 0 18px !important;
+}
+
+.ta-main-form select {
+  padding-right: 42px !important;
+}
+
+.ta-main-form textarea {
+  min-height: 138px !important;
+  height: auto !important;
+  padding: 16px 18px !important;
+  resize: vertical;
+}
+
+.ta-main-form :is(input, textarea)::placeholder {
+  color: rgba(245, 241, 232, 0.42) !important;
+  opacity: 1;
+}
+
+.ta-main-form :is(input:not([type="hidden"]), textarea, select):focus,
+.ta-main-form :is(input:not([type="hidden"]), textarea, select):focus-visible {
+  border-color: rgba(245, 241, 232, 0.42) !important;
+  background-color: rgba(5, 5, 5, 0.68) !important;
+  box-shadow: 0 0 0 3px rgba(245, 241, 232, 0.08) !important;
+  outline: 3px solid #f4b942;
+  outline-offset: 3px;
+}
+
+.ta-main-form > .audit-checkbox {
+  display: flex !important;
+  grid-column: 1 / -1 !important;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 0 !important;
+  color: rgba(245, 241, 232, 0.86) !important;
+  font: 500 15px/1.25 "Urbanist", "Inter", "Outfit", Arial, sans-serif !important;
+}
+
+.ta-main-form > .audit-checkbox input[type="checkbox"] {
+  width: 20px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  margin: 0 !important;
+  accent-color: #f5f1e8;
+}
+
+.ta-main-form > p,
+.ta-main-form > [role="status"],
+.ta-main-form > [role="alert"],
+.ta-main-form > [data-preview-delivery-status] {
+  grid-column: 1 / -1 !important;
+}
+
+.ta-main-form > [data-preview-delivery-status] {
+  position: static !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-wrap: anywhere;
+  color: rgba(245, 241, 232, 0.68) !important;
+  font: 400 14px/1.35 "Urbanist", "Inter", "Outfit", Arial, sans-serif !important;
+}
+
+.ta-main-form > button[type="submit"] {
+  box-sizing: border-box;
+  display: inline-grid !important;
+  grid-column: 1 / -1 !important;
+  place-items: center;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  margin: 4px 0 0 !important;
+  padding: 0 24px !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  background: #f5f1e8 !important;
+  color: #050505 !important;
+  font: 700 17px/1 "Urbanist", "Inter", "Outfit", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: lowercase !important;
+  cursor: pointer;
+  transform: none !important;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.ta-main-form > button[type="submit"]:hover {
+  opacity: 0.88;
+  transform: translateY(-1px) !important;
+}
+
+.ta-main-form > button[type="submit"]:focus-visible {
+  outline: 3px solid #f4b942 !important;
+  outline-offset: 3px !important;
+}
+
+.ta-main-form > button[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none !important;
+}
+
+@media (max-width: 760px) {
+  .ta-main-form {
+    gap: 16px !important;
+  }
+
+  .ta-main-form :is(input:not([type="hidden"]):not([type="checkbox"]), select) {
+    min-height: 52px !important;
+    height: 52px !important;
+  }
+
+  .ta-main-form textarea {
+    min-height: 126px !important;
+  }
+
+  .ta-main-form > button[type="submit"] {
+    height: 56px !important;
+    min-height: 56px !important;
+  }
+}

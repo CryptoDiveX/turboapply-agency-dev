@@ -34,6 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../integrations/styles.css?v=integrations-heading-hierarchy-20260723-21" />
     <link rel="stylesheet" href="styles.css?v=services-connected-black-20260725-18" />
+    <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
     <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -50,7 +51,7 @@
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Business Process & Automation Audit",
-                        "url": "https://turboapply.agency/services/"
+                        "url": "https://turboapply.agency/services/business-process-automation-audit/"
                   },
                   {
                         "@type": "ListItem",
@@ -163,7 +164,7 @@
         <div class="service-directory-groups">
           <section class="service-directory-group service-directory-group-featured" aria-label="Business Process and Automation Audit">
             <div class="service-directory-list">
-              <a class="service-directory-route service-directory-card service-directory-group-link" href="#services-inquiry" aria-label="Ask about the Business Process and Automation Audit"><span>Business Process &amp; Automation Audit</span><small>Review the workflow, find the lead leaks, and define the smallest useful next step.</small><strong>Free consultation</strong></a>
+              <a class="service-directory-route service-directory-card service-directory-group-link" href="/services/business-process-automation-audit/" aria-label="View the Business Process and Automation Audit page"><span>Business Process &amp; Automation Audit</span><small>Review the workflow, find the lead leaks, and define the smallest useful next step.</small><strong>Free consultation</strong></a>
             </div>
           </section>
           <section class="service-directory-group" aria-labelledby="directory-website-services">
@@ -210,13 +211,14 @@
           </div>
 
           <form
-            class="services-lead-form"
+            class="services-lead-form ta-main-form"
             action="/submit-lead.php"
             method="post"
             data-services-lead-form
            
             data-turboapply-secure-form
           >
+            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
             <label class="services-lead-field">
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" maxlength="120" required />
@@ -263,7 +265,7 @@
     </footer>
 
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=devnet-handler-20260721-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
     <script src="../integrations/script.js?v=services-page-20260716-1"></script>
     <script src="script.js?v=services-devnet-form-20260721-1"></script>
   </body>

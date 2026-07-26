@@ -44,6 +44,7 @@ TurboApply Agency builds websites and AI-powered business systems for teams that
 These are starting references, not fixed quotes. Final pricing depends on scope, content, data quality, integrations, third-party tools, advertising or sending costs, and support requirements. The quote is confirmed before work begins.
 
 ## Dedicated service pages currently available
+- Business Process and Automation Audit: https://turboapply.agency/services/business-process-automation-audit/
 - Web Design: https://turboapply.agency/services/web-design/
 
 All other approved service names, descriptions, and starting references remain available in the Services directory without separate detail-page routes: https://turboapply.agency/services/

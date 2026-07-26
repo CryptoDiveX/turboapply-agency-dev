@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=free-guide-challenge-20260719-3" />
+    <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
   </head>
   <body>
     <main class="guide-page">
@@ -47,36 +48,37 @@
         <div class="guide-form-card" aria-label="Get the free TurboApply playbook">
           <h2>GET THE FREE PLAYBOOK NOW</h2>
 
-          <form class="guide-form" action="/submit-lead.php" method="post" data-free-guide-form data-turboapply-secure-form>
+          <form class="guide-form ta-main-form" action="/submit-lead.php" method="post" data-free-guide-form data-turboapply-secure-form>
+            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
             <label class="guide-field">
               <span>Full Name</span>
-              <input type="text" name="name" autocomplete="name" placeholder="Full Name" maxlength="120" required />
+              <input type="text" name="name" autocomplete="name" maxlength="120" required />
             </label>
 
             <label class="guide-field">
               <span>Email</span>
-              <input type="email" name="email" autocomplete="email" placeholder="Email" maxlength="254" required />
+              <input type="email" name="email" autocomplete="email" maxlength="254" required />
             </label>
 
             <label class="guide-field">
               <span>Phone (or Messenger)</span>
-              <input type="text" name="contact" autocomplete="tel" placeholder="Phone (or Messenger)" maxlength="254" required />
+              <input type="text" name="contact" autocomplete="tel" maxlength="254" required />
             </label>
 
             <label class="guide-field">
               <span>What business outcome do you want help with?</span>
-              <textarea name="challenge" rows="3" placeholder="What business outcome do you want help with?" maxlength="1800" required data-guide-challenge></textarea>
+              <textarea name="challenge" rows="3" maxlength="1800" required data-guide-challenge></textarea>
             </label>
 
             <label class="guide-field">
               <span>Business Name</span>
-              <input type="text" name="businessName" autocomplete="organization" placeholder="Business Name" maxlength="160" required />
+              <input type="text" name="businessName" autocomplete="organization" maxlength="160" required />
             </label>
 
             <label class="guide-field guide-select-field">
               <span>Current Monthly Revenue</span>
               <select name="monthlyRevenue" required>
-                <option value="" selected disabled>Current Monthly Revenue</option>
+                <option value="" selected disabled>Select a revenue range</option>
                 <option value="Under $10k">Under $10k</option>
                 <option value="$10k-$25k">$10k-$25k</option>
                 <option value="$25k-$50k">$25k-$50k</option>
@@ -118,7 +120,7 @@
     </main>
 
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-    <script src="/public/js/turboapply-form-security.js?v=devnet-handler-20260721-1"></script>
+    <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
     <script src="script.js?v=free-guide-required-contact-20260720-1"></script>
   </body>
 </html>

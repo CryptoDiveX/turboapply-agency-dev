@@ -312,13 +312,6 @@
   text-wrap: balance;
 }
 
-.reviews-heading > p:last-of-type {
-  margin: 27px 0 0;
-  color: var(--about-muted);
-  font-size: 17px;
-  line-height: 1.55;
-}
-
 .reviews-heading > a,
 .review-standard-card > a {
   margin-top: 28px;
@@ -393,7 +386,7 @@
 .review-card blockquote {
   max-width: 570px;
   margin: 40px 0 54px;
-  font: 400 clamp(27px, 2.5vw, 38px)/1.12 var(--about-font-display);
+  font: 400 clamp(20px, 1.7vw, 26px)/1.28 var(--about-font-display);
 }
 
 .review-card footer {
@@ -823,10 +816,6 @@
     font-size: 16px;
   }
 
-  .reviews-heading > p:last-of-type {
-    font-size: 17px;
-  }
-
   .review-card {
     flex-basis: 92%;
     min-height: 350px;
@@ -834,7 +823,8 @@
   }
 
   .review-card blockquote {
-    font-size: 29px;
+    font-size: 21px;
+    line-height: 1.32;
   }
 
   .shorts-heading {

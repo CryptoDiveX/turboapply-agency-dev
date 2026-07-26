@@ -28,7 +28,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Karla:wght@400;500&amp;family=Urbanist:wght@400;500;600&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260723-21" />
-  <link rel="stylesheet" href="/about/styles.css?v=about-client-reviews-20260725-13" />
+  <link rel="stylesheet" href="/about/styles.css?v=about-review-type-20260725-14" />
+  <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
   <script src="/google-tag.js?v=ga-20260714-1" defer></script>
   <script type="application/ld+json">
   {
@@ -192,7 +193,6 @@
         <header class="reviews-heading">
           <p class="eyebrow">Client reviews</p>
           <h2 id="reviews-title">Proud to be recommended by our clients.</h2>
-          <p>Real feedback from businesses that trusted TurboApply with website development and outbound growth.</p>
           <a href="/results/">Visit Results <span aria-hidden="true">↗</span></a>
         </header>
         <div class="reviews-rail-wrap">
@@ -243,7 +243,8 @@
             <p>Tell us about your business and what is getting in the way. We will share where design, marketing, software, or automation could help.</p>
           </div>
 
-          <form class="about-contact-form" action="/api/contact" method="post" data-about-contact-form data-turboapply-secure-form>
+          <form class="about-contact-form ta-main-form" action="/api/contact" method="post" data-about-contact-form data-turboapply-secure-form>
+            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
             <label>
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" maxlength="120" required />
@@ -286,7 +287,7 @@
   </main>
 
   <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
-  <script src="/public/js/turboapply-form-security.js?v=devnet-handler-20260721-1"></script>
+  <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
   <script src="/integrations/script.js?v=integrations-menu-focus-20260714-7" defer></script>
   <script src="/about/script.js?v=about-story-20260721-1" defer></script>
 </body>

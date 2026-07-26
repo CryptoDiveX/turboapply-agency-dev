@@ -1,0 +1,53 @@
+/* Mensa VR-inspired footer pointer: a 26px white dot with difference blending.
+   Progressive enhancement only: native cursors remain on touch/coarse and reduced-motion devices. */
+.footer-dot-cursor,
+.footer-dot-cursor-filter {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 481px) and (prefers-reduced-motion: no-preference) {
+  html.footer-dot-cursor-ready footer[data-footer-dot-cursor].footer-dot-cursor-active,
+  html.footer-dot-cursor-ready footer[data-footer-dot-cursor].footer-dot-cursor-active * {
+    cursor: none !important;
+  }
+
+  .footer-dot-cursor {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 2147483000;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    filter: url("#footer-dot-cursor-goo");
+    mix-blend-mode: difference;
+    transition: opacity 120ms linear;
+    will-change: opacity;
+  }
+
+  .footer-dot-cursor.is-visible {
+    opacity: 1;
+  }
+
+  .footer-dot-cursor > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .footer-dot-cursor-filter {
+    position: fixed;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}

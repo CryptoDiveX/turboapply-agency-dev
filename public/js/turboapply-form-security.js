@@ -140,6 +140,7 @@
   };
 
   const validateForm = (form) => {
+    // Preserve and ignore the honeypot value in the browser. The backend silently discards filled traps without exposing a detection signal.
     clearErrors(form);
     const name = fieldValue(form, 'name');
     const messageControl = field(form, 'message') || field(form, 'challenge');
