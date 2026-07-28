@@ -92,7 +92,6 @@ body.web-design-page {
   color: #fff;
 }
 
-.web-website-type-body a:focus-visible,
 .web-testimonial-project a:focus-visible,
 .web-faq summary:focus-visible {
   outline: 3px solid #111;
@@ -112,7 +111,8 @@ body.web-design-page {
 .web-portfolio,
 .web-audiences,
 .web-about,
-.web-why,
+.web-benefits,
+.web-types,
 .web-process,
 .web-pricing,
 .web-testimonials,
@@ -883,131 +883,6 @@ body.web-design-page {
   max-width: 1376px;
 }
 
-.web-website-types {
-  margin-top: clamp(64px, 8vw, 112px);
-}
-
-.web-website-types-head {
-  margin-inline: auto;
-  max-width: 900px;
-  text-align: center;
-}
-
-.web-website-types-head h3 {
-  font-size: clamp(38px, 4vw, 52px);
-  line-height: 1;
-  margin-top: 18px;
-}
-
-.web-website-types-head > p:last-child {
-  color: var(--web-muted);
-  font-size: clamp(17px, 1.35vw, 20px);
-  line-height: 1.52;
-  margin: 24px auto 0;
-  max-width: 800px;
-}
-
-.web-website-type-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: clamp(44px, 6vw, 72px);
-}
-
-.web-website-type-card {
-  background: #f1f1ee;
-  border: 1px solid #e2e2de;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.web-website-type-media {
-  aspect-ratio: 1.55 / 1;
-  background: #e9e9e5;
-  margin: 8px 8px 0;
-  overflow: hidden;
-}
-
-.web-website-type-media img {
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transition: transform 260ms ease;
-  width: 100%;
-}
-
-.web-website-type-card:hover .web-website-type-media img {
-  transform: scale(1.015);
-}
-
-.web-website-type-card[data-website-type="yoga-wellness"] .web-website-type-media img,
-.web-website-type-card[data-website-type="local-services"] .web-website-type-media img {
-  object-fit: contain;
-}
-
-.web-website-type-card[data-website-type="local-services"] .web-website-type-media {
-  background: #f4eee0;
-}
-
-.web-website-type-body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 22px 16px 16px;
-}
-
-.web-website-type-body h4 {
-  font-size: clamp(24px, 2vw, 30px);
-  line-height: 1.04;
-}
-
-.web-website-type-body > p {
-  color: #454541;
-  font-size: 16px;
-  line-height: 1.48;
-  margin-top: 12px;
-}
-
-.web-website-type-body ul {
-  display: grid;
-  gap: 8px;
-  margin: 18px 0 28px;
-  padding-left: 20px;
-}
-
-.web-website-type-body li {
-  color: #20201e;
-  font-size: 15px;
-  line-height: 1.45;
-}
-
-.web-website-type-body a {
-  align-items: center;
-  background: #050505;
-  border: 1px solid #050505;
-  border-radius: 999px;
-  color: #fff;
-  display: flex;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 13px;
-  justify-content: center;
-  margin-top: auto;
-  min-height: 46px;
-  padding: 12px 20px;
-  text-decoration: none;
-  transition: background-color 180ms ease, color 180ms ease;
-  width: 100%;
-}
-
-.web-website-type-body a:hover {
-  background: #fff;
-  color: #050505;
-}
-
 .web-about-layout {
   display: grid;
   gap: 16px;
@@ -1099,21 +974,159 @@ body.web-design-page {
   line-height: 1.48;
 }
 
-.web-why {
+.web-benefits {
   background: var(--web-soft);
   border-block: 1px solid var(--web-line);
   padding-bottom: clamp(96px, 10vw, 144px);
   padding-top: clamp(88px, 9vw, 132px);
 }
 
-.web-why-head {
+.web-benefits-inner,
+.web-types-inner {
+  margin-inline: auto;
+  max-width: 1376px;
+}
+
+.web-benefit-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(48px, 6vw, 72px);
+}
+
+.web-benefit-card {
+  background: #fff;
+  border: 1px solid #d8d8d3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.web-benefit-card header {
+  align-items: start;
+  border-bottom: 1px solid #d8d8d3;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  padding: clamp(26px, 3vw, 38px);
+}
+
+.web-benefit-card header span {
+  color: #7a3425;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.web-benefit-card h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.04;
+}
+
+.web-benefit-card ul {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: clamp(30px, 4vw, 48px) clamp(30px, 4vw, 48px) clamp(34px, 4vw, 52px) clamp(52px, 5vw, 72px);
+}
+
+.web-benefit-card li {
+  color: #30302d;
+  font-size: 17px;
+  line-height: 1.48;
+  padding-left: 5px;
+}
+
+.web-types {
+  background: var(--web-paper);
+  border-bottom: 1px solid var(--web-line);
+  padding-bottom: clamp(96px, 10vw, 144px);
+  padding-top: clamp(88px, 9vw, 132px);
+}
+
+.web-types-head {
   max-width: 880px;
 }
 
-.web-why-head h2 {
+.web-types-head h2 {
   font-size: clamp(42px, 4vw, 52px);
   line-height: 0.98;
   margin-top: 18px;
+}
+
+.web-type-list {
+  border-left: 1px solid #c9c9c4;
+  border-top: 1px solid #c9c9c4;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(48px, 6vw, 72px);
+}
+
+.web-type-row {
+  border-bottom: 1px solid #c9c9c4;
+  border-right: 1px solid #c9c9c4;
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.web-type-index {
+  color: #7a3425;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.web-type-copy h3 {
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.04;
+  margin-top: clamp(34px, 5vw, 64px);
+}
+
+.web-type-copy p {
+  color: var(--web-muted);
+  font-size: 17px;
+  line-height: 1.48;
+  margin-top: 9px;
+  max-width: 610px;
+}
+
+.web-type-meta {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: auto;
+  padding-top: 34px;
+}
+
+.web-type-meta > div {
+  border-left: 1px solid #c9c9c4;
+  padding-left: 18px;
+}
+
+.web-type-meta dt {
+  color: var(--web-muted);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.web-type-meta dd {
+  font-family: "Urbanist", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.web-type-note {
+  color: var(--web-muted);
+  font-size: 14px;
+  line-height: 1.45;
+  margin-top: 30px;
+  max-width: 690px;
 }
 
 .web-section-intro-row {
@@ -1134,49 +1147,6 @@ body.web-design-page {
 
 .web-section-intro-row > .web-button {
   justify-self: end;
-}
-
-.web-why-grid {
-  border-left: 1px solid #c9c9c4;
-  border-top: 1px solid #c9c9c4;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(48px, 6vw, 72px);
-}
-
-.web-why-card {
-  border-bottom: 1px solid #c9c9c4;
-  border-right: 1px solid #c9c9c4;
-  display: flex;
-  flex-direction: column;
-  min-height: 250px;
-  padding: clamp(28px, 4vw, 48px);
-}
-
-.web-why-index {
-  color: #7a3425;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-}
-
-.web-why-copy {
-  margin-top: auto;
-  padding-top: clamp(44px, 6vw, 72px);
-}
-
-.web-why-copy h3 {
-  font-size: clamp(26px, 2.4vw, 34px);
-  line-height: 1.04;
-}
-
-.web-why-copy p {
-  color: var(--web-muted);
-  font-size: 17px;
-  line-height: 1.48;
-  margin-top: 12px;
-  max-width: 560px;
 }
 
 .web-process {
@@ -1249,14 +1219,16 @@ body.web-design-page {
 .web-proof-rail {
   display: grid;
   gap: 12px;
-  grid-auto-columns: clamp(330px, 27vw, 380px);
+  grid-auto-columns: clamp(300px, 24vw, 336px);
   grid-auto-flow: column;
-  margin-top: clamp(48px, 6vw, 72px);
+  margin: clamp(48px, 6vw, 72px) auto 0;
+  max-width: 1180px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   padding-bottom: 4px;
   scroll-snap-type: inline mandatory;
   scrollbar-width: none;
+  width: 100%;
 }
 
 .web-proof-rail::-webkit-scrollbar {
@@ -1281,23 +1253,27 @@ body.web-design-page {
 }
 
 .web-proof-card {
+  background: #fff;
+  border-radius: 14px;
+  color: var(--web-ink);
   display: grid;
-  gap: 12px;
-  grid-template-rows: auto 1fr;
+  gap: 0;
+  grid-template-rows: auto minmax(0, 1fr);
   min-width: 0;
+  overflow: hidden;
   scroll-snap-align: start;
 }
 
 .web-testimonial-project,
 .web-testimonial-quote {
-  background: #fff;
-  border-radius: 16px;
-  color: var(--web-ink);
-  overflow: hidden;
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+  overflow: visible;
 }
 
 .web-testimonial-media {
-  aspect-ratio: 1.55 / 1;
+  aspect-ratio: 1.72 / 1;
   overflow: hidden;
 }
 
@@ -1313,8 +1289,9 @@ body.web-design-page {
   align-items: center;
   display: flex;
   font-family: "Inter", Arial, sans-serif;
+  gap: 12px;
   justify-content: space-between;
-  padding: 16px 18px;
+  padding: 12px 14px;
 }
 
 .web-testimonial-project figcaption > span {
@@ -1337,12 +1314,16 @@ body.web-design-page {
 }
 
 .web-testimonial-project figcaption a {
+  align-items: center;
   background: #232323;
   border-radius: 999px;
   color: #fff;
+  display: inline-flex;
   flex: 0 0 auto;
   font-size: 12px;
-  padding: 12px 18px;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 14px;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -1350,17 +1331,17 @@ body.web-design-page {
 .web-testimonial-quote {
   display: flex;
   flex-direction: column;
-  min-height: 340px;
-  padding: 26px;
+  min-height: 270px;
+  padding: 20px;
 }
 
 .web-testimonial-quote blockquote,
 .web-project-evidence > p {
   font-family: "Inter", Arial, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.46;
-  margin: 0 0 34px;
+  line-height: 1.44;
+  margin: 0 0 22px;
 }
 
 .web-project-evidence > p {
@@ -1370,7 +1351,7 @@ body.web-design-page {
 .web-testimonial-quote footer {
   align-items: center;
   display: flex;
-  gap: 14px;
+  gap: 11px;
   margin-top: auto;
 }
 
@@ -1381,9 +1362,9 @@ body.web-design-page {
   color: #fff;
   display: flex;
   font-family: "Urbanist", Arial, sans-serif;
-  height: 44px;
+  height: 38px;
   justify-content: center;
-  width: 44px;
+  width: 38px;
 }
 
 .web-testimonial-quote footer div {
@@ -1393,19 +1374,15 @@ body.web-design-page {
 }
 
 .web-testimonial-quote footer strong {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .web-testimonial-quote footer small {
   color: var(--web-muted);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 @media (max-width: 980px) {
-  .web-website-type-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .web-about-layout {
     grid-template-columns: 1fr;
   }
@@ -1426,7 +1403,8 @@ body.web-design-page {
 
 @media (max-width: 760px) {
   .web-about,
-  .web-why,
+  .web-benefits,
+  .web-types,
   .web-testimonials {
     padding-bottom: 76px;
     padding-top: 76px;
@@ -1447,19 +1425,6 @@ body.web-design-page {
     margin-top: 42px;
   }
 
-  .web-website-types {
-    margin-top: 60px;
-  }
-
-  .web-website-type-grid {
-    grid-template-columns: 1fr;
-    margin-top: 42px;
-  }
-
-  .web-website-type-body {
-    padding: 22px 18px 18px;
-  }
-
   .web-about-media {
     min-height: 390px;
   }
@@ -1476,17 +1441,40 @@ body.web-design-page {
     padding: 28px 24px;
   }
 
-  .web-why-grid {
+  .web-benefit-grid,
+  .web-type-list {
     grid-template-columns: 1fr;
   }
 
-  .web-why-card {
+  .web-benefit-card header {
+    gap: 12px;
+    grid-template-columns: 1fr;
+    padding: 26px 24px;
+  }
+
+  .web-benefit-card ul {
+    gap: 16px;
+    padding: 28px 28px 32px 48px;
+  }
+
+  .web-type-row {
     min-height: 0;
     padding: 30px 24px;
   }
 
-  .web-why-copy {
-    padding-top: 36px;
+  .web-type-copy h3 {
+    margin-top: 28px;
+  }
+
+  .web-type-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .web-type-meta > div {
+    border-left: 0;
+    border-top: 1px solid #c9c9c4;
+    padding-left: 0;
+    padding-top: 13px;
   }
 
   .web-process-list li {
@@ -1506,22 +1494,29 @@ body.web-design-page {
   }
 
   .web-proof-rail {
-    grid-auto-columns: min(86vw, 360px);
+    grid-auto-columns: 300px;
     margin-top: 42px;
   }
 
   .web-testimonial-media {
-    aspect-ratio: 1.28 / 1;
+    aspect-ratio: 1.6 / 1;
   }
 
   .web-testimonial-project figcaption {
-    gap: 16px;
+    gap: 12px;
   }
 
   .web-testimonial-quote blockquote,
   .web-project-evidence > p {
-    font-size: 17px;
-    margin-bottom: 34px;
+    font-size: 16px;
+    margin-bottom: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .web-proof-rail {
+    margin-inline: -20px;
+    width: calc(100% + 40px);
   }
 }
 

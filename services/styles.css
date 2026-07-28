@@ -571,7 +571,7 @@
 
 .service-directory-group-featured .service-directory-list .service-directory-card { --service-art: url("/public/assets/services/editorial/client-collaboration.webp"); }
 .service-directory-list .service-directory-route[href="/services/web-design/"] {
-  --service-art: url("/public/assets/services/cards/service-card-website-design-browser-phone.webp");
+  --service-art: url("/public/assets/services/cards/service-card-website-design-wtma-devices.webp");
   --web-card-media-width: 44%;
   --web-card-media-height: 80%;
 }
