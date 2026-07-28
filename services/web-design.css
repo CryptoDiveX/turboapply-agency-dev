@@ -1110,7 +1110,7 @@ body.web-design-page {
 }
 
 .web-benefits {
-  background: var(--web-soft);
+  background: #fff;
   border-block: 1px solid var(--web-line);
   padding-bottom: clamp(96px, 10vw, 144px);
   padding-top: clamp(88px, 9vw, 132px);
