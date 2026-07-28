@@ -92,6 +92,7 @@ body.web-design-page {
   color: #fff;
 }
 
+.web-website-type-body a:focus-visible,
 .web-testimonial-project a:focus-visible,
 .web-faq summary:focus-visible {
   outline: 3px solid #111;
@@ -110,9 +111,11 @@ body.web-design-page {
 .web-hero,
 .web-portfolio,
 .web-audiences,
+.web-website-types,
 .web-about,
 .web-benefits,
 .web-types,
+.web-why,
 .web-process,
 .web-pricing,
 .web-testimonials,
@@ -883,6 +886,138 @@ body.web-design-page {
   max-width: 1376px;
 }
 
+.web-website-types {
+  background: var(--web-paper);
+  padding-bottom: clamp(96px, 10vw, 144px);
+  padding-top: clamp(88px, 9vw, 132px);
+}
+
+.web-website-types-inner {
+  margin-inline: auto;
+  max-width: 1376px;
+}
+
+.web-website-types-head {
+  margin-inline: auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.web-website-types-head h2 {
+  font-size: clamp(38px, 4vw, 52px);
+  line-height: 1;
+  margin-top: 18px;
+}
+
+.web-website-types-head > p:last-child {
+  color: var(--web-muted);
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.52;
+  margin: 24px auto 0;
+  max-width: 800px;
+}
+
+.web-website-type-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(44px, 6vw, 72px);
+}
+
+.web-website-type-card {
+  background: #f1f1ee;
+  border: 1px solid #e2e2de;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.web-website-type-media {
+  aspect-ratio: 1.55 / 1;
+  background: #e9e9e5;
+  margin: 8px 8px 0;
+  overflow: hidden;
+}
+
+.web-website-type-media img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 260ms ease;
+  width: 100%;
+}
+
+.web-website-type-card:hover .web-website-type-media img {
+  transform: scale(1.015);
+}
+
+.web-website-type-card[data-website-type="yoga-wellness"] .web-website-type-media img,
+.web-website-type-card[data-website-type="local-services"] .web-website-type-media img {
+  object-fit: contain;
+}
+
+.web-website-type-card[data-website-type="local-services"] .web-website-type-media {
+  background: #f4eee0;
+}
+
+.web-website-type-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 16px 16px;
+}
+
+.web-website-type-body h3 {
+  font-size: clamp(24px, 2vw, 30px);
+  line-height: 1.04;
+}
+
+.web-website-type-body > p {
+  color: #454541;
+  font-size: 16px;
+  line-height: 1.48;
+  margin-top: 12px;
+}
+
+.web-website-type-body ul {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 28px;
+  padding-left: 20px;
+}
+
+.web-website-type-body li {
+  color: #20201e;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.web-website-type-body a {
+  align-items: center;
+  background: #050505;
+  border: 1px solid #050505;
+  border-radius: 999px;
+  color: #fff;
+  display: flex;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  justify-content: center;
+  margin-top: auto;
+  min-height: 46px;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+  width: 100%;
+}
+
+.web-website-type-body a:hover {
+  background: #fff;
+  color: #050505;
+}
+
 .web-about-layout {
   display: grid;
   gap: 16px;
@@ -1127,6 +1262,66 @@ body.web-design-page {
   line-height: 1.45;
   margin-top: 30px;
   max-width: 690px;
+}
+
+.web-why {
+  background: var(--web-soft);
+  border-block: 1px solid var(--web-line);
+  padding-bottom: clamp(96px, 10vw, 144px);
+  padding-top: clamp(88px, 9vw, 132px);
+}
+
+.web-why-head {
+  max-width: 880px;
+}
+
+.web-why-head h2 {
+  font-size: clamp(42px, 4vw, 52px);
+  line-height: 0.98;
+  margin-top: 18px;
+}
+
+.web-why-grid {
+  border-left: 1px solid #c9c9c4;
+  border-top: 1px solid #c9c9c4;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(48px, 6vw, 72px);
+}
+
+.web-why-card {
+  border-bottom: 1px solid #c9c9c4;
+  border-right: 1px solid #c9c9c4;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.web-why-index {
+  color: #7a3425;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.web-why-copy {
+  margin-top: auto;
+  padding-top: clamp(44px, 6vw, 72px);
+}
+
+.web-why-copy h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.04;
+}
+
+.web-why-copy p {
+  color: var(--web-muted);
+  font-size: 17px;
+  line-height: 1.48;
+  margin-top: 12px;
+  max-width: 560px;
 }
 
 .web-section-intro-row {
@@ -1383,6 +1578,10 @@ body.web-design-page {
 }
 
 @media (max-width: 980px) {
+  .web-website-type-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .web-about-layout {
     grid-template-columns: 1fr;
   }
@@ -1402,9 +1601,11 @@ body.web-design-page {
 }
 
 @media (max-width: 760px) {
+  .web-website-types,
   .web-about,
   .web-benefits,
   .web-types,
+  .web-why,
   .web-testimonials {
     padding-bottom: 76px;
     padding-top: 76px;
@@ -1425,6 +1626,15 @@ body.web-design-page {
     margin-top: 42px;
   }
 
+  .web-website-type-grid {
+    grid-template-columns: 1fr;
+    margin-top: 42px;
+  }
+
+  .web-website-type-body {
+    padding: 22px 18px 18px;
+  }
+
   .web-about-media {
     min-height: 390px;
   }
@@ -1442,7 +1652,8 @@ body.web-design-page {
   }
 
   .web-benefit-grid,
-  .web-type-list {
+  .web-type-list,
+  .web-why-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1460,6 +1671,15 @@ body.web-design-page {
   .web-type-row {
     min-height: 0;
     padding: 30px 24px;
+  }
+
+  .web-why-card {
+    min-height: 0;
+    padding: 30px 24px;
+  }
+
+  .web-why-copy {
+    padding-top: 36px;
   }
 
   .web-type-copy h3 {
