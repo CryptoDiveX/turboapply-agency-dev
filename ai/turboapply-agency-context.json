@@ -139,7 +139,7 @@
   "services": [
     "Business Process and Automation Audit",
     "Web Design",
-    "SEO Audit and Implementation",
+    "Website Integration",
     "Website Migration",
     "AI Receptionist",
     "Online Booking (Calendar Integration)",
@@ -166,9 +166,9 @@
       "url": "https://turboapply.agency/services/web-design/"
     },
     {
-      "name": "SEO Audit and Implementation",
+      "name": "Website Integration",
       "starting_reference": "From $550 USD",
-      "billing": "audit and priority fixes",
+      "billing": "website connection setup and priority fixes",
       "url": "https://turboapply.agency/services/"
     },
     {
