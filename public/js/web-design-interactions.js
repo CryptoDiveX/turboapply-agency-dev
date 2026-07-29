@@ -67,6 +67,85 @@
     update();
   };
 
+  const initializeWebsiteLossCalculator = () => {
+    const calculator = document.querySelector("[data-website-loss-calculator]");
+    if (!calculator) return;
+
+    const averageValue = calculator.querySelector("[data-loss-average-value]");
+    const monthlyOpportunities = calculator.querySelector("[data-loss-monthly-opportunities]");
+    const monthlyOpportunitiesRange = calculator.querySelector("[data-loss-monthly-opportunities-range]");
+    const lossRate = calculator.querySelector("[data-loss-rate]");
+    const lossRateRange = calculator.querySelector("[data-loss-rate-range]");
+    const conversion = calculator.querySelector("[data-loss-conversion]");
+    const conversionRange = calculator.querySelector("[data-loss-conversion-range]");
+    const annualOutput = calculator.querySelector("[data-loss-annual]");
+    const monthlyOutput = calculator.querySelector("[data-loss-monthly]");
+    const customerOutput = calculator.querySelector("[data-loss-customers]");
+    const summaryRate = calculator.querySelector("[data-loss-summary-rate]");
+    const summaryConversion = calculator.querySelector("[data-loss-summary-conversion]");
+    const required = [averageValue, monthlyOpportunities, monthlyOpportunitiesRange, lossRate, lossRateRange, conversion, conversionRange, annualOutput, monthlyOutput, customerOutput, summaryRate, summaryConversion];
+    if (required.some((element) => !element)) return;
+
+    const currency = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    });
+
+    const clampInput = (input) => {
+      const minimum = Number.parseFloat(input.min);
+      const maximum = Number.parseFloat(input.max);
+      const parsed = Number.parseFloat(input.value);
+      const safe = Number.isFinite(parsed) ? parsed : (Number.isFinite(minimum) ? minimum : 0);
+      return Math.min(Number.isFinite(maximum) ? maximum : safe, Math.max(Number.isFinite(minimum) ? minimum : safe, safe));
+    };
+
+    const calculate = () => {
+      const average = clampInput(averageValue);
+      const opportunities = clampInput(monthlyOpportunities);
+      const lostShare = clampInput(lossRate) / 100;
+      const customerShare = clampInput(conversion) / 100;
+      const customers = opportunities * lostShare * customerShare;
+      const monthlyRevenue = customers * average;
+      const annualRevenue = monthlyRevenue * 12;
+
+      annualOutput.textContent = currency.format(annualRevenue);
+      monthlyOutput.textContent = currency.format(monthlyRevenue);
+      customerOutput.textContent = customers >= 10 ? Math.round(customers).toLocaleString("en-US") : customers.toLocaleString("en-US", { maximumFractionDigits: 1 });
+      summaryRate.textContent = `${Math.round(lostShare * 100)}%`;
+      summaryConversion.textContent = `${Math.round(customerShare * 100)}%`;
+      calculator.dataset.calculatorReady = "true";
+    };
+
+    const connectPair = (numberInput, rangeInput) => {
+      numberInput.addEventListener("input", () => {
+        const value = clampInput(numberInput);
+        rangeInput.value = String(value);
+        calculate();
+      });
+      numberInput.addEventListener("change", () => {
+        const value = clampInput(numberInput);
+        numberInput.value = String(value);
+        rangeInput.value = String(value);
+        calculate();
+      });
+      rangeInput.addEventListener("input", () => {
+        numberInput.value = rangeInput.value;
+        calculate();
+      });
+    };
+
+    connectPair(monthlyOpportunities, monthlyOpportunitiesRange);
+    connectPair(lossRate, lossRateRange);
+    connectPair(conversion, conversionRange);
+    averageValue.addEventListener("input", calculate);
+    averageValue.addEventListener("change", () => {
+      averageValue.value = String(clampInput(averageValue));
+      calculate();
+    });
+    calculate();
+  };
+
   const initializeSurfaceCursor = () => {
     const surfaces = Array.from(document.querySelectorAll("[data-web-surface-cursor]"));
     const eligibilityQueries = [
@@ -210,6 +289,7 @@
 
   const initialize = () => {
     initializeProofRail();
+    initializeWebsiteLossCalculator();
     initializeSurfaceCursor();
   };
 

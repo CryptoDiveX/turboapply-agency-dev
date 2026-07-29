@@ -177,7 +177,7 @@ h1 {
   margin-bottom: 36px;
   color: var(--muted);
   font-size: clamp(19px, 1.45vw, 24px);
-  line-height: 1.42;
+  line-height: 1;
 }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
 .button-dark { padding: 0 22px; background: var(--ink); color: #fff; }

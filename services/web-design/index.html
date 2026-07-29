@@ -33,8 +33,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260723-21" />
-    <link rel="stylesheet" href="/services/web-design-20260730-22.css?v=web-design-turboapply-editorial-20260730-22" />
+    <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260730-22" />
+    <link rel="stylesheet" href="/services/web-design-20260730-23.css?v=web-design-turboapply-editorial-20260730-23" />
     <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
     <link rel="stylesheet" href="/public/css/footer-dot-cursor.css?v=footer-dot-20260725-1" />
     <script type="application/ld+json">
@@ -282,6 +282,62 @@
         </div>
       </section>
 
+      <section class="web-loss-calculator" aria-labelledby="website-loss-title" data-website-loss-calculator>
+        <div class="web-loss-calculator-inner">
+          <div class="web-loss-calculator-heading">
+            <h2 id="website-loss-title">What could a poor or missing website be costing your business?</h2>
+            <p>Adjust your own assumptions to estimate revenue that may be at risk when prospects cannot understand, trust, or act on your offer online.</p>
+          </div>
+          <div class="web-loss-calculator-shell">
+            <div class="web-loss-controls">
+              <label class="web-loss-value-label" for="website-average-customer-value">
+                <span>Average customer value</span>
+                <span class="web-loss-number-field"><span aria-hidden="true">$</span><input id="website-average-customer-value" type="number" min="0" max="1000000" step="50" value="500" inputmode="decimal" data-loss-average-value /></span>
+              </label>
+              <div class="web-loss-control-group">
+                <div class="web-loss-control-head">
+                  <label for="website-monthly-opportunities">Monthly prospects</label>
+                  <span class="web-loss-number-field"><input id="website-monthly-opportunities" type="number" min="0" max="5000" step="10" value="200" inputmode="numeric" data-loss-monthly-opportunities /><span>people</span></span>
+                </div>
+                <input type="range" min="0" max="5000" step="10" value="200" aria-label="Monthly prospects" data-loss-monthly-opportunities-range />
+                <p>Website visitors, referrals, social traffic, calls, or other people who may check the business online.</p>
+              </div>
+              <details class="web-loss-assumptions">
+                <summary><span><strong>Adjust assumptions</strong><small>Currently assuming <span data-loss-summary-rate>20%</span> leave because the website is missing or weak, and <span data-loss-summary-conversion>15%</span> of those lost prospects would become customers.</small></span><span aria-hidden="true">+</span></summary>
+                <div class="web-loss-assumption-grid">
+                  <div class="web-loss-control-group">
+                    <div class="web-loss-control-head">
+                      <label for="website-loss-rate">Prospects lost because of the website</label>
+                      <span class="web-loss-number-field"><input id="website-loss-rate" type="number" min="0" max="80" step="1" value="20" inputmode="numeric" data-loss-rate /><span>%</span></span>
+                    </div>
+                    <input type="range" min="0" max="80" step="1" value="20" aria-label="Prospects lost because of the website" data-loss-rate-range />
+                  </div>
+                  <div class="web-loss-control-group">
+                    <div class="web-loss-control-head">
+                      <label for="website-customer-rate">Prospects who would become customers</label>
+                      <span class="web-loss-number-field"><input id="website-customer-rate" type="number" min="1" max="80" step="1" value="15" inputmode="numeric" data-loss-conversion /><span>%</span></span>
+                    </div>
+                    <input type="range" min="1" max="80" step="1" value="15" aria-label="Prospects who would become customers" data-loss-conversion-range />
+                  </div>
+                </div>
+              </details>
+            </div>
+            <div class="web-loss-results" aria-live="polite" aria-atomic="true">
+              <div class="web-loss-result-card">
+                <p>Potential revenue at risk</p>
+                <strong data-loss-annual>$36,000</strong>
+                <span>per year</span>
+                <dl>
+                  <div><dt>Monthly</dt><dd data-loss-monthly>$3,000</dd></div>
+                  <div><dt>Customers</dt><dd><span data-loss-customers>6</span><small> / month</small></dd></div>
+                </dl>
+              </div>
+              <p class="web-loss-disclaimer">Estimate only—not a forecast or guarantee. Actual revenue depends on traffic quality, demand, pricing, sales capacity, competition, and how customers currently find and evaluate the business.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="web-benefits" aria-labelledby="business-benefits-title">
         <div class="web-benefits-inner">
           <div class="web-section-intro web-section-intro-centered">
@@ -352,6 +408,24 @@
             <li><span class="web-process-number" aria-hidden="true">04</span><h3>Implement basic SEO</h3><p>We add the agreed page titles, descriptions, heading structure, image alt text, indexing controls, and basic on-page SEO foundations.</p></li>
             <li><span class="web-process-number" aria-hidden="true">05</span><h3>Verify and hand off</h3><p>We test the website across key screen sizes, check links and forms, then provide the agreed files, access, and handoff notes.</p></li>
           </ol>
+        </div>
+      </section>
+
+      <section class="web-stage-process" aria-labelledby="stage-process-title">
+        <div class="web-stage-process-inner">
+          <div class="web-stage-process-head">
+            <p class="web-kicker">Project stages</p>
+            <h2 id="stage-process-title">A transparent path through each stage.</h2>
+          </div>
+          <ol class="web-stage-process-grid">
+            <li><span>01</span><h3>Scope and audit</h3><p>Confirm goals, audience, pages, constraints, and the next action.</p><strong>1–2 days</strong></li>
+            <li><span>02</span><h3>Content direction</h3><p>Organize the offer, proof, page hierarchy, and required source material.</p><strong>2–4 days</strong></li>
+            <li><span>03</span><h3>Visual system</h3><p>Set typography, spacing, imagery, and reusable interface patterns.</p><strong>3–5 days</strong></li>
+            <li><span>04</span><h3>Development</h3><p>Build responsive pages and connect the agreed conversion paths.</p><strong>5–10 days</strong></li>
+            <li><span>05</span><h3>QA and launch prep</h3><p>Check content, devices, links, forms, accessibility, and release details.</p><strong>2–3 days</strong></li>
+            <li><span>06</span><h3>Handoff and support</h3><p>Transfer files, access, documentation, and the agreed support scope.</p><strong>As scoped</strong></li>
+          </ol>
+          <p class="web-stage-process-note">Working ranges begin after scope approval and depend on content, access, feedback timing, integrations, and project complexity.</p>
         </div>
       </section>
 
@@ -538,7 +612,7 @@
     <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
     <script src="/integrations/script.js?v=services-page-20260716-1"></script>
     <script src="/services/script.js?v=web-design-form-20260722-1"></script>
-    <script src="/public/js/web-design-interactions.js?v=web-design-interactions-20260730-2"></script>
+    <script src="/public/js/web-design-interactions.js?v=web-design-interactions-20260730-3"></script>
     <script src="/public/js/footer-dot-cursor.js?v=footer-dot-20260725-1"></script>
   </body>
 </html>
