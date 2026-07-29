@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260723-21" />
-    <link rel="stylesheet" href="/services/web-design-20260729-21.css?v=web-design-turboapply-editorial-20260729-21" />
+    <link rel="stylesheet" href="/services/web-design-20260730-22.css?v=web-design-turboapply-editorial-20260730-22" />
     <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
     <link rel="stylesheet" href="/public/css/footer-dot-cursor.css?v=footer-dot-20260725-1" />
     <script type="application/ld+json">
@@ -159,7 +159,7 @@
     </header>
 
     <main id="main-content">
-      <section class="web-hero" aria-labelledby="web-design-title">
+      <section class="web-hero" aria-labelledby="web-design-title" data-web-surface-cursor>
         <div class="web-hero-inner">
           <div class="web-hero-copy">
             <p class="web-kicker">Website design</p>
@@ -312,6 +312,33 @@
 
 
 
+      <section id="website-contact" class="web-contact" aria-labelledby="website-contact-title" data-web-surface-cursor>
+        <div class="web-contact-inner">
+          <div class="web-contact-copy">
+            <h2 id="website-contact-title">Get your business website built for only $850</h2>
+          </div>
+          <div class="web-contact-form-wrap">
+            <h3>Tell us about your website.</h3>
+            <p>Share the offer, pages, or business outcome you need the website to support.</p>
+            <form class="web-contact-form ta-main-form" action="/submit-lead.php" method="post" data-services-lead-form data-turboapply-secure-form>
+              <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
+              <label><span>Name</span><input type="text" name="name" autocomplete="name" maxlength="120" required /></label>
+              <label><span>Email</span><input type="email" name="email" autocomplete="email" maxlength="254" required /></label>
+              <label><span>Phone (or Messenger)</span><input type="text" name="contact" autocomplete="tel" maxlength="254" required /></label>
+              <label class="web-contact-message"><span>What service or business outcome do you need help with?</span><textarea name="challenge" rows="5" maxlength="1800" required></textarea></label>
+              <input type="hidden" name="redirect" value="/book-meeting/" />
+              <input type="hidden" name="formId" value="services-consultation" />
+              <input type="hidden" name="source" value="turboapply.agency" />
+              <input type="hidden" name="serviceInterest" value="Web Design" />
+              <input type="hidden" name="submittedAt" value="" />
+              <input type="hidden" name="submissionIdempotencyKey" value="" />
+              <p class="web-contact-status" aria-live="polite" data-services-lead-status></p>
+              <button class="web-button web-button-light" type="submit">Send request</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <section class="web-process" aria-labelledby="process-title">
         <div class="web-process-layout">
           <div class="web-process-head">
@@ -395,11 +422,18 @@
 
       <section id="selected-work" class="web-testimonials" aria-labelledby="testimonials-title">
         <div class="web-testimonials-inner">
-          <div class="web-section-intro web-section-intro-centered">
-            <p class="web-kicker">Selected work and client perspective</p>
-            <h2 id="testimonials-title">Four projects shaped around real business needs.</h2>
+          <div class="web-testimonials-head">
+            <div class="web-section-intro web-section-intro-centered">
+              <p class="web-kicker">Selected work and client perspective</p>
+              <h2 id="testimonials-title">Five projects shaped around real business needs.</h2>
+            </div>
+            <div class="web-proof-controls" role="group" aria-label="Selected work carousel controls">
+              <button type="button" data-web-proof-previous aria-label="Show previous selected work" aria-controls="web-proof-rail" disabled>←</button>
+              <button type="button" data-web-proof-next aria-label="Show next selected work" aria-controls="web-proof-rail">→</button>
+            </div>
           </div>
-          <div class="web-proof-rail" aria-label="Four selected TurboApply projects">
+          <div id="web-proof-rail" class="web-proof-viewport" tabindex="0" aria-label="Five selected TurboApply projects">
+            <div class="web-proof-rail">
             <article class="web-proof-card" data-proof-project="ozero-grez" data-proof-kind="client-testimonial">
               <figure class="web-testimonial-project">
                 <div class="web-testimonial-media"><img src="/public/assets/ozero-grez-behance-preview.webp" alt="Ozero Grez website from the TurboApply portfolio" width="800" height="631" loading="eager" decoding="async" /></div>
@@ -440,12 +474,19 @@
                 <footer><span aria-hidden="true">TH</span><div><strong>TurboApply vertical</strong><small>Health website</small></div></footer>
               </div>
             </article>
-            <a class="web-proof-cta" href="/results/" aria-label="View all selected work">
-              <span>More selected work</span>
-              <strong>View all projects</strong>
-              <span class="web-proof-cta-arrows" aria-hidden="true"><i>→</i><i>→</i></span>
-            </a>
+              <article class="web-proof-card" data-proof-project="nova-bank" data-proof-kind="portfolio-concept">
+                <figure class="web-testimonial-project">
+                  <div class="web-testimonial-media"><img src="/public/assets/finance/nova-bank-hero.webp" alt="Nova Bank mobile banking product concept" width="1400" height="1821" loading="lazy" decoding="async" /></div>
+                  <figcaption><span><strong>Nova Bank</strong><small>Mobile banking product concept</small></span><a href="https://www.behance.net/gallery/231461891/Nova-Bank-Mobile-App" target="_blank" rel="noopener noreferrer">View project</a></figcaption>
+                </figure>
+                <div class="web-testimonial-quote web-project-evidence">
+                  <p>A mobile banking app concept for fast transfers, clear spending insights, and confident everyday money management.</p>
+                  <footer><span aria-hidden="true">NB</span><div><strong>Portfolio concept</strong><small>Mobile product design</small></div></footer>
+                </div>
+              </article>
+            </div>
           </div>
+          <a class="web-proof-more" href="/results/">View all selected work</a>
         </div>
       </section>
 
@@ -479,33 +520,6 @@
         </div>
       </section>
 
-      <section id="website-contact" class="web-contact" aria-labelledby="website-contact-title">
-        <div class="web-contact-inner">
-          <div class="web-contact-copy">
-            <h2 id="website-contact-title">Get your business website built for only $850</h2>
-          </div>
-          <div class="web-contact-form-wrap">
-            <h3>Tell us about your website.</h3>
-            <p>Share the offer, pages, or business outcome you need the website to support.</p>
-            <form class="web-contact-form ta-main-form" action="/submit-lead.php" method="post" data-services-lead-form data-turboapply-secure-form>
-              <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
-              <label><span>Name</span><input type="text" name="name" autocomplete="name" maxlength="120" required /></label>
-              <label><span>Email</span><input type="email" name="email" autocomplete="email" maxlength="254" required /></label>
-              <label><span>Phone (or Messenger)</span><input type="text" name="contact" autocomplete="tel" maxlength="254" required /></label>
-              <label class="web-contact-message"><span>What service or business outcome do you need help with?</span><textarea name="challenge" rows="5" maxlength="1800" required></textarea></label>
-              <input type="hidden" name="redirect" value="/book-meeting/" />
-              <input type="hidden" name="formId" value="services-consultation" />
-              <input type="hidden" name="source" value="turboapply.agency" />
-              <input type="hidden" name="serviceInterest" value="Web Design" />
-              <input type="hidden" name="submittedAt" value="" />
-              <input type="hidden" name="submissionIdempotencyKey" value="" />
-              <p class="web-contact-status" aria-live="polite" data-services-lead-status></p>
-              <button class="web-button web-button-light" type="submit">Send request</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
 
     </main>
 
@@ -524,6 +538,7 @@
     <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
     <script src="/integrations/script.js?v=services-page-20260716-1"></script>
     <script src="/services/script.js?v=web-design-form-20260722-1"></script>
+    <script src="/public/js/web-design-interactions.js?v=web-design-interactions-20260730-1"></script>
     <script src="/public/js/footer-dot-cursor.js?v=footer-dot-20260725-1"></script>
   </body>
 </html>
