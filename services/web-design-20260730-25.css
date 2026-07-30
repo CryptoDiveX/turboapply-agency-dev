@@ -1819,7 +1819,7 @@ body.web-design-page {
 .web-stage-process-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: minmax(320px, 2.1fr) repeat(5, minmax(120px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   list-style: none;
   margin: clamp(42px, 6vw, 72px) 0 0;
   padding: 0;
@@ -2219,29 +2219,7 @@ body.web-design-page {
   }
 
   .web-stage-process-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .web-stage-process-grid li:not(:first-child) {
-    align-items: center;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 0;
-    padding: 20px 22px;
-  }
-
-  .web-stage-process-grid li:not(:first-child) > span {
-    align-self: center;
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .web-stage-process-grid li:not(:first-child) h3 {
-    border-bottom: 0;
-    grid-column: 1;
-    grid-row: 1;
-    margin-top: 0;
-    padding-bottom: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -2352,7 +2330,7 @@ body.web-design-page {
     margin-top: 36px;
   }
 
-  .web-stage-process-grid li:first-child {
+  .web-stage-process-grid li {
     min-height: 280px;
   }
 

@@ -161,7 +161,7 @@
     const mount = () => {
       if (document.querySelector(".web-surface-cursor")) return null;
 
-      const dotSize = 48;
+      const dotSize = 40;
       const dotCount = 14;
       const filter = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       filter.setAttribute("class", "web-surface-cursor-filter");
