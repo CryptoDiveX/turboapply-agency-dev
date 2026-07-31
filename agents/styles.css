@@ -81,26 +81,29 @@
 .agents-heading .button { margin-top: 34px; }
 
 .final-cta .button-light {
-  min-height: 60px;
-  padding: 0 clamp(30px, 4vw, 48px);
+  min-height: 50px;
+  width: fit-content;
+  padding: 0 22px;
   border: 1px solid #fff;
-  border-radius: 999px;
+  border-radius: 10px;
   background: #fff;
   color: #111;
   font-family: Inter, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: -0.01em;
   line-height: 1;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .final-cta .button-light:hover {
-  background: #efefeb;
-  border-color: #efefeb;
+  background: #e8e8e3;
+  border-color: #e8e8e3;
   color: #111;
+  transform: translateY(-1px);
 }
 
 .final-cta .button-light:focus-visible {
