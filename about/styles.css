@@ -365,7 +365,7 @@
 }
 
 .review-card {
-  flex: 0 0 min(620px, 86%);
+  flex: 0 0 100%;
   min-height: 330px;
   padding: clamp(28px, 3vw, 44px);
   display: flex;
@@ -853,7 +853,7 @@
   }
 
   .review-card {
-    flex-basis: 92%;
+    flex-basis: 100%;
     min-height: 350px;
     padding: 26px;
   }

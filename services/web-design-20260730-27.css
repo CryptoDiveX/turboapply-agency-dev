@@ -117,6 +117,7 @@ body.web-design-page {
 .web-website-types,
 .web-about,
 .web-loss-calculator,
+.web-benefits,
 .web-types,
 .web-why,
 .web-service-pricing,
@@ -1485,9 +1486,67 @@ body.web-design-page {
   line-height: 1.48;
 }
 
+.web-benefits {
+  background: #fff;
+  border: 0;
+  padding-bottom: clamp(72px, 7vw, 104px);
+  padding-top: clamp(52px, 5vw, 72px);
+}
+
+.web-benefits-inner,
 .web-types-inner {
   margin-inline: auto;
   max-width: 1376px;
+}
+
+.web-benefit-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+.web-benefit-card {
+  background: #fff;
+  border: 1px solid #d8d8d3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.web-benefit-card header {
+  align-items: start;
+  border-bottom: 1px solid #d8d8d3;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  padding: clamp(26px, 3vw, 38px);
+}
+
+.web-benefit-card header span {
+  color: #7a3425;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.web-benefit-card h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.04;
+}
+
+.web-benefit-card ul {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: clamp(30px, 4vw, 48px) clamp(30px, 4vw, 48px) clamp(34px, 4vw, 52px) clamp(52px, 5vw, 72px);
+}
+
+.web-benefit-card li {
+  color: #30302d;
+  font-size: 17px;
+  line-height: 1.48;
+  padding-left: 5px;
 }
 
 .web-types {
@@ -1583,19 +1642,19 @@ body.web-design-page {
 }
 
 .web-why {
-  background: var(--web-soft);
+  background: var(--web-paper);
   border: 0;
-  padding-bottom: clamp(88px, 9vw, 132px);
-  padding-top: clamp(80px, 8vw, 120px);
+  padding-bottom: clamp(64px, 8vw, 104px);
+  padding-top: clamp(64px, 8vw, 104px);
 }
 
 .web-why-shell {
-  background: transparent;
-  border-radius: 0;
+  background: var(--web-soft);
+  border-radius: 30px;
   margin-inline: auto;
   max-width: 1376px;
-  overflow: visible;
-  padding: 0;
+  overflow: hidden;
+  padding: clamp(32px, 5vw, 72px);
 }
 
 .web-why-head {
@@ -1625,18 +1684,6 @@ body.web-design-page {
   padding: clamp(22px, 3vw, 32px);
 }
 
-.web-why-title-row {
-  align-items: baseline;
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
-}
-
-.web-why-title-row h3 {
-  font-size: clamp(26px, 2.4vw, 34px);
-  line-height: 1.04;
-}
-
 .web-why-index {
   color: #7a3425;
   font-family: "Inter", Arial, sans-serif;
@@ -1647,7 +1694,12 @@ body.web-design-page {
 
 .web-why-copy {
   margin-top: 0;
-  padding-top: 14px;
+  padding-top: clamp(24px, 3vw, 32px);
+}
+
+.web-why-copy h3 {
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.04;
 }
 
 .web-why-copy p {
@@ -1679,13 +1731,16 @@ body.web-design-page {
 }
 
 .web-process {
-  background: #fff;
+  background: var(--web-paper);
   border: 0;
   padding-bottom: clamp(96px, 10vw, 144px);
   padding-top: clamp(88px, 9vw, 132px);
 }
 
 .web-process-layout {
+  display: grid;
+  gap: clamp(56px, 8vw, 132px);
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
   margin-inline: auto;
   max-width: 1376px;
 }
@@ -1697,54 +1752,51 @@ body.web-design-page {
 .web-process-head h2 {
   font-size: clamp(42px, 4vw, 52px);
   line-height: 0.98;
-  margin-top: 18px;
-  max-width: 16ch;
+  margin-top: 28px;
+  max-width: 10ch;
 }
 
 .web-process-list {
-  display: grid;
-  gap: clamp(24px, 3vw, 34px);
+  border-top: 1px solid var(--web-line);
   list-style: none;
-  margin: clamp(48px, 6vw, 76px) 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .web-process-list li {
-  align-items: center;
+  align-items: start;
+  border-bottom: 1px solid var(--web-line);
   display: grid;
-  gap: clamp(22px, 3vw, 40px);
-  grid-template-columns: clamp(58px, 6vw, 82px) minmax(0, 1fr);
-  max-width: 1120px;
+  gap: clamp(24px, 3vw, 48px);
+  grid-template-columns: 44px minmax(190px, 0.78fr) minmax(0, 1fr);
+  min-height: 132px;
+  padding-block: 28px;
 }
 
 .web-process-number {
-  align-items: center;
-  aspect-ratio: 1;
-  background: #1c1c1c;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  font-family: "Urbanist", Arial, sans-serif;
-  font-size: clamp(24px, 2.3vw, 34px);
-  justify-content: center;
-  line-height: 1;
+  color: var(--web-muted);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  padding-top: 7px;
 }
 
 .web-process-list h3 {
-  font-size: clamp(28px, 3vw, 44px);
-  line-height: 1;
+  font-size: clamp(25px, 2.2vw, 32px);
+  line-height: 1.04;
 }
 
 .web-process-list p {
   color: var(--web-muted);
-  font-size: clamp(16px, 1.3vw, 18px);
+  font-size: 17px;
   line-height: 1.5;
-  margin: 10px 0 0;
+  margin: 0;
   max-width: 620px;
 }
 
 .web-stage-process {
-  background: #fff;
+  background: #f2efe8;
   padding-bottom: clamp(88px, 9vw, 132px);
   padding-top: clamp(80px, 8vw, 120px);
   position: relative;
@@ -1826,34 +1878,23 @@ body.web-design-page {
   outline-offset: 3px;
 }
 
-.web-stage-card-head {
-  align-items: flex-start;
-  border-bottom: 1px solid #3a3a37;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  padding-bottom: 20px;
-  width: 100%;
-}
-
-.web-stage-card-head > span:last-child {
+.web-stage-card-toggle > span {
+  align-self: end;
   color: #aaa9a4;
-  flex: 0 0 auto;
   font: 500 11px/1 "Inter", Arial, sans-serif;
   letter-spacing: 0.08em;
-  padding-top: 3px;
 }
 
-.web-stage-title {
-  display: block;
-  font-size: clamp(16px, 1.2vw, 18px);
-  line-height: 1.08;
-  margin: 0;
+.web-stage-process-grid h3 {
+  border-bottom: 1px solid #3a3a37;
+  font-size: clamp(21px, 1.8vw, 27px);
+  line-height: 1.02;
+  margin-top: 22px;
+  padding-bottom: 20px;
 }
 
-.web-stage-copy {
+.web-stage-process-grid p {
   color: #bbb9b3;
-  display: block;
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.45;
@@ -1879,7 +1920,7 @@ body.web-design-page {
   visibility: hidden;
 }
 
-.web-stage-process-grid li[data-stage-active="true"] .web-stage-copy {
+.web-stage-process-grid li[data-stage-active="true"] p {
   margin-top: 20px;
   max-height: 96px;
   opacity: 1;
@@ -1898,12 +1939,12 @@ body.web-design-page {
   visibility: visible;
 }
 
-.web-design-page .web-stage-process-note {
+.web-stage-process-note {
   color: var(--web-muted);
   font-family: "Inter", Arial, sans-serif;
   font-size: 13px;
   line-height: 1.45;
-  margin: 38px 0 0;
+  margin: 22px 0 0;
   max-width: 780px;
 }
 
@@ -1981,6 +2022,19 @@ body.web-design-page {
   .web-work-advantage-card:hover :is(ul, p) {
     color: #c9c8c2;
   }
+
+  .web-service-pricing-row:hover {
+    background: #f5f4ef;
+    color: #111;
+  }
+
+  .web-service-pricing-row:hover :is(p, strong) {
+    color: #3f3f3a;
+  }
+
+  .web-service-pricing-row:hover .web-service-pricing-index {
+    color: #7a3425;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 1280px) {
@@ -1993,7 +2047,7 @@ body.web-design-page {
     flex-grow: 2.1;
   }
 
-  .web-stage-process-grid:has(li:hover) > li:not(:hover) :is(.web-stage-copy, strong) {
+  .web-stage-process-grid:has(li:hover) > li:not(:hover) :is(p, strong) {
     margin-top: 0;
     max-height: 0;
     opacity: 0;
@@ -2002,7 +2056,7 @@ body.web-design-page {
     visibility: hidden;
   }
 
-  .web-stage-process-grid:has(li:hover) > li:hover .web-stage-copy {
+  .web-stage-process-grid:has(li:hover) > li:hover p {
     margin-top: 20px;
     max-height: 96px;
     opacity: 1;
@@ -2029,8 +2083,6 @@ body.web-design-page {
 }
 
 .web-testimonials-inner {
-  --web-proof-peek: clamp(112px, 10vw, 180px);
-  --web-proof-right-bleed: max(var(--web-gutter), calc((100vw - 1376px) / 2));
   margin-inline: auto;
   max-width: 1376px;
 }
@@ -2089,7 +2141,7 @@ body.web-design-page {
   scroll-behavior: smooth;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
-  width: calc(100% + var(--web-proof-right-bleed));
+  width: 100%;
 }
 
 .web-proof-viewport::-webkit-scrollbar {
@@ -2099,10 +2151,9 @@ body.web-design-page {
 .web-proof-rail {
   display: grid;
   gap: 16px;
-  grid-auto-columns: calc((min(1376px, calc(100vw - var(--web-gutter) - var(--web-gutter))) + var(--web-proof-right-bleed) - 64px - var(--web-proof-peek)) / 4);
+  grid-auto-columns: calc((100% - 48px) / 4);
   grid-auto-flow: column;
-  padding-right: calc(var(--web-proof-peek) + 16px);
-  width: max-content;
+  padding-right: 104px;
 }
 
 .web-proof-more {
@@ -2249,14 +2300,9 @@ body.web-design-page {
 }
 
 @media (max-width: 1279px) {
-  .web-proof-viewport {
-    width: 100%;
-  }
-
   .web-proof-rail {
     grid-auto-columns: calc((100% - 16px) / 2);
     padding-right: 0;
-    width: 100%;
   }
 
   .web-stage-process-grid {
@@ -2273,17 +2319,24 @@ body.web-design-page {
   }
 
   .web-stage-process-grid li[data-stage-active="false"] .web-stage-card-toggle {
+    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     padding: 20px 22px;
   }
 
-  .web-stage-process-grid li[data-stage-active="false"] .web-stage-card-head {
-    align-items: center;
-    border-bottom: 0;
-    padding-bottom: 0;
+  .web-stage-process-grid li[data-stage-active="false"] .web-stage-card-toggle > span {
+    align-self: center;
+    grid-column: 2;
+    grid-row: 1;
   }
 
-  .web-stage-process-grid li[data-stage-active="false"] .web-stage-title {
-    margin: 0;
+  .web-stage-process-grid li[data-stage-active="false"] h3 {
+    border-bottom: 0;
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -2327,8 +2380,13 @@ body.web-design-page {
     min-height: 520px;
   }
 
+  .web-process-layout {
+    gap: 48px;
+    grid-template-columns: 1fr;
+  }
+
   .web-process-head h2 {
-    max-width: 16ch;
+    max-width: 14ch;
   }
 }
 
@@ -2336,6 +2394,7 @@ body.web-design-page {
   .web-website-types,
   .web-about,
   .web-loss-calculator,
+  .web-benefits,
   .web-types,
   .web-why,
   .web-stage-process,
@@ -2344,6 +2403,10 @@ body.web-design-page {
     padding-top: 76px;
   }
 
+  .web-benefits {
+    padding-bottom: 68px;
+    padding-top: 52px;
+  }
 
   .web-loss-calculator-heading {
     gap: 20px;
@@ -2428,9 +2491,21 @@ body.web-design-page {
     padding: 28px 24px;
   }
 
+  .web-benefit-grid,
   .web-type-list,
   .web-why-grid {
     grid-template-columns: 1fr;
+  }
+
+  .web-benefit-card header {
+    gap: 12px;
+    grid-template-columns: 1fr;
+    padding: 26px 24px;
+  }
+
+  .web-benefit-card ul {
+    gap: 16px;
+    padding: 28px 28px 32px 48px;
   }
 
   .web-type-row {
@@ -2440,16 +2515,16 @@ body.web-design-page {
 
   .web-why-card {
     min-height: 0;
-    padding: 24px 20px;
+    padding: 30px 24px;
   }
 
   .web-why-shell {
-    border-radius: 0;
-    padding: 0;
+    border-radius: 22px;
+    padding: 32px 20px;
   }
 
   .web-why-copy {
-    padding-top: 14px;
+    padding-top: 36px;
   }
 
   .web-type-copy h3 {
@@ -2473,14 +2548,20 @@ body.web-design-page {
   }
 
   .web-process-list li {
-    gap: 18px;
-    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 14px;
+    grid-template-columns: 36px minmax(0, 1fr);
     min-height: 0;
-    padding-block: 0;
+    padding-block: 24px;
+  }
+
+  .web-process-list h3,
+  .web-process-list p {
+    grid-column: 2;
   }
 
   .web-process-number {
-    font-size: 24px;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .web-contact-inner {
@@ -2533,8 +2614,11 @@ body.web-design-page {
 }
 
 @media (min-width: 981px) {
+  .web-benefit-card h3,
   .web-about-list dd strong,
   .web-service-pricing-row h3,
+  .web-why-copy h3,
+  .web-process-list h3,
   .web-work-advantage-card h3,
   .web-related-card h3 {
     font-size: 30px;
@@ -2544,7 +2628,7 @@ body.web-design-page {
 
 @media (prefers-reduced-motion: reduce) {
   .web-stage-process-grid li,
-  .web-stage-process-grid :is(.web-stage-copy, strong) {
+  .web-stage-process-grid :is(p, strong) {
     transition-delay: 0s !important;
     transition-duration: 0s !important;
   }

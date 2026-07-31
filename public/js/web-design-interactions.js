@@ -18,7 +18,7 @@
       const styles = getComputedStyle(rail);
       const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
       const step = first.width + gap;
-      const visible = Math.max(1, Math.round((viewport.clientWidth + gap) / step));
+      const visible = Math.max(1, Math.floor((viewport.clientWidth + gap) / step));
       return { step, visible, max: Math.max(0, cards.length - visible) };
     };
 
@@ -144,6 +144,80 @@
       calculate();
     });
     calculate();
+  };
+
+  const initializeStageProcess = () => {
+    const grid = document.querySelector(".web-stage-process-grid");
+    const cards = grid ? Array.from(grid.querySelectorAll("[data-web-stage-card]")) : [];
+    const toggles = cards.map((card) => card.querySelector(".web-stage-card-toggle"));
+    const hoverStages = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1280px)");
+    if (!grid || cards.length !== 6 || toggles.some((toggle) => !toggle)) return;
+    let mouseFocusedToggle = null;
+
+    const activate = (requestedIndex, { focus = false } = {}) => {
+      const index = Math.min(Math.max(requestedIndex, 0), cards.length - 1);
+      cards.forEach((card, cardIndex) => {
+        const active = cardIndex === index;
+        card.dataset.stageActive = String(active);
+        toggles[cardIndex].setAttribute("aria-expanded", String(active));
+      });
+      grid.dataset.stageIndex = String(index);
+      if (focus) toggles[index].focus();
+    };
+
+    toggles.forEach((toggle, index) => {
+      toggle.addEventListener("pointerdown", (event) => {
+        mouseFocusedToggle = event.pointerType !== "touch" && hoverStages.matches ? toggle : null;
+      });
+      toggle.addEventListener("pointerenter", (event) => {
+        if (event.pointerType !== "touch" && hoverStages.matches) activate(index);
+      });
+      toggle.addEventListener("focus", () => activate(index));
+      toggle.addEventListener("blur", () => {
+        if (mouseFocusedToggle === toggle) mouseFocusedToggle = null;
+      });
+      toggle.addEventListener("pointercancel", () => {
+        if (mouseFocusedToggle === toggle) mouseFocusedToggle = null;
+      });
+      toggle.addEventListener("click", () => activate(index));
+      toggle.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          event.preventDefault();
+          activate(index - 1, { focus: true });
+        } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          event.preventDefault();
+          activate(index + 1, { focus: true });
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          activate(0, { focus: true });
+        } else if (event.key === "End") {
+          event.preventDefault();
+          activate(cards.length - 1, { focus: true });
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          activate(0, { focus: true });
+        }
+      });
+    });
+
+    grid.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "touch" || !hoverStages.matches) return;
+      if (mouseFocusedToggle && document.activeElement === mouseFocusedToggle) {
+        const focusedByMouse = mouseFocusedToggle;
+        mouseFocusedToggle = null;
+        focusedByMouse.blur();
+        activate(0);
+        return;
+      }
+      const focusedIndex = toggles.indexOf(document.activeElement);
+      activate(focusedIndex >= 0 ? focusedIndex : 0);
+    });
+    grid.addEventListener("focusout", () => {
+      requestAnimationFrame(() => {
+        if (!grid.contains(document.activeElement)) activate(0);
+      });
+    });
+    activate(0);
   };
 
   const initializeSurfaceCursor = () => {
@@ -290,6 +364,7 @@
   const initialize = () => {
     initializeProofRail();
     initializeWebsiteLossCalculator();
+    initializeStageProcess();
     initializeSurfaceCursor();
   };
 
