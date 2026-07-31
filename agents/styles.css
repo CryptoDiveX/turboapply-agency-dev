@@ -89,6 +89,10 @@
 }
 
 .final-cta .button-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   min-width: 230px;
   min-height: 0;
   width: fit-content;
@@ -99,11 +103,19 @@
   background: #fff;
   color: #090909;
   font: 600 12px/1 Inter, sans-serif;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
+  text-indent: 0;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
   transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.final-cta .button-light > .button-label {
+  display: block;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  text-transform: uppercase;
 }
 
 .final-cta .button-light:hover {

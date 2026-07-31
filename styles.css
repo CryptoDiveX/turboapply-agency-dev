@@ -2471,7 +2471,7 @@ button { font: inherit; }
 }
 
 .turbo-hero-pixel-reveal canvas {
-  z-index: 1;
+  z-index: 3;
 }
 
 .turbo-hero-pixel-reveal::after {

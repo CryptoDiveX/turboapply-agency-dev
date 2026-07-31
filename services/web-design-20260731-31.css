@@ -1839,11 +1839,11 @@ body.web-design-page {
   min-height: 340px;
   min-width: 0;
   overflow: hidden;
-  transition: flex-grow 800ms cubic-bezier(0.16, 1, 0.3, 1), border-color 500ms ease;
+  transition: flex-grow 420ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease;
 }
 
 .web-stage-process-grid li[data-stage-active="true"] {
-  flex-grow: 2.6;
+  flex-grow: 2.1;
 }
 
 .web-stage-card-toggle {
@@ -1857,7 +1857,7 @@ body.web-design-page {
   flex-direction: column;
   font: inherit;
   min-width: 0;
-  padding: 22px 20px;
+  padding: 22px;
   text-align: left;
   width: 100%;
 }
@@ -1876,7 +1876,7 @@ body.web-design-page {
   align-items: flex-start;
   border-bottom: 1px solid #3a3a37;
   display: flex;
-  gap: 8px;
+  gap: 16px;
   justify-content: space-between;
   padding-bottom: 20px;
   width: 100%;
@@ -1908,12 +1908,7 @@ body.web-design-page {
   opacity: 0;
   overflow: hidden;
   transform: translateY(8px);
-  transition:
-    margin-top 620ms cubic-bezier(0.16, 1, 0.3, 1),
-    max-height 680ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 420ms ease,
-    transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0s linear 680ms;
+  transition: margin-top 280ms ease, max-height 360ms ease, opacity 220ms ease, transform 280ms ease, visibility 0s linear 360ms;
   visibility: hidden;
 }
 
@@ -1935,7 +1930,7 @@ body.web-design-page {
   max-height: 96px;
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 120ms, 80ms, 180ms, 120ms, 0s;
+  transition-delay: 80ms, 0s, 100ms, 80ms, 0s;
   visibility: visible;
 }
 
@@ -1959,7 +1954,7 @@ body.web-design-page {
 }
 
 .web-work-advantages {
-  background: #fff;
+  background: #f4f4f2;
   padding: clamp(72px, 8vw, 112px) clamp(16px, 3.2vw, 48px);
 }
 
