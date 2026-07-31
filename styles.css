@@ -2445,6 +2445,48 @@ button { font: inherit; }
   border-radius: 0;
   background: #050607;
 }
+
+.turbo-hero-pixel-reveal {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #050607;
+}
+
+.turbo-hero-pixel-reveal img,
+.turbo-hero-pixel-reveal canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.turbo-hero-pixel-reveal img {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.66;
+  filter: saturate(0.82) brightness(0.72) contrast(1.06);
+}
+
+.turbo-hero-pixel-reveal canvas {
+  z-index: 1;
+}
+
+.turbo-hero-pixel-reveal::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(2, 3, 4, 0.96) 0%, rgba(2, 3, 4, 0.82) 35%, rgba(2, 3, 4, 0.28) 68%, rgba(2, 3, 4, 0.54) 100%),
+    linear-gradient(180deg, rgba(2, 3, 4, 0.24), transparent 54%, rgba(2, 3, 4, 0.72));
+}
+
+.home-pixel-reveal-static .turbo-hero-pixel-reveal canvas {
+  display: none;
+}
 .turbo-hero-stage::before {
   inset: -9%;
   background:

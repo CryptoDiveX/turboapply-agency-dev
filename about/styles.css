@@ -365,7 +365,7 @@
 }
 
 .review-card {
-  flex: 0 0 100%;
+  flex: 0 0 calc(100% - clamp(88px, 10vw, 136px));
   min-height: 330px;
   padding: clamp(28px, 3vw, 44px);
   display: flex;
@@ -751,6 +751,10 @@
 }
 
 @media (max-width: 760px) {
+  .review-card {
+    flex-basis: calc(100% - 48px);
+  }
+
   .founder-hero-inner,
   .about-origin,
   .about-process,
@@ -853,7 +857,7 @@
   }
 
   .review-card {
-    flex-basis: 100%;
+    flex-basis: calc(100% - 48px);
     min-height: 350px;
     padding: 26px;
   }

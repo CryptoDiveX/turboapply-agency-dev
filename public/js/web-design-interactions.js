@@ -220,6 +220,26 @@
     activate(0);
   };
 
+  const initializePricingReveal = () => {
+    const rows = Array.from(document.querySelectorAll("[data-web-pricing-reveal]"));
+    if (!rows.length) return;
+
+    const revealAll = () => rows.forEach((row) => row.classList.add("is-revealed"));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      revealAll();
+      return;
+    }
+
+    document.documentElement.classList.add("web-pricing-reveal-ready");
+    const list = rows[0].closest(".web-service-pricing-list");
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      revealAll();
+      observer.disconnect();
+    }, { rootMargin: "0px 0px -8%", threshold: 0.12 });
+    observer.observe(list || rows[0]);
+  };
+
   const initializeSurfaceCursor = () => {
     const surfaces = Array.from(document.querySelectorAll("[data-web-surface-cursor]"));
     const eligibilityQueries = [
@@ -365,6 +385,7 @@
     initializeProofRail();
     initializeWebsiteLossCalculator();
     initializeStageProcess();
+    initializePricingReveal();
     initializeSurfaceCursor();
   };
 

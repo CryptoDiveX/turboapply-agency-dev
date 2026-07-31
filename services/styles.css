@@ -596,8 +596,7 @@
 }
 
 .service-directory-list .service-directory-route-static::before {
-  content: "AVAILABLE BY REQUEST";
-  background: #343434;
+  content: none;
 }
 
 .service-directory-list .service-directory-route-static::after {
