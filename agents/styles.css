@@ -80,12 +80,17 @@
 }
 .agents-heading .button { margin-top: 34px; }
 
+.hero .hero-lede {
+  font-size: clamp(17px, 1.15vw, 19px);
+  line-height: 1.3;
+}
+
 .final-cta .final-cta-inner {
   align-items: start;
 }
 
-.final-cta .final-cta-body {
-  align-self: start;
+.final-cta .final-cta-body p {
+  margin-bottom: 0;
 }
 
 .final-cta .button-light {
@@ -96,7 +101,7 @@
   min-width: 230px;
   min-height: 0;
   width: fit-content;
-  margin-top: 0;
+  margin-top: 18px;
   padding: 16px 24px;
   border: 1px solid #fff;
   border-radius: 999px;

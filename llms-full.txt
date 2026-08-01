@@ -61,8 +61,8 @@ All other approved service names, descriptions, and starting references remain a
 - Katerina Antonenko leads design and marketing. Her experience launching multiple businesses shaped TurboApply's focus on clear funnels and thoughtful automation.
 - Vasiliy Baryshnikov leads software development and technical delivery and brings six years of project management experience.
 - TurboApply's shared goal is to help businesses thrive through exceptional service, mapped requirements, quality delivery, and practical solutions.
-- The About page presents a black Meet the Founders opening, the origin story, a four-step process, approved Ozero Grez and SignoGroup client testimonials, three supplied social videos, and the canonical secure contact form.
-- The two testimonial cards publish only the exact approved wording and attribution supplied for Daria, COO · Ozero Grez, and Alex, CEO · SignoGroup. No rating or Review schema is added.
+- The About page presents a black Meet the Founders opening, the origin story, a four-step process, approved Ozero Grez, TruthHoly, and SignoGroup client testimonials, three supplied social videos, and the canonical secure contact form.
+- The three testimonial cards publish only the exact approved wording and attribution supplied for Daria, COO · Ozero Grez; Olya Freiman, CEO · TruthHoly; and Alex, CEO · SignoGroup. No rating or Review schema is added.
 - Team page: https://turboapply.agency/about/
 
 ## Resources and results
@@ -74,6 +74,7 @@ All other approved service names, descriptions, and starting references remain a
 - SEO-friendly service page guide: https://turboapply.agency/resources/seo-friendly-service-page/
 - Technical SEO audit checklist: https://turboapply.agency/resources/technical-seo-audit-checklist/
 - Google Business Profile guide: https://turboapply.agency/resources/google-business-profile-guide/
+- TurboApply vs. no-code website builders: https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - Results destination: https://turboapply.agency/results/
 - Resources provide original practical guidance. Results publishes customer success stories only when context is approved and outcomes can be verified; do not invent customer names, quotes, logos, metrics, or results.
 

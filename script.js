@@ -35,6 +35,14 @@ const healthWebsiteUrl = isDevelopmentWebsiteHost
   ? 'https://dev.health.turboapply.agency/'
   : 'https://health.turboapply.agency/';
 
+document.documentElement.dataset.homeFocusModality = 'pointer';
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Tab') document.documentElement.dataset.homeFocusModality = 'keyboard';
+}, { capture: true });
+document.addEventListener('pointerdown', () => {
+  document.documentElement.dataset.homeFocusModality = 'pointer';
+}, { capture: true });
+
 document.querySelectorAll('[data-environment-health-link]').forEach((link) => {
   link.href = healthWebsiteUrl;
 });

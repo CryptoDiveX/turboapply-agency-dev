@@ -54,8 +54,8 @@
   max-width: 680px;
   margin: 32px 0 0;
   color: var(--resource-muted);
-  font-size: 21px;
-  line-height: 1.45;
+  font-size: clamp(17px, 1.15vw, 19px);
+  line-height: 1.3;
 }
 
 .resources-guides {
@@ -426,6 +426,58 @@
   color: #2d2c29;
   font-size: 17px;
   line-height: 1.55;
+}
+
+.article-detail-list li {
+  display: grid;
+  gap: 6px;
+}
+
+.article-detail-list strong {
+  color: var(--resource-ink);
+  font-weight: 600;
+}
+
+.article-table-wrap {
+  margin-top: 28px;
+  overflow-x: auto;
+  border: 1px solid var(--resource-line);
+  border-radius: 18px;
+}
+
+.article-table-wrap:focus-visible {
+  outline: 3px solid var(--resource-blue);
+  outline-offset: 3px;
+}
+
+.article-table-wrap table {
+  width: 100%;
+  min-width: 660px;
+  border-collapse: collapse;
+  background: #fff;
+  font: 400 16px/1.45 Inter, sans-serif;
+}
+
+.article-table-wrap :is(th, td) {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--resource-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-table-wrap thead th {
+  background: var(--resource-surface);
+  color: var(--resource-ink);
+  font-weight: 600;
+}
+
+.article-table-wrap tbody th {
+  color: var(--resource-ink);
+  font-weight: 600;
+}
+
+.article-table-wrap tr:last-child :is(th, td) {
+  border-bottom: 0;
 }
 
 .article-internal-links a {

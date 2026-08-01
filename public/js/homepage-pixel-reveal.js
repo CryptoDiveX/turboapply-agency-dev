@@ -22,7 +22,7 @@
   let startTime = 0;
   let width = 0;
   let height = 0;
-  let cellSize = 16;
+  let cellSize = 8;
   let columns = 0;
   let rows = 0;
   let cells = [];
@@ -45,7 +45,7 @@
   const DISTURBANCE_RADIUS = 96;
   const MAX_TRAIL_POINTS = 3;
   const MIN_TRAIL_DISTANCE = 18;
-  const MAX_DISPLACEMENT = 42;
+  const MAX_DISPLACEMENT = 84;
   const IDLE_ORBIT_X = 18;
   const IDLE_ORBIT_Y = 14;
   const IDLE_FRAME_INTERVAL = 32;
@@ -97,7 +97,7 @@
     canvas.width = width;
     canvas.height = height;
     context.setTransform(1, 0, 0, 1, 0, 0);
-    cellSize = width < 640 ? 18 : 16;
+    cellSize = width < 640 ? 10 : 8;
     columns = Math.ceil(width / cellSize);
     rows = Math.ceil(height / cellSize);
 
@@ -267,7 +267,7 @@
       if (influence < 0.035) return;
       disturbedTiles += 1;
 
-      const displacement = influence * (10 + cell.seed * 32);
+      const displacement = influence * (18 + cell.seed * 66);
       const temporalAngle = pointerAnchor ? Math.sin(now * 0.0012 + cell.seed * 5) * 0.22 : 0;
       const dx = (cell.cos * Math.cos(temporalAngle) - cell.sin * Math.sin(temporalAngle)) * displacement;
       const dy = (cell.sin * Math.cos(temporalAngle) + cell.cos * Math.sin(temporalAngle)) * displacement;

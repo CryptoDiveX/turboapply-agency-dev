@@ -240,6 +240,34 @@
     observer.observe(list || rows[0]);
   };
 
+  const initializeSectionReveals = () => {
+    const groups = Array.from(document.querySelectorAll("[data-web-reveal-group]"));
+    if (!groups.length) return;
+    const revealGroup = (group) => {
+      Array.from(group.querySelectorAll("[data-web-section-reveal]")).forEach((item) => item.classList.add("is-revealed"));
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      groups.forEach(revealGroup);
+      return;
+    }
+
+    document.documentElement.classList.add("web-section-reveal-ready");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        revealGroup(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8%", threshold: 0.12 });
+
+    groups.forEach((group) => {
+      Array.from(group.querySelectorAll("[data-web-section-reveal]")).forEach((item, index) => {
+        item.style.setProperty("--web-section-reveal-delay", `${index * 80}ms`);
+      });
+      observer.observe(group);
+    });
+  };
+
   const initializeSurfaceCursor = () => {
     const surfaces = Array.from(document.querySelectorAll("[data-web-surface-cursor]"));
     const eligibilityQueries = [
@@ -386,6 +414,7 @@
     initializeWebsiteLossCalculator();
     initializeStageProcess();
     initializePricingReveal();
+    initializeSectionReveals();
     initializeSurfaceCursor();
   };
 

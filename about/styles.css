@@ -94,8 +94,8 @@
   max-width: 650px;
   margin: 32px auto 0;
   color: rgba(255, 255, 255, 0.66);
-  font-size: clamp(19px, 1.45vw, 24px);
-  line-height: 1;
+  font-size: clamp(17px, 1.15vw, 19px);
+  line-height: 1.3;
   text-wrap: balance;
 }
 
@@ -428,9 +428,10 @@
   font: 500 14px/1.2 Inter, sans-serif;
 }
 
-.review-card footer div span {
+.review-card footer div :is(span, a) {
   color: var(--about-muted);
   font: 400 12px/1.3 Inter, sans-serif;
+  text-decoration: none;
   transition: color 220ms ease;
 }
 
@@ -440,7 +441,7 @@
 }
 
 .review-inverse .review-kicker,
-.review-inverse footer div span {
+.review-inverse footer div :is(span, a) {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -455,7 +456,7 @@
     color: #fff;
   }
 
-  .review-card:not(.review-inverse):hover :is(.review-kicker, footer div span) {
+  .review-card:not(.review-inverse):hover :is(.review-kicker, footer div span, footer div a) {
     color: rgba(255, 255, 255, 0.7);
   }
 
@@ -469,7 +470,7 @@
     color: var(--about-ink);
   }
 
-  .review-inverse:hover :is(.review-kicker, footer div span) {
+  .review-inverse:hover :is(.review-kicker, footer div span, footer div a) {
     color: var(--about-muted);
   }
 

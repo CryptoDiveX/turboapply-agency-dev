@@ -1316,7 +1316,7 @@ button { font: inherit; }
   max-width: 550px;
   margin: 30px 0 0;
   font-family: var(--font-display);
-  font-size: clamp(20px, 1.65vw, 26px);
+  font-size: 22px;
   line-height: 1.35;
   letter-spacing: 0;
   color: rgba(245, 241, 232, .68);
@@ -1367,6 +1367,10 @@ button { font: inherit; }
   border-color: rgba(245, 241, 232, .42);
   background: rgba(5, 5, 5, .68);
   box-shadow: 0 0 0 3px rgba(245, 241, 232, .08);
+}
+html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidden"]), textarea, select):focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
 }
 .contact-status {
   min-height: 20px;

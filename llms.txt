@@ -16,7 +16,7 @@ Key pages:
 - /services/web-design/ — the current dedicated Web Design page with the shared TurboApply editorial design system, approved hero and portfolio media, process, pricing, FAQs, related services, no placeholder reviews, and a secure inquiry form.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
-- /about/ — Katerina and Vasiliy, the story behind TurboApply, the four-step agency process, approved Ozero Grez and SignoGroup client reviews, practical social videos, and a secure contact form.
+- /about/ — Katerina and Vasiliy, the story behind TurboApply, the four-step agency process, approved Ozero Grez, TruthHoly, and SignoGroup client reviews, practical social videos, and a secure contact form.
 - /resources/ — original guides for website SEO, local visibility, service pages, technical audits, lead workflows, automation, AI receptionists, testing, and operational handoff.
 - /resources/website-launch-checklist/ — service-business website launch checklist.
 - /resources/map-a-lead-workflow/ — lead-workflow mapping playbook.
@@ -25,7 +25,8 @@ Key pages:
 - /resources/seo-friendly-service-page/ — guide to planning an SEO-friendly service page.
 - /resources/technical-seo-audit-checklist/ — technical SEO audit checklist for small-business websites.
 - /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
-- /results/ — customer success-story destination; stories are published only with approved context and verified outcomes.
+- /resources/turboapply-vs-no-code-website-builders/ — comparison of no-code website platforms and a custom TurboApply build.
+- /results/ — source-backed World Top Martial Arts, Peniby’s Wellness, and Ozero Grez work records.
 - /free-guide/ — free lead quality guide funnel.
 - /marketing/ — cold email outreach / sales workflow page.
 - /sales/ — AI sales systems page.
