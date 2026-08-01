@@ -2858,7 +2858,7 @@ button { font: inherit; }
   padding: 0 clamp(20px, 1.8vw, 26px);
   border-radius: 0 0 10px 10px;
   color: #f5f1e8;
-  background: #173a31;
+  background: #252525;
   box-shadow: 0 -10px 24px rgba(0,0,0,.16);
   font-family: var(--font-ui);
   font-size: clamp(17px, 1.2vw, 20px);
@@ -2867,9 +2867,6 @@ button { font: inherit; }
   letter-spacing: -.025em;
   text-transform: none;
 }
-.service-card:nth-child(2) h3 { background: #cdeee4; color: #302a55; }
-.service-card:nth-child(3) h3 { background: #f3dfbf; color: #7a3600; }
-.service-card:nth-child(4) h3 { background: #173a31; color: #f5f1e8; }
 @media (max-width: 1100px) and (max-height: 640px) and (orientation: landscape) {
   .service-grid {
     gap: 18px;

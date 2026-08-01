@@ -14,6 +14,7 @@
     document.documentElement.classList.add("home-pixel-reveal-static");
     surface.dataset.pixelState = "static";
     surface.dataset.pixelPointer = "disabled";
+    surface.dataset.pixelIdleMotion = "disabled";
     return;
   }
 
@@ -37,12 +38,17 @@
   let pendingPoint = null;
   let previousDirty = null;
   let trail = [];
+  let pointerAnchor = null;
+  let lastIdleFrame = 0;
 
   const TRAIL_LIFETIME = 520;
   const DISTURBANCE_RADIUS = 96;
   const MAX_TRAIL_POINTS = 3;
   const MIN_TRAIL_DISTANCE = 18;
   const MAX_DISPLACEMENT = 42;
+  const IDLE_ORBIT_X = 18;
+  const IDLE_ORBIT_Y = 14;
+  const IDLE_FRAME_INTERVAL = 32;
 
   const hash = (x, y) => {
     const value = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
@@ -143,10 +149,10 @@
     };
   };
 
-  const regionForTrail = () => {
+  const regionForPoints = (points) => {
     let region = null;
     const padding = DISTURBANCE_RADIUS + MAX_DISPLACEMENT + cellSize;
-    trail.forEach((point) => {
+    points.forEach((point) => {
       region = unionRegion(region, {
         left: point.x - padding,
         top: point.y - padding,
@@ -211,7 +217,13 @@
     commitPendingPoint(now);
     trail = trail.filter((point) => !point.painted || now - point.time < TRAIL_LIFETIME);
 
-    const currentDirty = regionForTrail();
+    const idlePoint = pointerAnchor ? {
+      x: pointerAnchor.x + Math.cos(now * 0.0017) * IDLE_ORBIT_X,
+      y: pointerAnchor.y + Math.sin(now * 0.0013) * IDLE_ORBIT_Y,
+      idle: true,
+    } : null;
+    const activePoints = idlePoint ? [...trail, idlePoint] : trail;
+    const currentDirty = regionForPoints(activePoints);
     const restoreRegion = clampRegion(unionRegion(previousDirty, currentDirty));
     if (restoreRegion) {
       context.clearRect(
@@ -223,9 +235,10 @@
       drawTextureRegion(restoreRegion);
     }
     previousDirty = currentDirty;
-    if (!trail.length || !currentDirty || !sourceCanvas || !sourceContext) {
+    if (!activePoints.length || !currentDirty || !sourceCanvas || !sourceContext) {
       surface.dataset.pixelDisturbedTiles = "0";
-      return false;
+      surface.dataset.pixelIdleMotion = pointerAnchor ? "active" : "idle";
+      return Boolean(pointerAnchor);
     }
 
     let disturbedTiles = 0;
@@ -238,21 +251,26 @@
       const centerY = y + cellSize * 0.5;
       let influence = 0;
 
-      trail.forEach((point) => {
-        const life = point.painted ? Math.max(0, 1 - (now - point.time) / TRAIL_LIFETIME) : 1;
-        const radius = DISTURBANCE_RADIUS * (0.76 + life * 0.24);
+      activePoints.forEach((point) => {
+        const life = point.idle
+          ? 0.72 + (Math.sin(now * 0.0021 + cell.seed * Math.PI * 2) + 1) * 0.09
+          : (point.painted ? Math.max(0, 1 - (now - point.time) / TRAIL_LIFETIME) : 1);
+        const radius = point.idle
+          ? DISTURBANCE_RADIUS * (0.9 + Math.sin(now * 0.0015) * 0.08)
+          : DISTURBANCE_RADIUS * (0.76 + life * 0.24);
         const distance = Math.hypot(centerX - point.x, centerY - point.y);
         if (distance >= radius) return;
         const pointInfluence = (1 - distance / radius) * life;
-        if (pointInfluence > 0.035) point.touched = true;
+        if (!point.idle && pointInfluence > 0.035) point.touched = true;
         influence = Math.max(influence, pointInfluence);
       });
       if (influence < 0.035) return;
       disturbedTiles += 1;
 
       const displacement = influence * (10 + cell.seed * 32);
-      const dx = cell.cos * displacement;
-      const dy = cell.sin * displacement;
+      const temporalAngle = pointerAnchor ? Math.sin(now * 0.0012 + cell.seed * 5) * 0.22 : 0;
+      const dx = (cell.cos * Math.cos(temporalAngle) - cell.sin * Math.sin(temporalAngle)) * displacement;
+      const dy = (cell.sin * Math.cos(temporalAngle) + cell.cos * Math.sin(temporalAngle)) * displacement;
       context.globalAlpha = Math.min(0.7, influence * 0.68);
       context.fillStyle = "#030405";
       context.fillRect(x, y, cellSize + 0.5, cellSize + 0.5);
@@ -279,7 +297,8 @@
     context.restore();
     context.globalAlpha = 1;
     surface.dataset.pixelDisturbedTiles = String(disturbedTiles);
-    return disturbedTiles > 0 || trail.some((point) => !point.painted);
+    surface.dataset.pixelIdleMotion = pointerAnchor ? "active" : "idle";
+    return disturbedTiles > 0 || trail.some((point) => !point.painted) || Boolean(pointerAnchor);
   };
 
   const renderInteractive = (now) => {
@@ -291,12 +310,19 @@
     if (!complete || !visible || document.hidden || !pointerEligible.matches) {
       trail = [];
       pendingPoint = null;
+      pointerAnchor = null;
       previousDirty = null;
       surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
+      surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
       if (complete && !reducedMotion.matches) drawTexture();
       return;
     }
 
+    if (pointerAnchor && now - lastIdleFrame < IDLE_FRAME_INTERVAL) {
+      frame = window.requestAnimationFrame(renderInteractive);
+      return;
+    }
+    lastIdleFrame = now;
     const active = drawDisturbance(now);
     surface.dataset.pixelPointer = active ? "active" : "idle";
     if (active || pendingPoint) frame = window.requestAnimationFrame(renderInteractive);
@@ -344,6 +370,7 @@
     complete = true;
     surface.dataset.pixelState = "complete";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
     document.documentElement.classList.add("home-pixel-reveal-complete");
     drawTexture();
   };
@@ -354,6 +381,7 @@
     configure();
     surface.dataset.pixelState = "running";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
     startTime = performance.now() + 120;
     frame = window.requestAnimationFrame(renderIntro);
   };
@@ -363,16 +391,26 @@
     const x = clientX + window.scrollX - surfaceDocumentLeft;
     const y = clientY + window.scrollY - surfaceDocumentTop;
     if (x < 0 || x > width || y < 0 || y > height) {
+      pointerAnchor = null;
       lastTrailPoint = null;
+      surface.dataset.pixelIdleMotion = "idle";
+      if (!frame && previousDirty) frame = window.requestAnimationFrame(renderInteractive);
       return;
     }
+    pointerAnchor = { x, y };
     pendingPoint = { x, y };
     surface.dataset.pixelPointer = "active";
+    surface.dataset.pixelIdleMotion = "active";
     if (!frame) frame = window.requestAnimationFrame(renderInteractive);
   };
 
   const clearPointer = () => {
+    pointerAnchor = null;
     lastTrailPoint = null;
+    surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+    if (complete && visible && !document.hidden && !reducedMotion.matches && !frame && previousDirty) {
+      frame = window.requestAnimationFrame(renderInteractive);
+    }
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -408,6 +446,7 @@
     document.documentElement.classList.add("home-pixel-reveal-static");
     surface.dataset.pixelState = "static";
     surface.dataset.pixelPointer = "disabled";
+    surface.dataset.pixelIdleMotion = "disabled";
   };
 
   const restoreMotion = () => {
@@ -417,6 +456,7 @@
     complete = true;
     surface.dataset.pixelState = "complete";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
     drawTexture();
   };
 
@@ -433,9 +473,11 @@
     if (!pointerEligible.matches) {
       cancelFrame();
       surface.dataset.pixelPointer = "disabled";
+      surface.dataset.pixelIdleMotion = "disabled";
       if (complete && !reducedMotion.matches) drawTexture();
     } else if (complete && !reducedMotion.matches) {
       surface.dataset.pixelPointer = "idle";
+      surface.dataset.pixelIdleMotion = "idle";
     }
   };
 
@@ -478,5 +520,6 @@
   else {
     surface.dataset.pixelState = "ready";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
   }
 })();

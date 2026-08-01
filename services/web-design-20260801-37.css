@@ -502,14 +502,14 @@ body.web-design-page {
 }
 
 .web-loss-calculator-shell {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  background: #f4f4f2;
+  border: 1px solid #d8d8d3;
+  border-radius: 28px;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   margin-top: clamp(40px, 5vw, 64px);
-  overflow: visible;
-  padding: 0;
+  overflow: hidden;
+  padding: 4px;
 }
 
 .web-loss-controls,
@@ -520,12 +520,12 @@ body.web-design-page {
 }
 
 .web-loss-controls {
-  border-radius: 0;
+  border-radius: 24px 0 0 24px;
 }
 
 .web-loss-results {
   border-left: 1px solid #deded9;
-  border-radius: 0;
+  border-radius: 0 24px 24px 0;
 }
 
 .web-loss-value-label {
@@ -1661,12 +1661,21 @@ body.web-design-page {
 .web-why-title-row {
   align-items: baseline;
   display: flex;
-  gap: 0;
+  gap: 24px;
+  justify-content: space-between;
 }
 
 .web-why-title-row h3 {
   font-size: 30px;
   line-height: 1.04;
+}
+
+.web-why-index {
+  color: #7a3425;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
 .web-why-copy {
@@ -1741,7 +1750,7 @@ body.web-design-page {
   border-top: 1px solid var(--web-line);
   display: grid;
   gap: clamp(18px, 2.3vw, 34px);
-  grid-template-columns: minmax(170px, 0.86fr) minmax(240px, 1.14fr);
+  grid-template-columns: 42px minmax(170px, 0.86fr) minmax(240px, 1.14fr);
   max-width: none;
   padding: clamp(24px, 2.7vw, 34px) clamp(12px, 1.4vw, 20px);
   transition: background-color 260ms ease, color 260ms ease;
@@ -1753,6 +1762,16 @@ body.web-design-page {
 
 .web-process-list li > div {
   display: contents;
+}
+
+.web-process-number {
+  color: var(--web-muted);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  padding-top: 4px;
 }
 
 .web-process-list h3 {
@@ -1775,7 +1794,7 @@ body.web-design-page {
     color: #fff;
   }
 
-  .web-process-list li:hover p {
+  .web-process-list li:hover :is(.web-process-number, p) {
     color: #c9c8c2;
   }
 }
@@ -1863,44 +1882,17 @@ body.web-design-page {
   width: 100%;
 }
 
-.web-stage-index {
-  align-items: center;
+.web-stage-card-head > span:last-child {
   color: #aaa9a4;
-  display: inline-flex;
   flex: 0 0 auto;
-  font: 500 10px/1 "Inter", Arial, sans-serif;
-  height: 26px;
-  justify-content: center;
+  font: 500 11px/1 "Inter", Arial, sans-serif;
   letter-spacing: 0.08em;
-  min-width: 30px;
-  position: relative;
-}
-
-.web-stage-index::before,
-.web-stage-index::after {
-  content: "";
-  height: 8px;
-  position: absolute;
-  width: 8px;
-}
-
-.web-stage-index::before {
-  border-left: 1px solid #8e8e88;
-  border-top: 1px solid #8e8e88;
-  left: 0;
-  top: 0;
-}
-
-.web-stage-index::after {
-  border-bottom: 1px solid #8e8e88;
-  border-right: 1px solid #8e8e88;
-  bottom: 0;
-  right: 0;
+  padding-top: 3px;
 }
 
 .web-stage-title {
   display: block;
-  font-size: clamp(15px, 1.05vw, 17px);
+  font-size: clamp(16px, 1.2vw, 18px);
   line-height: 1.08;
   margin: 0;
 }
@@ -1968,7 +1960,7 @@ body.web-design-page {
 
 .web-work-advantages {
   background: #fff;
-  padding: clamp(72px, 8vw, 112px) clamp(16px, 3.2vw, 48px) clamp(36px, 4vw, 56px);
+  padding: clamp(72px, 8vw, 112px) clamp(16px, 3.2vw, 48px);
 }
 
 .web-work-advantages-inner {
@@ -2012,15 +2004,10 @@ body.web-design-page {
 
 .web-work-advantage-card h3 {
   font-family: "Urbanist", Arial, sans-serif;
-  font-size: clamp(24px, 7.5vw, 30px);
+  font-size: 30px;
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1.02;
-}
-
-.web-work-advantage-card h3 > span {
-  display: block;
-  white-space: nowrap;
 }
 
 .web-work-advantage-card :is(ul, p) {
@@ -2090,7 +2077,7 @@ body.web-design-page {
   background: #fff;
   color: var(--web-ink);
   padding-bottom: clamp(48px, 5vw, 72px);
-  padding-top: clamp(44px, 4.5vw, 66px);
+  padding-top: clamp(88px, 9vw, 132px);
   scroll-margin-top: 104px;
 }
 
@@ -2372,12 +2359,12 @@ body.web-design-page {
   }
 
   .web-loss-controls {
-    border-radius: 0;
+    border-radius: 24px 24px 0 0;
   }
 
   .web-loss-results {
     border-left: 0;
-    border-radius: 0;
+    border-radius: 0 0 24px 24px;
     border-top: 1px solid #deded9;
   }
 
@@ -2431,7 +2418,7 @@ body.web-design-page {
 
   .web-testimonials {
     padding-bottom: 48px;
-    padding-top: 38px;
+    padding-top: 76px;
   }
 
 
@@ -2441,7 +2428,7 @@ body.web-design-page {
   }
 
   .web-loss-calculator-shell {
-    border-radius: 0;
+    border-radius: 22px;
     margin-top: 34px;
   }
 
@@ -2564,7 +2551,7 @@ body.web-design-page {
 
   .web-process-list li {
     gap: 14px 18px;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 32px minmax(0, 1fr);
     min-height: 0;
     padding-block: 24px;
   }
@@ -2629,13 +2616,10 @@ body.web-design-page {
 @media (min-width: 981px) {
   .web-about-list dd strong,
   .web-service-pricing-row h3,
+  .web-work-advantage-card h3,
   .web-related-card h3 {
     font-size: 30px;
     line-height: 1.06;
-  }
-
-  .web-work-advantage-card h3 {
-    font-size: clamp(18px, 1.75vw, 28px);
   }
 }
 
