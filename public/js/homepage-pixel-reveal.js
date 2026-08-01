@@ -31,7 +31,6 @@
   let trail = [];
 
   const TRAIL_LIFETIME = 720;
-  const MIN_PAINTED_FRAMES = 4;
   const DISTURBANCE_RADIUS = 110;
   const MAX_TRAIL_POINTS = 18;
 
@@ -93,9 +92,9 @@
 
   const drawDisturbance = (now) => {
     trail.forEach((point) => {
-      if (point.paintedFrames < MIN_PAINTED_FRAMES && now - point.time >= TRAIL_LIFETIME) point.time = now;
+      if (!point.painted && now - point.time >= TRAIL_LIFETIME) point.time = now;
     });
-    trail = trail.filter((point) => point.paintedFrames < MIN_PAINTED_FRAMES || now - point.time < TRAIL_LIFETIME);
+    trail = trail.filter((point) => now - point.time < TRAIL_LIFETIME);
     drawTexture();
     if (!trail.length) return false;
 
@@ -152,7 +151,6 @@
       trail.forEach((point) => {
         if (!point.painted) point.time = paintedAt;
         point.painted = true;
-        point.paintedFrames += 1;
       });
     }
     context.restore();
@@ -245,7 +243,7 @@
     }
     if (lastTrailPoint && Math.hypot(x - lastTrailPoint.x, y - lastTrailPoint.y) < 5) return;
 
-    const point = { x, y, time: performance.now(), painted: false, paintedFrames: 0 };
+    const point = { x, y, time: performance.now(), painted: false };
     trail.push(point);
     if (trail.length > MAX_TRAIL_POINTS) trail.splice(0, trail.length - MAX_TRAIL_POINTS);
     lastTrailPoint = point;
