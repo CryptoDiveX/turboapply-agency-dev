@@ -22,7 +22,7 @@
   let startTime = 0;
   let width = 0;
   let height = 0;
-  let cellSize = 8;
+  let cellSize = 4;
   let columns = 0;
   let rows = 0;
   let cells = [];
@@ -42,10 +42,10 @@
   let lastIdleFrame = 0;
 
   const TRAIL_LIFETIME = 520;
-  const DISTURBANCE_RADIUS = 96;
+  const DISTURBANCE_RADIUS = 192;
   const MAX_TRAIL_POINTS = 3;
   const MIN_TRAIL_DISTANCE = 18;
-  const MAX_DISPLACEMENT = 84;
+  const MAX_DISPLACEMENT = 168;
   const IDLE_ORBIT_X = 18;
   const IDLE_ORBIT_Y = 14;
   const IDLE_FRAME_INTERVAL = 32;
@@ -97,7 +97,7 @@
     canvas.width = width;
     canvas.height = height;
     context.setTransform(1, 0, 0, 1, 0, 0);
-    cellSize = width < 640 ? 10 : 8;
+    cellSize = 4;
     columns = Math.ceil(width / cellSize);
     rows = Math.ceil(height / cellSize);
 
@@ -126,6 +126,9 @@
     previousDirty = null;
     surface.dataset.pixelCells = String(cells.length);
     surface.dataset.pixelBackingScale = "1";
+    surface.dataset.pixelCellSize = String(cellSize);
+    surface.dataset.pixelDisturbanceRadius = String(DISTURBANCE_RADIUS);
+    surface.dataset.pixelMaxDisplacement = String(MAX_DISPLACEMENT);
   };
 
   const clampRegion = (region) => {
@@ -350,7 +353,7 @@
       const particleSeed = hash(cell.x + 17, cell.y + 23);
       if (progress > 0.16 && progress < 0.92 && particleSeed > 0.78) {
         const pulse = Math.sin(progress * Math.PI);
-        const particleSize = particleSeed > 0.92 ? 3 : 2;
+        const particleSize = particleSeed > 0.92 ? 2 : 1;
         context.globalAlpha = pulse * (particleSeed > 0.88 ? 0.54 : 0.38);
         context.fillStyle = particleSeed > 0.88 ? "#f0a86f" : "#78b7be";
         context.fillRect(

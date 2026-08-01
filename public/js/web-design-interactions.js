@@ -148,11 +148,35 @@
 
   const initializeStageProcess = () => {
     const grid = document.querySelector(".web-stage-process-grid");
+    const line = document.querySelector(".web-stage-process-line");
     const cards = grid ? Array.from(grid.querySelectorAll("[data-web-stage-card]")) : [];
     const toggles = cards.map((card) => card.querySelector(".web-stage-card-toggle"));
     const hoverStages = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1280px)");
-    if (!grid || cards.length !== 6 || toggles.some((toggle) => !toggle)) return;
+    if (!grid || !line || cards.length !== 6 || toggles.some((toggle) => !toggle)) return;
     let mouseFocusedToggle = null;
+    let progressFrame = 0;
+    let progressUntil = 0;
+
+    const updateProgress = () => {
+      progressFrame = 0;
+      const selectedIndex = Number(grid.dataset.stageIndex || "0");
+      const selected = cards[selectedIndex] || cards[0];
+      const lineRect = line.getBoundingClientRect();
+      const selectedRect = selected.getBoundingClientRect();
+      const selectedCenter = selectedRect.left + selectedRect.width * 0.5;
+      const progress = lineRect.width > 0
+        ? Math.min(100, Math.max(0, ((selectedCenter - lineRect.left) / lineRect.width) * 100))
+        : 0;
+      line.style.setProperty("--web-stage-progress", `${progress}%`);
+      line.dataset.stageIndex = String(selectedIndex);
+      if (performance.now() < progressUntil) progressFrame = requestAnimationFrame(updateProgress);
+    };
+
+    const trackProgress = () => {
+      if (progressFrame) cancelAnimationFrame(progressFrame);
+      progressUntil = performance.now() + 900;
+      updateProgress();
+    };
 
     const activate = (requestedIndex, { focus = false } = {}) => {
       const index = Math.min(Math.max(requestedIndex, 0), cards.length - 1);
@@ -162,6 +186,7 @@
         toggles[cardIndex].setAttribute("aria-expanded", String(active));
       });
       grid.dataset.stageIndex = String(index);
+      trackProgress();
       if (focus) toggles[index].focus();
     };
 
@@ -217,6 +242,7 @@
         if (!grid.contains(document.activeElement)) activate(0);
       });
     });
+    window.addEventListener("resize", trackProgress, { passive: true });
     activate(0);
   };
 
