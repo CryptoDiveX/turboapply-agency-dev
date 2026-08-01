@@ -9,7 +9,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const pointerEligible = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 900px)");
   const saveData = Boolean(navigator.connection?.saveData);
-  const context = canvas.getContext("2d", { alpha: true });
+  const context = canvas.getContext("2d", { alpha: true, desynchronized: true });
   if (!context || saveData) {
     document.documentElement.classList.add("home-pixel-reveal-static");
     surface.dataset.pixelState = "static";
@@ -21,18 +21,28 @@
   let startTime = 0;
   let width = 0;
   let height = 0;
-  let cellSize = 14;
+  let cellSize = 16;
+  let columns = 0;
+  let rows = 0;
   let cells = [];
   let started = false;
   let complete = false;
   let visible = true;
   let resizeTimer = 0;
+  let surfaceDocumentLeft = 0;
+  let surfaceDocumentTop = 0;
+  let sourceCanvas = null;
+  let sourceContext = null;
   let lastTrailPoint = null;
+  let pendingPoint = null;
+  let previousDirty = null;
   let trail = [];
 
-  const TRAIL_LIFETIME = 720;
-  const DISTURBANCE_RADIUS = 110;
-  const MAX_TRAIL_POINTS = 18;
+  const TRAIL_LIFETIME = 520;
+  const DISTURBANCE_RADIUS = 96;
+  const MAX_TRAIL_POINTS = 3;
+  const MIN_TRAIL_DISTANCE = 18;
+  const MAX_DISPLACEMENT = 42;
 
   const hash = (x, y) => {
     const value = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
@@ -44,67 +54,184 @@
     frame = 0;
   };
 
+  const createSourceCanvas = () => {
+    sourceCanvas = typeof OffscreenCanvas === "function"
+      ? new OffscreenCanvas(width, height)
+      : document.createElement("canvas");
+    sourceCanvas.width = width;
+    sourceCanvas.height = height;
+    sourceContext = sourceCanvas.getContext("2d", { alpha: false });
+    if (!sourceContext) return;
+
+    const naturalWidth = image.naturalWidth || width;
+    const naturalHeight = image.naturalHeight || height;
+    const scale = Math.max(width / naturalWidth, height / naturalHeight);
+    const drawWidth = naturalWidth * scale;
+    const drawHeight = naturalHeight * scale;
+    sourceContext.filter = "saturate(0.95) brightness(0.92) contrast(1.16)";
+    sourceContext.drawImage(
+      image,
+      (width - drawWidth) * 0.5,
+      (height - drawHeight) * 0.5,
+      drawWidth,
+      drawHeight,
+    );
+    sourceContext.filter = "none";
+  };
+
   const configure = () => {
     const box = surface.getBoundingClientRect();
     width = Math.max(1, Math.round(box.width));
     height = Math.max(1, Math.round(box.height));
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(width * ratio);
-    canvas.height = Math.round(height * ratio);
-    context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    cellSize = width < 640 ? 18 : width < 980 ? 16 : 14;
+    surfaceDocumentLeft = box.left + window.scrollX;
+    surfaceDocumentTop = box.top + window.scrollY;
 
-    const columns = Math.ceil(width / cellSize);
-    const rows = Math.ceil(height / cellSize);
+    // Pixel-art squares stay crisp at one backing-store pixel per CSS pixel.
+    // This mirrors the reference's 1x particle canvas and avoids a 4x Retina raster cost.
+    canvas.width = width;
+    canvas.height = height;
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    cellSize = width < 640 ? 18 : 16;
+    columns = Math.ceil(width / cellSize);
+    rows = Math.ceil(height / cellSize);
+
     const originX = columns * 0.72;
     const originY = rows * 0.42;
     const furthest = Math.hypot(Math.max(originX, columns - originX), Math.max(originY, rows - originY)) || 1;
-    cells = [];
+    cells = new Array(columns * rows);
     for (let y = 0; y < rows; y += 1) {
       for (let x = 0; x < columns; x += 1) {
         const distance = Math.hypot(x - originX, y - originY) / furthest;
-        cells.push({ x, y, delay: distance * 1450 + hash(x, y) * 220 });
+        const seed = hash(x + 31, y + 47);
+        const angle = seed * Math.PI * 2;
+        cells[y * columns + x] = {
+          x,
+          y,
+          delay: distance * 1450 + hash(x, y) * 220,
+          seed,
+          cos: Math.cos(angle),
+          sin: Math.sin(angle),
+          texture: hash(x + 9, y + 3) >= 0.84,
+          textureSize: hash(x + 4, y + 11) > 0.72 ? 2 : 1,
+        };
       }
     }
+    createSourceCanvas();
+    previousDirty = null;
     surface.dataset.pixelCells = String(cells.length);
+    surface.dataset.pixelBackingScale = "1";
+  };
+
+  const clampRegion = (region) => {
+    if (!region) return null;
+    const left = Math.max(0, Math.floor(region.left));
+    const top = Math.max(0, Math.floor(region.top));
+    const right = Math.min(width, Math.ceil(region.right));
+    const bottom = Math.min(height, Math.ceil(region.bottom));
+    if (right <= left || bottom <= top) return null;
+    return { left, top, right, bottom };
+  };
+
+  const unionRegion = (first, second) => {
+    if (!first) return second ? { ...second } : null;
+    if (!second) return { ...first };
+    return {
+      left: Math.min(first.left, second.left),
+      top: Math.min(first.top, second.top),
+      right: Math.max(first.right, second.right),
+      bottom: Math.max(first.bottom, second.bottom),
+    };
+  };
+
+  const regionForTrail = () => {
+    let region = null;
+    const padding = DISTURBANCE_RADIUS + MAX_DISPLACEMENT + cellSize;
+    trail.forEach((point) => {
+      region = unionRegion(region, {
+        left: point.x - padding,
+        top: point.y - padding,
+        right: point.x + padding,
+        bottom: point.y + padding,
+      });
+    });
+    return clampRegion(region);
+  };
+
+  const forEachCellInRegion = (region, callback) => {
+    if (!region) return;
+    const minColumn = Math.max(0, Math.floor(region.left / cellSize));
+    const maxColumn = Math.min(columns - 1, Math.ceil(region.right / cellSize));
+    const minRow = Math.max(0, Math.floor(region.top / cellSize));
+    const maxRow = Math.min(rows - 1, Math.ceil(region.bottom / cellSize));
+    for (let row = minRow; row <= maxRow; row += 1) {
+      const offset = row * columns;
+      for (let column = minColumn; column <= maxColumn; column += 1) callback(cells[offset + column]);
+    }
+  };
+
+  const drawTextureRegion = (region) => {
+    context.fillStyle = "rgba(4, 5, 6, 0.2)";
+    forEachCellInRegion(region, (cell) => {
+      if (!cell.texture) return;
+      context.fillRect(
+        cell.x * cellSize + cellSize * 0.5,
+        cell.y * cellSize + cellSize * 0.5,
+        cell.textureSize,
+        cell.textureSize,
+      );
+    });
   };
 
   const drawTexture = () => {
     context.clearRect(0, 0, width, height);
-    context.fillStyle = "rgba(4, 5, 6, 0.2)";
-    cells.forEach((cell) => {
-      if (hash(cell.x + 9, cell.y + 3) < 0.84) return;
-      const size = hash(cell.x + 4, cell.y + 11) > 0.72 ? 2 : 1;
-      context.fillRect(cell.x * cellSize + cellSize * 0.5, cell.y * cellSize + cellSize * 0.5, size, size);
-    });
+    drawTextureRegion({ left: 0, top: 0, right: width, bottom: height });
+    previousDirty = null;
   };
 
-  const imageCoverGeometry = () => {
-    const naturalWidth = image.naturalWidth || width;
-    const naturalHeight = image.naturalHeight || height;
-    const scale = Math.max(width / naturalWidth, height / naturalHeight);
-    return {
-      scale,
-      cropX: (naturalWidth - width / scale) * 0.5,
-      cropY: (naturalHeight - height / scale) * 0.5,
-    };
+  const commitPendingPoint = (now) => {
+    if (!pendingPoint) return;
+    const pending = pendingPoint;
+    pendingPoint = null;
+    const last = trail[trail.length - 1];
+    if (last && Math.hypot(pending.x - last.x, pending.y - last.y) < MIN_TRAIL_DISTANCE) {
+      last.x = pending.x;
+      last.y = pending.y;
+      last.time = now;
+      last.painted = false;
+      lastTrailPoint = last;
+      return;
+    }
+    const point = { x: pending.x, y: pending.y, time: now, painted: false };
+    trail.push(point);
+    while (trail.length > MAX_TRAIL_POINTS) trail.shift();
+    lastTrailPoint = point;
   };
 
   const drawDisturbance = (now) => {
-    trail.forEach((point) => {
-      if (!point.painted && now - point.time >= TRAIL_LIFETIME) point.time = now;
-    });
-    trail = trail.filter((point) => now - point.time < TRAIL_LIFETIME);
-    drawTexture();
-    if (!trail.length) return false;
+    commitPendingPoint(now);
+    trail = trail.filter((point) => !point.painted || now - point.time < TRAIL_LIFETIME);
 
-    const cover = imageCoverGeometry();
-    const sourceSize = cellSize / cover.scale;
+    const currentDirty = regionForTrail();
+    const restoreRegion = clampRegion(unionRegion(previousDirty, currentDirty));
+    if (restoreRegion) {
+      context.clearRect(
+        restoreRegion.left,
+        restoreRegion.top,
+        restoreRegion.right - restoreRegion.left,
+        restoreRegion.bottom - restoreRegion.top,
+      );
+      drawTextureRegion(restoreRegion);
+    }
+    previousDirty = currentDirty;
+    if (!trail.length || !currentDirty || !sourceCanvas || !sourceContext) {
+      surface.dataset.pixelDisturbedTiles = "0";
+      return false;
+    }
+
     let disturbedTiles = 0;
+    trail.forEach((point) => { point.touched = false; });
     context.save();
-    context.filter = "saturate(0.95) brightness(0.92) contrast(1.16)";
-
-    cells.forEach((cell) => {
+    forEachCellInRegion(currentDirty, (cell) => {
       const x = cell.x * cellSize;
       const y = cell.y * cellSize;
       const centerX = x + cellSize * 0.5;
@@ -112,32 +239,30 @@
       let influence = 0;
 
       trail.forEach((point) => {
-        const life = Math.max(0, 1 - (now - point.time) / TRAIL_LIFETIME);
-        const radius = DISTURBANCE_RADIUS * (0.72 + life * 0.28);
+        const life = point.painted ? Math.max(0, 1 - (now - point.time) / TRAIL_LIFETIME) : 1;
+        const radius = DISTURBANCE_RADIUS * (0.76 + life * 0.24);
         const distance = Math.hypot(centerX - point.x, centerY - point.y);
-        if (distance < radius) influence = Math.max(influence, (1 - distance / radius) * life);
+        if (distance >= radius) return;
+        const pointInfluence = (1 - distance / radius) * life;
+        if (pointInfluence > 0.035) point.touched = true;
+        influence = Math.max(influence, pointInfluence);
       });
       if (influence < 0.035) return;
       disturbedTiles += 1;
 
-      const seed = hash(cell.x + 31, cell.y + 47);
-      const angle = seed * Math.PI * 2;
-      const displacement = influence * (10 + seed * 32);
-      const dx = Math.cos(angle) * displacement;
-      const dy = Math.sin(angle) * displacement;
-      const sourceX = cover.cropX + x / cover.scale;
-      const sourceY = cover.cropY + y / cover.scale;
-
+      const displacement = influence * (10 + cell.seed * 32);
+      const dx = cell.cos * displacement;
+      const dy = cell.sin * displacement;
       context.globalAlpha = Math.min(0.7, influence * 0.68);
       context.fillStyle = "#030405";
       context.fillRect(x, y, cellSize + 0.5, cellSize + 0.5);
       context.globalAlpha = Math.min(1, 0.34 + influence * 0.9);
       context.drawImage(
-        image,
-        sourceX,
-        sourceY,
-        sourceSize,
-        sourceSize,
+        sourceCanvas,
+        x,
+        y,
+        cellSize,
+        cellSize,
         x + dx,
         y + dy,
         cellSize + 0.75,
@@ -145,17 +270,16 @@
       );
     });
 
-    surface.dataset.pixelDisturbedTiles = String(disturbedTiles);
-    if (disturbedTiles > 0) {
-      const paintedAt = performance.now();
-      trail.forEach((point) => {
-        if (!point.painted) point.time = paintedAt;
-        point.painted = true;
-      });
-    }
+    const paintedAt = performance.now();
+    trail.forEach((point) => {
+      if (!point.painted && point.touched) point.time = paintedAt;
+      if (point.touched) point.painted = true;
+      delete point.touched;
+    });
     context.restore();
     context.globalAlpha = 1;
-    return true;
+    surface.dataset.pixelDisturbedTiles = String(disturbedTiles);
+    return disturbedTiles > 0 || trail.some((point) => !point.painted);
   };
 
   const renderInteractive = (now) => {
@@ -166,6 +290,8 @@
     }
     if (!complete || !visible || document.hidden || !pointerEligible.matches) {
       trail = [];
+      pendingPoint = null;
+      previousDirty = null;
       surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
       if (complete && !reducedMotion.matches) drawTexture();
       return;
@@ -173,7 +299,7 @@
 
     const active = drawDisturbance(now);
     surface.dataset.pixelPointer = active ? "active" : "idle";
-    if (active) frame = window.requestAnimationFrame(renderInteractive);
+    if (active || pendingPoint) frame = window.requestAnimationFrame(renderInteractive);
   };
 
   const renderIntro = (now) => {
@@ -234,19 +360,13 @@
 
   const addTrailPoint = (clientX, clientY) => {
     if (!complete || !visible || document.hidden || reducedMotion.matches || !pointerEligible.matches) return;
-    const box = surface.getBoundingClientRect();
-    const x = clientX - box.left;
-    const y = clientY - box.top;
-    if (x < 0 || x > box.width || y < 0 || y > box.height) {
+    const x = clientX + window.scrollX - surfaceDocumentLeft;
+    const y = clientY + window.scrollY - surfaceDocumentTop;
+    if (x < 0 || x > width || y < 0 || y > height) {
       lastTrailPoint = null;
       return;
     }
-    if (lastTrailPoint && Math.hypot(x - lastTrailPoint.x, y - lastTrailPoint.y) < 5) return;
-
-    const point = { x, y, time: performance.now(), painted: false };
-    trail.push(point);
-    if (trail.length > MAX_TRAIL_POINTS) trail.splice(0, trail.length - MAX_TRAIL_POINTS);
-    lastTrailPoint = point;
+    pendingPoint = { x, y };
     surface.dataset.pixelPointer = "active";
     if (!frame) frame = window.requestAnimationFrame(renderInteractive);
   };
@@ -261,6 +381,8 @@
     if (!visible) {
       cancelFrame();
       trail = [];
+      pendingPoint = null;
+      previousDirty = null;
       clearPointer();
       surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
       return;
@@ -280,6 +402,8 @@
   const setStatic = () => {
     cancelFrame();
     trail = [];
+    pendingPoint = null;
+    previousDirty = null;
     clearPointer();
     document.documentElement.classList.add("home-pixel-reveal-static");
     surface.dataset.pixelState = "static";
@@ -303,6 +427,8 @@
 
   const handlePointerEligibilityChange = () => {
     trail = [];
+    pendingPoint = null;
+    previousDirty = null;
     clearPointer();
     if (!pointerEligible.matches) {
       cancelFrame();
@@ -321,6 +447,8 @@
     if (document.hidden) {
       cancelFrame();
       trail = [];
+      pendingPoint = null;
+      previousDirty = null;
       clearPointer();
     } else if (complete && visible && !reducedMotion.matches) {
       drawTexture();
@@ -332,6 +460,8 @@
     resizeTimer = window.setTimeout(() => {
       if (!started || reducedMotion.matches) return;
       cancelFrame();
+      trail = [];
+      pendingPoint = null;
       configure();
       if (complete) drawTexture();
       else {

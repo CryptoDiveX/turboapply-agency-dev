@@ -1,0 +1,4 @@
+.hero .hero-lede {
+  font-size: clamp(17px, 1.15vw, 19px);
+  line-height: 1.3;
+}

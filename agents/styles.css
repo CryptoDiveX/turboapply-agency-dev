@@ -84,8 +84,8 @@
   align-items: start;
 }
 
-.final-cta .final-cta-body p {
-  margin-bottom: 0;
+.final-cta .final-cta-body {
+  align-self: start;
 }
 
 .final-cta .button-light {
@@ -96,7 +96,7 @@
   min-width: 230px;
   min-height: 0;
   width: fit-content;
-  margin-top: 18px;
+  margin-top: 0;
   padding: 16px 24px;
   border: 1px solid #fff;
   border-radius: 999px;

@@ -374,8 +374,8 @@
 
 .review-card {
   flex: 0 0 calc(100% - clamp(88px, 10vw, 136px));
-  min-height: 330px;
-  padding: clamp(28px, 3vw, 44px);
+  min-height: 300px;
+  padding: clamp(24px, 2.4vw, 32px);
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
@@ -396,8 +396,8 @@
 
 .review-card blockquote {
   max-width: 570px;
-  margin: 40px 0 54px;
-  font: 400 clamp(20px, 1.7vw, 26px)/1.28 var(--about-font-display);
+  margin: 28px 0 32px;
+  font: 400 clamp(18px, 1.45vw, 22px)/1.24 var(--about-font-display);
 }
 
 .review-card footer {

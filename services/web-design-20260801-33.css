@@ -1470,7 +1470,7 @@ body.web-design-page {
 }
 
 .web-about-list {
-  background: #fff;
+  background: var(--web-soft);
   border-radius: var(--web-radius);
   display: flex;
   flex-direction: column;

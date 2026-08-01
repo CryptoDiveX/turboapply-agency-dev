@@ -434,14 +434,14 @@
   backdrop-filter: blur(16px) saturate(1.15);
 }
 
-.service-card.ta-motion-card[data-card-type="website"] {
+.service-card.ta-motion-card {
   --ta-card-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   background: #101010;
   color: #f8f3e8;
 }
 
-.service-card.ta-motion-card[data-card-type="website"] .service-card-media {
+.service-card.ta-motion-card .service-card-media {
   inset: 0;
   height: 100%;
   border-radius: calc(var(--ta-card-radius) - 1px);
@@ -463,6 +463,13 @@
   background: rgba(12, 12, 12, .94);
   color: #f8f3e8;
   box-shadow: 0 -10px 24px rgba(0, 0, 0, .28);
+}
+
+.service-card.ta-motion-card:not([data-card-type="website"]) h3 {
+  border-top: 1px solid rgba(16, 16, 16, .18);
+  background: #f8f3e8;
+  color: #101010;
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, .20);
 }
 
 @media (max-width: 1100px) {
