@@ -41,10 +41,10 @@
   let pointerAnchor = null;
   let lastIdleFrame = 0;
 
-  const TRAIL_LIFETIME = 1500;
+  const TRAIL_LIFETIME = 520;
   const DISTURBANCE_RADIUS = 192;
-  const MAX_TRAIL_POINTS = 12;
-  const MIN_TRAIL_DISTANCE = 52;
+  const MAX_TRAIL_POINTS = 3;
+  const MIN_TRAIL_DISTANCE = 18;
   const MAX_DISPLACEMENT = 168;
   const IDLE_ORBIT_X = 18;
   const IDLE_ORBIT_Y = 14;
@@ -131,11 +131,6 @@
     surface.dataset.pixelDisturbedTileSize = String(DISTURBED_TILE_SIZE);
     surface.dataset.pixelDisturbanceRadius = String(DISTURBANCE_RADIUS);
     surface.dataset.pixelMaxDisplacement = String(MAX_DISPLACEMENT);
-    surface.dataset.pixelTrailLifetime = String(TRAIL_LIFETIME);
-    surface.dataset.pixelTrailMaxPoints = String(MAX_TRAIL_POINTS);
-    surface.dataset.pixelTrailMinDistance = String(MIN_TRAIL_DISTANCE);
-    surface.dataset.pixelTrailPoints = "0";
-    surface.dataset.pixelTrailSpan = "0";
   };
 
   const clampRegion = (region) => {
@@ -234,14 +229,6 @@
     } : null;
     const activePoints = idlePoint ? [...trail, idlePoint] : trail;
     const currentDirty = regionForPoints(activePoints);
-    const trailSpan = trail.length > 1
-      ? Math.hypot(
-          Math.max(...trail.map((point) => point.x)) - Math.min(...trail.map((point) => point.x)),
-          Math.max(...trail.map((point) => point.y)) - Math.min(...trail.map((point) => point.y)),
-        )
-      : 0;
-    surface.dataset.pixelTrailPoints = String(trail.length);
-    surface.dataset.pixelTrailSpan = String(Math.round(trailSpan));
     const restoreRegion = clampRegion(unionRegion(previousDirty, currentDirty));
     if (restoreRegion) {
       context.clearRect(

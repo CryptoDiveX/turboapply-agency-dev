@@ -22,7 +22,7 @@
     {
       "url": "https://turboapply.agency/book-audit/",
       "title": "Business Process & Automation Audit | TurboApply",
-      "description": "Book a free 30-minute consultation to review lead, sales, admin, follow-up, reporting, automation, and AI workflow opportunities."
+      "description": "Book a free 15-minute consultation to review lead, sales, admin, follow-up, reporting, automation, and AI workflow opportunities."
     },
     {
       "url": "https://turboapply.agency/services/web-design/",
@@ -159,7 +159,7 @@
   "service_offers": [
     {
       "name": "Business Process and Automation Audit",
-      "starting_reference": "Free 30-minute consultation",
+      "starting_reference": "Free 15-minute consultation",
       "billing": "consultation",
       "note": "Implementation is scoped separately.",
       "url": "https://turboapply.agency/book-audit/"
@@ -301,7 +301,7 @@
     "authoritative_layer": "server",
     "browser_layer": "advisory and user-facing",
     "contact_policy": "Every form has a dedicated required email field and one required field labelled Phone (or Messenger). The combined contact field accepts a metadata-validated phone or supported messenger handle, not another email address. A separate Messenger field is forbidden.",
-    "source_policy": "Exact allow-listed TurboApply host. Source and local previews remain same-origin and fail closed. Only the controlled eight-form DevNet artifact stamps dev.turboapply.agency and uses the readiness-safe Internal Testing route; release browser QA mocks requests and sends no real notification.",
+    "source_policy": "Exact allow-listed TurboApply host. Source and local previews remain same-origin and fail closed. Only the controlled six-form DevNet artifact stamps dev.turboapply.agency and uses the readiness-safe Internal Testing route; release browser QA mocks 12 desktop/mobile cases and sends no real notification.",
     "idempotency_policy": "Suppress only the same recent submission key and same normalized content fingerprint.",
     "classification_categories": [
       "Real",
