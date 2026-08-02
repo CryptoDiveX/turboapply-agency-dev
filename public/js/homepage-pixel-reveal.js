@@ -41,10 +41,10 @@
   let pointerAnchor = null;
   let lastIdleFrame = 0;
 
-  const TRAIL_LIFETIME = 900;
+  const TRAIL_LIFETIME = 1500;
   const DISTURBANCE_RADIUS = 192;
-  const MAX_TRAIL_POINTS = 8;
-  const MIN_TRAIL_DISTANCE = 36;
+  const MAX_TRAIL_POINTS = 12;
+  const MIN_TRAIL_DISTANCE = 52;
   const MAX_DISPLACEMENT = 168;
   const IDLE_ORBIT_X = 18;
   const IDLE_ORBIT_Y = 14;
