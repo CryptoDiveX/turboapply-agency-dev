@@ -20,7 +20,7 @@
       "description": "Business audits, web and clinic design, SEO, maintenance, migrations, AI, CRM and booking integrations, and marketing services with published starting references."
     },
     {
-      "url": "https://turboapply.agency/services/business-process-automation-audit/",
+      "url": "https://turboapply.agency/book-audit/",
       "title": "Business Process & Automation Audit | TurboApply",
       "description": "Book a free 30-minute consultation to review lead, sales, admin, follow-up, reporting, automation, and AI workflow opportunities."
     },
@@ -162,7 +162,7 @@
       "starting_reference": "Free 30-minute consultation",
       "billing": "consultation",
       "note": "Implementation is scoped separately.",
-      "url": "https://turboapply.agency/services/business-process-automation-audit/"
+      "url": "https://turboapply.agency/book-audit/"
     },
     {
       "name": "Web Design",

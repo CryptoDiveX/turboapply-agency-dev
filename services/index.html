@@ -32,8 +32,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../integrations/styles.css?v=integrations-heading-hierarchy-20260730-22" />
-    <link rel="stylesheet" href="styles.css?v=services-request-badges-removed-20260731-19" />
+    <link rel="stylesheet" href="../integrations/styles-20260802-23.css?v=sitewide-shell-20260802-23" />
+    <link rel="stylesheet" href="styles.css?v=services-form-free-20260802-20" />
     <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
     <script type="application/ld+json">
 {
@@ -51,7 +51,7 @@
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Business Process & Automation Audit",
-                        "url": "https://turboapply.agency/services/business-process-automation-audit/"
+                        "url": "https://turboapply.agency/book-audit/"
                   },
                   {
                         "@type": "ListItem",
@@ -150,7 +150,7 @@
         <a href="/resources/">Resources</a>
         <a href="/results/">Results</a>
       </nav>
-      <a class="header-cta" href="/book-meeting/" aria-label="Book a service consultation">let's chat</a>
+      <a class="header-cta" href="/book-audit/" aria-label="Book a service consultation">let's chat</a>
     </header>
 
     <main id="main-content">
@@ -159,12 +159,12 @@
           <p class="eyebrow">All services</p>
           <h1 id="directory-title">Find the right next step for your business.</h1>
           <p>Explore focused help with websites, SEO, automation, integrations, lead generation, and outreach—each with clear scope and pricing.</p>
-          <a class="button button-dark" href="/book-meeting/">Help me choose</a>
+          <a class="button button-dark" href="/book-audit/">Help me choose</a>
         </div>
         <div class="service-directory-groups">
           <section class="service-directory-group service-directory-group-featured" aria-label="Business Process and Automation Audit">
             <div class="service-directory-list">
-              <a class="service-directory-route service-directory-card service-directory-group-link" href="/services/business-process-automation-audit/" aria-label="View the Business Process and Automation Audit page"><span>Business Process &amp; Automation Audit</span><small>Review the workflow, find the lead leaks, and define the smallest useful next step.</small><strong>Free consultation</strong></a>
+              <a class="service-directory-route service-directory-card service-directory-group-link" href="/book-audit/" aria-label="View the Business Process and Automation Audit page"><span>Business Process &amp; Automation Audit</span><small>Review the workflow, find the lead leaks, and define the smallest useful next step.</small><strong>Free consultation</strong></a>
             </div>
           </section>
           <section class="service-directory-group" aria-labelledby="directory-website-services">
@@ -202,53 +202,10 @@
         </div>
       </section>
 
-      <section id="services-inquiry" class="final-cta services-lead-capture" aria-labelledby="services-inquiry-title">
-        <div class="final-cta-inner services-lead-inner">
-          <div class="services-lead-intro">
-            <p class="eyebrow">Start a conversation</p>
-            <h2 id="services-inquiry-title">Not sure where to start?</h2>
-            <p>Tell us what you want to improve. We’ll identify the smallest useful first project and confirm the next step with you.</p>
-          </div>
-
-          <form
-            class="services-lead-form ta-main-form"
-            action="/submit-lead.php"
-            method="post"
-            data-services-lead-form
-           
-            data-turboapply-secure-form
-          >
-            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
-            <label class="services-lead-field">
-              <span>Name</span>
-              <input type="text" name="name" autocomplete="name" maxlength="120" required />
-            </label>
-
-            <label class="services-lead-field">
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" maxlength="254" required />
-            </label>
-
-            <label class="services-lead-field">
-              <span>Phone (or Messenger)</span>
-              <input type="text" name="contact" autocomplete="tel" maxlength="254" required />
-            </label>
-
-            <label class="services-lead-field">
-              <span>What service or business outcome do you need help with?</span>
-              <textarea name="challenge" rows="5" maxlength="1800" required></textarea>
-            </label>
-
-            <input type="hidden" name="redirect" value="/book-meeting/" />
-            <input type="hidden" name="formId" value="services-consultation" />
-            <input type="hidden" name="source" value="turboapply.agency" />
-            <input type="hidden" name="serviceInterest" value="Services consultation" />
-            <input type="hidden" name="submittedAt" value="" />
-            <input type="hidden" name="submissionIdempotencyKey" value="" />
-
-            <p class="services-lead-status" aria-live="polite" data-services-lead-status></p>
-            <button class="button button-light services-lead-submit" type="submit">Send request</button>
-          </form>
+      <section class="final-cta" aria-labelledby="services-final-title">
+        <div class="final-cta-inner">
+          <h2 id="services-final-title">Not sure which service should come first?</h2>
+          <div class="final-cta-body"><p>Bring the current website, workflow, and bottlenecks. We will help define the smallest useful next step.</p><a class="button button-light" href="/book-audit/">Book your audit</a></div>
         </div>
       </section>
     </main>

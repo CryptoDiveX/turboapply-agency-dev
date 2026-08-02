@@ -302,7 +302,7 @@
       window.matchMedia("(prefers-reduced-motion: no-preference)"),
     ];
     const isEligible = () => eligibilityQueries.every((query) => query.matches);
-    if (surfaces.length !== 2) return;
+    if (surfaces.length === 0) return;
 
     let teardown = null;
 

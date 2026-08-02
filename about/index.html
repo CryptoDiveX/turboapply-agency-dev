@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Karla:wght@400;500&amp;family=Urbanist:wght@400;500;600&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/integrations/styles.css?v=integrations-heading-hierarchy-20260730-22" />
+  <link rel="stylesheet" href="/integrations/styles-20260802-23.css?v=sitewide-shell-20260802-23" />
   <link rel="stylesheet" href="/about/styles.css?v=about-compact-reviews-20260802-22" />
   <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
   <script src="/google-tag.js?v=ga-20260714-1" defer></script>
@@ -98,7 +98,7 @@
       <a href="/resources/">Resources</a>
       <a href="/results/">Results</a>
     </nav>
-    <a class="header-cta" href="/book-meeting/" aria-label="Book a conversation with TurboApply">let's chat</a>
+    <a class="header-cta" href="/book-audit/" aria-label="Book a conversation with TurboApply">let's chat</a>
   </header>
 
   <main id="main-content">
@@ -239,57 +239,21 @@
       </div>
     </section>
 
-    <section class="about-contact" aria-labelledby="contact-title">
-      <div class="about-contact-inner">
-        <div class="about-contact-panel">
-          <div class="about-contact-copy">
-            <p class="eyebrow">Let’s talk</p>
-            <h2 id="contact-title">Have a service or product to bring online?</h2>
-            <p>Tell us about your business and what is getting in the way. We will share where design, marketing, software, or automation could help.</p>
-          </div>
-
-          <form class="about-contact-form ta-main-form" action="/api/contact" method="post" data-about-contact-form data-turboapply-secure-form>
-            <div data-turboapply-honeypot aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="width: 1px; height: 1px; min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0;" /></div>
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" autocomplete="name" maxlength="120" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" maxlength="254" required />
-            </label>
-            <label>
-              <span>Phone (or Messenger)</span>
-              <input type="text" name="contact" autocomplete="tel" maxlength="254" required />
-            </label>
-            <label>
-              <span>Let us know more about your business</span>
-              <textarea name="message" rows="5" maxlength="1800" required></textarea>
-            </label>
-            <input type="hidden" name="page_url" value="" data-contact-page-url />
-            <input type="hidden" name="formId" value="agency-contact" />
-            <input type="hidden" name="source" value="turboapply.agency" />
-            <input type="hidden" name="serviceInterest" value="Website and automation consultation" />
-            <input type="hidden" name="submittedAt" value="" />
-            <input type="hidden" name="submissionIdempotencyKey" value="" />
-            <p class="about-contact-status" aria-live="polite" data-about-contact-status></p>
-            <button type="submit">send request</button>
-          </form>
-        </div>
-
-        <footer class="about-footer" aria-label="TurboApply footer">
-          <a class="footer-brand" href="/">TurboApply</a>
-          <p>Design, software, automation, and practical systems for growing businesses.</p>
-          <nav aria-label="Footer navigation">
-            <a href="/services/">Services</a>
-            <a href="/resources/">Resources</a>
-            <a href="/results/">Results</a>
-            <a href="/book-meeting/">Book a meeting</a>
-          </nav>
-        </footer>
+    <section class="final-cta" aria-labelledby="about-final-title">
+      <div class="final-cta-inner">
+        <h2 id="about-final-title">Have a service or product to bring online?</h2>
+        <div class="final-cta-body"><p>Start with a focused audit of the website, workflow, and systems getting in the way.</p><a class="button button-light" href="/book-audit/">Book your audit</a></div>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <a class="brand footer-brand" href="/">TurboApply</a>
+      <p>Websites, integrations, and practical AI systems for growing businesses.</p>
+      <div class="site-footer-links"><a href="mailto:info@turboapply.agency">info@turboapply.agency</a><a href="tel:+1-778-819-3665">+1 (778) 819-3665</a></div>
+    </div>
+  </footer>
 
   <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
   <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>

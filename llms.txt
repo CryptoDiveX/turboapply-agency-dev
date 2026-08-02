@@ -12,7 +12,7 @@ Structured AI context: https://turboapply.agency/ai/turboapply-agency-context.js
 Key pages:
 - / — main website and portfolio/services overview.
 - /services/ — current 13-offer directory for audits, websites, SEO, AI/CRM automation, lead generation, marketing, and support. Business Process & Automation Audit and Web Design have dedicated pages; all other offers remain available by request from the directory.
-- /services/business-process-automation-audit/ — dedicated free audit-consultation form; accepted requests continue to the existing Calendly booking route.
+- /book-audit/ — dedicated free audit-consultation form; accepted requests continue to the existing Calendly booking route.
 - /services/web-design/ — the current dedicated Web Design page with the shared TurboApply editorial design system, approved hero and portfolio media, process, pricing, FAQs, related services, no placeholder reviews, and a secure inquiry form.
 - /integrations/ — CRM, booking, lead capture, payments, reporting, communication, and AI workflow integrations.
 - /agents/ — practical AI agents for scheduling, lead generation, follow-up, data enrichment, cold outreach, and sales coaching.
