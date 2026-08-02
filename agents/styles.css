@@ -90,48 +90,7 @@
 }
 
 .final-cta .final-cta-body p {
-  margin-bottom: 0;
-}
-
-.final-cta .button-light {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  min-width: 230px;
-  min-height: 0;
-  width: fit-content;
-  margin-top: 18px;
-  padding: 16px 24px;
-  border: 1px solid #fff;
-  border-radius: 999px;
-  background: #fff;
-  color: #090909;
-  font: 600 12px/1 Inter, sans-serif;
-  letter-spacing: 0;
-  text-indent: 0;
-  text-decoration: none;
-  text-transform: none;
-  white-space: nowrap;
-  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
-}
-
-.final-cta .button-light > .button-label {
-  display: block;
-  letter-spacing: 0.14em;
-  text-indent: 0.14em;
-  text-transform: uppercase;
-}
-
-.final-cta .button-light:hover {
-  background: #e9e7e1;
-  border-color: #e9e7e1;
-  color: #090909;
-}
-
-.final-cta .button-light:focus-visible {
-  outline: 3px solid #1677ff;
-  outline-offset: 5px;
+  margin-bottom: 34px;
 }
 .agent-directory-panel {
   display: grid;
