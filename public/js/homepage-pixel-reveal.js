@@ -49,6 +49,7 @@
   const IDLE_ORBIT_X = 18;
   const IDLE_ORBIT_Y = 14;
   const IDLE_FRAME_INTERVAL = 32;
+  const DISTURBED_TILE_SIZE = 2;
 
   const hash = (x, y) => {
     const value = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
@@ -127,6 +128,7 @@
     surface.dataset.pixelCells = String(cells.length);
     surface.dataset.pixelBackingScale = "1";
     surface.dataset.pixelCellSize = String(cellSize);
+    surface.dataset.pixelDisturbedTileSize = String(DISTURBED_TILE_SIZE);
     surface.dataset.pixelDisturbanceRadius = String(DISTURBANCE_RADIUS);
     surface.dataset.pixelMaxDisplacement = String(MAX_DISPLACEMENT);
   };
@@ -274,9 +276,10 @@
       const temporalAngle = pointerAnchor ? Math.sin(now * 0.0012 + cell.seed * 5) * 0.22 : 0;
       const dx = (cell.cos * Math.cos(temporalAngle) - cell.sin * Math.sin(temporalAngle)) * displacement;
       const dy = (cell.sin * Math.cos(temporalAngle) + cell.cos * Math.sin(temporalAngle)) * displacement;
+      const tileInset = (cellSize - DISTURBED_TILE_SIZE) * 0.5;
       context.globalAlpha = Math.min(0.7, influence * 0.68);
       context.fillStyle = "#030405";
-      context.fillRect(x, y, cellSize + 0.5, cellSize + 0.5);
+      context.fillRect(x + tileInset, y + tileInset, DISTURBED_TILE_SIZE, DISTURBED_TILE_SIZE);
       context.globalAlpha = Math.min(1, 0.34 + influence * 0.9);
       context.drawImage(
         sourceCanvas,
@@ -284,10 +287,10 @@
         y,
         cellSize,
         cellSize,
-        x + dx,
-        y + dy,
-        cellSize + 0.75,
-        cellSize + 0.75,
+        x + dx + tileInset,
+        y + dy + tileInset,
+        DISTURBED_TILE_SIZE,
+        DISTURBED_TILE_SIZE,
       );
     });
 
