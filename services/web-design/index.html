@@ -34,9 +34,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/integrations/styles-20260802-24.css?v=sitewide-footer-pill-20260802-24" />
-    <link rel="stylesheet" href="/services/web-design-20260803-44.css?v=web-design-title-motion-20260803-44" />
+    <link rel="stylesheet" href="/services/web-design-20260804-45.css?v=veyro-hero-motion-20260804-45" />
     <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
     <link rel="stylesheet" href="/public/css/footer-dot-cursor.css?v=footer-dot-20260725-1" />
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("web-hero-motion-ready");
+      }
+    </script>
     <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -163,11 +168,14 @@
         <div class="web-hero-inner">
           <div class="web-hero-copy">
             <p class="web-kicker">Website design</p>
-            <h1 id="web-design-title">Websites that make the next step clear.</h1>
-            <p class="web-hero-summary">Conversion-led websites designed around your offer, audience, and the next action you want customers to take.</p>
+            <h1 id="web-design-title" data-web-hero-title aria-label="Websites that make the next step clear.">
+              <span class="web-hero-title-mask"><span class="web-hero-title-line" data-web-hero-line style="--web-hero-line-delay: 120ms;">Websites that make</span></span>
+              <span class="web-hero-title-mask"><span class="web-hero-title-line" data-web-hero-line style="--web-hero-line-delay: 230ms;">the next step clear.</span></span>
+            </h1>
+            <p class="web-hero-summary" data-web-hero-fade style="--web-hero-fade-delay: 550ms;">Conversion-led websites designed around your offer, audience, and the next action you want customers to take.</p>
             <div class="web-actions">
-              <a class="web-button web-button-primary" href="/book-audit/">Plan your website</a>
-              <a class="web-portfolio-link" href="#selected-work">View selected work</a>
+              <a class="web-button web-button-primary" data-web-hero-fade style="--web-hero-fade-delay: 820ms;" href="/book-audit/">Plan your website</a>
+              <a class="web-portfolio-link" data-web-hero-fade style="--web-hero-fade-delay: 920ms;" href="#selected-work">View selected work</a>
             </div>
           </div>
           <figure class="web-hero-media">
@@ -571,7 +579,7 @@
     <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
     <script src="/integrations/script.js?v=services-page-20260716-1"></script>
     <script src="/services/script.js?v=web-design-form-20260722-1"></script>
-    <script src="/public/js/web-design-interactions.js?v=web-design-title-motion-20260803-12"></script>
+    <script src="/public/js/web-design-interactions.js?v=veyro-hero-motion-20260804-13"></script>
     <script src="/public/js/footer-dot-cursor.js?v=footer-dot-20260725-1"></script>
   </body>
 </html>
