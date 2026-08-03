@@ -294,6 +294,44 @@
     });
   };
 
+  const initializeTitleReveals = () => {
+    const heroTitle = document.querySelector(".web-hero h1");
+    const heroSummary = document.querySelector(".web-hero-summary");
+    const sectionTitles = Array.from(document.querySelectorAll("main h2"));
+    const titles = [heroTitle, ...sectionTitles].filter(Boolean);
+    const elements = [...titles, heroSummary].filter(Boolean);
+    if (!elements.length) return;
+
+    titles.forEach((title) => title.setAttribute("data-web-title-reveal", ""));
+    if (heroSummary) {
+      heroSummary.setAttribute("data-web-copy-reveal", "");
+      heroSummary.style.setProperty("--web-title-reveal-delay", "120ms");
+    }
+
+    const reveal = (element) => element.classList.add("is-revealed");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+      elements.forEach(reveal);
+      return;
+    }
+
+    document.documentElement.classList.add("web-title-reveal-ready");
+    requestAnimationFrame(() => {
+      if (heroTitle) reveal(heroTitle);
+      if (heroSummary) reveal(heroSummary);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        reveal(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8%", threshold: 0.15 });
+
+    sectionTitles.forEach((title) => observer.observe(title));
+  };
+
   const initializeSurfaceCursor = () => {
     const surfaces = Array.from(document.querySelectorAll("[data-web-surface-cursor]"));
     const eligibilityQueries = [
@@ -441,6 +479,7 @@
     initializeStageProcess();
     initializePricingReveal();
     initializeSectionReveals();
+    initializeTitleReveals();
     initializeSurfaceCursor();
   };
 

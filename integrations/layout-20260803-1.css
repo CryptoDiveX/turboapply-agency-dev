@@ -1,0 +1,26 @@
+/* Screenshot correction: align Integrations content with the shared 1440px/32px site grid. */
+.integrations-page :is(.systems-section, .platforms-section, .process-section, .principles-section) {
+  padding-inline: max(32px, calc((100vw - 1440px) / 2 + 32px));
+}
+
+.integrations-page .system-card h3 {
+  font-size: clamp(29px, 2.35vw, 38px);
+}
+
+.integrations-page .system-card p {
+  font-size: 19px;
+}
+
+@media (max-width: 760px) {
+  .integrations-page :is(.systems-section, .platforms-section, .process-section, .principles-section) {
+    padding-inline: 24px;
+  }
+
+  .integrations-page .system-card h3 {
+    font-size: clamp(28px, 8vw, 34px);
+  }
+
+  .integrations-page .system-card p {
+    font-size: 18px;
+  }
+}

@@ -56,7 +56,7 @@
   max-width: 610px;
   margin: 32px 0 0;
   color: var(--audit-muted);
-  font: 400 clamp(18px, 1.75vw, 25px)/1.45 Urbanist, sans-serif;
+  font: 400 clamp(17px, 1.35vw, 20px)/1.45 Urbanist, sans-serif;
 }
 
 .audit-consultation-form {
@@ -132,7 +132,7 @@
 
   .audit-consultation-copy > p:last-child {
     margin-top: 24px;
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 

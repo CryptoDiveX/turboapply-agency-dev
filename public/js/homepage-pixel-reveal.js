@@ -515,7 +515,8 @@
       cancelFrame();
       surface.dataset.pixelPointer = "disabled";
       surface.dataset.pixelIdleMotion = "disabled";
-      if (complete && !reducedMotion.matches) drawTexture();
+      if (!complete && started && !reducedMotion.matches) finishIntro("instant");
+      else if (complete && !reducedMotion.matches) drawTexture();
     } else if (complete && !reducedMotion.matches) {
       surface.dataset.pixelPointer = "idle";
       surface.dataset.pixelIdleMotion = "idle";
@@ -547,6 +548,7 @@
       pendingPoint = null;
       configure();
       if (complete) drawTexture();
+      else if (!pointerEligible.matches) finishIntro("instant");
       else {
         introStartedAt = performance.now();
         startTime = performance.now();
