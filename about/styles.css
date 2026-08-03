@@ -493,7 +493,7 @@
 }
 
 .reviews-rail {
-  align-items: flex-start;
+  align-items: stretch;
   margin-right: calc(-1 * max(32px, calc((100vw - 1376px) / 2)));
 }
 
@@ -510,9 +510,10 @@
 }
 
 .review-card {
-  flex: 0 0 clamp(430px, 76%, 520px);
-  min-height: 260px;
-  padding: clamp(22px, 2vw, 28px);
+  flex: 0 0 clamp(390px, 46vw, 470px);
+  height: 350px;
+  min-height: 0;
+  padding: clamp(20px, 1.6vw, 22px);
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
@@ -533,8 +534,8 @@
 
 .review-card blockquote {
   max-width: 620px;
-  margin: 20px 0 24px;
-  font: 400 clamp(17px, 1.3vw, 20px)/1.2 var(--about-font-display);
+  margin: 16px 0 20px;
+  font: 400 clamp(15px, 1.1vw, 17px)/1.2 var(--about-font-display);
 }
 
 .review-card footer {
@@ -545,8 +546,8 @@
 }
 
 .review-avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -876,7 +877,7 @@
 
 @media (max-width: 760px) {
   .review-card {
-    flex-basis: min(520px, calc(100% - 48px));
+    flex-basis: min(390px, calc(100% - 48px));
   }
 
   .founder-hero-inner,
@@ -1004,13 +1005,15 @@
   }
 
   .review-card {
-    flex-basis: min(520px, calc(100% - 48px));
-    min-height: 260px;
-    padding: 22px;
+    flex-basis: min(390px, calc(100% - 48px));
+    height: 410px;
+    min-height: 0;
+    padding: 20px;
   }
 
   .review-card blockquote {
-    font-size: 17px;
+    margin-block: 14px 18px;
+    font-size: 15px;
     line-height: 1.2;
   }
 
