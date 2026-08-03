@@ -32,6 +32,8 @@
     <link rel="mcp" href="/ai/mcp.json" title="TurboApply MCP endpoint" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/public/assets/home/turboapply-flow-background.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="script" href="/public/js/homepage-pixel-reveal.js?v=homepage-fast-start-plume-20260803-14" fetchpriority="high" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Karla:wght@400&family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles-20260802-8.css?v=homepage-mobile-shell-20260802-8" />
     <link rel="stylesheet" href="/public/css/service-card-motion.css?v=20260801-6" />
@@ -113,9 +115,10 @@
       <section id="about" class="hero section-panel turbo-hero" data-observe="about" aria-label="TurboApply website and AI integrations">
         <div class="hero-stage turbo-hero-stage">
           <div class="turbo-hero-pixel-reveal" data-home-pixel-reveal aria-hidden="true">
-            <img src="/public/assets/home/turboapply-flow-background.webp" alt="" width="1920" height="1080" loading="eager" decoding="async" />
+            <img src="/public/assets/home/turboapply-flow-background.webp" alt="" width="1920" height="1080" loading="eager" decoding="async" fetchpriority="high" />
             <canvas data-home-pixel-canvas></canvas>
           </div>
+          <script src="/public/js/homepage-pixel-reveal.js?v=homepage-fast-start-plume-20260803-14" async fetchpriority="high"></script>
           <div class="turbo-hero-copy">
             <p class="turbo-eyebrow">TurboApply Agency</p>
             <h1 class="hero-title turbo-hero-title">
@@ -416,7 +419,6 @@
     <script src="/public/assets/vendor/libphonenumber-max.js?v=4"></script>
     <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
     <script src="/public/js/service-card-motion.js?v=20260731-3" defer></script>
-    <script src="/public/js/homepage-pixel-reveal.js?v=homepage-wider-fine-plume-20260803-13" defer></script>
     <script src="script.js?v=homepage-contact-focus-copy-20260801-2"></script>
   </body>
 </html>

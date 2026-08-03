@@ -40,7 +40,13 @@
   let trail = [];
   let pointerAnchor = null;
   let lastIdleFrame = 0;
+  let introStartedAt = 0;
 
+  const INTRO_DELAY_SPAN = 360;
+  const INTRO_DELAY_JITTER = 80;
+  const INTRO_CELL_DURATION = 220;
+  const INTRO_LEAD_IN = 20;
+  const INTRO_SLOW_START_CUTOFF = 1000;
   const TRAIL_LIFETIME = 2100;
   const DISTURBANCE_RADIUS = 224;
   const MAX_TRAIL_POINTS = 16;
@@ -114,8 +120,9 @@
         cells[y * columns + x] = {
           x,
           y,
-          delay: distance * 1450 + hash(x, y) * 220,
+          delay: distance * INTRO_DELAY_SPAN + hash(x, y) * INTRO_DELAY_JITTER,
           seed,
+          particleSeed: hash(x + 17, y + 23),
           cos: Math.cos(angle),
           sin: Math.sin(angle),
           texture: hash(x + 9, y + 3) >= 0.84,
@@ -136,6 +143,8 @@
     surface.dataset.pixelTrailMinDistance = String(MIN_TRAIL_DISTANCE);
     surface.dataset.pixelTrailPoints = "0";
     surface.dataset.pixelTrailSpan = "0";
+    surface.dataset.pixelIntroBudget = String(INTRO_DELAY_SPAN + INTRO_DELAY_JITTER + INTRO_CELL_DURATION + INTRO_LEAD_IN);
+    surface.dataset.pixelSlowStartCutoff = String(INTRO_SLOW_START_CUTOFF);
   };
 
   const clampRegion = (region) => {
@@ -357,7 +366,7 @@
     let remaining = 0;
 
     cells.forEach((cell) => {
-      const progress = Math.min(1, Math.max(0, (elapsed - cell.delay) / 460));
+      const progress = Math.min(1, Math.max(0, (elapsed - cell.delay) / INTRO_CELL_DURATION));
       if (progress >= 1) return;
       remaining += 1;
       const eased = 1 - Math.pow(1 - progress, 3);
@@ -366,7 +375,7 @@
       context.globalAlpha = 0.98 - eased * 0.32;
       context.fillStyle = "rgba(3, 4, 5, 0.96)";
       context.fillRect(cell.x * cellSize + offset, cell.y * cellSize + offset, size + 0.5, size + 0.5);
-      const particleSeed = hash(cell.x + 17, cell.y + 23);
+      const particleSeed = cell.particleSeed;
       if (progress > 0.16 && progress < 0.92 && particleSeed > 0.78) {
         const pulse = Math.sin(progress * Math.PI);
         const particleSize = particleSeed > 0.92 ? 2 : 1;
@@ -386,10 +395,16 @@
       frame = window.requestAnimationFrame(renderIntro);
       return;
     }
+    finishIntro("animated");
+  };
+
+  const finishIntro = (mode) => {
     complete = true;
     surface.dataset.pixelState = "complete";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelIntroMode = mode;
+    surface.dataset.pixelIntroElapsed = String(Math.max(0, Math.round(performance.now() - introStartedAt)));
     document.documentElement.classList.add("home-pixel-reveal-complete");
     drawTexture();
   };
@@ -397,11 +412,18 @@
   const start = () => {
     if (started || reducedMotion.matches || !visible) return;
     started = true;
+    const imageReadyAt = performance.now();
+    introStartedAt = imageReadyAt;
     configure();
     surface.dataset.pixelState = "running";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
-    startTime = performance.now() + 120;
+    if (!pointerEligible.matches || imageReadyAt >= INTRO_SLOW_START_CUTOFF) {
+      finishIntro("instant");
+      return;
+    }
+    surface.dataset.pixelIntroMode = "animated";
+    startTime = performance.now() + INTRO_LEAD_IN;
     frame = window.requestAnimationFrame(renderIntro);
   };
 
@@ -526,6 +548,7 @@
       configure();
       if (complete) drawTexture();
       else {
+        introStartedAt = performance.now();
         startTime = performance.now();
         frame = window.requestAnimationFrame(renderIntro);
       }
