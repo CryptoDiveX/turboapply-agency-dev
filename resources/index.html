@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Karla:wght@400;500&amp;family=Urbanist:wght@400;500;600&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/integrations/styles-20260802-24.css?v=sitewide-footer-pill-20260802-24" />
-  <link rel="stylesheet" href="/resources/styles.css?v=resources-nocode-comparison-20260801-13" />
+  <link rel="stylesheet" href="/resources/styles.css?v=resources-guides-rail-20260802-14" />
   <script src="/google-tag.js?v=ga-20260714-1" defer></script>
   <script type="application/ld+json">
 {
@@ -162,12 +162,31 @@
       </div>
     </section>
 
-    <section class="resources-guides" aria-labelledby="guides-title">
-      <div class="resources-section-heading">
-        <h2 id="guides-title">Guides and resources</h2>
-        <p>Practical guides for local visibility, service pages, technical audits, website choices, and stronger search-to-inquiry journeys.</p>
+    <section class="resources-guides" aria-labelledby="guides-title" data-resource-guides>
+      <div class="resources-guides-head">
+        <div class="resources-section-heading">
+          <h2 id="guides-title">Guides and resources</h2>
+          <p>Practical guides for local visibility, service pages, technical audits, website choices, and stronger search-to-inquiry journeys.</p>
+        </div>
+        <div class="resource-guide-controls" role="group" aria-label="Guide carousel controls" hidden>
+          <button type="button" data-resource-guide-previous aria-label="Show previous guide" aria-controls="resource-guide-viewport" disabled>←</button>
+          <button type="button" data-resource-guide-next aria-label="Show next guide" aria-controls="resource-guide-viewport">→</button>
+        </div>
       </div>
-      <div class="resource-card-grid resource-library-grid">
+      <div id="resource-guide-viewport" class="resource-guide-viewport" data-resource-guide-viewport tabindex="-1" aria-label="Five TurboApply guides, newest first">
+        <div class="resource-card-grid resource-library-grid" data-resource-guide-rail>
+        <a class="resource-card" href="/resources/turboapply-vs-no-code-website-builders/">
+          <figure class="resource-card-media">
+            <img src="/public/assets/resources/turboapply-vs-no-code-builders.webp" alt="Illustration comparing a no-code page builder with a custom website connected to CRM, booking, SEO, and AI workflows" width="1600" height="900" loading="lazy" decoding="async" />
+            <span class="resource-format">Comparison</span>
+          </figure>
+          <div class="resource-card-copy">
+            <p class="resource-category">Website strategy</p>
+            <h3>TurboApply vs. no-code website builders</h3>
+            <p>Compare leading no-code platforms with a custom build for service-business websites and workflows.</p>
+            <span class="resource-read-time">8 min read</span>
+          </div>
+        </a>
         <a class="resource-card" href="/resources/local-seo-checklist-service-businesses/">
           <figure class="resource-card-media">
             <img src="/public/assets/health-site/health-tools.webp" alt="A service-business website presenting clear services and booking paths" width="1052" height="915" loading="lazy" decoding="async" />
@@ -216,19 +235,9 @@
             <span class="resource-read-time">5 min read</span>
           </div>
         </a>
-        <a class="resource-card" href="/resources/turboapply-vs-no-code-website-builders/">
-          <figure class="resource-card-media">
-            <img src="/public/assets/resources/turboapply-vs-no-code-builders.webp" alt="Illustration comparing a no-code page builder with a custom website connected to CRM, booking, SEO, and AI workflows" width="1600" height="900" loading="lazy" decoding="async" />
-            <span class="resource-format">Comparison</span>
-          </figure>
-          <div class="resource-card-copy">
-            <p class="resource-category">Website strategy</p>
-            <h3>TurboApply vs. no-code website builders</h3>
-            <p>Compare leading no-code platforms with a custom build for service-business websites and workflows.</p>
-            <span class="resource-read-time">8 min read</span>
-          </div>
-        </a>
+        </div>
       </div>
+      <button class="resource-guide-expand" type="button" data-resource-guide-expand aria-expanded="false" aria-controls="resource-guide-viewport" hidden>See all guides</button>
     </section>
 
     <section class="final-cta" aria-labelledby="resource-cta-title">
@@ -252,5 +261,6 @@
     </div>
   </footer>
   <script src="/integrations/script.js?v=resources-navigation-20260721-1"></script>
+  <script src="/resources/script.js?v=resources-guides-rail-20260802-1"></script>
 </body>
 </html>
