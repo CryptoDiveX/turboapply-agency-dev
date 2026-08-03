@@ -15,6 +15,7 @@
     surface.dataset.pixelState = "static";
     surface.dataset.pixelPointer = "disabled";
     surface.dataset.pixelIdleMotion = "disabled";
+    surface.dataset.pixelFieldState = "disabled";
     return;
   }
 
@@ -34,10 +35,7 @@
   let surfaceDocumentTop = 0;
   let sourceCanvas = null;
   let sourceContext = null;
-  let lastTrailPoint = null;
-  let pendingPoint = null;
   let previousDirty = null;
-  let trail = [];
   let pointerAnchor = null;
   let lastIdleFrame = 0;
   let introStartedAt = 0;
@@ -47,15 +45,13 @@
   const INTRO_CELL_DURATION = 220;
   const INTRO_LEAD_IN = 20;
   const INTRO_SLOW_START_CUTOFF = 1000;
-  const TRAIL_LIFETIME = 2100;
   const DISTURBANCE_RADIUS = 224;
-  const MAX_TRAIL_POINTS = 16;
-  const MIN_TRAIL_DISTANCE = 64;
-  const MAX_DISPLACEMENT = 168;
-  const IDLE_ORBIT_X = 18;
-  const IDLE_ORBIT_Y = 14;
+  const MAX_DISPLACEMENT = 112;
+  const IDLE_ORBIT_X = 6;
+  const IDLE_ORBIT_Y = 4;
   const IDLE_FRAME_INTERVAL = 32;
   const DISTURBED_TILE_SIZE = 2;
+  const FIELD_GLOW_COLOR = "#263843";
 
   const hash = (x, y) => {
     const value = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
@@ -81,7 +77,7 @@
     const scale = Math.max(width / naturalWidth, height / naturalHeight);
     const drawWidth = naturalWidth * scale;
     const drawHeight = naturalHeight * scale;
-    sourceContext.filter = "saturate(0.95) brightness(0.92) contrast(1.16)";
+    sourceContext.filter = "grayscale(0.6) saturate(0.55) brightness(0.94) contrast(1.14)";
     sourceContext.drawImage(
       image,
       (width - drawWidth) * 0.5,
@@ -136,11 +132,13 @@
     surface.dataset.pixelBackingScale = "1";
     surface.dataset.pixelCellSize = String(cellSize);
     surface.dataset.pixelDisturbedTileSize = String(DISTURBED_TILE_SIZE);
+    surface.dataset.pixelInteractionMode = "localized-field";
     surface.dataset.pixelDisturbanceRadius = String(DISTURBANCE_RADIUS);
+    surface.dataset.pixelFieldRadius = String(DISTURBANCE_RADIUS);
+    surface.dataset.pixelFieldGlow = FIELD_GLOW_COLOR;
+    surface.dataset.pixelFieldEdge = "soft";
+    surface.dataset.pixelFieldState = "idle";
     surface.dataset.pixelMaxDisplacement = String(MAX_DISPLACEMENT);
-    surface.dataset.pixelTrailLifetime = String(TRAIL_LIFETIME);
-    surface.dataset.pixelTrailMaxPoints = String(MAX_TRAIL_POINTS);
-    surface.dataset.pixelTrailMinDistance = String(MIN_TRAIL_DISTANCE);
     surface.dataset.pixelTrailPoints = "0";
     surface.dataset.pixelTrailSpan = "0";
     surface.dataset.pixelIntroBudget = String(INTRO_DELAY_SPAN + INTRO_DELAY_JITTER + INTRO_CELL_DURATION + INTRO_LEAD_IN);
@@ -168,18 +166,15 @@
     };
   };
 
-  const regionForPoints = (points) => {
-    let region = null;
+  const regionForPoint = (point) => {
+    if (!point) return null;
     const padding = DISTURBANCE_RADIUS + MAX_DISPLACEMENT + cellSize;
-    points.forEach((point) => {
-      region = unionRegion(region, {
-        left: point.x - padding,
-        top: point.y - padding,
-        right: point.x + padding,
-        bottom: point.y + padding,
-      });
+    return clampRegion({
+      left: point.x - padding,
+      top: point.y - padding,
+      right: point.x + padding,
+      bottom: point.y + padding,
     });
-    return clampRegion(region);
   };
 
   const forEachCellInRegion = (region, callback) => {
@@ -213,44 +208,32 @@
     previousDirty = null;
   };
 
-  const commitPendingPoint = (now) => {
-    if (!pendingPoint) return;
-    const pending = pendingPoint;
-    pendingPoint = null;
-    const last = trail[trail.length - 1];
-    if (last && Math.hypot(pending.x - last.x, pending.y - last.y) < MIN_TRAIL_DISTANCE) {
-      last.x = pending.x;
-      last.y = pending.y;
-      last.time = now;
-      last.painted = false;
-      lastTrailPoint = last;
-      return;
-    }
-    const point = { x: pending.x, y: pending.y, time: now, painted: false };
-    trail.push(point);
-    while (trail.length > MAX_TRAIL_POINTS) trail.shift();
-    lastTrailPoint = point;
+  const drawFieldGlow = (point) => {
+    const gradient = context.createRadialGradient(
+      point.x,
+      point.y,
+      0,
+      point.x,
+      point.y,
+      DISTURBANCE_RADIUS * 1.08,
+    );
+    gradient.addColorStop(0, "rgba(38, 56, 67, 0.42)");
+    gradient.addColorStop(0.58, "rgba(31, 47, 58, 0.27)");
+    gradient.addColorStop(1, "rgba(12, 21, 27, 0)");
+    context.save();
+    context.fillStyle = gradient;
+    context.beginPath();
+    context.arc(point.x, point.y, DISTURBANCE_RADIUS * 1.08, 0, Math.PI * 2);
+    context.fill();
+    context.restore();
   };
 
   const drawDisturbance = (now) => {
-    commitPendingPoint(now);
-    trail = trail.filter((point) => !point.painted || now - point.time < TRAIL_LIFETIME);
-
-    const idlePoint = pointerAnchor ? {
+    const fieldPoint = pointerAnchor ? {
       x: pointerAnchor.x + Math.cos(now * 0.0017) * IDLE_ORBIT_X,
       y: pointerAnchor.y + Math.sin(now * 0.0013) * IDLE_ORBIT_Y,
-      idle: true,
     } : null;
-    const activePoints = idlePoint ? [...trail, idlePoint] : trail;
-    const currentDirty = regionForPoints(activePoints);
-    const trailSpan = trail.length > 1
-      ? Math.hypot(
-          Math.max(...trail.map((point) => point.x)) - Math.min(...trail.map((point) => point.x)),
-          Math.max(...trail.map((point) => point.y)) - Math.min(...trail.map((point) => point.y)),
-        )
-      : 0;
-    surface.dataset.pixelTrailPoints = String(trail.length);
-    surface.dataset.pixelTrailSpan = String(Math.round(trailSpan));
+    const currentDirty = regionForPoint(fieldPoint);
     const restoreRegion = clampRegion(unionRegion(previousDirty, currentDirty));
     if (restoreRegion) {
       context.clearRect(
@@ -262,71 +245,72 @@
       drawTextureRegion(restoreRegion);
     }
     previousDirty = currentDirty;
-    if (!activePoints.length || !currentDirty || !sourceCanvas || !sourceContext) {
+    surface.dataset.pixelTrailPoints = "0";
+    surface.dataset.pixelTrailSpan = "0";
+
+    if (!fieldPoint || !currentDirty || !sourceCanvas || !sourceContext) {
       surface.dataset.pixelDisturbedTiles = "0";
-      surface.dataset.pixelIdleMotion = pointerAnchor ? "active" : "idle";
-      return Boolean(pointerAnchor);
+      surface.dataset.pixelFieldState = "idle";
+      surface.dataset.pixelFieldCenter = "";
+      surface.dataset.pixelIdleMotion = "idle";
+      return false;
     }
 
+    drawFieldGlow(pointerAnchor || fieldPoint);
     let disturbedTiles = 0;
-    trail.forEach((point) => { point.touched = false; });
     context.save();
     forEachCellInRegion(currentDirty, (cell) => {
       const x = cell.x * cellSize;
       const y = cell.y * cellSize;
       const centerX = x + cellSize * 0.5;
       const centerY = y + cellSize * 0.5;
-      let influence = 0;
+      const offsetX = centerX - fieldPoint.x;
+      const offsetY = centerY - fieldPoint.y;
+      const distance = Math.hypot(offsetX, offsetY);
+      if (distance >= DISTURBANCE_RADIUS) return;
 
-      activePoints.forEach((point) => {
-        const life = point.idle
-          ? 0.72 + (Math.sin(now * 0.0021 + cell.seed * Math.PI * 2) + 1) * 0.09
-          : (point.painted ? Math.max(0, 1 - (now - point.time) / TRAIL_LIFETIME) : 1);
-        const radius = point.idle
-          ? DISTURBANCE_RADIUS * (0.9 + Math.sin(now * 0.0015) * 0.08)
-          : DISTURBANCE_RADIUS * (0.76 + life * 0.24);
-        const distance = Math.hypot(centerX - point.x, centerY - point.y);
-        if (distance >= radius) return;
-        const pointInfluence = (1 - distance / radius) * life;
-        if (!point.idle && pointInfluence > 0.035) point.touched = true;
-        influence = Math.max(influence, pointInfluence);
-      });
-      if (influence < 0.035) return;
+      const falloff = 1 - distance / DISTURBANCE_RADIUS;
+      const influence = falloff * falloff * (3 - 2 * falloff);
+      if (influence < 0.025) return;
       disturbedTiles += 1;
 
-      const displacement = influence * (18 + cell.seed * 66);
-      const temporalAngle = pointerAnchor ? Math.sin(now * 0.0012 + cell.seed * 5) * 0.22 : 0;
-      const dx = (cell.cos * Math.cos(temporalAngle) - cell.sin * Math.sin(temporalAngle)) * displacement;
-      const dy = (cell.sin * Math.cos(temporalAngle) + cell.cos * Math.sin(temporalAngle)) * displacement;
+      const inverseDistance = distance > 0.01 ? 1 / distance : 0;
+      const radialX = distance > 0.01 ? offsetX * inverseDistance : cell.cos;
+      const radialY = distance > 0.01 ? offsetY * inverseDistance : cell.sin;
+      const displacement = Math.min(MAX_DISPLACEMENT, influence * (32 + cell.seed * 80));
+      const tangent = Math.sin(now * 0.0018 + cell.seed * Math.PI * 2) * influence * 9;
+      const dx = radialX * displacement - radialY * tangent;
+      const dy = radialY * displacement + radialX * tangent;
       const tileInset = (cellSize - DISTURBED_TILE_SIZE) * 0.5;
-      context.globalAlpha = Math.min(0.7, influence * 0.68);
-      context.fillStyle = "#030405";
+      const destinationX = x + dx + tileInset;
+      const destinationY = y + dy + tileInset;
+
+      context.globalAlpha = Math.min(0.68, 0.18 + influence * 0.5);
+      context.fillStyle = "#020507";
       context.fillRect(x + tileInset, y + tileInset, DISTURBED_TILE_SIZE, DISTURBED_TILE_SIZE);
-      context.globalAlpha = Math.min(1, 0.34 + influence * 0.9);
+      context.globalAlpha = Math.min(1, 0.42 + influence * 0.74);
       context.drawImage(
         sourceCanvas,
         x,
         y,
         cellSize,
         cellSize,
-        x + dx + tileInset,
-        y + dy + tileInset,
+        destinationX,
+        destinationY,
         DISTURBED_TILE_SIZE,
         DISTURBED_TILE_SIZE,
       );
-    });
-
-    const paintedAt = performance.now();
-    trail.forEach((point) => {
-      if (!point.painted && point.touched) point.time = paintedAt;
-      if (point.touched) point.painted = true;
-      delete point.touched;
+      context.globalAlpha = 0.08 + influence * 0.16;
+      context.fillStyle = cell.particleSeed > 0.84 ? "#78909a" : "#405b67";
+      context.fillRect(destinationX, destinationY, DISTURBED_TILE_SIZE, DISTURBED_TILE_SIZE);
     });
     context.restore();
     context.globalAlpha = 1;
     surface.dataset.pixelDisturbedTiles = String(disturbedTiles);
-    surface.dataset.pixelIdleMotion = pointerAnchor ? "active" : "idle";
-    return disturbedTiles > 0 || trail.some((point) => !point.painted) || Boolean(pointerAnchor);
+    surface.dataset.pixelFieldState = "active";
+    surface.dataset.pixelFieldCenter = `${Math.round(pointerAnchor.x)},${Math.round(pointerAnchor.y)}`;
+    surface.dataset.pixelIdleMotion = "active";
+    return disturbedTiles > 0;
   };
 
   const renderInteractive = (now) => {
@@ -336,12 +320,11 @@
       return;
     }
     if (!complete || !visible || document.hidden || !pointerEligible.matches) {
-      trail = [];
-      pendingPoint = null;
       pointerAnchor = null;
       previousDirty = null;
       surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
       surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+      surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
       if (complete && !reducedMotion.matches) drawTexture();
       return;
     }
@@ -353,7 +336,7 @@
     lastIdleFrame = now;
     const active = drawDisturbance(now);
     surface.dataset.pixelPointer = active ? "active" : "idle";
-    if (active || pendingPoint) frame = window.requestAnimationFrame(renderInteractive);
+    if (active) frame = window.requestAnimationFrame(renderInteractive);
   };
 
   const renderIntro = (now) => {
@@ -403,6 +386,7 @@
     surface.dataset.pixelState = "complete";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIntroMode = mode;
     surface.dataset.pixelIntroElapsed = String(Math.max(0, Math.round(performance.now() - introStartedAt)));
     document.documentElement.classList.add("home-pixel-reveal-complete");
@@ -418,6 +402,7 @@
     surface.dataset.pixelState = "running";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
     if (!pointerEligible.matches || imageReadyAt >= INTRO_SLOW_START_CUTOFF) {
       finishIntro("instant");
       return;
@@ -427,27 +412,27 @@
     frame = window.requestAnimationFrame(renderIntro);
   };
 
-  const addTrailPoint = (clientX, clientY) => {
+  const setPointerField = (clientX, clientY) => {
     if (!complete || !visible || document.hidden || reducedMotion.matches || !pointerEligible.matches) return;
     const x = clientX + window.scrollX - surfaceDocumentLeft;
     const y = clientY + window.scrollY - surfaceDocumentTop;
     if (x < 0 || x > width || y < 0 || y > height) {
       pointerAnchor = null;
-      lastTrailPoint = null;
+      surface.dataset.pixelFieldState = "idle";
       surface.dataset.pixelIdleMotion = "idle";
       if (!frame && previousDirty) frame = window.requestAnimationFrame(renderInteractive);
       return;
     }
     pointerAnchor = { x, y };
-    pendingPoint = { x, y };
     surface.dataset.pixelPointer = "active";
+    surface.dataset.pixelFieldState = "active";
     surface.dataset.pixelIdleMotion = "active";
     if (!frame) frame = window.requestAnimationFrame(renderInteractive);
   };
 
   const clearPointer = () => {
     pointerAnchor = null;
-    lastTrailPoint = null;
+    surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
     if (complete && visible && !document.hidden && !reducedMotion.matches && !frame && previousDirty) {
       frame = window.requestAnimationFrame(renderInteractive);
@@ -459,8 +444,6 @@
     visible = Boolean(entry?.isIntersecting);
     if (!visible) {
       cancelFrame();
-      trail = [];
-      pendingPoint = null;
       previousDirty = null;
       clearPointer();
       surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
@@ -480,14 +463,13 @@
 
   const setStatic = () => {
     cancelFrame();
-    trail = [];
-    pendingPoint = null;
     previousDirty = null;
     clearPointer();
     document.documentElement.classList.add("home-pixel-reveal-static");
     surface.dataset.pixelState = "static";
     surface.dataset.pixelPointer = "disabled";
     surface.dataset.pixelIdleMotion = "disabled";
+    surface.dataset.pixelFieldState = "disabled";
   };
 
   const restoreMotion = () => {
@@ -498,6 +480,7 @@
     surface.dataset.pixelState = "complete";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
     drawTexture();
   };
 
@@ -507,31 +490,29 @@
   };
 
   const handlePointerEligibilityChange = () => {
-    trail = [];
-    pendingPoint = null;
     previousDirty = null;
     clearPointer();
     if (!pointerEligible.matches) {
       cancelFrame();
       surface.dataset.pixelPointer = "disabled";
       surface.dataset.pixelIdleMotion = "disabled";
+      surface.dataset.pixelFieldState = "disabled";
       if (!complete && started && !reducedMotion.matches) finishIntro("instant");
       else if (complete && !reducedMotion.matches) drawTexture();
     } else if (complete && !reducedMotion.matches) {
       surface.dataset.pixelPointer = "idle";
       surface.dataset.pixelIdleMotion = "idle";
+      surface.dataset.pixelFieldState = "idle";
     }
   };
 
-  window.addEventListener("pointermove", (event) => addTrailPoint(event.clientX, event.clientY), { passive: true });
+  window.addEventListener("pointermove", (event) => setPointerField(event.clientX, event.clientY), { passive: true });
   window.addEventListener("pointercancel", clearPointer, { passive: true });
   document.addEventListener("pointerleave", clearPointer, { passive: true });
   window.addEventListener("blur", clearPointer);
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       cancelFrame();
-      trail = [];
-      pendingPoint = null;
       previousDirty = null;
       clearPointer();
     } else if (complete && visible && !reducedMotion.matches) {
@@ -544,8 +525,7 @@
     resizeTimer = window.setTimeout(() => {
       if (!started || reducedMotion.matches) return;
       cancelFrame();
-      trail = [];
-      pendingPoint = null;
+      clearPointer();
       configure();
       if (complete) drawTexture();
       else if (!pointerEligible.matches) finishIntro("instant");
@@ -565,5 +545,6 @@
     surface.dataset.pixelState = "ready";
     surface.dataset.pixelPointer = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelIdleMotion = pointerEligible.matches ? "idle" : "disabled";
+    surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
   }
 })();
