@@ -25,6 +25,65 @@
     });
   });
 
+  const founderHangers = [...document.querySelectorAll('.founder-card-hanger')];
+  const founderMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const founderAnimations = new Set();
+
+  const settleFounderHangers = (state = 'settled') => {
+    founderAnimations.forEach((animation) => animation.cancel());
+    founderAnimations.clear();
+    founderHangers.forEach((hanger) => {
+      hanger.style.removeProperty('transform');
+      hanger.dataset.founderPhysics = state;
+    });
+  };
+
+  const runFounderPhysics = () => {
+    if (!founderHangers.length || founderMotionQuery.matches) {
+      settleFounderHangers('static');
+      return;
+    }
+
+    const duration = 1900;
+    const frames = 115;
+    founderHangers.forEach((hanger, index) => {
+      const direction = index % 2 === 0 ? 1 : -1;
+      const keyframes = Array.from({ length: frames }, (_, frameIndex) => {
+        const progress = frameIndex / (frames - 1);
+        const time = progress * duration / 1000;
+        const verticalDecay = Math.exp(-5 * time);
+        const vertical = -132 * verticalDecay * (Math.cos(6.28 * time) + 0.8 * Math.sin(6.28 * time));
+        const angle = direction * 7 * Math.exp(-1.85 * time) * Math.sin(7.4 * time);
+        const settled = frameIndex === frames - 1;
+        return {
+          offset: progress,
+          transform: `translateY(${settled ? 0 : vertical.toFixed(3)}px) rotate(${settled ? 0 : angle.toFixed(3)}deg)`
+        };
+      });
+
+      hanger.dataset.founderPhysics = 'active';
+      hanger.dataset.founderPhysicsModel = 'damped-pendulum';
+      hanger.dataset.founderPhysicsDuration = String(duration);
+      const animation = hanger.animate(keyframes, {
+        duration,
+        delay: index * 90,
+        easing: 'linear',
+        fill: 'both',
+        iterations: 1
+      });
+      founderAnimations.add(animation);
+      animation.addEventListener('finish', () => {
+        founderAnimations.delete(animation);
+        hanger.dataset.founderPhysics = 'settled';
+      }, { once: true });
+    });
+  };
+
+  runFounderPhysics();
+  founderMotionQuery.addEventListener('change', () => {
+    if (founderMotionQuery.matches) settleFounderHangers('static');
+  });
+
   const form = document.querySelector('[data-about-contact-form]');
   if (!(form instanceof HTMLFormElement)) return;
 
