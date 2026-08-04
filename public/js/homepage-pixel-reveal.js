@@ -200,7 +200,7 @@
     surface.dataset.pixelParticleFlow = "coherent-noise";
     surface.dataset.pixelFieldCenterMode = "fixed-pointer";
     surface.dataset.pixelCenterOrbit = "0";
-    surface.dataset.pixelFieldState = "idle";
+    surface.dataset.pixelFieldState = pointerEligible.matches ? "idle" : "disabled";
     surface.dataset.pixelMaxDisplacement = String(PARTICLE_DISPERSE);
     surface.dataset.pixelTrailPoints = "0";
     surface.dataset.pixelTrailSpan = "0";
