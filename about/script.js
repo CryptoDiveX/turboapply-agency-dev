@@ -45,18 +45,20 @@
     }
 
     const fixedStep = 1 / 60;
-    const duration = 2600;
+    const duration = 3000;
     const frames = Math.round(duration / (fixedStep * 1000)) + 1;
-    const dropSpring = 185;
-    const dropDamping = 21;
-    const pendulumGravity = 26;
-    const angularDamping = 2.8;
+    const dropSpring = 35;
+    const dropDamping = 8;
+    const pendulumGravity = 18;
+    const angularDamping = 2.6;
+    const swingDelay = 0.6;
     founderHangers.forEach((hanger, index) => {
       const direction = index % 2 === 0 ? 1 : -1;
       let vertical = -132;
       let verticalVelocity = 0;
       let angle = 0;
-      let angularVelocity = direction * (0.65 + index * 0.12);
+      let angularVelocity = 0;
+      let swingReleased = false;
       const keyframes = [];
 
       for (let frameIndex = 0; frameIndex < frames; frameIndex += 1) {
@@ -68,19 +70,22 @@
           transform: `translateY(${settled ? 0 : vertical.toFixed(3)}px) rotate(${settled ? 0 : (angle * 180 / Math.PI).toFixed(3)}deg)`
         });
 
-        const wind = 0.18 * Math.sin(time * 0.55 + 0.4) + 0.08 * Math.sin(time * 1.05 + 1.2);
         verticalVelocity += (-dropSpring * vertical - dropDamping * verticalVelocity) * fixedStep;
         vertical += verticalVelocity * fixedStep;
-        angularVelocity += (-pendulumGravity * Math.sin(angle) - angularDamping * angularVelocity + wind) * fixedStep;
+        if (!swingReleased && time >= swingDelay) {
+          angularVelocity = direction * (0.65 + index * 0.07);
+          swingReleased = true;
+        }
+        angularVelocity += (-pendulumGravity * Math.sin(angle) - angularDamping * angularVelocity) * fixedStep;
         angle += angularVelocity * fixedStep;
       }
 
       hanger.dataset.founderPhysics = 'active';
-      hanger.dataset.founderPhysicsModel = 'veyro-fixed-step';
+      hanger.dataset.founderPhysicsModel = 'veyro-delayed-swing';
       hanger.dataset.founderPhysicsDuration = String(duration);
       hanger.dataset.founderPhysicsStep = String(Number((fixedStep * 1000).toFixed(3)));
-      hanger.dataset.founderPhysicsDropSettle = '400';
-      hanger.dataset.founderPhysicsSwingStart = String(Math.round(fixedStep * 1000));
+      hanger.dataset.founderPhysicsDropSettle = '700';
+      hanger.dataset.founderPhysicsSwingStart = String(Math.round(swingDelay * 1000));
       hanger.dataset.founderPhysicsReferenceGravity = '-40';
       const animation = hanger.animate(keyframes, {
         duration,
