@@ -472,7 +472,7 @@
 
 .review-card {
   flex: 0 0 clamp(370px, 42vw, 440px);
-  height: 330px;
+  height: 390px;
   min-height: 0;
   padding: clamp(20px, 1.6vw, 22px);
   display: flex;
@@ -839,6 +839,7 @@
 @media (max-width: 760px) {
   .review-card {
     flex-basis: min(350px, calc(100% - 40px));
+    height: 420px;
   }
 
   .founder-hero-inner,
@@ -967,7 +968,7 @@
 
   .review-card {
     flex-basis: min(350px, calc(100% - 40px));
-    height: 390px;
+    height: 420px;
     min-height: 0;
     padding: 20px;
   }
