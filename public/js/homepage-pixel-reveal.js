@@ -37,6 +37,7 @@
   let sourceContext = null;
   let previousDirty = null;
   let pointerAnchor = null;
+  let pointerFlowAngle = Math.PI * 0.125;
   let lastIdleFrame = 0;
   let introStartedAt = 0;
 
@@ -47,8 +48,9 @@
   const INTRO_SLOW_START_CUTOFF = 1000;
   const DISTURBANCE_RADIUS = 224;
   const MAX_DISPLACEMENT = 112;
-  const IDLE_ORBIT_X = 6;
-  const IDLE_ORBIT_Y = 4;
+  const EXTRACTION_VOID_RADIUS = 72;
+  const GEOMETRIC_PATH_DIRECTIONS = 7;
+  const GEOMETRIC_PATH_SEGMENTS = 3;
   const IDLE_FRAME_INTERVAL = 32;
   const DISTURBED_TILE_SIZE = 2;
   const FIELD_GLOW_COLOR = "#5c7c8a";
@@ -132,11 +134,17 @@
     surface.dataset.pixelBackingScale = "1";
     surface.dataset.pixelCellSize = String(cellSize);
     surface.dataset.pixelDisturbedTileSize = String(DISTURBED_TILE_SIZE);
-    surface.dataset.pixelInteractionMode = "localized-field";
+    surface.dataset.pixelInteractionMode = "geometric-extraction";
     surface.dataset.pixelDisturbanceRadius = String(DISTURBANCE_RADIUS);
     surface.dataset.pixelFieldRadius = String(DISTURBANCE_RADIUS);
     surface.dataset.pixelFieldGlow = FIELD_GLOW_COLOR;
-    surface.dataset.pixelFieldEdge = "soft";
+    surface.dataset.pixelFieldEdge = "depleted-circle";
+    surface.dataset.pixelVoidRadius = String(EXTRACTION_VOID_RADIUS);
+    surface.dataset.pixelFieldPath = "polygonal";
+    surface.dataset.pixelPathDirections = String(GEOMETRIC_PATH_DIRECTIONS);
+    surface.dataset.pixelPathSegments = String(GEOMETRIC_PATH_SEGMENTS);
+    surface.dataset.pixelFieldCenterMode = "fixed-pointer";
+    surface.dataset.pixelCenterOrbit = "0";
     surface.dataset.pixelFieldState = "idle";
     surface.dataset.pixelMaxDisplacement = String(MAX_DISPLACEMENT);
     surface.dataset.pixelTrailPoints = "0";
@@ -208,31 +216,29 @@
     previousDirty = null;
   };
 
-  const drawFieldGlow = (point) => {
+  const drawExtractionVoid = (point) => {
     const gradient = context.createRadialGradient(
       point.x,
       point.y,
       0,
       point.x,
       point.y,
-      DISTURBANCE_RADIUS * 1.08,
+      EXTRACTION_VOID_RADIUS * 1.12,
     );
-    gradient.addColorStop(0, "rgba(92, 124, 138, 0.56)");
-    gradient.addColorStop(0.58, "rgba(68, 96, 110, 0.36)");
-    gradient.addColorStop(1, "rgba(28, 44, 52, 0)");
+    gradient.addColorStop(0, "rgba(2, 4, 6, 0.99)");
+    gradient.addColorStop(0.76, "rgba(2, 4, 6, 0.98)");
+    gradient.addColorStop(0.92, "rgba(2, 4, 6, 0.82)");
+    gradient.addColorStop(1, "rgba(2, 4, 6, 0)");
     context.save();
     context.fillStyle = gradient;
     context.beginPath();
-    context.arc(point.x, point.y, DISTURBANCE_RADIUS * 1.08, 0, Math.PI * 2);
+    context.arc(point.x, point.y, EXTRACTION_VOID_RADIUS * 1.12, 0, Math.PI * 2);
     context.fill();
     context.restore();
   };
 
   const drawDisturbance = (now) => {
-    const fieldPoint = pointerAnchor ? {
-      x: pointerAnchor.x + Math.cos(now * 0.0017) * IDLE_ORBIT_X,
-      y: pointerAnchor.y + Math.sin(now * 0.0013) * IDLE_ORBIT_Y,
-    } : null;
+    const fieldPoint = pointerAnchor ? { ...pointerAnchor } : null;
     const currentDirty = regionForPoint(fieldPoint);
     const restoreRegion = clampRegion(unionRegion(previousDirty, currentDirty));
     if (restoreRegion) {
@@ -256,7 +262,22 @@
       return false;
     }
 
-    drawFieldGlow(pointerAnchor || fieldPoint);
+    drawExtractionVoid(fieldPoint);
+    const segmentLength = MAX_DISPLACEMENT / GEOMETRIC_PATH_SEGMENTS;
+    const pathVectors = Array.from({ length: GEOMETRIC_PATH_DIRECTIONS }, (_, index) => {
+      const firstAngle = pointerFlowAngle + (index - (GEOMETRIC_PATH_DIRECTIONS - 1) * 0.5) * (Math.PI / 12);
+      const turn = (index % 2 === 0 ? -1 : 1) * (Math.PI / 6);
+      const secondAngle = firstAngle + turn;
+      const thirdAngle = firstAngle;
+      return {
+        firstX: Math.cos(firstAngle),
+        firstY: Math.sin(firstAngle),
+        secondX: Math.cos(secondAngle),
+        secondY: Math.sin(secondAngle),
+        thirdX: Math.cos(thirdAngle),
+        thirdY: Math.sin(thirdAngle),
+      };
+    });
     let disturbedTiles = 0;
     context.save();
     forEachCellInRegion(currentDirty, (cell) => {
@@ -267,28 +288,38 @@
       const offsetX = centerX - fieldPoint.x;
       const offsetY = centerY - fieldPoint.y;
       const distance = Math.hypot(offsetX, offsetY);
-      if (distance >= DISTURBANCE_RADIUS) return;
+      if (distance >= EXTRACTION_VOID_RADIUS) return;
 
-      const falloff = 1 - distance / DISTURBANCE_RADIUS;
-      const influence = falloff * falloff * (3 - 2 * falloff);
-      if (influence < 0.025) return;
       disturbedTiles += 1;
+      const pathIndex = Math.min(
+        GEOMETRIC_PATH_DIRECTIONS - 1,
+        Math.floor(cell.particleSeed * GEOMETRIC_PATH_DIRECTIONS),
+      );
+      const path = pathVectors[pathIndex];
+      const phase = (now * 0.00034 + cell.seed) % 1;
+      const travel = Math.sqrt(phase) * MAX_DISPLACEMENT;
+      const firstTravel = Math.min(segmentLength, travel);
+      const secondTravel = Math.min(segmentLength, Math.max(0, travel - segmentLength));
+      const thirdTravel = Math.max(0, travel - segmentLength * 2);
+      const normalX = -path.firstY;
+      const normalY = path.firstX;
+      const laneOffset = Math.max(
+        -22,
+        Math.min(22, (offsetX * normalX + offsetY * normalY) * 0.32),
+      );
+      const originX = fieldPoint.x + path.firstX * (EXTRACTION_VOID_RADIUS + 4) + normalX * laneOffset;
+      const originY = fieldPoint.y + path.firstY * (EXTRACTION_VOID_RADIUS + 4) + normalY * laneOffset;
+      const destinationX = originX
+        + path.firstX * firstTravel
+        + path.secondX * secondTravel
+        + path.thirdX * thirdTravel;
+      const destinationY = originY
+        + path.firstY * firstTravel
+        + path.secondY * secondTravel
+        + path.thirdY * thirdTravel;
+      const pulse = Math.sin(phase * Math.PI);
 
-      const inverseDistance = distance > 0.01 ? 1 / distance : 0;
-      const radialX = distance > 0.01 ? offsetX * inverseDistance : cell.cos;
-      const radialY = distance > 0.01 ? offsetY * inverseDistance : cell.sin;
-      const displacement = Math.min(MAX_DISPLACEMENT, influence * (32 + cell.seed * 80));
-      const tangent = Math.sin(now * 0.0018 + cell.seed * Math.PI * 2) * influence * 9;
-      const dx = radialX * displacement - radialY * tangent;
-      const dy = radialY * displacement + radialX * tangent;
-      const tileInset = (cellSize - DISTURBED_TILE_SIZE) * 0.5;
-      const destinationX = x + dx + tileInset;
-      const destinationY = y + dy + tileInset;
-
-      context.globalAlpha = Math.min(0.68, 0.18 + influence * 0.5);
-      context.fillStyle = "#020507";
-      context.fillRect(x + tileInset, y + tileInset, DISTURBED_TILE_SIZE, DISTURBED_TILE_SIZE);
-      context.globalAlpha = Math.min(1, 0.42 + influence * 0.74);
+      context.globalAlpha = 0.24 + pulse * 0.76;
       context.drawImage(
         sourceCanvas,
         x,
@@ -300,15 +331,17 @@
         DISTURBED_TILE_SIZE,
         DISTURBED_TILE_SIZE,
       );
-      context.globalAlpha = 0.13 + influence * 0.24;
-      context.fillStyle = cell.particleSeed > 0.84 ? "#9bb5bf" : "#658a99";
+      context.globalAlpha = 0.14 + pulse * 0.48;
+      context.fillStyle = cell.particleSeed > 0.84 ? "#e0f2f7" : "#a4cbd8";
       context.fillRect(destinationX, destinationY, DISTURBED_TILE_SIZE, DISTURBED_TILE_SIZE);
     });
     context.restore();
     context.globalAlpha = 1;
     surface.dataset.pixelDisturbedTiles = String(disturbedTiles);
+    surface.dataset.pixelExtractedTiles = String(disturbedTiles);
     surface.dataset.pixelFieldState = "active";
     surface.dataset.pixelFieldCenter = `${Math.round(pointerAnchor.x)},${Math.round(pointerAnchor.y)}`;
+    surface.dataset.pixelFieldFlowAngle = String(Math.round(pointerFlowAngle * 180 / Math.PI));
     surface.dataset.pixelIdleMotion = "active";
     return disturbedTiles > 0;
   };
@@ -422,6 +455,14 @@
       surface.dataset.pixelIdleMotion = "idle";
       if (!frame && previousDirty) frame = window.requestAnimationFrame(renderInteractive);
       return;
+    }
+    if (pointerAnchor) {
+      const deltaX = x - pointerAnchor.x;
+      const deltaY = y - pointerAnchor.y;
+      if (Math.hypot(deltaX, deltaY) >= 3) {
+        const snap = Math.PI / 4;
+        pointerFlowAngle = Math.round(Math.atan2(deltaY, deltaX) / snap) * snap;
+      }
     }
     pointerAnchor = { x, y };
     surface.dataset.pixelPointer = "active";
