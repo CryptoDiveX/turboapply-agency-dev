@@ -51,7 +51,7 @@
   const IDLE_ORBIT_Y = 4;
   const IDLE_FRAME_INTERVAL = 32;
   const DISTURBED_TILE_SIZE = 2;
-  const FIELD_GLOW_COLOR = "#263843";
+  const FIELD_GLOW_COLOR = "#5c7c8a";
 
   const hash = (x, y) => {
     const value = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
@@ -217,9 +217,9 @@
       point.y,
       DISTURBANCE_RADIUS * 1.08,
     );
-    gradient.addColorStop(0, "rgba(38, 56, 67, 0.42)");
-    gradient.addColorStop(0.58, "rgba(31, 47, 58, 0.27)");
-    gradient.addColorStop(1, "rgba(12, 21, 27, 0)");
+    gradient.addColorStop(0, "rgba(92, 124, 138, 0.56)");
+    gradient.addColorStop(0.58, "rgba(68, 96, 110, 0.36)");
+    gradient.addColorStop(1, "rgba(28, 44, 52, 0)");
     context.save();
     context.fillStyle = gradient;
     context.beginPath();
@@ -300,8 +300,8 @@
         DISTURBED_TILE_SIZE,
         DISTURBED_TILE_SIZE,
       );
-      context.globalAlpha = 0.08 + influence * 0.16;
-      context.fillStyle = cell.particleSeed > 0.84 ? "#78909a" : "#405b67";
+      context.globalAlpha = 0.13 + influence * 0.24;
+      context.fillStyle = cell.particleSeed > 0.84 ? "#9bb5bf" : "#658a99";
       context.fillRect(destinationX, destinationY, DISTURBED_TILE_SIZE, DISTURBED_TILE_SIZE);
     });
     context.restore();
