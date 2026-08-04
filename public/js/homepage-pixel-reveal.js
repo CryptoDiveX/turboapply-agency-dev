@@ -52,15 +52,23 @@
   const FIELD_DECAY = 0.955;
   const PARTICLE_DISPERSE = 370;
   const PARTICLE_LIFT = 15;
-  const PARTICLE_POINT_SIZE = 5.5;
+  const PARTICLE_POINT_SIZE = 4.5;
   const FIELD_SEGMENT_LIMIT = 24;
   const FIELD_SEGMENT_LIFETIME = 1600;
   const IDLE_FRAME_INTERVAL = 32;
   const DEPLETION_TILE_SIZE = 2;
-  const PARTICLE_PALETTE = [
-    "#111820", "#19242e", "#23323d", "#2e414d",
-    "#3d5360", "#526a76", "#718994", "#9babb1",
-  ];
+  const COLOR_FREE_CORE_RATIO = 0.72;
+  const COLOR_FREE_CORE_FEATHER = 0.18;
+  const PARTICLE_COLOR_STEPS = 6;
+  const PARTICLE_COLOR_LEVELS = Array.from(
+    { length: PARTICLE_COLOR_STEPS },
+    (_, index) => Math.round((index / (PARTICLE_COLOR_STEPS - 1)) * 255),
+  );
+  const PARTICLE_PALETTE = PARTICLE_COLOR_LEVELS.flatMap((red) => (
+    PARTICLE_COLOR_LEVELS.flatMap((green) => (
+      PARTICLE_COLOR_LEVELS.map((blue) => `rgb(${red}, ${green}, ${blue})`)
+    ))
+  ));
   const PARTICLE_ALPHA_LEVELS = [0.3, 0.5, 0.72, 0.92];
 
   const hash = (x, y) => {
@@ -102,7 +110,7 @@
     const scale = Math.max(width / naturalWidth, height / naturalHeight);
     const drawWidth = naturalWidth * scale;
     const drawHeight = naturalHeight * scale;
-    sourceContext.filter = "grayscale(0.6) saturate(0.55) brightness(0.94) contrast(1.14)";
+    sourceContext.filter = "saturate(1.2) brightness(1.12) contrast(1.04)";
     sourceContext.drawImage(
       image,
       (width - drawWidth) * 0.5,
@@ -116,8 +124,18 @@
       const sampleX = Math.min(width - 1, cell.x * cellSize + Math.floor(cellSize * 0.5));
       const sampleY = Math.min(height - 1, cell.y * cellSize + Math.floor(cellSize * 0.5));
       const offset = (sampleY * width + sampleX) * 4;
-      const luminance = pixels[offset] * 0.22 + pixels[offset + 1] * 0.68 + pixels[offset + 2] * 0.1;
-      cell.particleColorIndex = Math.min(PARTICLE_PALETTE.length - 1, Math.floor(luminance / 32));
+      const red = Math.min(255, pixels[offset] + 24);
+      const green = Math.min(255, pixels[offset + 1] + 24);
+      const blue = Math.min(255, pixels[offset + 2] + 24);
+      const quantize = (value) => Math.min(
+        PARTICLE_COLOR_STEPS - 1,
+        Math.round((value / 255) * (PARTICLE_COLOR_STEPS - 1)),
+      );
+      cell.particleColorIndex = (
+        quantize(red) * PARTICLE_COLOR_STEPS * PARTICLE_COLOR_STEPS
+        + quantize(green) * PARTICLE_COLOR_STEPS
+        + quantize(blue)
+      );
     });
   };
 
@@ -173,8 +191,11 @@
     surface.dataset.pixelParticleDisperse = String(PARTICLE_DISPERSE);
     surface.dataset.pixelParticleLift = String(PARTICLE_LIFT);
     surface.dataset.pixelParticlePointSize = String(PARTICLE_POINT_SIZE);
-    surface.dataset.pixelFieldEdge = "grain-eroded";
-    surface.dataset.pixelVoidPaint = "none";
+    surface.dataset.pixelParticleColorMode = "source-rgb-lifted";
+    surface.dataset.pixelParticleColorLift = "24";
+    surface.dataset.pixelColorFreeCoreRatio = String(COLOR_FREE_CORE_RATIO);
+    surface.dataset.pixelFieldEdge = "organic-color-free";
+    surface.dataset.pixelVoidPaint = "organic-color-free-core";
     surface.dataset.pixelFieldPath = "decaying-pointer-segment";
     surface.dataset.pixelParticleFlow = "coherent-noise";
     surface.dataset.pixelFieldCenterMode = "fixed-pointer";
@@ -262,6 +283,7 @@
         from: pointerPrevious || pointerAnchor,
         to: pointerAnchor,
         strength: 1,
+        isAnchor: true,
       });
     }
 
@@ -304,32 +326,51 @@
         const level = Math.min(1, FIELD_STRENGTH * segment.strength * smoothstep(radius, 0, distance));
         const key = cell.y * columns + cell.x;
         const previous = affected.get(key);
-        if (!previous || level > previous.level) affected.set(key, { cell, level });
+        if (!previous) {
+          affected.set(key, {
+            cell,
+            level,
+            coreDistanceRatio: segment.isAnchor ? distance / radius : Number.POSITIVE_INFINITY,
+          });
+          return;
+        }
+        previous.level = Math.max(previous.level, level);
+        if (segment.isAnchor) {
+          previous.coreDistanceRatio = Math.min(previous.coreDistanceRatio, distance / radius);
+        }
       });
     });
 
     const elapsed = now * 0.001;
-    const particleBuckets = Array.from(
-      { length: PARTICLE_PALETTE.length * PARTICLE_ALPHA_LEVELS.length },
-      () => [],
-    );
+    const particleBuckets = new Map();
     context.save();
     context.fillStyle = "#080b0e";
-    affected.forEach(({ cell, level }) => {
+    affected.forEach(({ cell, level, coreDistanceRatio }) => {
       const x = cell.x * cellSize;
       const y = cell.y * cellSize;
       const centerX = x + cellSize * 0.5;
       const centerY = y + cellSize * 0.5;
       const grain = hash(Math.floor(centerX / 3), Math.floor(centerY / 3));
       const eroded = smoothstep(0.02, 0.4, level * (0.72 + 0.62 * grain));
+      const coreBoundary = COLOR_FREE_CORE_RATIO
+        + (grain - 0.5) * COLOR_FREE_CORE_FEATHER;
+      const coreFill = Number.isFinite(coreDistanceRatio)
+        ? smoothstep(coreBoundary + 0.07, coreBoundary - 0.07, coreDistanceRatio)
+        : 0;
 
-      context.globalAlpha = eroded * 0.96;
-      context.fillRect(
-        centerX - DEPLETION_TILE_SIZE * 0.5,
-        centerY - DEPLETION_TILE_SIZE * 0.5,
-        DEPLETION_TILE_SIZE,
-        DEPLETION_TILE_SIZE,
-      );
+      if (coreFill > 0.002) {
+        context.globalAlpha = Math.min(1, coreFill * 1.08);
+        context.fillRect(x, y, cellSize, cellSize);
+      }
+      if (coreFill < 0.998) {
+        context.globalAlpha = (1 - coreFill) * eroded * 0.96;
+        context.fillRect(
+          centerX - DEPLETION_TILE_SIZE * 0.5,
+          centerY - DEPLETION_TILE_SIZE * 0.5,
+          DEPLETION_TILE_SIZE,
+          DEPLETION_TILE_SIZE,
+        );
+      }
 
       const amplitude = level * level * (0.55 + 0.9 * cell.particleSeed);
       const waveX = Math.sin(centerX * 0.0107 + Math.cos(centerY * 0.0069 + elapsed * 0.19) * 1.7 + cell.seed * 5.2);
@@ -339,24 +380,33 @@
         + amplitude * PARTICLE_LIFT * (0.35 + cell.particleSeed);
       const particleAlpha = smoothstep(0, 0.07, level) * (1 - smoothstep(0.5, 1, amplitude));
       if (particleAlpha <= 0.005) return;
+      if (pointerAnchor) {
+        const destinationDistance = Math.hypot(
+          destinationX - pointerAnchor.x,
+          destinationY - pointerAnchor.y,
+        );
+        const destinationCoreRadius = radius * (
+          COLOR_FREE_CORE_RATIO
+          + (cell.particleSeed - 0.5) * COLOR_FREE_CORE_FEATHER
+        );
+        if (destinationDistance < destinationCoreRadius) return;
+      }
 
       const particleSize = PARTICLE_POINT_SIZE * (1 + amplitude * 0.55);
       const alphaIndex = Math.min(
         PARTICLE_ALPHA_LEVELS.length - 1,
         Math.floor(particleAlpha * PARTICLE_ALPHA_LEVELS.length),
       );
-      const colorIndex = Math.min(
-        PARTICLE_PALETTE.length - 1,
-        cell.particleColorIndex + Math.floor(amplitude * 1.8),
-      );
-      particleBuckets[colorIndex * PARTICLE_ALPHA_LEVELS.length + alphaIndex].push(
+      const colorIndex = cell.particleColorIndex;
+      const bucketIndex = colorIndex * PARTICLE_ALPHA_LEVELS.length + alphaIndex;
+      if (!particleBuckets.has(bucketIndex)) particleBuckets.set(bucketIndex, []);
+      particleBuckets.get(bucketIndex).push(
         destinationX,
         destinationY,
         particleSize,
       );
     });
     particleBuckets.forEach((bucket, bucketIndex) => {
-      if (!bucket.length) return;
       const colorIndex = Math.floor(bucketIndex / PARTICLE_ALPHA_LEVELS.length);
       const alphaIndex = bucketIndex % PARTICLE_ALPHA_LEVELS.length;
       context.globalAlpha = PARTICLE_ALPHA_LEVELS[alphaIndex];
