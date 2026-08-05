@@ -25,7 +25,7 @@ Key pages:
 - /resources/seo-friendly-service-page/ — guide to planning an SEO-friendly service page.
 - /resources/technical-seo-audit-checklist/ — technical SEO audit checklist for small-business websites.
 - /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
-- /resources/interactive-website-effects/ — interactive guide to using website motion purposefully, with the live TurboApply Version 3 demo.
+- /resources/interactive-website-effects/ — guide to interactive website animations, their pros and cons, and when they are worth implementing, with the live TurboApply Version 3 demo.
 - /resources/turboapply-vs-no-code-website-builders/ — comparison of no-code website platforms and a custom TurboApply build.
 - /results/ — source-backed World Top Martial Arts, Peniby’s Wellness, and Ozero Grez work records.
 - /free-guide/ — free lead quality guide funnel.

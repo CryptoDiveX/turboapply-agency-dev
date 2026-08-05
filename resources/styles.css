@@ -424,7 +424,8 @@
 
 .interactive-effects-v3 {
   position: relative;
-  background: #080b0e;
+  aspect-ratio: 16 / 9;
+  background: #e6efff;
   isolation: isolate;
 }
 
@@ -438,8 +439,8 @@
 .interactive-effects-v3 > img {
   z-index: 0;
   object-position: center;
-  opacity: 0.74;
-  filter: saturate(0.9) brightness(0.84) contrast(1.04);
+  opacity: 1;
+  filter: saturate(0.96) brightness(0.98) contrast(0.98);
 }
 
 .interactive-effects-v3 > canvas {
@@ -454,8 +455,8 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(2, 3, 4, 0.76) 0%, rgba(2, 3, 4, 0.34) 38%, rgba(2, 3, 4, 0.08) 72%, rgba(2, 3, 4, 0.24) 100%),
-    linear-gradient(180deg, rgba(2, 3, 4, 0.12), transparent 54%, rgba(2, 3, 4, 0.5));
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 46%),
+    linear-gradient(180deg, transparent 64%, rgba(211, 221, 245, 0.18));
 }
 
 .interactive-effects-v3-label {
@@ -467,21 +468,26 @@
   align-items: center;
   gap: 12px;
   margin: 0;
-  color: #fff;
+  color: #16171a;
   font: 500 13px/1.2 Inter, sans-serif;
 }
 
 .interactive-effects-v3-label strong {
   padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(22, 23, 26, 0.3);
   border-radius: 999px;
-  background: rgba(2, 3, 4, 0.62);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 8px 24px rgba(84, 104, 145, 0.12);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .interactive-effects-v3-label span {
-  color: rgba(255, 255, 255, 0.82);
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: rgba(22, 23, 26, 0.78);
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 8px 24px rgba(84, 104, 145, 0.1);
 }
 
 .home-pixel-reveal-static .interactive-effects-v3 > canvas {
