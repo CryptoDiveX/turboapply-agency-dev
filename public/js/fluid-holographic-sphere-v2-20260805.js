@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = 'fluid-holographic-sphere-v2-20260805-3';
+  const VERSION = 'fluid-holographic-sphere-v2-20260806-4';
   const LOOP_MS = 10000;
   const PULSE_MS = 900;
   const LATITUDES = 64;
@@ -121,6 +121,22 @@
       float blue = texture2D(u_material, clamp(environmentUv - dispersion, 0.002, 0.998)).b;
       vec3 environment = vec3(red, green, blue);
       environment = mix(vec3(0.96, 0.98, 1.0), environment, 0.72);
+      vec3 referencePalette = mix(
+        vec3(0.78, 0.47, 0.91),
+        vec3(0.66, 0.53, 0.97),
+        smoothstep(0.14, 0.48, v_uv.y)
+      );
+      referencePalette = mix(
+        referencePalette,
+        vec3(0.41, 0.85, 0.97),
+        smoothstep(0.42, 0.82, v_uv.y)
+      );
+      referencePalette = mix(
+        referencePalette,
+        vec3(0.32, 0.92, 0.74),
+        smoothstep(0.78, 1.0, v_uv.y) * 0.44
+      );
+      environment = mix(environment, referencePalette, 0.58);
 
       vec3 iridescence = 0.62 + 0.38 * cos(
         TAU * (fresnel * 1.4 + dot(normal, vec3(0.21, 0.43, 0.36)) * 0.36)

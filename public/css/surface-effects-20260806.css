@@ -1,0 +1,61 @@
+/* TurboApply shared surface effects: masked Website-style title rise and scoped black-cover pointer. */
+.surface-title-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.surface-title-line {
+  display: block;
+}
+
+@keyframes surface-title-line-rise {
+  from { transform: translateY(112%); }
+  to { transform: translateY(0); }
+}
+
+.surface-effects-motion-ready [data-surface-title-line] {
+  animation: surface-title-line-rise 1100ms cubic-bezier(.65, .05, 0, 1) var(--surface-title-line-delay, 120ms) both;
+  transform: translateY(112%);
+  will-change: transform;
+}
+
+.white-cover-pointer {
+  position: fixed;
+  z-index: 2147483000;
+  top: 0;
+  left: 0;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: #f7f1df;
+  mix-blend-mode: difference;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 120ms ease;
+  will-change: transform, opacity;
+}
+
+.white-cover-pointer.is-visible {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  .white-cover-pointer-ready [data-white-cover-pointer] {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-effects-motion-ready [data-surface-title-line] {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .white-cover-pointer {
+    display: none;
+  }
+}

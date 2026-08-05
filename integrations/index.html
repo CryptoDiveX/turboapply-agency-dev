@@ -30,6 +30,12 @@
     <link rel="stylesheet" href="styles-20260802-24.css?v=sitewide-footer-pill-20260802-24" />
     <link rel="stylesheet" href="/integrations/hero-density-20260801.css?v=integrations-hero-density-20260801-1" />
     <link rel="stylesheet" href="/integrations/layout-20260803-1.css?v=integrations-grid-type-20260803-1" />
+    <link rel="stylesheet" href="/public/css/surface-effects-20260806.css?v=surface-effects-20260806-1" />
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("surface-effects-motion-ready");
+      }
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -76,7 +82,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow">TurboApply integrations</p>
-          <h1 id="hero-title">Your tools should work together.</h1>
+          <h1 id="hero-title" data-surface-title aria-label="Your tools should work together."><span class="surface-title-mask"><span class="surface-title-line" data-surface-title-line style="--surface-title-line-delay: 120ms;">Your tools should work together.</span></span></h1>
           <p class="hero-lede">We connect lead capture, CRM, booking, payments, communication, reporting, and AI workflows into one reliable system built around how your business already operates.</p>
           <div class="hero-actions">
             <a class="button button-dark" href="/book-audit/">Plan your integrations</a>

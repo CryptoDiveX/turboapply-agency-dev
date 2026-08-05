@@ -30,6 +30,12 @@
   <link rel="stylesheet" href="/integrations/styles-20260802-24.css?v=sitewide-footer-pill-20260802-24" />
   <link rel="stylesheet" href="/about/styles.css?v=about-fixed-strap-card-drop-20260805-33" />
   <link rel="stylesheet" href="/public/css/turboapply-main-form.css?v=main-form-20260725-2" />
+  <link rel="stylesheet" href="/public/css/surface-effects-20260806.css?v=surface-effects-20260806-1" />
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("surface-effects-motion-ready");
+    }
+  </script>
   <script src="/google-tag.js?v=ga-20260714-1" defer></script>
   <script type="application/ld+json">
   {
@@ -102,11 +108,11 @@
   </header>
 
   <main id="main-content">
-    <section class="founder-hero" aria-labelledby="about-title">
+    <section class="founder-hero" aria-labelledby="about-title" data-white-cover-pointer>
       <div class="founder-hero-inner">
         <header class="founder-hero-heading">
           <p class="eyebrow">About TurboApply</p>
-          <h1 id="about-title">Meet the founders.</h1>
+          <h1 id="about-title" data-surface-title aria-label="Meet the founders."><span class="surface-title-mask"><span class="surface-title-line" data-surface-title-line style="--surface-title-line-delay: 120ms;">Meet the founders.</span></span></h1>
           <p>Two complementary perspectives, brought together around one goal: help businesses build clearer, more useful systems for growth.</p>
         </header>
 
@@ -267,5 +273,6 @@
   <script src="/public/js/turboapply-form-security.js?v=honeypot-silent-discard-20260725-2"></script>
   <script src="/integrations/script.js?v=integrations-menu-focus-20260714-7" defer></script>
   <script src="/about/script.js?v=about-fixed-strap-card-drop-then-swing-20260805-7" defer></script>
+  <script src="/public/js/surface-effects-20260806.js?v=surface-effects-20260806-1" defer></script>
 </body>
 </html>

@@ -57,6 +57,7 @@
   const FIELD_SEGMENT_LIFETIME = 1600;
   const IDLE_FRAME_INTERVAL = 32;
   const DEPLETION_TILE_SIZE = 2;
+  const POINTER_GRID_COLOR = "#f7f1df";
   const COLOR_FREE_CORE_RATIO = 0;
   const PARTICLE_COLOR_STEPS = 6;
   const PARTICLE_COLOR_LEVELS = Array.from(
@@ -194,7 +195,8 @@
     surface.dataset.pixelParticleColorLift = "24";
     surface.dataset.pixelColorFreeCoreRatio = String(COLOR_FREE_CORE_RATIO);
     surface.dataset.pixelFieldEdge = "granular-depletion-no-core";
-    surface.dataset.pixelVoidPaint = "none";
+    surface.dataset.pixelVoidPaint = "cream";
+    surface.dataset.pixelPointerGridColor = POINTER_GRID_COLOR;
     surface.dataset.pixelFieldPath = "decaying-pointer-segment";
     surface.dataset.pixelParticleFlow = "coherent-noise";
     surface.dataset.pixelFieldCenterMode = "fixed-pointer";
@@ -339,7 +341,7 @@
     const elapsed = now * 0.001;
     const particleBuckets = new Map();
     context.save();
-    context.fillStyle = "#080b0e";
+    context.fillStyle = POINTER_GRID_COLOR;
     affected.forEach(({ cell, level }) => {
       const x = cell.x * cellSize;
       const y = cell.y * cellSize;

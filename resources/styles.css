@@ -422,6 +422,16 @@
   object-fit: cover;
 }
 
+.article-hero-media-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.article-inline-demo {
+  width: 100%;
+  margin: clamp(40px, 6vw, 64px) 0;
+  overflow: hidden;
+}
+
 .interactive-effects-v3 {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -438,6 +448,7 @@
 
 .interactive-effects-v3 > img {
   z-index: 0;
+  object-fit: cover;
   object-position: center;
   opacity: 1;
   filter: saturate(0.96) brightness(0.98) contrast(0.98);
@@ -522,8 +533,9 @@
 
 .fluid-holographic-loop > img {
   z-index: 0;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: #cedffc;
   opacity: 1;
   transition: opacity 220ms ease;
 }
