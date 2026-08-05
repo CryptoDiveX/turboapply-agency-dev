@@ -75,6 +75,7 @@ All other approved service names, descriptions, and starting references remain a
 - Technical SEO audit checklist: https://turboapply.agency/resources/technical-seo-audit-checklist/
 - Google Business Profile guide: https://turboapply.agency/resources/google-business-profile-guide/
 - Interactive website animations guide covering pros, cons, and implementation decisions, with TurboApply Version 3: https://turboapply.agency/resources/interactive-website-effects/
+- Liquid glass animation guide with a real-time fluid holographic shape loop, pause control, and reduced-motion fallback: https://turboapply.agency/resources/fluid-holographic-shape-animation/
 - TurboApply vs. no-code website builders: https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - Results destination: https://turboapply.agency/results/
 - Resources provide original practical guidance. Results publishes customer success stories only when context is approved and outcomes can be verified; do not invent customer names, quotes, logos, metrics, or results.
@@ -93,6 +94,9 @@ All other approved service names, descriptions, and starting references remain a
 - https://turboapply.agency/resources/seo-friendly-service-page/
 - https://turboapply.agency/resources/technical-seo-audit-checklist/
 - https://turboapply.agency/resources/google-business-profile-guide/
+- https://turboapply.agency/resources/interactive-website-effects/
+- https://turboapply.agency/resources/fluid-holographic-shape-animation/
+- https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - https://turboapply.agency/results/
 - https://turboapply.agency/free-guide/
 - https://turboapply.agency/marketing/

@@ -45,48 +45,56 @@
     }
 
     const fixedStep = 1 / 60;
-    const duration = 3000;
+    const duration = 1400;
     const frames = Math.round(duration / (fixedStep * 1000)) + 1;
-    const dropSpring = 35;
-    const dropDamping = 8;
-    const pendulumGravity = 18;
-    const angularDamping = 2.6;
-    const swingDelay = 0.6;
+    const dropDistance = 132;
+    const impactTime = 0.36;
+    const referenceGravity = 2130;
+    const foldedStart = -86;
+    const impactFold = 6;
+    const impactBounce = 6;
     founderHangers.forEach((hanger, index) => {
       const direction = index % 2 === 0 ? 1 : -1;
-      let vertical = -132;
-      let verticalVelocity = 0;
-      let angle = 0;
-      let angularVelocity = 0;
-      let swingReleased = false;
       const keyframes = [];
 
       for (let frameIndex = 0; frameIndex < frames; frameIndex += 1) {
         const progress = frameIndex / (frames - 1);
         const time = frameIndex * fixedStep;
         const settled = frameIndex === frames - 1;
+        let vertical;
+        let foldAngle;
+        let swingAngle;
+
+        if (time < impactTime) {
+          const fallProgress = time / impactTime;
+          vertical = -dropDistance + 0.5 * referenceGravity * time * time;
+          foldAngle = foldedStart * (1 - Math.pow(fallProgress, 3.4));
+          swingAngle = direction * 2.6 * (1 - Math.pow(fallProgress, 1.8));
+        } else {
+          const sinceImpact = time - impactTime;
+          vertical = impactBounce * Math.exp(-9 * sinceImpact) * Math.cos(22 * sinceImpact);
+          foldAngle = impactFold * Math.exp(-10 * sinceImpact) * Math.cos(22 * sinceImpact);
+          swingAngle = direction * 4.2 * Math.exp(-3.9 * sinceImpact) * Math.sin(12 * sinceImpact);
+        }
+
         keyframes.push({
           offset: progress,
-          transform: `translateY(${settled ? 0 : vertical.toFixed(3)}px) rotate(${settled ? 0 : (angle * 180 / Math.PI).toFixed(3)}deg)`
+          transform: settled
+            ? 'perspective(1400px) translateY(0px) rotateX(0deg) rotateZ(0deg)'
+            : `perspective(1400px) translateY(${vertical.toFixed(3)}px) rotateX(${foldAngle.toFixed(3)}deg) rotateZ(${swingAngle.toFixed(3)}deg)`
         });
-
-        verticalVelocity += (-dropSpring * vertical - dropDamping * verticalVelocity) * fixedStep;
-        vertical += verticalVelocity * fixedStep;
-        if (!swingReleased && time >= swingDelay) {
-          angularVelocity = direction * (0.65 + index * 0.07);
-          swingReleased = true;
-        }
-        angularVelocity += (-pendulumGravity * Math.sin(angle) - angularDamping * angularVelocity) * fixedStep;
-        angle += angularVelocity * fixedStep;
       }
 
       hanger.dataset.founderPhysics = 'active';
-      hanger.dataset.founderPhysicsModel = 'veyro-delayed-swing';
+      hanger.dataset.founderPhysicsModel = 'reference-gravity-fold-release';
       hanger.dataset.founderPhysicsDuration = String(duration);
       hanger.dataset.founderPhysicsStep = String(Number((fixedStep * 1000).toFixed(3)));
-      hanger.dataset.founderPhysicsDropSettle = '700';
-      hanger.dataset.founderPhysicsSwingStart = String(Math.round(swingDelay * 1000));
-      hanger.dataset.founderPhysicsReferenceGravity = '-40';
+      hanger.dataset.founderPhysicsDropSettle = String(Math.round(impactTime * 1000));
+      hanger.dataset.founderPhysicsSwingStart = String(Math.round(impactTime * 1000));
+      hanger.dataset.founderPhysicsReferenceGravity = String(referenceGravity);
+      hanger.dataset.founderPhysicsDropDistance = String(dropDistance);
+      hanger.dataset.founderPhysicsFoldStart = String(foldedStart);
+      hanger.dataset.founderPhysicsImpactFold = String(impactFold);
       const animation = hanger.animate(keyframes, {
         duration,
         easing: 'linear',

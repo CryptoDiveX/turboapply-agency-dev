@@ -90,6 +90,11 @@
       "description": "Understand the benefits, drawbacks, accessibility and performance costs, and decision criteria for adding interactive animation to a website, with the live TurboApply Version 3 demo."
     },
     {
+      "url": "https://turboapply.agency/resources/fluid-holographic-shape-animation/",
+      "title": "Liquid Glass Animation: Fluid Holographic Shape Loop",
+      "description": "Explore a real-time liquid glass animation with a seamless fluid holographic loop, visible pause control, bounded rendering, and a static reduced-motion fallback."
+    },
+    {
       "url": "https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/",
       "title": "TurboApply vs. No-Code Website Builders",
       "description": "Compare Wix, Squarespace, Webflow, Framer, and WordPress with a custom website build for service businesses."

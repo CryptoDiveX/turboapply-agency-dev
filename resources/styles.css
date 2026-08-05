@@ -480,6 +480,7 @@
   box-shadow: 0 8px 24px rgba(84, 104, 145, 0.12);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .interactive-effects-v3-label span {
@@ -490,8 +491,134 @@
   box-shadow: 0 8px 24px rgba(84, 104, 145, 0.1);
 }
 
+@media (max-width: 899px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .interactive-effects-v3-label span {
+    display: none;
+  }
+}
+
 .home-pixel-reveal-static .interactive-effects-v3 > canvas {
   display: none;
+}
+
+.fluid-holographic-loop {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  isolation: isolate;
+  background: linear-gradient(90deg, #dedcff, #c9e3ff);
+}
+
+.fluid-holographic-loop[data-fluid-pointer-hit="true"],
+.fluid-holographic-toggle {
+  cursor: pointer;
+}
+
+.fluid-holographic-loop > :is(img, canvas) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fluid-holographic-loop > img {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+
+.fluid-holographic-loop > canvas {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.fluid-holographic-loop[data-fluid-holographic-ready="true"]:not([data-fluid-holographic-state="reduced-motion"]) > img {
+  opacity: 0;
+}
+
+.fluid-holographic-loop[data-fluid-holographic-ready="true"]:not([data-fluid-holographic-state="reduced-motion"]) > canvas {
+  opacity: 1;
+}
+
+.fluid-holographic-label {
+  position: absolute;
+  z-index: 3;
+  left: clamp(18px, 3vw, 36px);
+  bottom: clamp(18px, 3vw, 32px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #171829;
+  font: 500 13px/1.2 Inter, sans-serif;
+}
+
+.fluid-holographic-label :is(strong, span),
+.fluid-holographic-toggle {
+  border: 1px solid rgba(43, 44, 76, 0.28);
+  border-radius: 999px;
+  color: #171829;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 10px 28px rgba(85, 90, 142, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.fluid-holographic-label strong {
+  padding: 8px 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.fluid-holographic-label span {
+  padding: 8px 12px;
+  color: rgba(23, 24, 41, 0.78);
+}
+
+.fluid-holographic-toggle {
+  position: absolute;
+  z-index: 4;
+  top: clamp(18px, 3vw, 30px);
+  right: clamp(18px, 3vw, 30px);
+  min-height: 38px;
+  padding: 8px 14px;
+  font: 600 12px/1.2 Inter, sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.fluid-holographic-toggle:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.fluid-holographic-toggle:focus-visible {
+  outline: 3px solid #171829;
+  outline-offset: 3px;
+}
+
+.fluid-holographic-toggle[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .fluid-holographic-label span {
+    display: none;
+  }
+
+  .fluid-holographic-toggle {
+    min-height: 36px;
+    padding: 7px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fluid-holographic-loop > :is(img, canvas) {
+    transition: none;
+  }
 }
 
 .resource-article-page article:has(.article-hero-media img[src*="ai-agents-robot"]) .article-hero-media img {

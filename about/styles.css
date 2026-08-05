@@ -84,6 +84,7 @@
   align-self: start;
   max-width: 760px;
   margin: clamp(48px, 4vw, 64px) auto 0;
+  background: var(--about-black);
   text-align: center;
   pointer-events: none;
 }
@@ -658,6 +659,13 @@
   max-width: 100% !important;
   display: block;
   border: 0;
+}
+
+@media (min-width: 1181px) {
+  .social-post {
+    flex-basis: calc((100% - 42px) / 4);
+    min-width: 0;
+  }
 }
 
 .about-contact {
