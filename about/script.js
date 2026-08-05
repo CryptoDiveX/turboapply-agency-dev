@@ -46,9 +46,12 @@
     }
 
     const fixedStep = 1 / 60;
-    const duration = 1400;
+    const duration = 1200;
     const dropDistance = 80;
-    const impactTime = 0.36;
+    const impactTime = 0.28;
+    const swingAmplitude = 7.8;
+    const swingDecay = 4.6;
+    const swingFrequency = 13;
     const referenceGravity = Number((2 * dropDistance / (impactTime * impactTime)).toFixed(3));
     const frameTimes = [];
     for (let time = 0; time < duration / 1000; time += fixedStep) frameTimes.push(time);
@@ -73,7 +76,7 @@
         } else {
           const sinceImpact = time - impactTime;
           vertical = 0;
-          swingAngle = restTilt + direction * 5.2 * Math.exp(-4.2 * sinceImpact) * Math.sin(11.5 * sinceImpact);
+          swingAngle = restTilt + direction * swingAmplitude * Math.exp(-swingDecay * sinceImpact) * Math.sin(swingFrequency * sinceImpact);
         }
 
         keyframes.push({
@@ -85,7 +88,7 @@
       });
 
       hanger.dataset.founderPhysics = 'active';
-      hanger.dataset.founderPhysicsModel = 'fixed-strap-card-drop-then-swing';
+      hanger.dataset.founderPhysicsModel = 'fixed-strap-card-fast-drop-stronger-swing';
       hanger.dataset.founderPhysicsOwner = 'card-only';
       hanger.dataset.founderPhysicsStraps = 'fixed';
       hanger.dataset.founderPhysicsDuration = String(duration);
@@ -94,6 +97,9 @@
       hanger.dataset.founderPhysicsSwingStart = String(Math.round(impactTime * 1000));
       hanger.dataset.founderPhysicsReferenceGravity = String(referenceGravity);
       hanger.dataset.founderPhysicsDropDistance = String(dropDistance);
+      hanger.dataset.founderPhysicsSwingAmplitude = String(swingAmplitude);
+      hanger.dataset.founderPhysicsSwingDecay = String(swingDecay);
+      hanger.dataset.founderPhysicsSwingFrequency = String(swingFrequency);
       hanger.dataset.founderPhysicsPreImpactSwing = '0';
       const animation = card.animate(keyframes, {
         duration,

@@ -84,7 +84,7 @@
   align-self: start;
   max-width: 760px;
   margin: clamp(48px, 4vw, 64px) auto 0;
-  background: var(--about-black);
+  background: transparent;
   text-align: center;
   pointer-events: none;
 }
@@ -151,6 +151,7 @@
   color: rgba(255, 255, 255, 0.76);
   transform: translateX(-50%);
   transform-origin: 50% 0;
+  z-index: 2;
 }
 
 .founder-lanyard span {
