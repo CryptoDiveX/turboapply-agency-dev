@@ -33,7 +33,8 @@
     founderAnimations.forEach((animation) => animation.cancel());
     founderAnimations.clear();
     founderHangers.forEach((hanger) => {
-      hanger.style.removeProperty('transform');
+      const card = hanger.querySelector('.founder-card');
+      if (card instanceof HTMLElement) card.style.removeProperty('transform');
       hanger.dataset.founderPhysics = state;
     });
   };
@@ -46,56 +47,55 @@
 
     const fixedStep = 1 / 60;
     const duration = 1400;
-    const frames = Math.round(duration / (fixedStep * 1000)) + 1;
-    const dropDistance = 132;
+    const dropDistance = 80;
     const impactTime = 0.36;
-    const referenceGravity = 2130;
-    const foldedStart = -86;
-    const impactFold = 6;
-    const impactBounce = 6;
+    const referenceGravity = Number((2 * dropDistance / (impactTime * impactTime)).toFixed(3));
+    const frameTimes = [];
+    for (let time = 0; time < duration / 1000; time += fixedStep) frameTimes.push(time);
+    frameTimes.push(impactTime, duration / 1000);
+    const uniqueFrameTimes = [...new Set(frameTimes.map((time) => Number(time.toFixed(6))))].sort((a, b) => a - b);
     founderHangers.forEach((hanger, index) => {
+      const card = hanger.querySelector('.founder-card');
+      if (!(card instanceof HTMLElement)) return;
       const direction = index % 2 === 0 ? 1 : -1;
+      const restTilt = Number.parseFloat(getComputedStyle(hanger).getPropertyValue('--hanger-tilt')) || 0;
       const keyframes = [];
 
-      for (let frameIndex = 0; frameIndex < frames; frameIndex += 1) {
-        const progress = frameIndex / (frames - 1);
-        const time = frameIndex * fixedStep;
-        const settled = frameIndex === frames - 1;
+      uniqueFrameTimes.forEach((time, frameIndex) => {
+        const progress = time / (duration / 1000);
+        const settled = frameIndex === uniqueFrameTimes.length - 1;
         let vertical;
-        let foldAngle;
         let swingAngle;
 
-        if (time < impactTime) {
-          const fallProgress = time / impactTime;
-          vertical = -dropDistance + 0.5 * referenceGravity * time * time;
-          foldAngle = foldedStart * (1 - Math.pow(fallProgress, 3.4));
-          swingAngle = direction * 2.6 * (1 - Math.pow(fallProgress, 1.8));
+        if (time <= impactTime) {
+          vertical = -dropDistance + Math.min(dropDistance, 0.5 * referenceGravity * time * time);
+          swingAngle = restTilt;
         } else {
           const sinceImpact = time - impactTime;
-          vertical = impactBounce * Math.exp(-9 * sinceImpact) * Math.cos(22 * sinceImpact);
-          foldAngle = impactFold * Math.exp(-10 * sinceImpact) * Math.cos(22 * sinceImpact);
-          swingAngle = direction * 4.2 * Math.exp(-3.9 * sinceImpact) * Math.sin(12 * sinceImpact);
+          vertical = 0;
+          swingAngle = restTilt + direction * 5.2 * Math.exp(-4.2 * sinceImpact) * Math.sin(11.5 * sinceImpact);
         }
 
         keyframes.push({
           offset: progress,
           transform: settled
-            ? 'perspective(1400px) translateY(0px) rotateX(0deg) rotateZ(0deg)'
-            : `perspective(1400px) translateY(${vertical.toFixed(3)}px) rotateX(${foldAngle.toFixed(3)}deg) rotateZ(${swingAngle.toFixed(3)}deg)`
+            ? `translateY(0px) rotateZ(${restTilt.toFixed(3)}deg)`
+            : `translateY(${vertical.toFixed(3)}px) rotateZ(${swingAngle.toFixed(3)}deg)`
         });
-      }
+      });
 
       hanger.dataset.founderPhysics = 'active';
-      hanger.dataset.founderPhysicsModel = 'reference-gravity-fold-release';
+      hanger.dataset.founderPhysicsModel = 'fixed-strap-card-drop-then-swing';
+      hanger.dataset.founderPhysicsOwner = 'card-only';
+      hanger.dataset.founderPhysicsStraps = 'fixed';
       hanger.dataset.founderPhysicsDuration = String(duration);
       hanger.dataset.founderPhysicsStep = String(Number((fixedStep * 1000).toFixed(3)));
       hanger.dataset.founderPhysicsDropSettle = String(Math.round(impactTime * 1000));
       hanger.dataset.founderPhysicsSwingStart = String(Math.round(impactTime * 1000));
       hanger.dataset.founderPhysicsReferenceGravity = String(referenceGravity);
       hanger.dataset.founderPhysicsDropDistance = String(dropDistance);
-      hanger.dataset.founderPhysicsFoldStart = String(foldedStart);
-      hanger.dataset.founderPhysicsImpactFold = String(impactFold);
-      const animation = hanger.animate(keyframes, {
+      hanger.dataset.founderPhysicsPreImpactSwing = '0';
+      const animation = card.animate(keyframes, {
         duration,
         easing: 'linear',
         fill: 'both',
@@ -104,6 +104,7 @@
       founderAnimations.add(animation);
       animation.addEventListener('finish', () => {
         founderAnimations.delete(animation);
+        animation.cancel();
         hanger.dataset.founderPhysics = 'settled';
       }, { once: true });
     });
