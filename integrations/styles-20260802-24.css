@@ -357,10 +357,11 @@ h1 {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
   gap: clamp(60px, 10vw, 170px);
-  align-items: end;
+  align-items: start;
   padding: clamp(100px, 11vw, 170px) clamp(24px, 6vw, 96px);
 }
 .final-cta h2 { max-width: 960px; margin: 0; font-size: clamp(40px, 4vw, 52px); line-height: 1; letter-spacing: 0; }
+.final-cta-body { align-self: start; }
 .final-cta-body p { max-width: 600px; margin: 0 0 34px; color: rgba(255,255,255,.68); font-size: 19px; line-height: 1.5; }
 .button-light { min-height: 54px; padding: 0 24px; background: #fff; color: var(--ink); }
 

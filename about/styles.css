@@ -63,7 +63,7 @@
 
 @media (min-width: 761px) {
   .founder-hero {
-    padding-bottom: calc(clamp(88px, 9vw, 144px) + 100px);
+    padding-bottom: calc(clamp(88px, 9vw, 144px) + 40px);
   }
 }
 
@@ -117,7 +117,7 @@
 }
 
 .founder-card-grid {
-  --founder-drop-height: clamp(280px, calc(28vw - 100px), 314px);
+  --founder-drop-height: clamp(340px, calc(28vw - 40px), 374px);
   position: relative;
   grid-area: 1 / 1;
   display: grid;
@@ -211,6 +211,8 @@
   min-width: 0;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
+  position: relative;
+  z-index: 2;
   overflow: hidden;
   border: 7px solid #eeeeea;
   border-radius: 18px;
@@ -682,7 +684,7 @@
 
 @media (min-width: 1181px) {
   .social-post {
-    flex-basis: calc((100% - 42px) / 4);
+    flex-basis: calc((100% - 42px) / 4.35);
     min-width: 0;
   }
 }

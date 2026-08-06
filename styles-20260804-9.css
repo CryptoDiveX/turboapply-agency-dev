@@ -3281,20 +3281,20 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
 
 /* Homepage mobile shell and cover correction — 2026-08-02. */
 @media (max-width: 1100px) {
-  .topbar { display:grid; grid-template-columns: 1fr auto; align-items:center; background:#000; border-bottom:1px solid rgba(255,255,255,.18); pointer-events:auto; }
-  .brand-link { position:static; left:auto; justify-self:start; transform:none; }
-  .mobile-menu-toggle { grid-column:2; justify-self:end; }
+  .topbar { min-height:70px; height:70px; display:grid; grid-template-columns: 1fr auto; grid-auto-rows:70px; align-items:center; background:#000; border-bottom:1px solid rgba(255,255,255,.18); pointer-events:auto; }
+  .brand-link { position:static; left:auto; grid-column:1; grid-row:1; justify-self:start; align-self:center; transform:none; }
+  .mobile-menu-toggle { grid-column:2; grid-row:1; justify-self:end; align-self:center; }
   .mobile-menu { inset:70px 0 auto; min-height:calc(100svh - 70px); padding:28px 20px 42px; border:0; border-radius:0; background:#000; box-shadow:none; backdrop-filter:none; overflow-y:auto; }
   .mobile-menu.is-open { gap:2px; }
   .mobile-menu a { min-height:56px; padding:0; font-size:clamp(34px,10vw,44px); line-height:1; }
 }
 @media (max-width: 640px) {
   .turbo-hero { min-height:100svh; }
-  .turbo-hero-stage { height:100svh; min-height:680px; }
+  .turbo-hero-stage { height:100svh; min-height:740px; }
   .turbo-hero-copy { left:20px; right:20px; top:110px; width:auto; }
   .turbo-eyebrow { margin-bottom:18px; font-size:12px; }
-  .turbo-hero-title { max-width:100%; font-size:clamp(46px,13.4vw,58px); line-height:.91; letter-spacing:-.055em; }
-  .turbo-hero-title .turbo-title-main-line { gap:10px; max-width:100%; }
+  .turbo-hero-title { max-width:100%; font-size:clamp(40px,11.9vw,54px); line-height:.94; letter-spacing:-.045em; }
+  .turbo-hero-title .turbo-title-main-line { gap:7px; max-width:100%; }
   .turbo-hero-title span:last-child { font-size:.68em; line-height:1.02; }
   .turbo-hero-arrow { width:38px; height:38px; }
   .turbo-hero-subtitle { max-width:34ch; margin-top:24px; font-size:16px; line-height:1.42; }

@@ -3014,18 +3014,18 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
 
 @media (max-width: 640px) {
   .turbo-hero {
-    min-height: 650px;
+    min-height: 740px;
   }
   .turbo-hero-stage {
     position: relative;
-    height: 650px;
+    height: 740px;
     min-height: 0;
     overflow: hidden;
   }
   .turbo-hero-copy {
-    left: 24px;
-    right: 14px;
-    top: 112px;
+    left: 22px;
+    right: 22px;
+    top: 100px;
   }
   .turbo-eyebrow {
     margin-bottom: 16px;
@@ -3033,23 +3033,25 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
     letter-spacing: .16em;
   }
   .turbo-hero-title {
-    font-size: clamp(50px, 13.7vw, 56px);
-    line-height: .88;
-    letter-spacing: -.072em;
+    max-width: 100%;
+    font-size: clamp(44px, 12.2vw, 52px);
+    line-height: .92;
+    letter-spacing: -.064em;
   }
   .turbo-hero-title .turbo-title-main-line {
     max-width: 100%;
-    gap: 4px;
+    width: 100%;
+    gap: 6px;
   }
   .turbo-hero-title span:last-child {
     font-size: .76em;
     letter-spacing: -.058em;
   }
   .turbo-hero-subtitle {
-    max-width: 330px;
-    margin-top: 28px;
-    font-size: 15.5px;
-    line-height: 1.38;
+    max-width: 335px;
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.36;
   }
   .turbo-hero-actions {
     gap: 9px;
@@ -3082,11 +3084,11 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
     opacity: 1;
   }
   .turbo-hero-pills {
-    left: 24px;
-    right: auto;
-    top: 520px;
-    bottom: auto;
-    width: calc(100vw - 48px) !important;
+    left: 22px;
+    right: 22px;
+    top: auto;
+    bottom: 54px;
+    width: calc(100vw - 44px) !important;
     display: grid;
     grid-template-columns: max-content max-content;
     align-items: start;
@@ -3180,9 +3182,9 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
 }
 
 @media (max-width: 380px) {
-  .turbo-hero-title { font-size: clamp(50px, 13.7vw, 54px); }
+  .turbo-hero-title { font-size: clamp(38px, 11vw, 44px); }
   .turbo-hero-subtitle { max-width: 305px; font-size: 14px; }
-  .turbo-hero-pills { top: 510px; }
+  .turbo-hero-pills { bottom: 46px; }
 }
 
 @media (prefers-reduced-transparency: reduce) {
