@@ -169,8 +169,15 @@ h1 {
   max-width: 720px;
   margin-bottom: 32px;
   font-size: clamp(48px, 5.3vw, 64px);
-  line-height: .9;
+  line-height: 1.04;
+  padding-bottom: .08em;
   letter-spacing: 0;
+}
+.surface-title-mask,
+.surface-title-line {
+  display: block;
+  line-height: 1.08;
+  padding-bottom: .08em;
 }
 .hero-lede {
   max-width: 650px;

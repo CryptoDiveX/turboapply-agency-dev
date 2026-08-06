@@ -81,7 +81,7 @@ const projectData = {
   },
   martial: {
     title: 'World Top Martial Arts',
-    description: 'A high-energy academy website for karate, kickboxing, MMA, grappling and self-defence training in Burnaby.',
+    description: 'TurboApply Agency designed a responsive martial arts website for the dojo featuring programs, instructor information, schedule details and a clear path to start training.',
     images: [
       'public/assets/martial-arts/wtma-desktop.webp',
       'public/assets/martial-arts/wtma-mobile.webp'
@@ -92,8 +92,8 @@ const projectData = {
     background: 'public/assets/martial-arts/wtma-action-bg.webp'
   },
   personal: {
-    title: 'Psychologist Personal Site',
-    description: 'A gentle therapy website with a warm editorial identity, soft illustrations and clear booking pathways.',
+    title: 'Personal Site',
+    description: 'TurboApply designed a gentle therapy site with a warm editorial identity, soft illustrations and clear booking pathways.',
     images: [
       'public/assets/personal-site/liuba-hero.webp',
       'public/assets/personal-site/liuba-mid.webp',
@@ -106,7 +106,7 @@ const projectData = {
   },
   health: {
     title: 'TurboApply Health',
-    description: 'A clinic-focused website for calmer booking flows, practical automation and trustworthy patient journeys.',
+    description: 'TurboApply Agency works with local health practitioners to support practical automations, website development and calmer digital patient journeys.',
     images: [
       'public/assets/health-site/health-hero.webp',
       'public/assets/health-site/health-mobile-full.webp',
@@ -118,16 +118,16 @@ const projectData = {
     background: 'public/assets/health-site/health-abstract-bg.webp'
   },
   finance: {
-    title: 'Nova Bank',
-    description: 'A mobile banking app concept for fast transfers, clear spending insights and confident everyday money management.',
+    title: 'TurboApply.AI',
+    description: 'A SaaS product for job seekers that helps organize applications, improve search workflows and move through the hiring process with more clarity.',
     images: [
-      'public/assets/finance/nova-bank-hero.webp',
-      'public/assets/finance/nova-bank-screen-a.webp',
-      'public/assets/finance/nova-bank-screen-b.webp'
+      'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg',
+      'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg',
+      'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg'
     ],
-    alt: ['Nova Bank mobile app overview from Behance', 'Nova Bank transfer and payment app screens', 'Nova Bank user flows and persona screens'],
-    url: 'https://www.behance.net/gallery/231461891/Nova-Bank-Mobile-App',
-    background: 'public/assets/finance/nova-bank-city-motion-bg.webp'
+    alt: ['TurboApply AI SaaS interface for job seekers', 'TurboApply AI application workflow screens', 'TurboApply AI job seeker product flows'],
+    url: 'https://www.turboapply.ai/',
+    background: 'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg'
   }
 };
 
