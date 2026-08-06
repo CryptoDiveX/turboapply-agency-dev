@@ -63,7 +63,7 @@
 
 @media (min-width: 761px) {
   .founder-hero {
-    padding-bottom: calc(clamp(88px, 9vw, 144px) + 40px);
+    padding-bottom: calc(clamp(88px, 9vw, 144px) + 100px);
   }
 }
 
@@ -117,7 +117,7 @@
 }
 
 .founder-card-grid {
-  --founder-drop-height: clamp(340px, calc(28vw - 40px), 374px);
+  --founder-drop-height: clamp(280px, calc(28vw - 100px), 314px);
   position: relative;
   grid-area: 1 / 1;
   display: grid;
