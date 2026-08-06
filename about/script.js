@@ -59,10 +59,14 @@
     const uniqueFrameTimes = [...new Set(frameTimes.map((time) => Number(time.toFixed(6))))].sort((a, b) => a - b);
     founderHangers.forEach((hanger, index) => {
       const card = hanger.querySelector('.founder-card');
-      if (!(card instanceof HTMLElement)) return;
+      const dropStrap = hanger.querySelector('.founder-card-drop-strap');
+      const dropStrapInner = dropStrap?.querySelector('span');
+      if (!(card instanceof HTMLElement) || !(dropStrap instanceof HTMLElement) || !(dropStrapInner instanceof HTMLElement)) return;
       const direction = index % 2 === 0 ? 1 : -1;
       const restTilt = Number.parseFloat(getComputedStyle(hanger).getPropertyValue('--hanger-tilt')) || 0;
       const keyframes = [];
+      const dropStrapKeyframes = [];
+      const dropStrapFoldKeyframes = [];
 
       uniqueFrameTimes.forEach((time, frameIndex) => {
         const progress = time / (duration / 1000);
@@ -85,12 +89,23 @@
             ? `translateY(0px) rotateZ(${restTilt.toFixed(3)}deg)`
             : `translateY(${vertical.toFixed(3)}px) rotateZ(${swingAngle.toFixed(3)}deg)`
         });
+        const fallProgress = time <= impactTime
+          ? Math.max(0, Math.min(1, (vertical + dropDistance) / dropDistance))
+          : 1;
+        dropStrapKeyframes.push({
+          offset: progress,
+          transform: settled ? 'translateX(-50%) translateY(0px)' : `translateX(-50%) translateY(${vertical.toFixed(3)}px)`
+        });
+        dropStrapFoldKeyframes.push({
+          offset: progress,
+          transform: settled ? 'scaleY(1)' : `scaleY(${Math.max(0.08, fallProgress).toFixed(4)})`
+        });
       });
 
       hanger.dataset.founderPhysics = 'active';
-      hanger.dataset.founderPhysicsModel = 'fixed-strap-card-fast-drop-stronger-swing';
-      hanger.dataset.founderPhysicsOwner = 'card-only';
-      hanger.dataset.founderPhysicsStraps = 'fixed';
+      hanger.dataset.founderPhysicsModel = 'fixed-upper-strap-card-fast-drop-foldout-tether-stronger-swing';
+      hanger.dataset.founderPhysicsOwner = 'card-plus-foldout-tether';
+      hanger.dataset.founderPhysicsStraps = 'upper-fixed-lower-foldout';
       hanger.dataset.founderPhysicsDuration = String(duration);
       hanger.dataset.founderPhysicsStep = String(Number((fixedStep * 1000).toFixed(3)));
       hanger.dataset.founderPhysicsDropSettle = String(Math.round(impactTime * 1000));
@@ -101,16 +116,34 @@
       hanger.dataset.founderPhysicsSwingDecay = String(swingDecay);
       hanger.dataset.founderPhysicsSwingFrequency = String(swingFrequency);
       hanger.dataset.founderPhysicsPreImpactSwing = '0';
+      hanger.dataset.founderPhysicsTetherLength = '28';
+      hanger.dataset.founderPhysicsTetherFoldStart = '0.08';
+      hanger.dataset.founderPhysicsTetherFinalOverlap = '0';
       const animation = card.animate(keyframes, {
         duration,
         easing: 'linear',
         fill: 'both',
         iterations: 1
       });
-      founderAnimations.add(animation);
+      const dropStrapAnimation = dropStrap.animate(dropStrapKeyframes, {
+        duration,
+        easing: 'linear',
+        fill: 'both',
+        iterations: 1
+      });
+      const dropStrapFoldAnimation = dropStrapInner.animate(dropStrapFoldKeyframes, {
+        duration,
+        easing: 'linear',
+        fill: 'both',
+        iterations: 1
+      });
+      const ownedAnimations = [animation, dropStrapAnimation, dropStrapFoldAnimation];
+      ownedAnimations.forEach((ownedAnimation) => founderAnimations.add(ownedAnimation));
       animation.addEventListener('finish', () => {
-        founderAnimations.delete(animation);
-        animation.cancel();
+        ownedAnimations.forEach((ownedAnimation) => {
+          founderAnimations.delete(ownedAnimation);
+          ownedAnimation.cancel();
+        });
         hanger.dataset.founderPhysics = 'settled';
       }, { once: true });
     });
