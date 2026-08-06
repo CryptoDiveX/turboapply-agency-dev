@@ -474,7 +474,7 @@
   position: absolute;
   z-index: 4;
   left: clamp(18px, 3vw, 36px);
-  bottom: clamp(18px, 3vw, 32px);
+  top: clamp(18px, 3vw, 32px);
   display: flex;
   align-items: center;
   gap: 12px;
