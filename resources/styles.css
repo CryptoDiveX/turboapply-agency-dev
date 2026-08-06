@@ -426,32 +426,6 @@
   aspect-ratio: 16 / 9;
 }
 
-@keyframes article-orange-flow-arrive {
-  from {
-    opacity: 0.72;
-    transform: translate3d(-1.6%, 1.2%, 0) scale(1.07);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (min-width: 769px) and (prefers-reduced-motion: no-preference) {
-  .article-hero-media-orange-motion > img {
-    animation: article-orange-flow-arrive 1400ms cubic-bezier(.22, .7, .2, 1) 120ms both;
-    transform-origin: 52% 48%;
-    transition: transform 1100ms cubic-bezier(.2, .7, .2, 1), filter 1100ms ease;
-    will-change: transform;
-  }
-
-  .article-hero-media-orange-motion:hover > img {
-    animation: none;
-    filter: saturate(1.04) contrast(1.01);
-    transform: translate3d(0.8%, -0.5%, 0) scale(1.035);
-  }
-}
-
 .article-inline-demo {
   width: 100%;
   margin: clamp(40px, 6vw, 64px) 0;
