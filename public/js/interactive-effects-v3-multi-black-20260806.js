@@ -12,7 +12,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const pointerEligible = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 900px)");
   const saveData = Boolean(navigator.connection?.saveData);
-  const whiteParticleMode = surface.dataset.pixelPalette === "white";
+  const blackParticleMode = surface.dataset.pixelPalette === "black";
   const context = canvas.getContext("2d", { alpha: true, desynchronized: true });
   if (!context || saveData) {
     document.documentElement.classList.add("home-pixel-reveal-static");
@@ -195,8 +195,8 @@
     surface.dataset.pixelParticleDisperse = String(PARTICLE_DISPERSE);
     surface.dataset.pixelParticleLift = String(PARTICLE_LIFT);
     surface.dataset.pixelParticlePointSize = String(PARTICLE_POINT_SIZE);
-    surface.dataset.pixelParticleColorMode = whiteParticleMode ? "cream-white" : "source-rgb-lifted";
-    surface.dataset.pixelParticleColorLift = whiteParticleMode ? "0" : "24";
+    surface.dataset.pixelParticleColorMode = blackParticleMode ? "reference-black" : "source-rgb-lifted";
+    surface.dataset.pixelParticleColorLift = blackParticleMode ? "0" : "24";
     surface.dataset.pixelColorFreeCoreRatio = String(COLOR_FREE_CORE_RATIO);
     surface.dataset.pixelFieldEdge = "granular-depletion-no-core";
     surface.dataset.pixelVoidPaint = "cream";
@@ -376,7 +376,7 @@
         PARTICLE_ALPHA_LEVELS.length - 1,
         Math.floor(particleAlpha * PARTICLE_ALPHA_LEVELS.length),
       );
-      const colorIndex = whiteParticleMode ? PARTICLE_PALETTE.length - 1 : cell.particleColorIndex;
+      const colorIndex = blackParticleMode ? 0 : cell.particleColorIndex;
       const bucketIndex = colorIndex * PARTICLE_ALPHA_LEVELS.length + alphaIndex;
       if (!particleBuckets.has(bucketIndex)) particleBuckets.set(bucketIndex, []);
       particleBuckets.get(bucketIndex).push(
