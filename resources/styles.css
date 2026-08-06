@@ -516,7 +516,7 @@
   position: relative;
   aspect-ratio: 16 / 9;
   isolation: isolate;
-  background: linear-gradient(90deg, #dedcff, #c9e3ff);
+  background: linear-gradient(90deg, #dfe3fe, #deeafe);
 }
 
 .fluid-holographic-loop[data-fluid-pointer-hit="true"],

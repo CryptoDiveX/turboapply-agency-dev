@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = 'fluid-holographic-sphere-v2-20260806-4';
+  const VERSION = 'fluid-holographic-sphere-v3-owner-pearl-20260806-1';
   const LOOP_MS = 10000;
   const PULSE_MS = 900;
   const LATITUDES = 64;
@@ -120,35 +120,36 @@
       float green = texture2D(u_material, environmentUv).g;
       float blue = texture2D(u_material, clamp(environmentUv - dispersion, 0.002, 0.998)).b;
       vec3 environment = vec3(red, green, blue);
-      environment = mix(vec3(0.96, 0.98, 1.0), environment, 0.72);
+      environment = mix(vec3(0.94, 0.95, 1.0), environment, 0.50);
       vec3 referencePalette = mix(
-        vec3(0.78, 0.47, 0.91),
-        vec3(0.66, 0.53, 0.97),
+        vec3(0.99, 0.78, 0.99),
+        vec3(0.82, 0.80, 1.0),
         smoothstep(0.14, 0.48, v_uv.y)
       );
       referencePalette = mix(
         referencePalette,
-        vec3(0.41, 0.85, 0.97),
+        vec3(0.78, 0.90, 1.0),
         smoothstep(0.42, 0.82, v_uv.y)
       );
       referencePalette = mix(
         referencePalette,
-        vec3(0.32, 0.92, 0.74),
-        smoothstep(0.78, 1.0, v_uv.y) * 0.44
+        vec3(0.851, 0.937, 0.961),
+        smoothstep(0.78, 1.0, v_uv.y) * 0.18
       );
-      environment = mix(environment, referencePalette, 0.58);
+      environment = mix(environment, referencePalette, 0.65);
 
       vec3 iridescence = 0.62 + 0.38 * cos(
         TAU * (fresnel * 1.4 + dot(normal, vec3(0.21, 0.43, 0.36)) * 0.36)
         + vec3(0.0, 2.05, 4.1)
       );
       iridescence = pow(iridescence, vec3(0.78));
+      iridescence = mix(vec3(0.93, 0.95, 1.0), iridescence, 0.38);
 
       vec3 lightDirection = normalize(vec3(-0.38, 0.72, 0.58));
       vec3 halfVector = normalize(lightDirection + viewDirection);
-      float diffuse = 0.64 + max(dot(normal, lightDirection), 0.0) * 0.30;
+      float diffuse = 0.84 + max(dot(normal, lightDirection), 0.0) * 0.15;
       float specular = pow(max(dot(normal, halfVector), 0.0), 42.0);
-      float foldShadow = smoothstep(0.05, 0.78, facing) * 0.10;
+      float foldShadow = smoothstep(0.05, 0.78, facing) * 0.04;
       vec3 reflected = reflect(-viewDirection, normal);
       float highlightLoop = (1.0 - cos(u_phase)) * 0.50265482457;
       float creaseLoop = (1.0 - cos(u_phase)) * 0.37699111843;
@@ -156,12 +157,13 @@
       float studioCrease = pow(abs(sin(reflected.x * 7.0 - reflected.z * 4.0 - creaseLoop)), 28.0);
 
       vec3 color = environment * diffuse;
-      color = mix(color, iridescence, clamp(fresnel * 1.18 + v_displacement * 0.18, 0.0, 0.84));
-      color += vec3(specular * 0.72);
-      color += vec3(0.80, 0.92, 1.0) * studioHighlight * 0.28;
-      color -= vec3(0.12, 0.10, 0.18) * studioCrease * 0.16;
-      color -= vec3(foldShadow * (0.22 + v_displacement * 0.28));
-      color += vec3(0.02, 0.08, 0.09) * fresnel;
+      color = mix(color, iridescence, clamp(0.12 + fresnel * 0.92 + v_displacement * 0.18, 0.0, 0.78));
+      color += vec3(specular * 0.42);
+      color += vec3(0.91, 0.96, 1.0) * studioHighlight * 0.18;
+      color -= vec3(0.08, 0.06, 0.11) * studioCrease * 0.05;
+      color -= vec3(foldShadow * (0.08 + v_displacement * 0.10));
+      color += vec3(0.01, 0.03, 0.04) * fresnel;
+      color = mix(vec3(0.93, 0.94, 1.0), color, 0.88);
 
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
     }
