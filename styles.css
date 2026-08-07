@@ -2812,6 +2812,7 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
   max-width: 100%;
   box-sizing: border-box;
 }
+/* User-corrected service-directory Web Design card boundary — 2026-08-08. */
 .service-card {
   position: relative;
   min-height: clamp(388px, 31vw, 424px);
