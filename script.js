@@ -118,16 +118,16 @@ const projectData = {
     background: 'public/assets/health-site/health-abstract-bg.webp'
   },
   finance: {
-    title: 'TurboApply.AI',
-    description: 'A SaaS product for job seekers that helps organize applications, improve search workflows and move through the hiring process with more clarity.',
+    title: 'Nova Bank',
+    description: 'A mobile banking app concept for fast transfers, clear spending insights and confident everyday money management.',
     images: [
-      'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg',
-      'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg',
-      'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg'
+      'public/assets/finance/nova-bank-hero.webp',
+      'public/assets/finance/nova-bank-screen-a.webp',
+      'public/assets/finance/nova-bank-screen-b.webp'
     ],
-    alt: ['TurboApply AI SaaS interface for job seekers', 'TurboApply AI application workflow screens', 'TurboApply AI job seeker product flows'],
-    url: 'https://www.turboapply.ai/',
-    background: 'public/assets/turboapply-ai/turboapply-ai-saas-cover.svg'
+    alt: ['Nova Bank mobile app overview from Behance', 'Nova Bank transfer and payment app screens', 'Nova Bank user flows and persona screens'],
+    url: 'https://www.behance.net/gallery/231461891/Nova-Bank-Mobile-App',
+    background: 'public/assets/finance/nova-bank-city-motion-bg.webp'
   }
 };
 
