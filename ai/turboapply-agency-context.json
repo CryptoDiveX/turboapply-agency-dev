@@ -91,8 +91,13 @@
     },
     {
       "url": "https://turboapply.agency/resources/fluid-holographic-shape-animation/",
-      "title": "Liquid Glass Animation: Fluid Holographic Shape Loop",
-      "description": "Explore a real-time liquid glass animation with a seamless fluid holographic loop, visible pause control, bounded rendering, and a static reduced-motion fallback."
+      "title": "Fluid Holographic Shapes",
+      "description": "Explore a real-time liquid glass animation with a supplied fluid holographic image, MakeBeautifulWork reference, visible pause control, bounded rendering, and a static reduced-motion fallback."
+    },
+    {
+      "url": "https://turboapply.agency/resources/reflection-cover-animation/",
+      "title": "Reflection Cover Animation for Modern Websites",
+      "description": "A reflective cover-animation guide using a supplied image, Noomo storytelling reference, pointer-reactive highlight, and calm accessibility fallbacks."
     },
     {
       "url": "https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/",

@@ -1037,9 +1037,6 @@ function showHeroWandReveal(keyword, clientX, clientY) {
   const placement = positionHeroWandReveal(keyword, clientX, clientY, state.reveal, shouldResetReveal);
   if (!placement) return;
   applyHeroScratchMask(state, placement, clientX, clientY, shouldResetReveal);
-  moveHeroCoinCursor(clientX, clientY);
-  playCoinScratch(clientX, clientY, shouldResetReveal);
-  heroStage?.classList.add('is-coin-cursor');
   heroKeywords.forEach((item) => item.classList.toggle('is-wand-active', item === keyword));
   if (shouldResetReveal) {
     state.reveal.classList.remove('is-visible');

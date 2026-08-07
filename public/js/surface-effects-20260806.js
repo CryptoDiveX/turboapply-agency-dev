@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = 'web-surface-cursor-parity-20260806-1';
+  const VERSION = 'web-surface-cursor-excludes-20260807-1';
   const DOT_SIZE = 40;
   const DOT_COUNT = 14;
   const surfaces = Array.from(document.querySelectorAll('[data-web-surface-cursor]'));
@@ -11,6 +11,9 @@
     window.matchMedia('(prefers-reduced-motion: no-preference)'),
   ];
   const isEligible = () => eligibilityQueries.every((query) => query.matches);
+  const isExcludedTarget = (target) => (
+    target instanceof Element && Boolean(target.closest('[data-web-surface-cursor-exclude]'))
+  );
 
   if (surfaces.length === 0) return;
 
@@ -89,7 +92,7 @@
 
     const surfaceHandlers = surfaces.map((surface) => {
       const enter = (event) => {
-        if (!isEligible() || (event.pointerType && event.pointerType !== 'mouse')) return;
+        if (!isEligible() || isExcludedTarget(event.target) || (event.pointerType && event.pointerType !== 'mouse')) return;
         if (activeSurface && activeSurface !== surface) {
           activeSurface.classList.remove('web-surface-cursor-active');
           activeSurface.dataset.webSurfaceCursorActive = 'false';
@@ -102,7 +105,14 @@
         if (!frame) frame = requestAnimationFrame(render);
       };
       const move = (event) => {
-        if (activeSurface !== surface) return;
+        if (isExcludedTarget(event.target)) {
+          if (activeSurface === surface) deactivate();
+          return;
+        }
+        if (activeSurface !== surface) {
+          enter(event);
+          return;
+        }
         target.x = event.clientX;
         target.y = event.clientY;
       };
