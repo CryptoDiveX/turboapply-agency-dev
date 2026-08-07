@@ -1,0 +1,30 @@
+/* Screenshot correction: align Integrations sections with the shared site container without double desktop insets. */
+.integrations-page :is(.systems-section, .platforms-section, .process-section, .principles-section) {
+  width: 100%;
+  max-width: var(--max-width-container-desktop);
+  margin-inline: auto;
+  padding-inline: var(--container-inline-padding-desktop);
+}
+
+.integrations-page .system-card h3 {
+  font-size: clamp(29px, 2.35vw, 38px);
+}
+
+.integrations-page .system-card p {
+  font-size: 19px;
+}
+
+@media (max-width: 760px) {
+  .integrations-page :is(.systems-section, .platforms-section, .process-section, .principles-section) {
+    width: 100%;
+    padding-inline: 24px;
+  }
+
+  .integrations-page .system-card h3 {
+    font-size: clamp(28px, 8vw, 34px);
+  }
+
+  .integrations-page .system-card p {
+    font-size: 18px;
+  }
+}
