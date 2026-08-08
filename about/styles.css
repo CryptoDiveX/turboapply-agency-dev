@@ -505,16 +505,37 @@
   border-radius: 18px;
   background: #fff;
   color: var(--about-ink);
-  transition: background-color 220ms ease, color 220ms ease;
+  border: 1px solid rgba(18, 18, 18, 0.04);
+  transition: none;
+  animation: none;
+  transform: none;
 }
 
 .review-kicker {
   margin: 0;
-  color: var(--about-muted);
-  font: 600 15px/1 Inter, sans-serif;
-  letter-spacing: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #fbbc04;
+  line-height: 1;
+  letter-spacing: 0;
   text-transform: none;
-  transition: color 220ms ease;
+  transition: none;
+}
+
+.review-star {
+  width: 22px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  color: inherit;
+}
+
+.review-star svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
 }
 
 .review-card blockquote {
@@ -555,52 +576,7 @@
   color: var(--about-muted);
   font: 400 12px/1.3 Inter, sans-serif;
   text-decoration: none;
-  transition: color 220ms ease;
-}
-
-.review-inverse {
-  background: var(--about-ink);
-  color: #fff;
-}
-
-.review-inverse .review-kicker,
-.review-inverse footer div :is(span, a) {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.review-inverse .review-avatar {
-  background: #fff;
-  color: var(--about-ink);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .review-card:not(.review-inverse):hover {
-    background: var(--about-ink);
-    color: #fff;
-  }
-
-  .review-card:not(.review-inverse):hover :is(.review-kicker, footer div span, footer div a) {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .review-card:not(.review-inverse):hover .review-avatar {
-    background: #fff;
-    color: var(--about-ink);
-  }
-
-  .review-inverse:hover {
-    background: #fff;
-    color: var(--about-ink);
-  }
-
-  .review-inverse:hover :is(.review-kicker, footer div span, footer div a) {
-    color: var(--about-muted);
-  }
-
-  .review-inverse:hover .review-avatar {
-    background: var(--about-ink);
-    color: #fff;
-  }
+  transition: none;
 }
 
 .review-standard-card {
@@ -1109,6 +1085,7 @@
   .founder-card,
   .review-card,
   .review-kicker,
+  .review-star,
   .review-avatar,
   .review-card footer div span {
     transition-duration: 0.01ms !important;
