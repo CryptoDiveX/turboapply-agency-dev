@@ -52,9 +52,7 @@
   place-items: center;
   overflow: hidden;
   isolation: isolate;
-  background-color: var(--lf-bg);
-  background-image: radial-gradient(var(--lf-dot-grid) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background: #fff;
   border-radius: 0;
 }
 .integrations-page .integration-lead-flow .lf-svg {
@@ -63,6 +61,10 @@
   display: block;
   overflow: visible;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+.integrations-page .integration-lead-flow .lf-bg-panel {
+  fill: url(#lf-dot-grid-pattern);
+  pointer-events: none;
 }
 .integrations-page .integration-lead-flow .lf-card rect {
   fill: var(--lf-card);
