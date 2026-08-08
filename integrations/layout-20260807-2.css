@@ -29,161 +29,103 @@
   }
 }
 
-/* Integrations cover replacement — static white testimonial cards, 2026-08-08. */
-.integrations-page .integration-cover-reviews {
+/* Integrations cover replacement — supplied animated lead-flow diagram, 2026-08-08. */
+.integrations-page .integration-lead-flow {
+  --lf-bg: #fbfaf7;
+  --lf-dot-grid: #e2e0dc;
+  --lf-card: #fff;
+  --lf-card-edge: rgba(18, 18, 18, .04);
+  --lf-ink: #111;
+  --lf-line: #a8acb1;
+  --lf-accent: #ff6a2b;
+  --lf-shadow: 0 10px 34px rgba(15, 23, 42, .09), 0 1px 6px rgba(15, 23, 42, .06);
+  --lf-shadow-hot: 0 13px 34px rgba(255, 106, 43, .26);
+  --lf-flow-speed: 1.6s;
   position: relative;
   min-height: 660px;
-  display: flex;
-  align-items: center;
-  gap: clamp(18px, 2vw, 28px);
-  padding: clamp(40px, 5vw, 76px);
-  overflow: hidden;
-  isolation: isolate;
-  background: #f4f0e8;
-}
-.integrations-page .integration-cover-reviews::before,
-.integrations-page .integration-cover-reviews::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 999px;
-}
-.integrations-page .integration-cover-reviews::before {
-  left: 10%;
-  top: 10%;
-  width: 300px;
-  height: 300px;
-  border: 1px solid rgba(18, 18, 18, .05);
-}
-.integrations-page .integration-cover-reviews::after {
-  right: -150px;
-  bottom: -150px;
-  width: 460px;
-  height: 460px;
-  border: 1px solid rgba(18, 18, 18, .06);
-}
-.integrations-page .integration-review-card {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-  width: min(360px, calc(50% - 14px));
-  min-height: 470px;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(26px, 2.7vw, 34px);
-  border: 1px solid rgba(18, 18, 18, .06);
-  border-radius: clamp(22px, 2.2vw, 30px);
-  background: #fff;
-  color: #151515;
-  box-shadow: none;
-  transform: none;
-  animation: none;
-}
-.integrations-page .integration-review-secondary {
-  margin-top: clamp(80px, 8vw, 132px);
-}
-.integrations-page .integration-stars {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  margin: 0 0 24px;
-  color: #fbbc04;
-  line-height: 1;
-}
-.integrations-page .gm-star {
-  width: 18px;
-  height: 18px;
-  display: inline-grid;
-  place-items: center;
-  color: inherit;
-}
-.integrations-page .gm-star svg {
   width: 100%;
   height: 100%;
-  display: block;
-  fill: currentColor;
-}
-.integrations-page .integration-review-card blockquote {
   margin: 0;
-  max-width: 500px;
-  color: #181818;
-  font-family: var(--font-body);
-  font-size: clamp(21px, 1.75vw, 26px);
-  line-height: 1.14;
-  letter-spacing: -.02em;
-}
-.integrations-page .integration-review-card footer {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #151515;
-}
-.integrations-page .integration-avatar {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
-  display: inline-grid;
+  padding: 0;
+  display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: #111;
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 500;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--lf-bg);
+  background-image: radial-gradient(var(--lf-dot-grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-radius: 0;
 }
-.integrations-page .integration-review-card footer strong,
-.integrations-page .integration-review-card footer span:last-child {
+.integrations-page .integration-lead-flow .lf-svg {
+  width: min(1180px, 118%);
+  height: auto;
   display: block;
+  overflow: visible;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
-.integrations-page .integration-review-card footer strong {
-  margin-bottom: 4px;
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
+.integrations-page .integration-lead-flow .lf-card rect {
+  fill: var(--lf-card);
+  stroke: var(--lf-card-edge);
+  stroke-width: 1;
+  filter: drop-shadow(var(--lf-shadow));
+  transition: filter .35s ease;
 }
-.integrations-page .integration-review-card footer div > span {
-  color: #62605a;
-  font-size: 15px;
-  line-height: 1.2;
+.integrations-page .integration-lead-flow .lf-card {
+  color: var(--lf-ink);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform .35s cubic-bezier(.34, 1.4, .64, 1);
 }
-
+.integrations-page .integration-lead-flow .lf-label {
+  fill: var(--lf-ink);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: .1px;
+  dominant-baseline: middle;
+}
+.integrations-page .integration-lead-flow .lf-label--c { text-anchor: middle; font-size: 20px; }
+.integrations-page .integration-lead-flow .lf-card.is-hot { transform: scale(1.035); color: var(--lf-accent); }
+.integrations-page .integration-lead-flow .lf-card.is-hot rect { filter: drop-shadow(var(--lf-shadow-hot)); }
+.integrations-page .integration-lead-flow .lf-card.is-hot .lf-label { fill: var(--lf-ink); }
+.integrations-page .integration-lead-flow .lf-line {
+  stroke: var(--lf-line);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 6 10;
+  animation: lf-dash var(--lf-flow-speed) linear infinite;
+}
+@keyframes lf-dash { to { stroke-dashoffset: -16; } }
+.integrations-page .integration-lead-flow .lf-trail {
+  stroke: var(--lf-accent);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  marker-end: none;
+  animation: none;
+}
+.integrations-page .integration-lead-flow .lf-trail.is-live { opacity: .95; }
+.integrations-page .integration-lead-flow .lf-trail.is-fading { opacity: 0; transition: opacity .45s ease; }
+.integrations-page .integration-lead-flow .lf-dot-halo { fill: var(--lf-accent); opacity: .22; }
+.integrations-page .integration-lead-flow .lf-dot-core { fill: var(--lf-accent); filter: url(#lf-glow); }
+.integrations-page .integration-lead-flow .lf-dot { opacity: 1; transition: opacity .35s ease; }
+.integrations-page .integration-lead-flow .lf-dot.is-out { opacity: 0; }
 @media (max-width: 1180px) {
-  .integrations-page .integration-cover-reviews {
-    min-height: 620px;
-    padding: 42px 28px;
-  }
-  .integrations-page .integration-review-card {
-    width: min(330px, calc(50% - 9px));
-    min-height: 430px;
-  }
-  .integrations-page .integration-review-card blockquote { font-size: 22px; }
-  .integrations-page .integration-review-secondary { margin-top: 76px; }
+  .integrations-page .integration-lead-flow { min-height: 620px; }
+  .integrations-page .integration-lead-flow .lf-svg { width: min(1060px, 126%); }
 }
 @media (max-width: 760px) {
-  .integrations-page .integration-cover-reviews {
-    min-height: auto;
-    gap: 14px;
-    padding: 28px 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+  .integrations-page .integration-lead-flow {
+    min-height: 420px;
+    align-items: center;
   }
-  .integrations-page .integration-cover-reviews::-webkit-scrollbar { display: none; }
-  .integrations-page .integration-cover-reviews::before,
-  .integrations-page .integration-cover-reviews::after { display: none; }
-  .integrations-page .integration-review-card {
-    width: min(82vw, 360px);
-    min-width: min(82vw, 360px);
-    min-height: 360px;
-    scroll-snap-align: start;
-    padding: 24px;
-    border-radius: 24px;
+  .integrations-page .integration-lead-flow .lf-svg {
+    width: 880px;
+    max-width: none;
+    transform: translateX(-70px);
   }
-  .integrations-page .integration-review-secondary { margin-top: 0; }
-  .integrations-page .integration-review-card blockquote {
-    font-size: 22px;
-    line-height: 1.15;
-  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .integrations-page .integration-lead-flow .lf-line { animation: none; }
+  .integrations-page .integration-lead-flow .lf-card { transition: none; }
 }
