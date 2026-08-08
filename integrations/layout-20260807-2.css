@@ -46,7 +46,8 @@
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  box-sizing: border-box;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -57,7 +58,7 @@
   border-radius: 0;
 }
 .integrations-page .integration-lead-flow .lf-svg {
-  width: min(1180px, 118%);
+  width: min(1120px, 106%);
   height: auto;
   display: block;
   overflow: visible;
@@ -112,7 +113,7 @@
 .integrations-page .integration-lead-flow .lf-dot.is-out { opacity: 0; }
 @media (max-width: 1180px) {
   .integrations-page .integration-lead-flow { min-height: 620px; }
-  .integrations-page .integration-lead-flow .lf-svg { width: min(1060px, 126%); }
+  .integrations-page .integration-lead-flow .lf-svg { width: min(1040px, 106%); }
 }
 @media (max-width: 760px) {
   .integrations-page .integration-lead-flow {
@@ -120,9 +121,9 @@
     align-items: center;
   }
   .integrations-page .integration-lead-flow .lf-svg {
-    width: 880px;
+    width: min(390px, 106%);
     max-width: none;
-    transform: translateX(-70px);
+    transform: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
