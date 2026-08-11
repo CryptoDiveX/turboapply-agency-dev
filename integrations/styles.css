@@ -832,7 +832,7 @@ h1 {
   }
 }
 
-/* Sitewide mobile menu final cascade: keep the homepage card shape across pages. */
+/* Sitewide mobile menu final cascade: match homepage card shape and lowercase labels. */
 @media (max-width: 1180px) {
   .site-nav {
     inset: auto auto auto auto;
@@ -859,16 +859,32 @@ h1 {
     font-size: 34px;
     line-height: .96;
     letter-spacing: -.035em;
+    text-transform: lowercase;
   }
 }
 @media (max-width: 760px) {
   .site-nav {
-    left: 20px;
-    right: 20px;
-    top: 86px;
+    left: 14px;
+    right: 14px;
+    top: 96px;
     width: auto;
-    max-height: calc(100svh - 104px);
-    padding: 18px;
-    border-radius: 24px;
+    max-height: calc(100svh - 114px);
+    padding: 34px 40px 38px;
+    border: 1px solid rgba(245,241,232,.14);
+    border-radius: 28px;
+    background: rgba(10,10,10,.90);
+    box-shadow: 0 24px 70px rgba(0,0,0,.46), inset 0 0 0 1px rgba(255,255,255,.035);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .site-nav.is-open { gap: 14px; }
+  .site-nav a,
+  .site-nav .nav-placeholder {
+    min-height: 58px;
+    padding: 0;
+    font-size: clamp(44px, 11.4vw, 56px);
+    line-height: .96;
+    letter-spacing: -.055em;
+    text-transform: lowercase;
   }
 }
