@@ -485,12 +485,12 @@
 
 @media (max-width: 640px) {
   .service-card.ta-motion-card[data-card-type="website"] .ta-motion-card__image {
-    transform: translate3d(0, -52px, 0) scale(1.22);
+    transform: translate3d(0, -42px, 0) scale(1.32);
   }
 
   .service-card.ta-motion-card[data-card-type="website"]:hover .ta-motion-card__image,
   .service-card.ta-motion-card[data-card-type="website"]:focus-visible .ta-motion-card__image,
   .service-card.ta-motion-card[data-card-type="website"].is-active .ta-motion-card__image {
-    transform: translate3d(0, -52px, 0) scale(1.25);
+    transform: translate3d(0, -42px, 0) scale(1.35);
   }
 }
