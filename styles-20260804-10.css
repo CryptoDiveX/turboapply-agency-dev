@@ -3304,27 +3304,27 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
   .hero-integration-marquee { bottom:14px; }
 }
 
-/* Screenshot-led mobile cover/menu correction — 2026-08-06. */
+/* Screenshot-led compact mobile menu correction — 2026-08-11. */
 @media (max-width: 1100px) {
   .mobile-menu {
-    inset: 96px 14px auto;
+    inset: 88px 16px auto;
     min-height: 0;
-    max-height: calc(100svh - 114px);
-    padding: 34px 40px 38px;
+    max-height: calc(100svh - 106px);
+    padding: 24px 28px 26px;
     border: 1px solid rgba(245,241,232,.14);
-    border-radius: 28px;
+    border-radius: 22px;
     background: rgba(10,10,10,.90);
-    box-shadow: 0 24px 70px rgba(0,0,0,.46), inset 0 0 0 1px rgba(255,255,255,.035);
+    box-shadow: 0 20px 56px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.035);
     backdrop-filter: blur(18px);
     overflow-y: auto;
   }
-  .mobile-menu.is-open { gap: 14px; }
+  .mobile-menu.is-open { gap: 6px; }
   .mobile-menu a {
-    min-height: 58px;
+    min-height: 46px;
     padding: 0;
-    font-size: clamp(44px, 11.4vw, 56px);
-    line-height: .96;
-    letter-spacing: -.055em;
+    font-size: clamp(30px, 8.2vw, 38px);
+    line-height: .98;
+    letter-spacing: -.04em;
     text-transform: lowercase;
   }
 }
