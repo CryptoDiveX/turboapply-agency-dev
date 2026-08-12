@@ -3139,6 +3139,10 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
     padding: 26px 24px 86px;
     border-radius: 14px;
   }
+  .service-card.ta-motion-card[data-card-type="website"] {
+    width: min(calc(100% + 40px), calc(100vw - 24px));
+    justify-self: center;
+  }
   .service-card h3 {
     min-height: 62px;
     left: 0;
