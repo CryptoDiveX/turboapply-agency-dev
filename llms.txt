@@ -27,8 +27,11 @@ Key pages:
 - /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
 - /resources/interactive-website-effects/ — guide to interactive website animations, their pros and cons, and when they are worth implementing, with the live TurboApply Version 3 demo.
 - /resources/fluid-holographic-shape-animation/ — Fluid holographic shapes guide with a real-time liquid-glass loop, MakeBeautifulWork reference, pause control, and reduced-motion fallback.
-- /resources/reflection-cover-animation/ — shortened reflection cover animation guide with the supplied image, a Noomo storytelling reference, pointer-reactive reflective highlight, and full-screen play mode.
-- /resources/product-parallax-scroll-effects-food-drink/ — food and drink website collection covering product parallax scroll effects, scroll storytelling, sticky product reveals, and layered hero motion.
+- /resources/reflection-cover-animation/ — Reflection cover animation guide with the supplied image, a Noomo storytelling reference, and a pointer-reactive reflective highlight.
+- /resources/product-parallax-scroll-effects-food-drink/ — product parallax scroll effects collection for food and drinks websites, with 17 reference sites and UX/SEO notes.
+- /resources/storytelling-sites-scroll-design-examples/ — storytelling website collection with immersive scroll, scrollytelling, cinematic landing page, and narrative UX examples.
+- /resources/health-biotech-website-aesthetics-examples/ — health, biotech, longevity, wellness, and AI website aesthetics collection with scientific minimalism, organic gradients, and health-tech UX examples.
+- /resources/cosmetics-website-design-examples/ — growing cosmetics and skincare website collection for premium product photography, beauty ecommerce UX, and ingredient-led brand storytelling.
 - /resources/turboapply-vs-no-code-website-builders/ — comparison of no-code website platforms and a custom TurboApply build.
 - /results/ — source-backed World Top Martial Arts, Peniby’s Wellness, and Ozero Grez work records.
 - /free-guide/ — free lead quality guide funnel.

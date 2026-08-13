@@ -589,13 +589,13 @@ h1 {
 .platforms-section,
 .process-section,
 .principles-section {
-  width: 100%;
-  max-width: var(--max-width-container-desktop);
+  width: calc(100% - 64px);
+  max-width: calc(var(--max-width-container-desktop) - 64px);
   margin-inline: auto;
-  padding: clamp(88px, 9vw, 144px) var(--container-inline-padding-desktop);
+  padding: clamp(52px, 5vw, 72px);
   border: 0;
-  border-radius: 0;
-  background: #fff;
+  border-radius: 24px;
+  background: #f3f3f0;
 }
 .platforms-section { margin-top: 24px; }
 .platforms-section + .process-section,
@@ -666,9 +666,9 @@ h1 {
   .platforms-section,
   .process-section,
   .principles-section {
-    width: 100%;
+    width: calc(100% - 32px);
     padding: clamp(42px, 8vw, 60px) clamp(20px, 6vw, 40px);
-    border-radius: 0;
+    border-radius: 20px;
   }
   .platforms-section { margin-top: 16px; }
   .platforms-section + .process-section,

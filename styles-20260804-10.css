@@ -2812,7 +2812,6 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
   max-width: 100%;
   box-sizing: border-box;
 }
-/* User-corrected service-directory Web Design card boundary — 2026-08-08. */
 .service-card {
   position: relative;
   min-height: clamp(388px, 31vw, 424px);
@@ -3034,17 +3033,17 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
     letter-spacing: .16em;
   }
   .turbo-hero-title {
-    font-size: clamp(54px, 15vw, 62px);
+    font-size: clamp(50px, 13.7vw, 56px);
     line-height: .88;
-    letter-spacing: -.078em;
+    letter-spacing: -.072em;
   }
   .turbo-hero-title .turbo-title-main-line {
     max-width: 100%;
-    gap: 3px;
+    gap: 4px;
   }
   .turbo-hero-title span:last-child {
-    font-size: .78em;
-    letter-spacing: -.062em;
+    font-size: .76em;
+    letter-spacing: -.058em;
   }
   .turbo-hero-subtitle {
     max-width: 330px;
@@ -3304,27 +3303,27 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
   .hero-integration-marquee { bottom:14px; }
 }
 
-/* Screenshot-led compact mobile menu correction — 2026-08-11. */
+/* Screenshot-led mobile cover/menu correction — 2026-08-06. */
 @media (max-width: 1100px) {
   .mobile-menu {
-    inset: 88px 16px auto;
+    inset: 96px 14px auto;
     min-height: 0;
-    max-height: calc(100svh - 106px);
-    padding: 24px 28px 26px;
+    max-height: calc(100svh - 114px);
+    padding: 34px 40px 38px;
     border: 1px solid rgba(245,241,232,.14);
-    border-radius: 22px;
+    border-radius: 28px;
     background: rgba(10,10,10,.90);
-    box-shadow: 0 20px 56px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.035);
+    box-shadow: 0 24px 70px rgba(0,0,0,.46), inset 0 0 0 1px rgba(255,255,255,.035);
     backdrop-filter: blur(18px);
     overflow-y: auto;
   }
-  .mobile-menu.is-open { gap: 6px; }
+  .mobile-menu.is-open { gap: 14px; }
   .mobile-menu a {
-    min-height: 46px;
+    min-height: 58px;
     padding: 0;
-    font-size: clamp(30px, 8.2vw, 38px);
-    line-height: .98;
-    letter-spacing: -.04em;
+    font-size: clamp(44px, 11.4vw, 56px);
+    line-height: .96;
+    letter-spacing: -.055em;
     text-transform: lowercase;
   }
 }
@@ -3339,16 +3338,7 @@ html[data-home-focus-modality="pointer"] .contact-form :is(input:not([type="hidd
   }
   .turbo-hero-copy { top: 116px; }
   .turbo-hero-title {
-    font-size: clamp(54px, 15vw, 62px);
-    line-height: .90;
-    letter-spacing: -.078em;
-  }
-  .turbo-hero-title .turbo-title-main-line {
-    gap: 3px;
-  }
-  .turbo-hero-title span:last-child {
-    font-size: .78em;
-    line-height: 1;
-    letter-spacing: -.062em;
+    font-size: clamp(38px, 11.2vw, 52px);
+    line-height: .96;
   }
 }

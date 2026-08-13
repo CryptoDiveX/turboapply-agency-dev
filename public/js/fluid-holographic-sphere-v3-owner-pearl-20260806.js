@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = 'fluid-holographic-sphere-gradient-material-20260808-2';
+  const VERSION = 'fluid-holographic-sphere-v3-owner-pearl-20260806-1';
   const LOOP_MS = 10000;
   const PULSE_MS = 900;
   const LATITUDES = 64;
@@ -120,7 +120,7 @@
       float green = texture2D(u_material, environmentUv).g;
       float blue = texture2D(u_material, clamp(environmentUv - dispersion, 0.002, 0.998)).b;
       vec3 environment = vec3(red, green, blue);
-      environment = mix(vec3(0.94, 0.95, 1.0), environment, 0.88);
+      environment = mix(vec3(0.94, 0.95, 1.0), environment, 0.50);
       vec3 referencePalette = mix(
         vec3(0.99, 0.78, 0.99),
         vec3(0.82, 0.80, 1.0),
@@ -136,14 +136,14 @@
         vec3(0.851, 0.937, 0.961),
         smoothstep(0.78, 1.0, v_uv.y) * 0.18
       );
-      environment = mix(environment, referencePalette, 0.22);
+      environment = mix(environment, referencePalette, 0.65);
 
       vec3 iridescence = 0.62 + 0.38 * cos(
         TAU * (fresnel * 1.4 + dot(normal, vec3(0.21, 0.43, 0.36)) * 0.36)
         + vec3(0.0, 2.05, 4.1)
       );
       iridescence = pow(iridescence, vec3(0.78));
-      iridescence = mix(vec3(0.93, 0.95, 1.0), iridescence, 0.54);
+      iridescence = mix(vec3(0.93, 0.95, 1.0), iridescence, 0.38);
 
       vec3 lightDirection = normalize(vec3(-0.38, 0.72, 0.58));
       vec3 halfVector = normalize(lightDirection + viewDirection);
@@ -163,7 +163,7 @@
       color -= vec3(0.08, 0.06, 0.11) * studioCrease * 0.05;
       color -= vec3(foldShadow * (0.08 + v_displacement * 0.10));
       color += vec3(0.01, 0.03, 0.04) * fresnel;
-      color = mix(vec3(0.94, 0.95, 1.0), color, 0.96);
+      color = mix(vec3(0.93, 0.94, 1.0), color, 0.88);
 
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
     }

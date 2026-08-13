@@ -454,7 +454,6 @@
 
 .service-card.ta-motion-card[data-card-type="website"] .ta-motion-card__image {
   object-position: center center;
-  transform-origin: 50% 62%;
 }
 
 .service-card.ta-motion-card[data-card-type="website"] p {
@@ -480,17 +479,5 @@
   .service-card.ta-motion-card {
     --ta-card-radius: 14px;
     min-height: 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .service-card.ta-motion-card[data-card-type="website"] .ta-motion-card__image {
-    transform: translate3d(0, -42px, 0) scale(1.32);
-  }
-
-  .service-card.ta-motion-card[data-card-type="website"]:hover .ta-motion-card__image,
-  .service-card.ta-motion-card[data-card-type="website"]:focus-visible .ta-motion-card__image,
-  .service-card.ta-motion-card[data-card-type="website"].is-active .ta-motion-card__image {
-    transform: translate3d(0, -42px, 0) scale(1.35);
   }
 }
