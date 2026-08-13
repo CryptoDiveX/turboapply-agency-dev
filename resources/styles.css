@@ -169,6 +169,12 @@
   letter-spacing: -0.02em;
 }
 
+.resource-library-grid .resource-card-copy h3 {
+  font-size: clamp(21px, 1.35vw, 24px);
+  line-height: 1.14;
+  letter-spacing: -0.018em;
+}
+
 .resource-card-copy > p:not(.resource-category) {
   margin: 18px 0 26px;
   color: #3f3e3a;
@@ -1061,6 +1067,11 @@
   .resource-card-copy h2,
   .resource-card-copy h3 {
     font-size: 27px;
+  }
+
+  .resource-library-grid .resource-card-copy h3 {
+    font-size: 24px;
+    line-height: 1.14;
   }
 
   .resources-principles {
