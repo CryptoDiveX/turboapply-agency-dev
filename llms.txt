@@ -27,7 +27,8 @@ Key pages:
 - /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
 - /resources/interactive-website-effects/ — guide to interactive website animations, their pros and cons, and when they are worth implementing, with the live TurboApply Version 3 demo.
 - /resources/fluid-holographic-shape-animation/ — Fluid holographic shapes guide with a real-time liquid-glass loop, MakeBeautifulWork reference, pause control, and reduced-motion fallback.
-- /resources/reflection-cover-animation/ — Reflection cover animation guide with the supplied image, a Noomo storytelling reference, and a pointer-reactive reflective highlight.
+- /resources/reflection-cover-animation/ — shortened reflection cover animation guide with the supplied image, a Noomo storytelling reference, pointer-reactive reflective highlight, and full-screen play mode.
+- /resources/product-parallax-scroll-effects-food-drink/ — food and drink website collection covering product parallax scroll effects, scroll storytelling, sticky product reveals, and layered hero motion.
 - /resources/turboapply-vs-no-code-website-builders/ — comparison of no-code website platforms and a custom TurboApply build.
 - /results/ — source-backed World Top Martial Arts, Peniby’s Wellness, and Ozero Grez work records.
 - /free-guide/ — free lead quality guide funnel.

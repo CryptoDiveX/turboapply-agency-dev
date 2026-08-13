@@ -77,6 +77,7 @@ All other approved service names, descriptions, and starting references remain a
 - Interactive website animations guide covering pros, cons, and implementation decisions, with TurboApply Version 3: https://turboapply.agency/resources/interactive-website-effects/
 - Fluid holographic shapes guide with a real-time fluid holographic shape loop, MakeBeautifulWork reference, pause control, and reduced-motion fallback: https://turboapply.agency/resources/fluid-holographic-shape-animation/
 - Reflection cover animation guide with a Noomo storytelling reference and a pointer-reactive reflective image treatment: https://turboapply.agency/resources/reflection-cover-animation/
+- Food and drink product parallax scroll effects collection with live website examples: https://turboapply.agency/resources/product-parallax-scroll-effects-food-drink/
 - TurboApply vs. no-code website builders: https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - Results destination: https://turboapply.agency/results/
 - Resources provide original practical guidance. Results publishes customer success stories only when context is approved and outcomes can be verified; do not invent customer names, quotes, logos, metrics, or results.
@@ -98,6 +99,7 @@ All other approved service names, descriptions, and starting references remain a
 - https://turboapply.agency/resources/interactive-website-effects/
 - https://turboapply.agency/resources/fluid-holographic-shape-animation/
 - https://turboapply.agency/resources/reflection-cover-animation/
+- https://turboapply.agency/resources/product-parallax-scroll-effects-food-drink/
 - https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - https://turboapply.agency/results/
 - https://turboapply.agency/free-guide/

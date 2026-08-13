@@ -811,6 +811,57 @@
   border-bottom: 0;
 }
 
+.article-collection-item {
+  scroll-margin-top: 100px;
+  padding: 0 0 clamp(64px, 7vw, 92px);
+}
+
+.article-collection-item h2 {
+  margin: 0 0 26px;
+  font: 700 clamp(34px, 4.4vw, 54px)/0.98 Urbanist, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.article-collection-item h2 span {
+  color: #1b1c1f;
+}
+
+.article-collection-item h2 a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+.article-collection-item h2 a:not(:hover):not(:focus-visible) {
+  text-decoration: none;
+}
+
+.article-collection-figure {
+  margin: 0 0 34px;
+  overflow: hidden;
+  border: 14px solid #050505;
+  background: #050505;
+}
+
+.article-collection-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-collection-item p {
+  margin: 0;
+  color: #292a2d;
+  font-size: clamp(21px, 2vw, 28px);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+}
+
+.article-collection-item a:focus-visible {
+  outline: 3px solid var(--resource-blue);
+  outline-offset: 4px;
+}
+
 .article-internal-links a {
   color: inherit;
   text-decoration-thickness: 1px;
@@ -1131,6 +1182,15 @@
 
   .article-section {
     padding-bottom: 60px;
+  }
+
+  .article-collection-figure {
+    border-width: 8px;
+  }
+
+  .article-collection-item p {
+    font-size: 21px;
+    line-height: 1.48;
   }
 
   .article-section h2,
