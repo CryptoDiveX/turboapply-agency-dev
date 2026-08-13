@@ -134,14 +134,18 @@
       ownerPearlPalette = mix(
         ownerPearlPalette,
         vec3(1.0, 0.93, 0.46),
-        smoothstep(0.46, 0.76, v_uv.x) * smoothstep(0.38, 0.72, v_uv.y) * 0.54
+        smoothstep(0.46, 0.76, v_uv.x) * smoothstep(0.30, 0.72, v_uv.y) * 0.82
       );
       ownerPearlPalette = mix(
         ownerPearlPalette,
         vec3(0.66, 0.84, 1.0),
         smoothstep(0.68, 1.0, v_uv.y) * 0.58
       );
-      environment = mix(environment, ownerPearlPalette, 0.34);
+      environment = mix(environment, ownerPearlPalette, 0.56);
+      float goldBloom = smoothstep(0.05, 0.62, normal.x) * smoothstep(-0.70, -0.10, normal.y) * (1.0 - smoothstep(0.78, 1.0, fresnel));
+      float mintBloom = smoothstep(0.10, 0.78, normal.y) * smoothstep(-0.55, 0.24, normal.x) * (1.0 - smoothstep(0.82, 1.0, fresnel));
+      environment = mix(environment, vec3(1.0, 0.93, 0.48), goldBloom * 0.36);
+      environment = mix(environment, vec3(0.68, 0.96, 0.88), mintBloom * 0.28);
 
       vec3 iridescence = 0.62 + 0.38 * cos(
         TAU * (fresnel * 1.4 + dot(normal, vec3(0.21, 0.43, 0.36)) * 0.36)
@@ -162,7 +166,7 @@
       float studioCrease = pow(abs(sin(reflected.x * 7.0 - reflected.z * 4.0 - creaseLoop)), 28.0);
 
       vec3 color = environment * diffuse;
-      color = mix(color, iridescence, clamp(0.12 + fresnel * 0.92 + v_displacement * 0.18, 0.0, 0.78));
+      color = mix(color, iridescence, clamp(0.08 + fresnel * 0.58 + v_displacement * 0.10, 0.0, 0.48));
       color += vec3(specular * 0.42);
       color += vec3(0.91, 0.96, 1.0) * studioHighlight * 0.18;
       color -= vec3(0.08, 0.06, 0.11) * studioCrease * 0.05;
