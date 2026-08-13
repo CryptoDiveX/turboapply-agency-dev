@@ -26,9 +26,9 @@ Key pages:
 - /resources/technical-seo-audit-checklist/ — technical SEO audit checklist for small-business websites.
 - /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
 - /resources/interactive-website-effects/ — guide to interactive website animations, their pros and cons, and when they are worth implementing, with the live TurboApply Version 3 demo.
-- /resources/fluid-holographic-shape-animation/ — Fluid holographic shapes guide with a real-time liquid-glass loop, MakeBeautifulWork reference, pause control, and reduced-motion fallback.
-- /resources/reflection-cover-animation/ — Reflection cover animation guide with the supplied image, a Noomo storytelling reference, and a pointer-reactive reflective highlight.
-- /resources/product-parallax-scroll-effects-food-drink/ — product parallax scroll effects collection for food and drinks websites, with 17 reference sites and UX/SEO notes.
+- /resources/fluid-holographic-shape-animation/ — Fluid holographic shapes guide with a real-time liquid-glass loop recolored to the supplied pastel pearlescent Image 2 palette, MakeBeautifulWork reference, pause control, and reduced-motion fallback.
+- /resources/reflection-cover-animation/ — Reflection cover animation guide with the supplied image, a Noomo storytelling reference, and a pointer-reactive water-flowing disturbance.
+- /resources/product-parallax-scroll-effects-food-drink/ — product parallax scroll effects collection for food and drinks websites, with 17 reference sites, the requested two-line brand/style paragraph formula, a short intro, and Keywords section.
 - /resources/storytelling-sites-scroll-design-examples/ — storytelling website collection with immersive scroll, scrollytelling, cinematic landing page, and narrative UX examples.
 - /resources/health-biotech-website-aesthetics-examples/ — health, biotech, longevity, wellness, and AI website aesthetics collection with scientific minimalism, organic gradients, and health-tech UX examples.
 - /resources/cosmetics-website-design-examples/ — growing cosmetics and skincare website collection for premium product photography, beauty ecommerce UX, and ingredient-led brand storytelling.

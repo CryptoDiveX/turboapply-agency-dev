@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = 'fluid-holographic-sphere-v3-owner-pearl-20260806-1';
+  const VERSION = 'fluid-holographic-sphere-v3-image2-palette-20260813-2';
   const LOOP_MS = 10000;
   const PULSE_MS = 900;
   const LATITUDES = 64;
@@ -120,30 +120,36 @@
       float green = texture2D(u_material, environmentUv).g;
       float blue = texture2D(u_material, clamp(environmentUv - dispersion, 0.002, 0.998)).b;
       vec3 environment = vec3(red, green, blue);
-      environment = mix(vec3(0.94, 0.95, 1.0), environment, 0.50);
+      environment = mix(vec3(0.965, 0.982, 1.0), environment, 0.82);
       vec3 referencePalette = mix(
-        vec3(0.99, 0.78, 0.99),
-        vec3(0.82, 0.80, 1.0),
-        smoothstep(0.14, 0.48, v_uv.y)
+        vec3(0.74, 0.90, 1.0),
+        vec3(0.90, 0.80, 1.0),
+        smoothstep(0.05, 0.42, v_uv.y)
       );
       referencePalette = mix(
         referencePalette,
-        vec3(0.78, 0.90, 1.0),
-        smoothstep(0.42, 0.82, v_uv.y)
+        vec3(1.0, 0.76, 0.93),
+        smoothstep(0.24, 0.58, fract(v_uv.x * 0.72 + v_uv.y * 0.36))
       );
       referencePalette = mix(
         referencePalette,
-        vec3(0.851, 0.937, 0.961),
-        smoothstep(0.78, 1.0, v_uv.y) * 0.18
+        vec3(0.72, 1.0, 0.92),
+        smoothstep(0.42, 0.86, fract(v_uv.x * 0.46 - v_uv.y * 0.54 + 0.38)) * 0.72
       );
-      environment = mix(environment, referencePalette, 0.65);
+      referencePalette = mix(
+        referencePalette,
+        vec3(1.0, 0.96, 0.58),
+        smoothstep(0.58, 0.96, fract(v_uv.x * 0.64 + v_uv.y * 0.72 + 0.12)) * 0.62
+      );
+      referencePalette = mix(referencePalette, vec3(0.95, 0.98, 1.0), 0.22);
+      environment = mix(environment, referencePalette, 0.86);
 
       vec3 iridescence = 0.62 + 0.38 * cos(
         TAU * (fresnel * 1.4 + dot(normal, vec3(0.21, 0.43, 0.36)) * 0.36)
         + vec3(0.0, 2.05, 4.1)
       );
       iridescence = pow(iridescence, vec3(0.78));
-      iridescence = mix(vec3(0.93, 0.95, 1.0), iridescence, 0.38);
+      iridescence = mix(vec3(0.90, 0.97, 1.0), iridescence, 0.64);
 
       vec3 lightDirection = normalize(vec3(-0.38, 0.72, 0.58));
       vec3 halfVector = normalize(lightDirection + viewDirection);
@@ -158,12 +164,12 @@
 
       vec3 color = environment * diffuse;
       color = mix(color, iridescence, clamp(0.12 + fresnel * 0.92 + v_displacement * 0.18, 0.0, 0.78));
-      color += vec3(specular * 0.42);
-      color += vec3(0.91, 0.96, 1.0) * studioHighlight * 0.18;
+      color += vec3(specular * 0.34);
+      color += vec3(0.98, 1.0, 0.94) * studioHighlight * 0.28;
       color -= vec3(0.08, 0.06, 0.11) * studioCrease * 0.05;
       color -= vec3(foldShadow * (0.08 + v_displacement * 0.10));
       color += vec3(0.01, 0.03, 0.04) * fresnel;
-      color = mix(vec3(0.93, 0.94, 1.0), color, 0.88);
+      color = mix(vec3(0.88, 0.95, 1.0), color, 0.96);
 
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
     }
