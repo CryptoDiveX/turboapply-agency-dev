@@ -28,8 +28,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Karla:wght@400;500&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../integrations/styles-20260802-24.css?v=sitewide-footer-pill-20260802-24" />
-    <link rel="stylesheet" href="styles.css?v=agents-sitewide-footer-pill-20260802-14" />
+    <link rel="stylesheet" href="../integrations/styles-20260807-25.css?v=sitewide-mobile-hero-card-parity-20260811-1" />
+    <link rel="stylesheet" href="styles.css?v=agents-cover-cluster-20260809-15" />
     <link rel="stylesheet" href="/public/css/surface-effects-20260806.css?v=surface-effects-20260806-3" />
     <script>
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -95,23 +95,150 @@
           </div>
         </div>
 
-        <div class="integration-canvas agent-canvas" role="img" aria-label="Six TurboApply agents supporting repeated sales work around a central sales team">
-          <span class="agent-route route-one" aria-hidden="true"></span>
-          <span class="agent-route route-two" aria-hidden="true"></span>
-          <span class="agent-route route-three" aria-hidden="true"></span>
-          <span class="agent-route route-four" aria-hidden="true"></span>
-          <span class="agent-route route-five" aria-hidden="true"></span>
-          <span class="agent-route route-six" aria-hidden="true"></span>
-          <div class="hub-card agent-hub">
-            <span>TurboApply</span>
-            <strong>Supports the sales team</strong>
+        <div class="agent-cover" aria-label="Animated cluster of connected TurboApply sales agents">
+          <div class="agent-cluster" role="group" aria-label="Cluster of five connected agents: Leads, Booking, Follow-up, CRM, Support">
+
+            <svg class="ac-wires" viewBox="0 0 1119 1066" fill="none" aria-hidden="true">
+              <path id="w-leads-booking"   d="M442 205 H552 a18 18 0 0 1 18 18 V272 a18 18 0 0 0 18 18 H682"/>
+              <path id="w-leads-follow"    d="M300 340 V402 a18 18 0 0 0 18 18 H402"/>
+              <path id="w-follow-crm"      d="M402 467 H235 V620"/>
+              <path id="w-follow-booking"  d="M642 470 H772 a18 18 0 0 0 18 -18 V415"/>
+              <path id="w-crm-support"     d="M361 760 H632"/>
+              <path id="w-booking-support" d="M870 415 V560 a18 18 0 0 1 -18 18 H750 a18 18 0 0 0 -18 18 V676"/>
+
+              <g class="ac-nodes">
+                <circle cx="468" cy="205" r="6"/>
+                <circle cx="360" cy="420" r="6"/>
+                <circle cx="235" cy="467" r="6"/>
+                <circle cx="700" cy="470" r="6"/>
+                <circle cx="497" cy="760" r="6"/>
+                <circle cx="845" cy="578" r="6"/>
+              </g>
+
+              <g class="ac-trail">
+                <circle cx="122" cy="467" r="5" opacity=".45"/>
+                <circle cx="145" cy="467" r="5" opacity=".6"/>
+                <circle cx="167" cy="467" r="5" opacity=".75"/>
+                <circle cx="188" cy="467" r="5" opacity=".9"/>
+                <circle cx="208" cy="467" r="5"/>
+              </g>
+            </svg>
+
+            <div class="ac-grid" aria-hidden="true"></div>
+
+            <!-- LEADS -->
+            <div class="ac-card ac-leads" tabindex="0" style="--x:16.18%; --y:6.85%; --dot:#22c55e"
+                 data-wires="w-leads-booking w-leads-follow">
+              <span class="ac-status"></span>
+              <span class="ac-tile">
+                <svg viewBox="0 0 24 24" class="ac-icon">
+                  <g class="ac-person">
+                    <circle cx="12" cy="8.6" r="3.8"/>
+                    <path d="M4.8 20.6c0-3.98 3.22-6.2 7.2-6.2s7.2 2.22 7.2 6.2"/>
+                  </g>
+                  <g class="ac-badge">
+                    <circle cx="19.6" cy="4.4" r="3.5" fill="#22c55e" stroke="none"/>
+                    <path d="M19.6 2.8v3.2M18 4.4h3.2" stroke="#fff" stroke-width="1.5"/>
+                  </g>
+                </svg>
+              </span>
+              <span class="ac-label">Leads Agent</span>
+            </div>
+
+            <!-- BOOKING -->
+            <div class="ac-card ac-booking" tabindex="0" style="--x:60.95%; --y:14.07%; --dot:#3b82f6"
+                 data-wires="w-leads-booking w-follow-booking w-booking-support">
+              <span class="ac-status"></span>
+              <span class="ac-tile">
+                <svg viewBox="0 0 24 24" class="ac-icon">
+                  <rect x="3" y="4.8" width="18" height="16.2" rx="2.6"/>
+                  <path d="M3 9.4h18M8 2.6v4.2M16 2.6v4.2"/>
+                  <path class="ac-row ac-row1" pathLength="100" d="M6.6 13.2h10.8"/>
+                  <path class="ac-row ac-row2" pathLength="100" d="M6.6 16.8h7"/>
+                  <g class="ac-ok">
+                    <circle class="ac-halo" cx="18.4" cy="18.4" r="4.6" fill="#22c55e" stroke="none"/>
+                    <path d="M16.3 18.5l1.5 1.5 2.9-3.1" stroke="#fff" stroke-width="1.6"/>
+                  </g>
+                </svg>
+              </span>
+              <span class="ac-label">Booking Agent</span>
+            </div>
+
+            <!-- FOLLOW-UP -->
+            <div class="ac-card ac-follow" tabindex="0" style="--x:35.93%; --y:35.93%; --dot:#8b5cf6"
+                 data-wires="w-leads-follow w-follow-crm w-follow-booking">
+              <span class="ac-status"></span>
+              <span class="ac-tile">
+                <svg viewBox="0 0 24 24" class="ac-icon ac-mail">
+                  <defs><clipPath id="ac-mail-clip"><rect x="-3" y="-6" width="30" height="27.7"/></clipPath></defs>
+                  <g class="ac-mailbox">
+                    <path class="ac-flap" d="M1.2 11.1L6.6 11.1L12 11.1L17.4 11.1L22.8 11.1"/>
+                    <g clip-path="url(#ac-mail-clip)">
+                      <path class="ac-letter" d="M4.1 18.6V5.35a1.05 1.05 0 0 1 1.05-1.05h13.7a1.05 1.05 0 0 1 1.05 1.05V18.6
+                                                 M7.5 7.8h9M7.5 11h9"/>
+                    </g>
+                    <path class="ac-panel" stroke="none"
+                          d="M1.2 11.1 12 17.3 22.8 11.1V19.6a2.1 2.1 0 0 1-2.1 2.1H3.3a2.1 2.1 0 0 1-2.1-2.1z"/>
+                    <path d="M1.2 11.1v8.5a2.1 2.1 0 0 0 2.1 2.1h17.4a2.1 2.1 0 0 0 2.1-2.1v-8.5"/>
+                    <polyline points="1.2,11.1 12,17.3 22.8,11.1"/>
+                  </g>
+                </svg>
+              </span>
+              <span class="ac-label">Follow-up Agent</span>
+            </div>
+
+            <!-- CRM -->
+            <div class="ac-card ac-crm" tabindex="0" style="--x:10.72%; --y:58.16%; --dot:#f97316"
+                 data-wires="w-follow-crm w-crm-support">
+              <span class="ac-status"></span>
+              <span class="ac-tile">
+                <svg viewBox="0 0 24 24" class="ac-icon">
+                  <g class="ac-disc">
+                    <path d="M4.5 14.2v4.2c0 1.44 3.36 2.6 7.5 2.6s7.5-1.16 7.5-2.6v-4.2"/>
+                    <ellipse cx="12" cy="14.2" rx="7.5" ry="2.6"/>
+                  </g>
+                  <g class="ac-disc">
+                    <path d="M4.5 9v4.2c0 1.44 3.36 2.6 7.5 2.6s7.5-1.16 7.5-2.6V9"/>
+                    <ellipse cx="12" cy="9" rx="7.5" ry="2.6"/>
+                  </g>
+                  <g class="ac-disc ac-disc-new">
+                    <path d="M4.5 3.8V8c0 1.44 3.36 2.6 7.5 2.6S19.5 9.44 19.5 8V3.8"/>
+                    <ellipse cx="12" cy="3.8" rx="7.5" ry="2.6"/>
+                  </g>
+                </svg>
+              </span>
+              <span class="ac-label">CRM Agent</span>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="ac-card ac-support" tabindex="0" style="--x:56.48%; --y:63.42%; --dot:#2dd4bf"
+                 data-wires="w-crm-support w-booking-support">
+              <span class="ac-status"></span>
+              <span class="ac-tile">
+                <svg viewBox="0 0 24 24" class="ac-icon">
+                  <g class="ac-headset">
+                    <path d="M4.6 13.4v-1.2a7.4 7.4 0 0 1 14.8 0v1.2"/>
+                    <rect x="2.6" y="12.6" width="4.4" height="6.6" rx="2.2"/>
+                    <rect x="17" y="12.6" width="4.4" height="6.6" rx="2.2"/>
+                    <path d="M19.2 19.2v.6a2.6 2.6 0 0 1-2.6 2.6h-1.8"/>
+                    <circle cx="13.2" cy="22.4" r="1.4" fill="#18181b" stroke="none"/>
+                  </g>
+                  <g class="ac-bubble">
+                    <path class="ac-halo" fill="#2dd4bf" stroke="none"
+                          d="M15.2 .6H20.8a2.8 2.8 0 0 1 2.8 2.8V6.2a2.8 2.8 0 0 1-2.8 2.8H18.4l-2.8 2.6V9H15.2a2.8 2.8 0 0 1-2.8-2.8V3.4a2.8 2.8 0 0 1 2.8-2.8z"/>
+                    <circle class="ac-dot ac-dot1" cx="15.7" cy="4.8" r=".85" fill="#fff" stroke="none"/>
+                    <circle class="ac-dot ac-dot2" cx="18" cy="4.8" r=".85" fill="#fff" stroke="none"/>
+                    <circle class="ac-dot ac-dot3" cx="20.3" cy="4.8" r=".85" fill="#fff" stroke="none"/>
+                  </g>
+                  <g class="ac-ok">
+                    <circle class="ac-halo" cx="19.2" cy="4.8" r="4.6" fill="#22c55e" stroke="none"/>
+                    <path d="M17.1 4.9l1.5 1.5 2.9-3.1" stroke="#fff" stroke-width="1.6"/>
+                  </g>
+                </svg>
+              </span>
+              <span class="ac-label">Support Agent</span>
+            </div>
           </div>
-          <div class="agent-node node-assistant">Assistant</div>
-          <div class="agent-node node-leads">Lead generation</div>
-          <div class="agent-node node-followup">Follow-up</div>
-          <div class="agent-node node-data">Data</div>
-          <div class="agent-node node-outreach">Outreach</div>
-          <div class="agent-node node-coach">Coaching</div>
         </div>
       </section>
 
@@ -164,6 +291,7 @@
       </div>
     </footer>
 
+    <script src="/public/js/agents-cluster-cover-20260809-1.js?v=agents-cluster-cover-20260809-1" defer></script>
     <script src="../integrations/script.js?v=agents-page-20260714-1"></script>
   </body>
 </html>
