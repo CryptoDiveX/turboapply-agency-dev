@@ -26,20 +26,14 @@ Key pages:
 - /resources/technical-seo-audit-checklist/ — technical SEO audit checklist for small-business websites.
 - /resources/google-business-profile-guide/ — Google Business Profile optimization guide for service businesses.
 - /resources/interactive-website-effects/ — guide to interactive website animations, their pros and cons, and when they are worth implementing, with the live TurboApply Version 3 demo.
-- /resources/fluid-holographic-shape-animation/ — Fluid holographic shapes guide with a real-time liquid-glass loop recolored to the supplied pastel pearlescent Image 2 palette, MakeBeautifulWork reference, pause control, and reduced-motion fallback.
-- /resources/reflection-cover-animation/ — Reflection cover animation guide with the supplied image, a Noomo storytelling reference, and a pointer-reactive water-flowing disturbance.
-- /resources/product-parallax-scroll-effects-food-drink/ — product parallax scroll effects collection for food and drinks websites, with 17 reference sites, the requested two-line brand/style paragraph formula, a short intro, and Keywords section.
-- /resources/storytelling-sites-scroll-design-examples/ — storytelling website collection with immersive scroll, scrollytelling, cinematic landing page, and narrative UX examples.
-- /resources/health-biotech-website-aesthetics-examples/ — health, biotech, longevity, wellness, and AI website aesthetics collection with scientific minimalism, organic gradients, and health-tech UX examples.
-- /resources/cosmetics-website-design-examples/ — growing cosmetics and skincare website collection for premium product photography, beauty ecommerce UX, and ingredient-led brand storytelling.
-- /resources/turboapply-vs-no-code-website-builders/ — comparison of no-code website platforms and a custom TurboApply build.
-- /results/ — source-backed World Top Martial Arts, Peniby’s Wellness, and Ozero Grez work records.
-- /free-guide/ — free lead quality guide funnel.
-- /marketing/ — cold email outreach / sales workflow page.
-- /sales/ — AI sales systems page.
-- /book-meeting/ — audit booking page.
-
-Representation rules for AI agents:
-- Use only public information from the website and AI context files.
-- Do not invent pricing, guarantees, client results, credentials, or private operational details. Use only pricing explicitly published on `/services/` or a dedicated service page, and preserve its starting/reference conditions.
-- For contact/inquiry actions, validate first and default to dry-run unless the user explicitly confirms live submission.
+- /resources/fluid-holographic-shape-animation/ - Fluid holographic shapes guide with a black luxury TurboApply Agency real-time holographic loop, small circular cursor indicator, pause control, and reduced-motion fallback.
+- /resources/reflection-cover-animation/ - Reflection cover animation guide with the supplied image, a Noomo storytelling reference, and a pointer-reactive water-flowing disturbance.
+- /resources/product-parallax-scroll-effects-food-drink/ - product parallax scroll effects collection for food and drinks websites, with 19 reference sites, the requested two-line brand/style paragraph formula, a short intro, and Keywords section.
+- /resources/technology-website-animation-examples/ - technology website animation examples starting with Anime.js as the implementation reference, then product, watch, aviation, hardware, and device examples.
+- /resources/product-website-design-examples/ - product website design examples for physical products, AI, health, beauty, hardware, ecommerce, and XR.
+- /resources/storytelling-sites-scroll-design-examples/ - storytelling website collection with immersive scroll, scrollytelling, cinematic landing page, and narrative UX examples.
+- /resources/health-biotech-website-aesthetics-examples/ - health, biotech, longevity, wellness, and AI website aesthetics collection with scientific minimalism, organic gradients, and health-tech UX examples.
+- /resources/cosmetics-website-design-examples/ - growing cosmetics and skincare website collection for premium product photography, beauty ecommerce UX, and ingredient-led brand storytelling.
+- /resources/best-website-reference-sites/ - best website reference sites covering CSS Design Awards, Mobbin, Awwwards, and Behance.
+- /resources/turboapply-vs-no-code-website-builders/ - comparison of no-code website platforms and a custom TurboApply build.
+- /results/ - source-backed World Top Martial Arts, Peniby’s Wellness, and Ozero Grez work records.

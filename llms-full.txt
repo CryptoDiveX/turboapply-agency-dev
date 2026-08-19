@@ -75,12 +75,15 @@ All other approved service names, descriptions, and starting references remain a
 - Technical SEO audit checklist: https://turboapply.agency/resources/technical-seo-audit-checklist/
 - Google Business Profile guide: https://turboapply.agency/resources/google-business-profile-guide/
 - Interactive website animations guide covering pros, cons, and implementation decisions, with TurboApply Version 3: https://turboapply.agency/resources/interactive-website-effects/
-- Fluid holographic shapes guide with a real-time fluid holographic shape loop, MakeBeautifulWork reference, pause control, and reduced-motion fallback: https://turboapply.agency/resources/fluid-holographic-shape-animation/
+- Fluid holographic shapes guide with a black luxury TurboApply Agency real-time holographic loop, small circular cursor indicator, pause control, and reduced-motion fallback: https://turboapply.agency/resources/fluid-holographic-shape-animation/
 - Reflection cover animation guide with a Noomo storytelling reference and a pointer-reactive water-flowing disturbance treatment: https://turboapply.agency/resources/reflection-cover-animation/
-- Product parallax scroll effects for food and drinks websites, with reference examples for food, honey, drinks, spirits, snacks, produce, oils, labels, and wellness beverages, olive oil, and yerba mate: https://turboapply.agency/resources/product-parallax-scroll-effects-food-drink/
+- Product parallax scroll effects for food and drinks websites, with reference examples for food, honey, drinks, spirits, snacks, produce, oils, labels, wellness beverages, olive oil, yerba mate, confectionery, and barbecue sauce: https://turboapply.agency/resources/product-parallax-scroll-effects-food-drink/
+- Technology website animation examples, starting with Anime.js as the implementation reference, then product, watch, aviation, hardware, and device sites: https://turboapply.agency/resources/technology-website-animation-examples/
+- Product website design examples for physical products, AI tools, health, beauty, hardware, ecommerce, and XR: https://turboapply.agency/resources/product-website-design-examples/
 - Storytelling websites with immersive scroll design, with examples for scrollytelling, cinematic landing pages, product narratives, studio portfolios, and brand journeys: https://turboapply.agency/resources/storytelling-sites-scroll-design-examples/
 - Health and biotech website aesthetics examples, with health, biotech, longevity, wellness, AI, scientific minimalism, organic gradients, lab-inspired UI, and premium health-tech references: https://turboapply.agency/resources/health-biotech-website-aesthetics-examples/
 - Cosmetics website design examples, a growing collection for premium skincare visuals, product-led storytelling, beauty ecommerce UX, and ingredient-led brand pages: https://turboapply.agency/resources/cosmetics-website-design-examples/
+- Best website reference sites covering CSS Design Awards, Mobbin, Awwwards, and Behance: https://turboapply.agency/resources/best-website-reference-sites/
 - TurboApply vs. no-code website builders: https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - Results destination: https://turboapply.agency/results/
 - Resources provide original practical guidance. Results publishes customer success stories only when context is approved and outcomes can be verified; do not invent customer names, quotes, logos, metrics, or results.
@@ -106,6 +109,9 @@ All other approved service names, descriptions, and starting references remain a
 - https://turboapply.agency/resources/storytelling-sites-scroll-design-examples/
 - https://turboapply.agency/resources/health-biotech-website-aesthetics-examples/
 - https://turboapply.agency/resources/cosmetics-website-design-examples/
+- https://turboapply.agency/resources/technology-website-animation-examples/
+- https://turboapply.agency/resources/product-website-design-examples/
+- https://turboapply.agency/resources/best-website-reference-sites/
 - https://turboapply.agency/resources/turboapply-vs-no-code-website-builders/
 - https://turboapply.agency/results/
 - https://turboapply.agency/free-guide/
