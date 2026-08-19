@@ -519,6 +519,17 @@
   background: linear-gradient(90deg, #dfe3fe, #deeafe);
 }
 
+.fluid-holographic-luxury-cover {
+  --fluid-pointer-x: 50%;
+  --fluid-pointer-y: 50%;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(31, 255, 231, 0.16), transparent 19%),
+    radial-gradient(circle at 39% 56%, rgba(111, 76, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, #020202 0%, #050505 54%, #000 100%);
+}
+
 .fluid-holographic-loop[data-fluid-pointer-hit="true"],
 .fluid-holographic-toggle {
   cursor: pointer;
@@ -540,11 +551,65 @@
   transition: opacity 220ms ease;
 }
 
-.fluid-holographic-loop > canvas {
+.fluid-holographic-luxury-cover > img {
+  background: #050505;
+  opacity: 0.08;
+  filter: saturate(0.8) brightness(0.36) contrast(1.05);
+}
+
+.fluid-luxury-type {
+  position: absolute;
   z-index: 1;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  gap: clamp(4px, 1.8vw, 22px);
+  padding: clamp(30px, 6vw, 82px);
+  pointer-events: none;
+  font: 300 clamp(48px, 11.2vw, 168px) / 0.82 Inter, sans-serif;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  mix-blend-mode: screen;
+}
+
+.fluid-luxury-type span:first-child {
+  justify-self: start;
+  max-width: 62%;
+}
+
+.fluid-luxury-type span:last-child {
+  justify-self: end;
+  max-width: 58%;
+}
+
+.fluid-holographic-loop > canvas {
+  z-index: 2;
   opacity: 0;
   pointer-events: none;
   transition: opacity 220ms ease;
+}
+
+.fluid-pointer-dot {
+  position: absolute;
+  z-index: 5;
+  left: var(--fluid-pointer-x);
+  top: var(--fluid-pointer-y);
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.12) inset;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.fluid-holographic-luxury-cover.is-fluid-pointer-visible .fluid-pointer-dot {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .fluid-holographic-loop[data-fluid-holographic-ready="true"]:not([data-fluid-holographic-state="reduced-motion"]) > img {
@@ -628,7 +693,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fluid-holographic-loop > :is(img, canvas) {
+  .fluid-holographic-loop > :is(img, canvas),
+  .fluid-pointer-dot {
     transition: none;
   }
 }

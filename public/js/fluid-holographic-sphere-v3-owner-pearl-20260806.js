@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const VERSION = 'fluid-holographic-sphere-v3-image2-palette-20260813-2';
+  const VERSION = 'fluid-black-luxury-turboapply-20260819-1';
   const LOOP_MS = 10000;
   const PULSE_MS = 900;
   const LATITUDES = 64;
@@ -169,7 +169,17 @@
       color -= vec3(0.08, 0.06, 0.11) * studioCrease * 0.05;
       color -= vec3(foldShadow * (0.08 + v_displacement * 0.10));
       color += vec3(0.01, 0.03, 0.04) * fresnel;
-      color = mix(vec3(0.88, 0.95, 1.0), color, 0.96);
+
+      float rim = smoothstep(0.12, 0.92, fresnel);
+      float creaseLight = clamp(studioHighlight * 0.32 + studioCrease * 0.08 + specular * 0.18 + v_displacement * 0.16, 0.0, 1.0);
+      vec3 darkGlass = vec3(0.0, 0.0, 0.004);
+      vec3 neonRim = mix(referencePalette, iridescence, 0.54);
+      vec3 innerSheen = mix(vec3(0.0, 0.01, 0.014), environment * 0.09, creaseLight);
+      color = darkGlass;
+      color += innerSheen * (0.06 + creaseLight * 0.22);
+      color += neonRim * pow(rim, 1.05) * 0.58;
+      color += vec3(0.02, 0.16, 0.18) * studioHighlight * 0.16;
+      color = min(color, vec3(0.58));
 
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
     }
@@ -261,6 +271,7 @@
     const toggle = surface.querySelector('[data-fluid-animation-toggle]');
     const status = surface.querySelector('[data-fluid-animation-status]');
     const badge = surface.querySelector('.fluid-holographic-label strong');
+    const pointerDot = surface.querySelector('[data-fluid-pointer-dot]');
     const materialUrl = surface.dataset.fluidMaterialSource;
     if (!canvas || !image || !toggle || !status || !badge || !materialUrl) return null;
 
@@ -394,7 +405,7 @@
       resize();
       if (!options.qa) updateSpring();
       const now = options.now || performance.now();
-      const compactScale = window.innerWidth <= 760 ? 0.92 : 1.15;
+      const compactScale = window.innerWidth <= 760 ? 0.72 : 0.84;
       const pulse = options.qa ? 1 : currentPulse(now);
       const pulseValue = pulse >= 1 ? 1 : pulse;
 
@@ -450,7 +461,7 @@
         toggle.setAttribute('aria-pressed', manualPaused ? 'true' : 'false');
         status.textContent = manualPaused
           ? 'Fluid holographic sphere paused.'
-          : 'Fluid holographic sphere · 10-second seamless loop · hover or tap the shape';
+          : 'TurboApply Agency black luxury holographic loop · hover or tap the shape';
       }
       surface.dataset.fluidHolographicState = reduce()
         ? 'reduced-motion'
@@ -504,8 +515,13 @@
     const updatePointer = (event) => {
       if (reduce() || manualPaused) return;
       const rect = surface.getBoundingClientRect();
-      pointerX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      pointerY = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
+      const localX = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+      const localY = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+      surface.style.setProperty('--fluid-pointer-x', `${(localX * 100).toFixed(2)}%`);
+      surface.style.setProperty('--fluid-pointer-y', `${(localY * 100).toFixed(2)}%`);
+      if (pointerDot) surface.classList.add('is-fluid-pointer-visible');
+      pointerX = localX * 2 - 1;
+      pointerY = -(localY * 2 - 1);
       const ellipticalDistance = Math.sqrt((pointerX / 0.72) ** 2 + (pointerY / 0.88) ** 2);
       const hit = ellipticalDistance <= 1;
       hoverTarget = hit ? 1 : 0;
@@ -522,6 +538,7 @@
     const leavePointer = () => {
       hoverTarget = 0;
       surface.dataset.fluidPointerHit = 'false';
+      surface.classList.remove('is-fluid-pointer-visible');
     };
 
     const triggerPulse = (event) => {
