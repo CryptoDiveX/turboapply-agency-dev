@@ -1,6 +1,6 @@
 # TurboApply Agency
 
-TurboApply is a Vancouver-based website and AI automation agency. It builds high-converting websites, AI integrations, CRM automations, AI receptionist flows, cold outreach systems, lead follow-up systems, and booking/funnel improvements for small and growing businesses.
+TurboApply is a Vancouver-based IT company building websites, AI integrations, CRM automations, AI receptionist flows, cold outreach systems, lead follow-up systems, and booking/funnel improvements for small and growing businesses.
 
 Canonical site: https://turboapply.agency/
 Contact email: turboapply.ai@gmail.com

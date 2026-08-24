@@ -1,7 +1,7 @@
 # TurboApply Agency — full public AI context
 
 ## Identity
-TurboApply Agency builds websites and AI-powered business systems for teams that want faster lead response, cleaner booking flows, better follow-up, CRM automation, and practical AI adoption.
+TurboApply Agency is an IT company building websites and AI-powered business systems for teams that want faster lead response, cleaner booking flows, better follow-up, CRM automation, and practical AI adoption.
 
 ## Contact
 - Email: turboapply.ai@gmail.com
