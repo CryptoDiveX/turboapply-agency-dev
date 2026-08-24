@@ -6,11 +6,26 @@
   padding-inline: var(--container-inline-padding-desktop);
 }
 
+.integrations-page .system-card {
+  display: grid;
+  grid-template-rows: 172px minmax(68px, auto) auto;
+  align-content: start;
+}
+
+.integrations-page .system-visual {
+  align-self: start;
+  height: 140px;
+  margin: 0;
+}
+
 .integrations-page .system-card h3 {
+  align-self: start;
+  margin: 0 0 13px;
   font-size: clamp(29px, 2.35vw, 38px);
 }
 
 .integrations-page .system-card p {
+  align-self: start;
   font-size: 19px;
 }
 
